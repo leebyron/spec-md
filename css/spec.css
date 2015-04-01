@@ -1,0 +1,310 @@
+body {
+  font: 13pt/18pt Cambria, Palatino Linotype, Palatino, Liberation Serif, serif;
+  margin: 6rem auto 10rem;
+  max-width: 780px;
+  color: #444;
+}
+
+
+/* Links */
+
+a {
+  text-decoration: none;
+  color: #3b5998;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Section headers */
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  margin: 3rem 0 1em;
+}
+
+h1 {
+  font-size: 1.45em;
+  margin: 8rem 0 1em;
+}
+
+h2 {
+  font-size: 1.30em;
+  margin: 5rem 0 1em;
+}
+
+h3 {
+  font-size: 1.15em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+section spec-secnum {
+  position: absolute;
+  text-align: right;
+  right: 100%;
+  margin-right: 1ex;
+  white-space: nowrap;
+}
+
+
+/* Table of contents */
+
+spec-toc {
+  display: block;
+  margin: 1em 0 3em;
+}
+
+spec-toc::before {
+  content: 'Contents';
+  display: block;
+  margin: 3em 0 1em;
+  font-weight: bold;
+}
+
+spec-toc spec-secnum {
+  margin-right: 1ex;
+}
+
+spec-toc ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+spec-toc ol ol {
+  padding-left: 2ex;
+  list-style: none;
+}
+
+
+/* Notes and Todos */
+
+spec-note,
+spec-todo {
+  display: block;
+  margin: 1em 0 1em 5em;
+  color: #666;
+}
+
+spec-note::before,
+spec-todo::before {
+  content: 'note';
+  text-transform: uppercase;
+  margin-left: -5em;
+  display: block;
+  float: left;
+}
+
+spec-note::before {
+  content: 'note';
+}
+
+spec-todo::before {
+  content: 'todo';
+}
+
+
+/* Code */
+
+code {
+  font-weight: inherit;
+  font-family: Consolas, Monaco, monospace;
+  white-space: pre;
+}
+
+pre code {
+  font-weight: inherit;
+}
+
+code[counter-example] {
+  border-left: solid 3px #c00;
+  padding-left: 10px;
+  margin-left: -13px;
+}
+
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #F9F9F9;
+}
+
+td, th {
+  border: 1px solid #D0D0D0;
+  padding: 0.4em;
+  vertical-align: baseline;
+}
+
+
+/* Edits */
+
+ins, del {
+  text-decoration: none;
+}
+
+spec-blockins, spec-blockdel {
+  display: block;
+  margin: 0 -1em;
+  padding: 0 1em;
+  border-right: 3px solid;
+}
+
+ins, spec-blockins {
+  background-color: rgba(0, 200, 30, 0.05);
+  border-color: #396;
+}
+
+del, spec-blockdel {
+  background-color: rgba(200, 0, 0, 0.05);
+  border-color: #933;
+}
+
+
+/* Values */
+
+spec-lit[keyword] {
+  font-weight: bold;
+}
+
+spec-lit[string] {
+  font-family: Consolas, Monaco, monospace;
+  white-space: pre;
+}
+
+var {
+  font-style: italic;
+}
+
+
+/* Algorithms and calls */
+
+spec-algo {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 5ex;
+}
+
+spec-algo > spec-call:first-child::after {
+  font-style: normal;
+  content: ' :: ';
+}
+
+spec-algo ol, spec-algo ol ol ol ol {
+  list-style-type: decimal;
+}
+
+spec-algo ol ol, spec-algo ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+spec-algo ol ol ol, ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+
+spec-call > a {
+  color: inherit;
+}
+
+
+/* Grammar productions */
+
+spec-production {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 5ex;
+}
+
+spec-production > spec-nt:first-child::after {
+  font-style: normal;
+  content: ' :: ';
+}
+
+spec-rhs {
+  display: block;
+  padding-left: 50px;
+}
+
+spec-rhs spec-nt,
+spec-rhs spec-t,
+spec-rhs spec-rx,
+spec-rhs spec-prose {
+  margin-right: 1ex;
+}
+
+spec-condition {
+  font-size: 80%;
+}
+
+spec-condition::before {
+  content: '[+'
+}
+
+spec-condition[not]::before {
+  content: '[~'
+}
+
+spec-condition::after {
+  content: ']'
+}
+
+spec-nt {
+  font-style: italic;
+}
+
+spec-nt > a {
+  color: inherit;
+}
+
+spec-mods {
+  font-size: .75em;
+  vertical-align: sub;
+  font-style: normal;
+}
+
+spec-mod[conditional]::before {
+  content: '?';
+}
+
+spec-t, spec-rx {
+  font-family: monospace;
+  font-weight: bold;
+  color: #4A4A4A;
+}
+
+spec-prose {
+  font-size: 0.9em;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+spec-oneof::before {
+  content: 'one of';
+  font-weight: bold;
+}
+
+spec-butnot::before {
+  content: 'but not';
+  font-weight: bold;
+}
+
+spec-rhs spec-oneof::before,
+spec-rhs spec-butnot::before {
+  margin-right: 1ex;
+}
