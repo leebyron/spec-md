@@ -1,5 +1,6 @@
 {
   "name": "spec-md",
+  "version": "0.1.0",
   "author": "Lee Byron <lee@leebyron.com> (http://leebyron.com/)",
   "license": "MIT",
   "homepage": "https://leebyron.github.io/spec-md",
@@ -21,5 +22,23 @@
     "highlight.js": "^8.4.0",
     "pegjs": "~0.8.0",
     "yargs": "^3.6.0"
-  }
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "files": [
+    "bin",
+    "css",
+    "src",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ast",
+    "ecma",
+    "ecmascript",
+    "html",
+    "markdown",
+    "spec",
+    "specification",
+  ]
 }
