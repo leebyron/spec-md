@@ -10,7 +10,7 @@ function print(ast, _options) {
   }
   adornAnchors(ast);
   return (
-    '<!DOCTYPE html><html xmlns:spec="http://leebyron.github.io/spec-md/">' +
+    '<!DOCTYPE html><html>' +
       '<head>' + printHead(ast) + '</head>' +
       '<body>' + printBody(ast) + '</body>' +
     '</html>'
@@ -141,7 +141,7 @@ function printTOC(ast) {
         var printed = (
           '<li>' +
             '<a href="#' + node.anchor + '">' +
-              '<spec:secnum>' + join(sectionStack, '.') + '</spec:secnum>' +
+              '<span class="spec-secnum">' + join(sectionStack, '.') + '</span>' +
               escape(node.title) +
             '</a>' +
             (subSections ? '<ol>' + subSections + '</ol>' : subSections) +
@@ -155,10 +155,10 @@ function printTOC(ast) {
   });
 
   return (
-    '<spec:toc><ol>' +
+    '<div class="spec-toc"><ol>' +
         (intro.length === 0 ? '' : '<li><a href="#intro">Introduction</a></li>') +
         join(items) +
-    '</ol></spec:toc>'
+    '</ol></div>'
   );
 }
 
@@ -174,7 +174,10 @@ function printContent(doc) {
   });
   return (
     (intro.length === 0 ? '' :
-      '<section id="intro">' + printAll(intro) + '</section>'
+      '<section id="intro">' +
+        '<h1>Introduction</h1>' +
+        printAll(intro) +
+      '</section>'
     ) +
     printAll(sections)
   );
@@ -211,15 +214,15 @@ function printAll(list) {
           var mods = (
             (node.params ? '[' + node.params.map(function (param) {
               return (
-                '<spec:mod' + (param.conditional ? ' conditional' : '') + '>' +
+                '<span class="spec-mod' + (param.conditional ? ' conditional' : '') + '">' +
                   param.name +
-                '</spec:mod>'
+                '</span>'
               );
             }).join(', ') + ']' : '') +
-            (node.isList ? '<spec:mod list>list</spec:mod>' : '') +
-            (node.isOptional ? '<spec:mod optional>opt</spec:mod>' : '')
+            (node.isList ? '<span class="spec-mod list">list</span>' : '') +
+            (node.isOptional ? '<span class="spec-mod optional">opt</span>' : '')
           );
-          node.mods = mods ? '<spec:mods>' + mods + '</spec:mods>' : '';
+          node.mods = mods ? '<span class="spec-mods">' + mods + '</span>' : '';
           node.params = null;
           break;
       }
@@ -234,9 +237,9 @@ function printAll(list) {
           return (
             '<section id="' + node.anchor + '">' +
               '<h' + level + '>' +
-              '<spec:secnum title="link to this section">' +
+              '<span class="spec-secnum" title="link to this section">' +
                 '<a href="#' + node.anchor + '">' + secnum + '</a>' +
-              '</spec:secnum>' +
+              '</span>' +
               escape(node.title) +
               '</h' + level + '>' +
               join(node.contents) +
@@ -244,10 +247,10 @@ function printAll(list) {
           );
 
         case 'BlockIns':
-          return '<spec:blockins>' + join(node.contents) + '</spec:blockins>';
+          return '<div class="spec-added">' + join(node.contents) + '</div>';
 
         case 'BlockDel':
-          return '<spec:blockdel>' + join(node.contents) + '</spec:blockdel>';
+          return '<div class="spec-removed">' + join(node.contents) + '</div>';
 
         case 'Paragraph':
           return '<p>' + join(node.contents) + '</p>';
@@ -262,10 +265,10 @@ function printAll(list) {
           return '<em>' + join(node.contents) + '</em>';
 
         case 'Note':
-          return '<spec:note>' + join(node.contents) + '</spec:note>';
+          return '<div class="spec-note">' + join(node.contents) + '</div>';
 
         case 'Todo':
-          return '<spec:todo>' + join(node.contents) + '</spec:todo>';
+          return '<div class="spec-todo">' + join(node.contents) + '</div>';
 
         case 'HTMLTag':
           return node.tag;
@@ -278,10 +281,9 @@ function printAll(list) {
 
         case 'Code':
           return (
-            '<pre><code' +
-              (node.lang ? ' language="' + node.lang + '"' : '') +
-              (node.counter ? ' counter-example' : '') +
-            '>' +
+            '<pre' +
+              (node.counter ? ' class="spec-counter-example"' : '') +
+            '><code>' +
               (options.highlight ?
                 options.highlight(node.code, node.lang) :
                 escapeCode(node.code)) +
@@ -332,67 +334,67 @@ function printAll(list) {
 
         case 'Algorithm':
           return (
-            '<spec:algo id="' + node.anchor + '">' +
+            '<div class="spec-algo" id="' + node.anchor + '">' +
               node.name +
               node.steps +
-            '</spec:algo>'
+            '</div>'
           );
 
         case 'Call':
           return (
-            '<spec:call>' +
+            '<span class="spec-call">' +
               '<a href="' + node.href + '">' + escape(node.name) + '</a>' +
               '(' + join(node.args, ', ') + ')' +
-            '</spec:call>'
+            '</span>'
           );
 
         case 'Keyword':
-          return '<spec:lit keyword>' + node.value + '</spec:lit>';
+          return '<span class="spec-keyword">' + node.value + '</span>';
 
         case 'StringLiteral':
-          return '<spec:lit string>' + node.value + '</spec:lit>';
+          return '<span class="spec-string">' + node.value + '</span>';
 
         case 'Variable':
           return '<var>' + node.name + '</var>';
 
         case 'Production':
           return (
-            '<spec:production id="' + node.anchor + '">' +
+            '<div class="spec-production" id="' + node.anchor + '">' +
               node.name +
               join(node.defs) +
-            '</spec:production>'
+            '</div>'
           );
 
         case 'RHS':
           return (
-            '<spec:rhs>' +
+            '<div class="spec-rhs">' +
               maybe(node.condition) +
               join(node.tokens) +
-            '</spec:rhs>'
+            '</div>'
           );
 
         case 'Condition':
           return (
-            '<spec:condition' + (node.condition ? ' not' : '') + '>' +
+            '<span class="spec-condition' + (node.condition ? ' not' : '') + '">' +
               node.param +
-            '</spec:condition>'
+            '</span>'
           );
 
         case 'OneOf':
-          return '<spec:oneof>' + join(node.tokens) + '</spec:oneof>';
+          return '<span class="spec-oneof">' + join(node.tokens) + '</span>';
 
         case 'Prose':
-          return '<spec:prose>' + escape(node.text) + '</spec:prose>';
+          return '<span class="spec-prose">' + escape(node.text) + '</span>';
 
         case 'NonTerminal':
           return (
-            '<spec:nt' +
-              (node.isList ? ' isList' : '') +
-              (node.isOptional ? ' isOptional' : '') +
-            '>' +
+            '<span class="spec-nt' +
+              (node.isList ? ' list' : '') +
+              (node.isOptional ? ' optional' : '') +
+            '">' +
               '<a href="' + node.href + '">' + escape(node.name) + '</a>' +
               node.mods +
-            '</spec:nt>'
+            '</span>'
           );
 
         case 'NonTerminalParam':
@@ -400,20 +402,20 @@ function printAll(list) {
 
         case 'Constrained':
           return (
-            '<spec:constrained>' +
+            '<span class="spec-constrained">' +
               node.token +
               node.constraint +
-            '</spec:constrained>'
+            '</span>'
           );
 
         case 'ButNot':
-          return '<spec:butnot>' + node.token + '</spec:butnot>';
+          return '<span class="spec-butnot">' + node.token + '</span>';
 
         case 'RegExp':
-          return '<spec:rx>' + escape(node.value) + '</spec:rx>';
+          return '<span class="spec-rx">' + escape(node.value) + '</span>';
 
         case 'Terminal':
-          return '<spec:t>' + escape(node.value) + '</spec:t>';
+          return '<span class="spec-t">' + escape(node.value) + '</span>';
 
         default:
           throw new Error('Unknown AST node: ' + node.type + ' ' + node);
