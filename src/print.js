@@ -1,9 +1,13 @@
+var hljs = require('highlight.js');
 var visit = require('./visit');
 
 var options;
 
 function print(ast, _options) {
   options = _options || {};
+  if (!options.highlight) {
+    options.highlight = highlight;
+  }
   adornAnchors(ast);
   return (
     '<!DOCTYPE html><html>' +
@@ -14,6 +18,10 @@ function print(ast, _options) {
 };
 
 module.exports = print;
+
+function highlight(code, lang) {
+  return lang ? hljs.highlight(lang, code).value : code;
+}
 
 function printHead(ast) {
   return (

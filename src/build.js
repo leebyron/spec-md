@@ -4,33 +4,11 @@ var fs = require('fs');
 var path = require('path');
 var pegjs = require('pegjs');
 var Promise = require('bluebird');
-var hljs = require('highlight.js');
 var print = require('./print');
 var visit = require('./visit');
 
 Promise.promisifyAll(fs);
 
-function highlight(code, lang) {
-  return lang ? hljs.highlight(lang, code).value : code;
-}
-
-var _parser;
-function getParser() {
-  return _parser || (_parser =
-    fs.readFileAsync(__dirname + '/grammar.pegjs', 'utf8').then(function (text) {
-      return pegjs.buildParser(text, {
-        output: 'parser',
-        allowedStartRules: ['document']
-      });
-    })
-  );
-}
-
-function exists(dirName) {
-  return new Promise(function (resolve) {
-    fs.exists(dirName, resolve);
-  });
-}
 
 var _outDir;
 function getOutDir() {
@@ -47,12 +25,13 @@ function getOutDir() {
   );
 }
 
-getParser().then(function (parser) {
-  return importAST(parser, __dirname + '/../README.md');
-}).then(function (ast) {
+function exists(dirName) {
+  return new Promise(function (resolve) {
+    fs.exists(dirName, resolve);
+  });
+}
 
-  var html = print(ast, { highlight: highlight });
-
+printSpecHTML(__dirname + '/../README.md').then(function (html) {
   return getOutDir().then(function (outDir) {
     return Promise.all([
       fs.readFileAsync(__dirname + '/../css/spec.css', { encoding: 'utf8' }).then(function (css) {
@@ -64,12 +43,33 @@ getParser().then(function (parser) {
       fs.writeFileAsync(outDir + '/index.html', html, { encoding: 'utf8' }),
     ]);
   });
-
 }).catch(function (error) {
   console.log(error);
   throw error;
 });
 
+
+///////////////////////////
+
+function printSpecHTML(filepath) {
+  return getParser().then(function (parser) {
+    return importAST(parser, filepath);
+  }).then(function (ast) {
+    return print(ast);
+  });
+}
+
+var _parser;
+function getParser() {
+  return _parser || (_parser =
+    fs.readFileAsync(__dirname + '/grammar.pegjs', 'utf8').then(function (text) {
+      return pegjs.buildParser(text, {
+        output: 'parser',
+        allowedStartRules: ['document']
+      });
+    })
+  );
+}
 
 function importAST(parser, filepath) {
   var md = fs.readFileAsync(filepath, { encoding: 'utf8' });
