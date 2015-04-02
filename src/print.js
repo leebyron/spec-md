@@ -10,7 +10,7 @@ function print(ast, _options) {
   }
   adornAnchors(ast);
   return (
-    '<!DOCTYPE html><html>' +
+    '<!DOCTYPE html><html xmlns:spec="http://leebyron.github.io/spec-md/">' +
       '<head>' + printHead(ast) + '</head>' +
       '<body>' + printBody(ast) + '</body>' +
     '</html>'
@@ -141,7 +141,7 @@ function printTOC(ast) {
         var printed = (
           '<li>' +
             '<a href="#' + node.anchor + '">' +
-              '<spec-secnum>' + join(sectionStack, '.') + '</spec-secnum>' +
+              '<spec:secnum>' + join(sectionStack, '.') + '</spec:secnum>' +
               escape(node.title) +
             '</a>' +
             (subSections ? '<ol>' + subSections + '</ol>' : subSections) +
@@ -155,10 +155,10 @@ function printTOC(ast) {
   });
 
   return (
-    '<spec-toc><ol>' +
+    '<spec:toc><ol>' +
         (intro.length === 0 ? '' : '<li><a href="#intro">Introduction</a></li>') +
         join(items) +
-    '</ol></spec-toc>'
+    '</ol></spec:toc>'
   );
 }
 
@@ -211,15 +211,15 @@ function printAll(list) {
           var mods = (
             (node.params ? '[' + node.params.map(function (param) {
               return (
-                '<spec-mod' + (param.conditional ? ' conditional' : '') + '>' +
+                '<spec:mod' + (param.conditional ? ' conditional' : '') + '>' +
                   param.name +
-                '</spec-mod>'
+                '</spec:mod>'
               );
             }).join(', ') + ']' : '') +
-            (node.isList ? '<spec-mod list>list</spec-mod>' : '') +
-            (node.isOptional ? '<spec-mod optional>opt</spec-mod>' : '')
+            (node.isList ? '<spec:mod list>list</spec:mod>' : '') +
+            (node.isOptional ? '<spec:mod optional>opt</spec:mod>' : '')
           );
-          node.mods = mods ? '<spec-mods>' + mods + '</spec-mods>' : '';
+          node.mods = mods ? '<spec:mods>' + mods + '</spec:mods>' : '';
           node.params = null;
           break;
       }
@@ -234,9 +234,9 @@ function printAll(list) {
           return (
             '<section id="' + node.anchor + '">' +
               '<h' + level + '>' +
-              '<spec-secnum title="link to this section">' +
+              '<spec:secnum title="link to this section">' +
                 '<a href="#' + node.anchor + '">' + secnum + '</a>' +
-              '</spec-secnum>' +
+              '</spec:secnum>' +
               escape(node.title) +
               '</h' + level + '>' +
               join(node.contents) +
@@ -244,10 +244,10 @@ function printAll(list) {
           );
 
         case 'BlockIns':
-          return '<spec-blockins>' + join(node.contents) + '</spec-blockins>';
+          return '<spec:blockins>' + join(node.contents) + '</spec:blockins>';
 
         case 'BlockDel':
-          return '<spec-blockdel>' + join(node.contents) + '</spec-blockdel>';
+          return '<spec:blockdel>' + join(node.contents) + '</spec:blockdel>';
 
         case 'Paragraph':
           return '<p>' + join(node.contents) + '</p>';
@@ -262,10 +262,10 @@ function printAll(list) {
           return '<em>' + join(node.contents) + '</em>';
 
         case 'Note':
-          return '<spec-note>' + join(node.contents) + '</spec-note>';
+          return '<spec:note>' + join(node.contents) + '</spec:note>';
 
         case 'Todo':
-          return '<spec-todo>' + join(node.contents) + '</spec-todo>';
+          return '<spec:todo>' + join(node.contents) + '</spec:todo>';
 
         case 'HTMLTag':
           return node.tag;
@@ -332,67 +332,67 @@ function printAll(list) {
 
         case 'Algorithm':
           return (
-            '<spec-algo id="' + node.anchor + '">' +
+            '<spec:algo id="' + node.anchor + '">' +
               node.name +
               node.steps +
-            '</spec-algo>'
+            '</spec:algo>'
           );
 
         case 'Call':
           return (
-            '<spec-call>' +
+            '<spec:call>' +
               '<a href="' + node.href + '">' + escape(node.name) + '</a>' +
               '(' + join(node.args, ', ') + ')' +
-            '</spec-call>'
+            '</spec:call>'
           );
 
         case 'Keyword':
-          return '<spec-lit keyword>' + node.value + '</spec-lit>';
+          return '<spec:lit keyword>' + node.value + '</spec:lit>';
 
         case 'StringLiteral':
-          return '<spec-lit string>' + node.value + '</spec-lit>';
+          return '<spec:lit string>' + node.value + '</spec:lit>';
 
         case 'Variable':
           return '<var>' + node.name + '</var>';
 
         case 'Production':
           return (
-            '<spec-production id="' + node.anchor + '">' +
+            '<spec:production id="' + node.anchor + '">' +
               node.name +
               join(node.defs) +
-            '</spec-production>'
+            '</spec:production>'
           );
 
         case 'RHS':
           return (
-            '<spec-rhs>' +
+            '<spec:rhs>' +
               maybe(node.condition) +
               join(node.tokens) +
-            '</spec-rhs>'
+            '</spec:rhs>'
           );
 
         case 'Condition':
           return (
-            '<spec-condition' + (node.condition ? ' not' : '') + '>' +
+            '<spec:condition' + (node.condition ? ' not' : '') + '>' +
               node.param +
-            '</spec-condition>'
+            '</spec:condition>'
           );
 
         case 'OneOf':
-          return '<spec-oneof>' + join(node.tokens) + '</spec-oneof>';
+          return '<spec:oneof>' + join(node.tokens) + '</spec:oneof>';
 
         case 'Prose':
-          return '<spec-prose>' + escape(node.text) + '</spec-prose>';
+          return '<spec:prose>' + escape(node.text) + '</spec:prose>';
 
         case 'NonTerminal':
           return (
-            '<spec-nt' +
+            '<spec:nt' +
               (node.isList ? ' isList' : '') +
               (node.isOptional ? ' isOptional' : '') +
             '>' +
               '<a href="' + node.href + '">' + escape(node.name) + '</a>' +
               node.mods +
-            '</spec-nt>'
+            '</spec:nt>'
           );
 
         case 'NonTerminalParam':
@@ -400,20 +400,20 @@ function printAll(list) {
 
         case 'Constrained':
           return (
-            '<spec-constrained>' +
+            '<spec:constrained>' +
               node.token +
               node.constraint +
-            '</spec-constrained>'
+            '</spec:constrained>'
           );
 
         case 'ButNot':
-          return '<spec-butnot>' + node.token + '</spec-butnot>';
+          return '<spec:butnot>' + node.token + '</spec:butnot>';
 
         case 'RegExp':
-          return '<spec-rx>' + escape(node.value) + '</spec-rx>';
+          return '<spec:rx>' + escape(node.value) + '</spec:rx>';
 
         case 'Terminal':
-          return '<spec-t>' + escape(node.value) + '</spec-t>';
+          return '<spec:t>' + escape(node.value) + '</spec:t>';
 
         default:
           throw new Error('Unknown AST node: ' + node.type + ' ' + node);
