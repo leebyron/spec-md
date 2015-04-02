@@ -20,6 +20,7 @@
   "dependencies": {
     "bluebird": "~2.9.0",
     "highlight.js": "^8.4.0",
+    "js-beautify": "^1.5.5",
     "pegjs": "~0.8.0",
     "yargs": "^3.6.0"
   },
@@ -38,7 +39,11 @@
     "ecmascript",
     "html",
     "markdown",
+    "markup",
     "spec",
-    "specification"
+    "specs",
+    "specification",
+    "typography",
+    "code"
   ]
 }
