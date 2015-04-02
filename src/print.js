@@ -297,7 +297,7 @@ function printAll(list) {
         case 'Image':
           return (
             '<img src="' + encodeURI(node.url) + '"' +
-              (node.alt ? 'alt="' + escape(node.alt) + '"' : '') +
+              (node.alt ? ' alt="' + escape(node.alt) + '"' : '') +
             '/>'
           );
 
