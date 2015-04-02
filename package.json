@@ -13,6 +13,7 @@
   "bin": "./bin/spec-md",
   "main": "./src/index.js",
   "scripts": {
+    "test": "exit 0",
     "build": "mkdir -p out; cp css/* out; ./bin/spec-md README.md > out/index.html"
   },
   "dependencies": {
