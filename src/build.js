@@ -51,11 +51,11 @@ printSpecHTML(__dirname + '/../README.md').then(function (html) {
 
 ///////////////////////////
 
-function printSpecHTML(filepath) {
+function printSpecHTML(filepath, options) {
   return getParser().then(function (parser) {
     return importAST(parser, filepath);
   }).then(function (ast) {
-    return print(ast);
+    return print(ast, options);
   });
 }
 
