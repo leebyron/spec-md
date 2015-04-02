@@ -11,7 +11,7 @@ function print(ast, _options) {
   adornAnchors(ast);
   return (
     '<!DOCTYPE html><html>' +
-      '<-- Built with spec-md -->' +
+      '<!-- Built with spec-md -->' +
       '<head>' + printHead(ast) + '</head>' +
       '<body>' + printBody(ast) + '</body>' +
     '</html>'
