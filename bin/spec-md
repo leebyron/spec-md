@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+var yargs = require('yargs');
+var path = require('path');
+var specmd = require('../');
+
+var argv = yargs
+  .usage('Usage: $0 [filepath]')
+  .demand(1)
+  .argv;
+
+var absPath = path.resolve(process.cwd(), argv._[0]);
+
+specmd.html(absPath).then(function (html) {
+  process.stdout.write(html);
+});

@@ -10,12 +10,15 @@
     "type": "git",
     "url": "git@github.com:leebyron/spec-md.git"
   },
+  "bin": "./bin/spec-md",
+  "main": "./src/index.js",
   "scripts": {
-    "build": "node ./src/build.js"
+    "build": "mkdir -p out; cp css/* out; ./bin/spec-md README.md > out/index.html"
   },
-  "devDependencies": {
+  "dependencies": {
     "bluebird": "~2.9.0",
     "highlight.js": "^8.4.0",
-    "pegjs": "~0.8.0"
+    "pegjs": "~0.8.0",
+    "yargs": "^3.6.0"
   }
 }
