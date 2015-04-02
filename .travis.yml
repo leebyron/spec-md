@@ -1,3 +1,7 @@
+env:
+  global:
+  - secure: "DREp9PcuZE6OWJPZx68ponPgp1x9HPOV0FMCJ6jhh9VzPhA3Een3+UK6vgn3dPJjK2TdE+DrBhlLEQiaQAkvIi3W1b9zn67357hBDI59VWMmX9rPv/8tke2UFXptzDCKaFrx9qcJ2hTcrSaFe+V6zj8nQZrl7t9DZgF/aKq3sc0="
+
 language: node_js
 sudo: false
 after_success: bash ./bin/deploy-gh-pages.sh
