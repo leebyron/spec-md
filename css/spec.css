@@ -126,7 +126,7 @@ pre code {
   font-weight: inherit;
 }
 
-code.spec-counter-example {
+.spec-counter-example {
   border-left: solid 3px #c00;
   padding-left: 10px;
   margin-left: -13px;
