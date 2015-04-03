@@ -129,9 +129,16 @@ pre code {
 }
 
 .spec-counter-example {
-  border-left: solid 3px #c00;
-  padding-left: 10px;
-  margin-left: -13px;
+  border-left: solid 2px #CC8800;
+  padding-left: 8px;
+  margin-left: -10px;
+  background: #fff8ea;
+  background: -moz-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #fff8ea), color-stop(20%, #ffffff));
+  background: -webkit-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
+  background: -o-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
+  background: -ms-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
+  background: linear-gradient(to right, #fff8ea 0%, #ffffff 20%);
 }
 
 
@@ -154,24 +161,29 @@ td, th {
 
 /* Edits */
 
-ins, del {
+ins {
+  background-color: rgba(0, 200, 30, 0.08);
   text-decoration: none;
 }
 
-.spec-added, .spec-removed {
-  margin: 0 -1em;
-  padding: 0 1em;
-  border-right: 3px solid;
+del {
+  background-color: rgba(200, 0, 0, 0.08);
 }
 
-ins, .spec-added {
-  background-color: rgba(0, 200, 30, 0.05);
+.spec-added, .spec-removed {
+  border-left: 4px solid;
+  padding-left: 14px;
+  margin-left: -18px;
+
+}
+
+.spec-added {
   border-color: #396;
 }
 
-del, .spec-removed {
-  background-color: rgba(200, 0, 0, 0.05);
+.spec-removed {
   border-color: #933;
+  text-decoration: line-through;
 }
 
 
