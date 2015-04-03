@@ -1,128 +1,67 @@
 Spec Markdown
 -------------
 
-Additions to Markdown for writing specification documents
+Renders Markdown with some additions into an HTML format commonly used for
+writing technical specification documents. Markdown additions include code
+syntax highlighting, edit annotations, and the definition of algorithms and
+grammar productions.
 
-Note: this document isn't done
-
-
-# Spec Syntax #
-
-## Smart quotes
-
-Prose text has "smart quotes", hyphens, en-dashes and em-dashes--you shouldn't
-have to think about it, they'll just work.
-
-For example, a quote of a quote (with an inner apostrophe for flair):
-
-"She told me that 'he isn't here right now' - so I left.".
-
-Smart arrows ---> and <- and <-> can be written as `->`, `<-` and `<->`. Fat
-smart arrows ===> and <== and <=> can be written as `=>`, `<==` and `<=>`.
-
-Math operators like >=, <=, and ~= can be written as `>=`, `<=`, and `~=`.
-
-Well formed HTML entities can be written inline, as `&copy;`. &copy; <-- a
-copyright, but & < > are escaped.
-
-You can explicitly enter a \* character with `\*`.
+Note: This is not a normative spec for Spec Markdown, but just documentation of
+this tool. It is also very much a work in progress.
 
 
-## Editing
+# Philosophy
 
-A portion of the [CriticMarkup](http://criticmarkup.com/) spec is supported.
+Spec Markdown is first and foremost Markdown. As such, it follows Markdown's
+philosophy of intending to be as easy to read and easy to write as is feasible.
 
-For example, we can {++add++} or {--remove--} text with the `{++add++}` or
-`{--remove--}` syntax.
+In order to interoperate with other tools which use Markdown, Spec Markdown
+tries to add as little additional syntax as possible, instead preferring
+conventions. This means any documents written with Spec Markdown in mind should
+render adequately by other Markdown renderers.
 
-We can also add and remove entire blocks of content, by using `{++` or `{--`
-on their own line with empty lines on either side:
-
-{++
-
-These paragraphs
-
-have been *added*.
-
-++}
-
-And
-
-{--
-
-These paragraphs
-
-have been *removed*.
-
---}
+To support the rendering additions of Spec Markdown, some features of Markdown
+may be limited or removed. As an example, Spec Markdown is strict about the
+order and locations of headers in a document.
 
 
-## Other stuff
+# Getting Started
 
-This is an [-->*example*<--](https://www.facebook.com) of a link.
-This is an `example` of some code.
+To use Spec Markdown, just write Markdown files. There are some conventions used
+by Spec Markdown which you can read about in [Spec additions](#spec-additions).
 
-This is an example of an |Algorithm(foo, "string", null)| call reference.
+To convert your Markdown files into an HTML spec document, use the `spec-md`
+utility.
 
+```sh
+npm install -g spec-md
+spec-md ./path/to/markdown.md > ./path/to/output.html
+```
 
-I can reference |foo|, |"foo"|, |null|, |true|.
+You can also require spec-md from any node program.
 
-This is an algorithm:
-
-Algorithm(arg) ::
-  1. first
-  2. then
-  3. okay
-
-And this is a list
-
-  1. this
-  2. is
-  3. a
-    - nested
-  4. list
-
-And this is a non-indented list
-
-1. this
-2. is
-3. a
-  - nested
-4. list
-
-
-And here's an example:
+```sh
+npm install --save-dev spec-md
 
 ```js
-var baz = foo("bar");
+var fs = require('fs');
+var specMarkdown = require('spec-md');
+specMarkdown.html('./path/to/markdown.md').then(function (html) {
+  fs.writeFile('./path/to/output.html', html);
+});
 ```
 
-And a counter-example
+Don't forget to copy CSS files from this library's `css/` directory.
 
-```!js
-var shit = dontSwear();
-```
-
-Example of **bold** and *italic* and ***bold italic***
-
-**Here is a table**
-
-| This | is | table |
-| ---- | -- | ----- |
-| key  | val| etc   |
-
-Here is an image!
-
-![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
+Spec Markdown also provides utilities for generating and operating on an
+intermediate representation of the markdown, which you can explore in
+[Using Spec Markdown](#using-spec-markdown).
 
 
-When compiled, an import reference will be inlined into the same document. An
-import reference looks like a link to a ".md" file as a single paragraph.
+# [Markdown](./spec/Markdown.md)
 
-```
-[AnythingGoesHere](SomeName.md)
-```
+# [Spec additions](./spec/SpecAdditions.md)
 
-You can optionally prefix the import reference with # characters to describe at
-what section level the import should apply. By default an import reference will
-be imported as a child of the current section.
+# [Using Spec Markdown](./spec/Usage.md)
+
+# [Contributing](./CONTRIBUTING.md)

@@ -169,7 +169,7 @@ paragraph = BLOCK !"#" contents:content+ {
 
 content = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag / text
 
-textChar = '\\' [\\`*_{}[\]()#+\-!]
+textChar = '\\' [\\`*_{}[\]()#+\-!|]
          / [^\n\r+\-{`|*[!<]
          / '{' !('++' / '--')
          / '++' !'}'
