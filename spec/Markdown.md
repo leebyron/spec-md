@@ -6,7 +6,7 @@ TODO
 ## Character Encoding
 
 Markdown allows you to write text which uses &, <, and >. The output HTML will
-automatically use the `&amp;`, `&lt;`, and `&gt;`.
+automatically use the `&amp;`, `&lt;`, and `&gt;` entities.
 
 Well formed HTML entities can be written inline directly. If you write `&copy;`,
 it will appear in the HTML output as &copy;.
@@ -37,6 +37,7 @@ _   underscore
 -   minus sign (hyphen)
 .   dot
 !   exclamation mark
+|   pipe  <-- added in Spec Markdown
 ```
 
 
