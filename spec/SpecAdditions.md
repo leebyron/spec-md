@@ -62,17 +62,23 @@ TODO
 
 ## Smart Characters
 
-The Spec Markdown renderer will
+The Spec Markdown renderer will replace easy to type characters like quotes and
+dashes with their appropriate typographic entities. These replacements will not
+occur within blocks of code.
 
 
-### Quotes
+### Quotes and Dashes
 
 Prose text has "smart quotes", hyphens, en-dashes and em-dashes--you shouldn't
 have to think about it, they'll just work.
 
-For example, a quote of a quote (with an inner apostrophe for flair):
+For example, a quote of a quote (with an inner apostrophe and emphasis for flair):
 
-"She told me that 'he isn't here right now' - so I left.".
+`"She told me that 'he isn't here right *now*' - so I left."`
+
+Will render as:
+
+"She told me that 'he isn't here right *now*' - so I left."
 
 
 ### Math
@@ -82,8 +88,9 @@ Math operators like >=, <=, and ~= can be written as `>=`, `<=`, and `~=`.
 
 ### Arrows
 
-Smart arrows ---> and <- and <-> can be written as `->`, `<-` and `<->`. Fat
-smart arrows ===> and <== and <=> can be written as `=>`, `<==` and `<=>`.
+Smart arrows ---> and <- and <-> can be written as `->`, `<-` and `<->`.
+
+Fat smart arrows ===> and <== and <=> can be written as `=>`, `<==` and `<=>`.
 
 
 ### Additional escape sequence
