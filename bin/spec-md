@@ -15,6 +15,9 @@ var absPath = path.resolve(process.cwd(), argv._[0]);
 specmd.html(absPath).then(function (html) {
   process.stdout.write(html);
 }).catch(function (error) {
-  process.stderr.write(error.message + '\n');
+  process.stderr.write(
+    error.line ? error.message : error.stack +
+    '\n'
+  );
   process.exit(1);
 });

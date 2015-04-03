@@ -42,6 +42,7 @@ You can also require spec-md from any node program.
 
 ```sh
 npm install --save-dev spec-md
+```
 
 ```js
 var fs = require('fs');

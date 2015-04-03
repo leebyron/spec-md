@@ -92,8 +92,9 @@ section .spec-secnum {
 
 .spec-note,
 .spec-todo {
-  margin: 1em 0 1em 5em;
   color: #666;
+  margin: 1em 0 1em 5em;
+  min-height: 1em;
 }
 
 .spec-note::before,

@@ -49,17 +49,21 @@ function importAST(parser, filepath) {
     });
     return Promise.all(importASTs).then(function (asts) {
       var cursor = 0;
-      var needToFlattenContents = false;
+      var needToFlattenStack = [];
+      var needToFlatten;
       return visit(ast, {
-        leave: function (node) {
-          if (needToFlattenContents) {
+        leave: function (node, key, parent, keyPath) {
+          if (needToFlatten && keyPath.join('.') === needToFlatten) {
             node.contents = node.contents.reduce(flattener, []);
+            needToFlatten = needToFlattenStack.pop();
           }
           if (node.type === 'Import') {
-            needToFlattenContents = true;
+            var pathToFlatten = keyPath.slice(0, -1).join('.');
+            if (pathToFlatten !== needToFlatten) {
+              needToFlattenStack.push(needToFlatten);
+              needToFlatten = pathToFlatten;
+            }
             return asts[cursor++].contents;
-          } else {
-            needToFlattenContents = false;
           }
         }
       });
