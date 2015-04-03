@@ -128,17 +128,17 @@ pre code {
   font-weight: inherit;
 }
 
+pre {
+  background: #fcfcfc;
+  display: table;
+  margin: 0 -1em;
+  min-width: 40ch;
+  padding: 1ex 1em;
+}
+
 .spec-counter-example {
-  border-left: solid 2px #CC8800;
-  padding-left: 8px;
-  margin-left: -10px;
-  background: #fff8ea;
-  background: -moz-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #fff8ea), color-stop(20%, #ffffff));
-  background: -webkit-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
-  background: -o-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
-  background: -ms-linear-gradient(left, #fff8ea 0%, #ffffff 20%);
-  background: linear-gradient(to right, #fff8ea 0%, #ffffff 20%);
+  background: #fffafa;
+  border-left: solid 2px #FF9999;
 }
 
 
