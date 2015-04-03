@@ -4,4 +4,4 @@ env:
 
 language: node_js
 sudo: false
-after_success: bash ./bin/deploy-gh-pages.sh
+after_success: npm run deploy
