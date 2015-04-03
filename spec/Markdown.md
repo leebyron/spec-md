@@ -80,7 +80,23 @@ TODO
 
 ### Section Headers
 
-TODO
+Regular Markdown supports two styles of headers, Setext and atx, however Spec
+Markdown generally only supports atx style headers.
+
+```
+# Header
+```
+
+```!
+Header
+------
+```
+
+The number of `#` characters refers to the depth of the section. To produce an,
+`<h3>`, type `###`. Optionally, a header may be "closed" by any number of `#`
+characters.
+
+Spec Markdown
 
 
 ### Paragraphs

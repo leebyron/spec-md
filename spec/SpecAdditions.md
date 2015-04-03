@@ -3,14 +3,61 @@
 TODO
 
 
-## Table of Contents
+## Title and Introduction
+
+A Spec Markdown document should start with one Setext style header which will be
+used as the title of the document. Any content before the first atx (`#`) style
+header will become the introduction to the document.
+
+A Spec Markdown document starts in this form:
+
+```
+Spec Markdown
+-------------
+
+Introductory paragraph.
+
+# First Section Header
+```
+
+
+## Sections
+
+A Spec Markdown document is separated into a sequence and hierarchy of sections.
+Those sections can then be used as navigation points and can be used to create
+a table of contents. A section is started by a header and ends at either the
+next header of similar or greater precedence or the end of the document. A
+section can contain other sections if their headers are of lower precedence.
+
+
+### Section Headers
+
+Regular Markdown supports two styles of headers, Setext and atx, however Spec
+Markdown only supports atx style headers as section headers.
+
+```
+# Header
+```
+
+```!
+Header
+------
+```
+
+Spec Markdown also requires that only single `#` headers appear at the top of a
+document, and that only a `##` header (and not a `###` header) can be contained
+with the section started by a `#` header.
+
+
+### Section Numbers
 
 TODO
 
 
-## Section Numbers
+### Table of Contents
 
 TODO
+
 
 
 ## Smart Characters
