@@ -6,11 +6,7 @@ writing technical specification documents. Markdown additions include code
 syntax highlighting, edit annotations, and the definition of algorithms and
 grammar productions.
 
-Note: This is not a normative spec for Spec Markdown, but just documentation of
-this tool. It is also very much a work in progress.
-
-
-# Philosophy
+**Philosophy**
 
 Spec Markdown is first and foremost Markdown. As such, it follows Markdown's
 philosophy of intending to be as easy to read and easy to write as is feasible.
@@ -23,6 +19,9 @@ render adequately by other Markdown renderers.
 To support the rendering additions of Spec Markdown, some features of Markdown
 may be limited or removed. As an example, Spec Markdown is strict about the
 order and locations of headers in a document.
+
+Note: This is not a normative spec for Spec Markdown, but just documentation of
+this tool. It is also very much a work in progress.
 
 
 # Getting Started
