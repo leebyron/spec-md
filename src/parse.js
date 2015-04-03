@@ -53,7 +53,7 @@ function importAST(parser, filepath) {
       var needToFlatten;
       return visit(ast, {
         leave: function (node, key, parent, keyPath) {
-          if (needToFlatten && keyPath.join('.') === needToFlatten) {
+          if (needToFlatten !== undefined && keyPath.join('.') === needToFlatten) {
             node.contents = node.contents.reduce(flattener, []);
             needToFlatten = needToFlattenStack.pop();
           }
