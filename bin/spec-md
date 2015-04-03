@@ -6,11 +6,15 @@ var specmd = require('../');
 
 var argv = yargs
   .usage('Usage: $0 [filepath]')
-  .demand(1)
+  .require(1, 'Must provide filepath.')
+  .string(1)
   .argv;
 
 var absPath = path.resolve(process.cwd(), argv._[0]);
 
 specmd.html(absPath).then(function (html) {
   process.stdout.write(html);
+}).catch(function (error) {
+  process.stderr.write(error.message + '\n');
+  process.exitCode = 1;
 });

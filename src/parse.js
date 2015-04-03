@@ -29,8 +29,17 @@ function getParser() {
 }
 
 function importAST(parser, filepath) {
-  return fs.readFileAsync(filepath, { encoding: 'utf8' }).then(function (md) {
-    var ast = parser.parse(md);
+  return fs.readFileAsync(filepath, { encoding: 'utf8' }).then(function (source) {
+    try {
+      var ast = parser.parse(source);
+    } catch (error) {
+      error.message =
+        filepath + ':' + error.line + ':' + error.column + '\n' +
+        source.split(/\r\n|\n|\r/g)[error.line - 1] + '\n' +
+        Array(error.column).join(' ') + '^\n' +
+        error.message;
+      throw error;
+    }
     var importASTs = [];
     visit(ast, function (node) {
       if (node.type === 'Import') {

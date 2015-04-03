@@ -40,14 +40,14 @@ document = title:title? contents:documentContent* EOF {
   };
 }
 
-title = BLOCK value:$NOT_NL+ NL '---' '-'* &NL {
+title = BLOCK !'#' value:$NOT_NL+ NL '---' '-'* &NL {
   return {
     type: 'DocumentTitle',
     value: value
   };
 }
 
-SEC_CLOSE = _ '#'*
+SEC_CLOSE = _ '#'* &NL
 
 sectionTitle = $titleChar+
 titleChar = [^\n\r# ] / [# ] titleChar
@@ -131,12 +131,12 @@ importLink = link:link &( BLOCK / EOF ) &{
   };
 }
 
-importRel = BLOCK importLink:importLink { return importLink; }
-import1 = BLOCK '#' !'#' _ importLink:importLink SEC_CLOSE { return importLink; }
-import2 = BLOCK '##' !'#' _ importLink:importLink SEC_CLOSE { return importLink; }
-import3 = BLOCK '###' !'#' _ importLink:importLink SEC_CLOSE { return importLink; }
-import4 = BLOCK '####' !'#' _ importLink:importLink SEC_CLOSE { return importLink; }
-import5 = BLOCK '#####' !'#' _ importLink:importLink SEC_CLOSE { return importLink; }
+importRel = BLOCK importLink:importLink &NL { return importLink; }
+import1 = BLOCK '#' _ importLink:importLink SEC_CLOSE { return importLink; }
+import2 = BLOCK '##' _ importLink:importLink SEC_CLOSE { return importLink; }
+import3 = BLOCK '###' _ importLink:importLink SEC_CLOSE { return importLink; }
+import4 = BLOCK '####' _ importLink:importLink SEC_CLOSE { return importLink; }
+import5 = BLOCK '#####' _ importLink:importLink SEC_CLOSE { return importLink; }
 
 
 // Block Edit
@@ -336,7 +336,7 @@ orderedBullet = $(([1-9]+ '.') ' ')
 
 // Table
 
-table = BLOCK '|'? _ headers:tableCells _ '|'? LINE [ -|]+ rows:tableRow+ {
+table = BLOCK !'#' ('|' _)? headers:tableCells _ '|'? LINE [ -|]+ rows:tableRow+ {
   return {
     type: 'Table',
     headers: headers,
@@ -344,7 +344,7 @@ table = BLOCK '|'? _ headers:tableCells _ '|'? LINE [ -|]+ rows:tableRow+ {
   };
 }
 
-tableRow = LINE '|'? _ cells:tableCells _ '|'? {
+tableRow = LINE !'#' ('|' _)? cells:tableCells _ '|'? {
   return cells;
 }
 
