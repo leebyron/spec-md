@@ -121,6 +121,7 @@ code {
   font-weight: inherit;
   font-family: Consolas, Monaco, monospace;
   white-space: pre;
+  font-size: 85%;
 }
 
 pre code {
