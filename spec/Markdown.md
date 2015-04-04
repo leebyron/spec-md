@@ -37,7 +37,9 @@ _   underscore
 -   minus sign (hyphen)
 .   dot
 !   exclamation mark
-|   pipe  <-- added in Spec Markdown
+|   pipe         <-- added in Spec Markdown
+<   less-than    <-- added in Spec Markdown
+>   greater-than <-- added in Spec Markdown
 ```
 
 

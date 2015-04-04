@@ -40,7 +40,7 @@ document = title:title? contents:documentContent* EOF {
   };
 }
 
-title = BLOCK !'#' value:$NOT_NL+ NL '---' '-'* &NL {
+title = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
   return {
     type: 'DocumentTitle',
     value: value
@@ -52,8 +52,7 @@ SEC_CLOSE = _ '#'* &NL
 sectionTitle = $titleChar+
 titleChar = [^\n\r# ] / [# ] titleChar
 
-sectionNum = sectionNumPart
-           / sectionNumPart '.' sectionNum
+sectionNum = (sectionNumPart '.')* sectionNumPart
 sectionNumPart = [0-9]+ / '*'
 
 section1 = BLOCK '#' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLOSE contents:section1Content* {
@@ -169,7 +168,7 @@ paragraph = BLOCK !"#" contents:content+ {
 
 content = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag / text
 
-textChar = '\\' [\\`*_{}[\]()#+\-!|]
+textChar = '\\' [\\`*_{}[\]()<>#+\-!|]
          / [^\n\r+\-{`|*[!<]
          / '{' !('++' / '--')
          / '++' !'}'
@@ -187,14 +186,14 @@ text = value:$textChar+ {
   };
 }
 
-note = BLOCK 'NOTE'i ':'? _ contents:content* {
+note = BLOCK 'NOTE'i (':' / ' ') _ contents:content* {
   return {
     type: 'Note',
     contents: contents
   };
 }
 
-todo = BLOCK ('TODO'i / 'TK'i) ':'? _ contents:content* {
+todo = BLOCK ('TODO'i / 'TK'i) (':' / ' ') _ contents:content* {
   return {
     type: 'Todo',
     contents: contents
@@ -395,7 +394,7 @@ algorithm = BLOCK name:call _ '::' steps:list {
   };
 }
 
-call = name:globalName '(' _ args:callArg* _ ')' {
+call = name:(globalName / localName) '(' _ args:callArg* _ ')' {
   return {
     type: 'Call',
     name: name,

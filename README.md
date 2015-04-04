@@ -37,7 +37,7 @@ npm install -g spec-md
 spec-md ./path/to/markdown.md > ./path/to/output.html
 ```
 
-You can also require spec-md from any node program.
+You can also require `spec-md` as a node module.
 
 ```sh
 npm install --save-dev spec-md
