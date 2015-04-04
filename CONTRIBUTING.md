@@ -42,5 +42,5 @@ issue. The best way is to provide a reduced test case on jsFiddle or jsBin.
 
 ## License
 
-By contributing to Immutable JS, you agree that your contributions will be
+By contributing to Spec Markdown, you agree that your contributions will be
 licensed under its MIT license.
