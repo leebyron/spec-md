@@ -176,7 +176,7 @@ function printContent(doc) {
   return (
     (intro.length === 0 ? '' :
       '<section id="intro">' +
-        '<h1>Introduction</h1>' +
+        '<h2>Introduction</h2>' +
         printAll(intro) +
       '</section>'
     ) +
@@ -232,7 +232,7 @@ function printAll(list) {
     leave: function (node) {
       switch (node.type) {
         case 'Section':
-          var level = sectionStack.length;
+          var level = sectionStack.length + 1;
           var secnum = join(sectionStack, '.');
           sectionNumber = sectionStack.pop();
           return (

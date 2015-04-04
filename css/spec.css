@@ -20,34 +20,35 @@ a:hover {
 
 /* Section headers */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, h7, h8 {
   position: relative;
   margin: 3rem 0 1em;
 }
 
 h1 {
-  font-size: 1.45em;
+  font-size: 1.5em;
   margin: 8rem 0 1em;
 }
 
 h2 {
+  font-size: 1.45em;
+  margin: 8rem 0 1em;
+}
+
+h3 {
   font-size: 1.30em;
   margin: 5rem 0 1em;
 }
 
-h3 {
+h4 {
   font-size: 1.20em;
 }
 
-h4 {
+h5 {
   font-size: 1.12em;
 }
 
-h5 {
-  font-size: 1.1em;
-}
-
-h6 {
+h6, h7, h8 {
   font-size: 1.1em;
 }
 
