@@ -193,16 +193,14 @@ var baz = foo("bar");
 
 You only have to write:
 
-<pre><code>
-\`\`\`js
-
+```
+` ``js
 var baz = foo("bar");
+` ``
+```
 
-\`\`\`
-</code></pre>
-
-TODO: properly preserving content within block elements like \<pre> will make
-this less awful to write.
+TODO: properly preserving content within block elements like \<pre> could make
+this less awful to write. Also supporting double-indent code blocks.
 
 
 ### Counter Examples
@@ -217,13 +215,11 @@ var shit = dontSwear();
 
 By writing:
 
-<pre><code>
-\`\`\`!js
-
+```
+` ``!js
 var shit = dontSwear();
-
-\`\`\`
-</code></pre>
+` ``
+```
 
 
 ## Imports
