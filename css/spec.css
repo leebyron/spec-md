@@ -87,6 +87,22 @@ section .spec-secnum {
   list-style: none;
 }
 
+.spec-toc a {
+  color: #333;
+}
+
+.spec-toc a:hover {
+  text-decoration: none;
+}
+
+.spec-toc a .spec-secnum {
+  color: #3b5998;
+}
+
+.spec-toc a:hover .spec-secnum {
+  text-decoration: underline;
+}
+
 
 /* Notes and Todos */
 
