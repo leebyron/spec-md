@@ -21,7 +21,7 @@ function print(ast, _options) {
 module.exports = print;
 
 function highlight(code, lang) {
-  return lang ? hljs.highlight(lang, code).value : code;
+  return lang ? hljs.highlight(lang, code).value : escapeCode(code);
 }
 
 function printHead(ast) {
@@ -285,9 +285,7 @@ function printAll(list) {
             '<pre' +
               (node.counter ? ' class="spec-counter-example"' : '') +
             '><code>' +
-              (options.highlight ?
-                options.highlight(node.code, node.lang) :
-                escapeCode(node.code)) +
+              options.highlight(node.code, node.lang) +
             '</code></pre>'
           );
 

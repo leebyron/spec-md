@@ -45,4 +45,6 @@ over the returned HTML, more options may be added in the future.
 
   * **highlight** - a function which is called when blocks of code are
     encountered, with the first argument as the string of code, the second
-    argument being the language specified.
+    argument being the language specified. This function should return well
+    formed HTML, complete with escaped special characters.
+
