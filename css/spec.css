@@ -308,6 +308,14 @@ var {
   font-style: normal;
 }
 
+.spec-mod::after {
+  content: ', ';
+}
+
+.spec-mod:last-child::after {
+  content: '';
+}
+
 .spec-mod.conditional::before {
   content: '?';
 }
