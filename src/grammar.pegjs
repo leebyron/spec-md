@@ -381,7 +381,7 @@ tableCellText = value:$tableCellTextChar+ {
 
 localName = $([_a-z][_a-zA-Z0-9]*)
 
-globalName = $([A-Z][a-zA-Z]*)
+globalName = $([A-Z][_a-zA-Z]*)
 
 
 // Algorithm
