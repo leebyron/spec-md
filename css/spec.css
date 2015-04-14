@@ -271,7 +271,11 @@ var {
 .spec-rhs .spec-t,
 .spec-rhs .spec-rx,
 .spec-rhs .spec-prose {
-  margin-right: 1ex;
+  margin-left: 1ex;
+}
+
+.spec-rhs *:first-child {
+  margin-left: 0;
 }
 
 .spec-condition {

@@ -452,7 +452,7 @@ condition = '[' condition:('+' / '~') param:globalName ']' {
   return {
     type: 'Condition',
     param: param,
-    condition: condition === '+'
+    not: condition === '~'
   };
 }
 

@@ -378,7 +378,7 @@ function printAll(list) {
 
         case 'Condition':
           return (
-            '<span class="spec-condition' + (node.condition ? ' not' : '') + '">' +
+            '<span class="spec-condition' + (node.not ? ' not' : '') + '">' +
               node.param +
             '</span>'
           );
