@@ -21,7 +21,11 @@ function print(ast, _options) {
 module.exports = print;
 
 function highlight(code, lang) {
-  return lang ? hljs.highlight(lang, code).value : escapeCode(code);
+  try {
+    return lang ? hljs.highlight(lang, code).value : escapeCode(code);
+  } catch (error) {
+    return escapeCode(code);
+  }
 }
 
 function printHead(ast) {
