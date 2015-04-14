@@ -432,7 +432,21 @@ variable = name:localName {
 
 // Grammar productions
 
-production = BLOCK name:nonTerminal _ '::' INDENT defs:grammarDef+ DEDENT {
+production = simpleProduction / multiProduction
+
+simpleProduction = BLOCK name:nonTerminal _ '::' _ tokens:token+ {
+  return {
+    type: 'Production',
+    name: name,
+    defs: [{
+      type: 'RHS',
+      condition: null,
+      tokens: tokens
+    }]
+  };
+}
+
+multiProduction = BLOCK name:nonTerminal _ '::' INDENT defs:grammarDef+ DEDENT {
   return {
     type: 'Production',
     name: name,
