@@ -495,9 +495,11 @@ function formatText(text) {
     .replace(/(\w)--(?=\w)/g, '$1\u2014')
     .replace(/(\w)-(?=\w)/g, '$1\u2010')
     .replace(/(\S\s)-(?=\s\S)/g, '$1\u2013')
+    .replace(/(\s)"/g, '$1\u201C')
     .replace(/"(?=\w)/g, '\u201C')
     .replace('"', '\u201D')
     .replace(/(\w)'(?=\w)/g, '$1\u2019')
+    .replace(/(\s)'/g, '\u2018')
     .replace(/'(?=\w)/g, '\u2018')
     .replace("'", '\u2019')
   );
