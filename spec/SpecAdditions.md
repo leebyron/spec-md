@@ -347,8 +347,6 @@ of possible sequences of symbols, either as a bulleted list or using the
 A subscript suffix `?` renders as "<sub>opt</sub>" and is a shorthand for two
 possible sequences, one including that symbol and one excluding it.
 
-As an example:
-
 ```
 Sentence :: Noun Verb Adverb?
 ```
@@ -365,8 +363,6 @@ Sentence ::
 
 A subscript suffix `+` renders as "<sub>list</sub>" and is shorthand for a list
 of one or more of that symbol.
-
-As an example:
 
 ```
 Book :: Cover Page+ Cover
@@ -385,8 +381,6 @@ Page_list ::
   - Page_list Page
 
 Both `+` and `?` can be used together:
-
-As an example:
 
 ```
 Sandwich :: Bread Topping+? Bread
@@ -414,8 +408,6 @@ shorthand for that variant of the definition. If the parameter starts with `?`,
 that form of the symbol is used if in a symbol definition with the same
 parameter. Some possible sequences can be included or excluded conditionally
 when respectively prefixed with `[+Param]` and `[~Param]`.
-
-As an example:
 
 ```
 Example[Param] ::
@@ -448,6 +440,17 @@ Example_param ::
   - B_param
   - C_param
   - D
+
+Multiple params can be used, and params can be used with lists and optional
+tokens as well:
+
+```
+Example[P, Q] :: A[P, ?Q]+?
+```
+
+Produces:
+
+Example[P, Q] :: A[P, ?Q]+?
 
 
 ### Terminal

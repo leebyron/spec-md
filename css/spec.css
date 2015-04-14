@@ -230,6 +230,7 @@ var {
 
 .spec-algo > .spec-call:first-child::after {
   font-style: normal;
+  font-weight: bold;
   content: ' :: ';
 }
 
@@ -308,15 +309,39 @@ var {
   font-style: normal;
 }
 
-.spec-mod::after {
-  content: ', ';
+.spec-mod.list {
+  color: #3348D3;
 }
 
-.spec-mod:last-child::after {
+.spec-mod.optional {
+  color: #83238E;
+}
+
+.spec-params,
+.spec-condition {
+  color: #1C7758;
+}
+
+.spec-params::before {
+  content: '[';
+}
+
+.spec-params::after {
+  content: ']';
+}
+
+.spec-mod::after,
+.spec-param::after {
+  content: ', ';
+  color: #444;
+}
+
+.spec-mod:last-child::after,
+.spec-param:last-child::after {
   content: '';
 }
 
-.spec-mod.conditional::before {
+.spec-param.conditional::before {
   content: '?';
 }
 

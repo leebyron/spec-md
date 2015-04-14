@@ -215,21 +215,6 @@ function printAll(list) {
           sectionStack.push(sectionNumber);
           sectionNumber = 0;
           break;
-        case 'NonTerminal':
-          var mods = (
-            (node.params ? '[' + node.params.map(function (param) {
-              return (
-                '<span class="spec-mod' + (param.conditional ? ' conditional' : '') + '">' +
-                  param.name +
-                '</span>'
-              );
-            }).join(', ') + ']' : '') +
-            (node.isList ? '<span class="spec-mod list">list</span>' : '') +
-            (node.isOptional ? '<span class="spec-mod optional">opt</span>' : '')
-          );
-          node.mods = mods ? '<span class="spec-mods">' + mods + '</span>' : '';
-          node.params = null;
-          break;
       }
     },
 
@@ -390,18 +375,27 @@ function printAll(list) {
           return '<span class="spec-prose">' + escape(node.text) + '</span>';
 
         case 'NonTerminal':
+          var mods = (
+            (node.params ? '<span class="spec-params">' + join(node.params) + '</span>' : '') +
+            (node.isList ? '<span class="spec-mod list">list</span>' : '') +
+            (node.isOptional ? '<span class="spec-mod optional">opt</span>' : '')
+          );
           return (
             '<span class="spec-nt' +
               (node.isList ? ' list' : '') +
               (node.isOptional ? ' optional' : '') +
             '">' +
               '<a href="' + node.href + '">' + escape(node.name) + '</a>' +
-              node.mods +
+              (mods ? '<span class="spec-mods">' + mods + '</span>' : '') +
             '</span>'
           );
 
         case 'NonTerminalParam':
-          return (node.conditional ? '?' : '') + node.name;
+          return (
+            '<span class="spec-param' + (node.conditional ? ' conditional' : '') + '">' +
+              node.name +
+            '</span>'
+          );
 
         case 'Constrained':
           return (
