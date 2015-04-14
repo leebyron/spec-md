@@ -334,12 +334,120 @@ This is an example of an |Algorithm(foo, "string", null)| call reference.
 
 ## Grammar
 
-TODO
-
+Spec Markdown makes it easier to describe Grammatical productions in a style of
+BNF. The `::` token indicates a production definition, where the right hand side
+can be written directly after the `::` or immediately after as a Markdown list.
 
 ### Grammar Production
 
-TODO
+Symbols are defined (ex. Symbol ::) as either one sequence of symbols or a list
+of possible sequences of symbols, either as a bulleted list or using the
+"one of" short hand.
+
+A subscript suffix `?` renders as "<sub>opt</sub>" and is a shorthand for two
+possible sequences, one including that symbol and one excluding it.
+
+As an example:
+
+```
+Sentence :: Noun Verb Adverb?
+```
+
+Produces:
+
+Sentence :: Noun Verb Adverb?
+
+Which is shorthand for:
+
+Sentence ::
+  - Noun Verb
+  - Noun Verb Adverb
+
+A subscript suffix `+` renders as "<sub>list</sub>" and is shorthand for a list
+of one or more of that symbol.
+
+As an example:
+
+```
+Book :: Cover Page+ Cover
+```
+
+Produces:
+
+Book :: Cover Page+ Cover
+
+Which is shorthand for:
+
+Book :: Cover Page_list Cover
+
+Page_list ::
+  - Page
+  - Page_list Page
+
+Both `+` and `?` can be used together:
+
+As an example:
+
+```
+Sandwich :: Bread Topping+? Bread
+```
+
+Produces:
+
+Sandwich :: Bread Topping+? Bread
+
+Which is shorthand for:
+
+Sandwich ::
+  - Bread Bread
+  - Bread Topping_list Bread
+
+Topping_list ::
+  - Topping
+  - Topping_list Topping
+
+
+A symbol definition subscript suffix parameter in braces `[Param]` renders as
+subscript and is shorthand for two symbol definitions, one appended with that
+parameter name, the other without. The same subscript suffix on a symbol is
+shorthand for that variant of the definition. If the parameter starts with `?`,
+that form of the symbol is used if in a symbol definition with the same
+parameter. Some possible sequences can be included or excluded conditionally
+when respectively prefixed with `[+Param]` and `[~Param]`.
+
+As an example:
+
+```
+Example[Param] ::
+  - A
+  - B[Param]
+  - C[?Param]
+  - [+Param] D
+  - [~Param] E
+```
+
+Produces:
+
+Example[Param] ::
+  - A
+  - B[Param]
+  - C[?Param]
+  - [+Param] D
+  - [~Param] E
+
+Which is shorthand for:
+
+Example ::
+  - A
+  - B_param
+  - C
+  - E
+
+Example_param ::
+  - A
+  - B_param
+  - C_param
+  - D
 
 
 ### Terminal
