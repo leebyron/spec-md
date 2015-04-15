@@ -748,7 +748,9 @@ An algorithm definition also describes its arguments in terms of variables.
 Algorithm(arg) ::
   1. first
   1. then
-    * subset
+    * substep
+      * deeper substep
+      * another deep substep
     * another step
   1. okay
 ```
@@ -758,6 +760,8 @@ Produces:
 Algorithm(arg) ::
   1. first
   1. then
-    * subset
+    * substep
+      * deeper substep
+      * another deep substep
     * another step
   1. okay
