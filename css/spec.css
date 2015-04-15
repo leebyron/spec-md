@@ -330,15 +330,10 @@ var {
   content: ']';
 }
 
-.spec-mod::after,
-.spec-param::after {
+.spec-mod:not(:last-child)::after,
+.spec-param:not(:last-child)::after {
   content: ', ';
   color: #444;
-}
-
-.spec-mod:last-child::after,
-.spec-param:last-child::after {
-  content: '';
 }
 
 .spec-param.conditional::before {
