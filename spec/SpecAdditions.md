@@ -742,6 +742,8 @@ markdown lists. These lists can be of any kind, but will always have ordered
 formatting. The bullet labeling for algorithms is specific will cycle between
 decimal, lower-alpha, and lower-roman.
 
+An algorithm definition also describes its arguments in terms of variables.
+
 ```
 Algorithm(arg) ::
   1. first
