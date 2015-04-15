@@ -295,9 +295,17 @@ preserve the ability to render a table of contents.
 
 ## Value Literals
 
-TODO
+Value literals allow any text to refer to a value which has semantic meaning
+in the specification by wrapping it in `|` pipe characters.
+
+```
+I can reference |foo|, |"foo"|, |null|, |true|.
+```
+
+Produces:
 
 I can reference |foo|, |"foo"|, |null|, |true|.
+
 
 ### Variables
 
@@ -327,9 +335,16 @@ TODO
 
 ### Algorithm Calls
 
-TODO
+A call to an algorithm can be expressed as a value literal:
 
-This is an example of an |Algorithm(foo, "string", null)| call reference.
+```
+|Algorithm(foo, "string", null)|
+```
+
+Produces:
+
+|Algorithm(foo, "string", null)|
+
 
 
 ## Grammar
