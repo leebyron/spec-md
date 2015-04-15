@@ -372,6 +372,23 @@ PBJ ::
 Each definition is a space seperated list of *terminal* or *non-terminal*
 tokens, and may also include conditionals and constraints.
 
+Definition lists aren't required to be indented:
+
+```
+PBJ ::
+
+- Bread PeanutButter Jelly Bread
+- Bread Jelly PeanutButter Bread
+```
+
+Produces:
+
+PBJ ::
+
+- Bread PeanutButter Jelly Bread
+- Bread Jelly PeanutButter Bread
+
+
 
 ### One of
 
@@ -702,13 +719,28 @@ Produces:
 Example :: A B but not foo or bar
 
 
+
 ## Algorithms
 
-TODO
+Specifications for procedures or algorithms can be defined in terms of nested
+markdown lists. These lists can be of any kind, but will always have ordered
+formatting. The bullet labeling for algorithms is specific will cycle between
+decimal, lower-alpha, and lower-roman.
 
-This is an algorithm:
+```
+Algorithm(arg) ::
+  1. first
+  1. then
+    * subset
+    * another step
+  1. okay
+```
+
+Produces:
 
 Algorithm(arg) ::
   1. first
-  2. then
-  3. okay
+  1. then
+    * subset
+    * another step
+  1. okay

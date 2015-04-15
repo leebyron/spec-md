@@ -1,6 +1,16 @@
 {
   var indentStack = [];
   var indent = 0;
+
+  function orderify(list) {
+    list.ordered = true;
+    list.items.forEach(function (item) {
+      if (item.contents[item.contents.length - 1].type === 'List') {
+        orderify(item.contents[item.contents.length - 1]);
+      }
+    });
+    return list;
+  }
 }
 
 // Lines and Indentation
@@ -390,7 +400,7 @@ algorithm = BLOCK name:call _ '::' steps:list {
   return {
     type: 'Algorithm',
     name: name,
-    steps: steps
+    steps: orderify(steps)
   };
 }
 
@@ -461,12 +471,18 @@ oneOfToken = _ token:(prose / nonTerminal / regexp / quotedTerminal / terminal) 
   return token;
 }
 
-multiProduction = BLOCK name:nonTerminal _ '::' INDENT defs:grammarDef+ DEDENT {
+multiProduction = BLOCK name:nonTerminal _ '::' defs:productionDefs {
   return {
     type: 'Production',
     name: name,
     defs: defs
   };
+}
+
+productionDefs = indentedDefs / grammarDef+
+
+indentedDefs = INDENT defs:grammarDef+ DEDENT {
+  return defs;
 }
 
 grammarDef = LINE listBullet _ condition:condition? _ tokens:token+ {
