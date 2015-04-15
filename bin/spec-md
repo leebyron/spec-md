@@ -16,7 +16,7 @@ specmd.html(absPath).then(function (html) {
   process.stdout.write(html);
 }).catch(function (error) {
   process.stderr.write(
-    error.line ? error.message : error.stack +
+    error.line ? error.message : (error.stack || error) +
     '\n'
   );
   process.exit(1);

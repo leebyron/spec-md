@@ -353,6 +353,24 @@ function printAll(list) {
             '</div>'
           );
 
+        case 'OneOfProduction':
+          return (
+            '<div class="spec-production oneof" id="' + node.anchor + '">' +
+              node.name +
+              '<table>' +
+                join(node.defs.map(function (defRow) {
+                  return (
+                    '<tr>' +
+                      join(defRow.map(function (def) {
+                        return '<td class="spec-rhs">' + def + '</td>';
+                      })) +
+                    '</tr>'
+                  );
+                })) +
+              '</table>' +
+            '</div>'
+          );
+
         case 'RHS':
           return (
             '<div class="spec-rhs">' +
@@ -367,9 +385,6 @@ function printAll(list) {
               node.param +
             '</span>'
           );
-
-        case 'OneOf':
-          return '<span class="spec-oneof">' + join(node.tokens) + '</span>';
 
         case 'Prose':
           return '<span class="spec-prose">' + escape(node.text) + '</span>';
@@ -406,7 +421,7 @@ function printAll(list) {
           );
 
         case 'ButNot':
-          return '<span class="spec-butnot">' + node.token + '</span>';
+          return '<span class="spec-butnot">' + join(node.tokens) + '</span>';
 
         case 'RegExp':
           return '<span class="spec-rx">' + escape(node.value) + '</span>';

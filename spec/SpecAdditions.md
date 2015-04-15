@@ -387,6 +387,34 @@ Produces:
 AssignmentOperator :: one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
 
 
+"one of" can also be followed by a line break and multiple lines of tokens
+
+```
+Keyword :: one of
+  break     do        in          typeof
+  case      else      instanceof  var
+  catch     export    new         void
+  class     extends   return      while
+  const     finally   super       with
+  continue  for       switch      yield
+  debugger  function  this
+  default   if        throw
+  delete    import    try
+```
+
+Produces:
+
+Keyword :: one of
+  break     do        in          typeof
+  case      else      instanceof  var
+  catch     export    new         void
+  class     extends   return      while
+  const     finally   super       with
+  continue  for       switch      yield
+  debugger  function  this
+  default   if        throw
+  delete    import    try
+
 
 ### Non Terminal Token
 
@@ -662,7 +690,16 @@ Produces:
 
 ### Constraints
 
-TODO
+Any token can be followed by "but not" or "but not one of" to place a further
+constraint on the previous token:
+
+```
+Example :: A B but not foo or bar
+```
+
+Produces:
+
+Example :: A B but not foo or bar
 
 
 ## Algorithms

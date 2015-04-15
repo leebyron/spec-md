@@ -432,7 +432,7 @@ variable = name:localName {
 
 // Grammar productions
 
-production = simpleProduction / multiProduction
+production = oneOfProduction / simpleProduction / multiProduction
 
 simpleProduction = BLOCK name:nonTerminal _ '::' _ tokens:token+ {
   return {
@@ -440,10 +440,25 @@ simpleProduction = BLOCK name:nonTerminal _ '::' _ tokens:token+ {
     name: name,
     defs: [{
       type: 'RHS',
-      condition: null,
       tokens: tokens
     }]
   };
+}
+
+oneOfProduction = BLOCK name:nonTerminal _ '::' _ 'one of' tokenRows:oneOfRow+ {
+  return {
+    type: 'OneOfProduction',
+    name: name,
+    defs: tokenRows
+  };
+}
+
+oneOfRow = _ NL? _ tokens:oneOfToken+ {
+  return tokens;
+}
+
+oneOfToken = _ token:(prose / nonTerminal / regexp / quotedTerminal / terminal) {
+  return token;
 }
 
 multiProduction = BLOCK name:nonTerminal _ '::' INDENT defs:grammarDef+ DEDENT {
@@ -470,18 +485,11 @@ condition = '[' condition:('+' / '~') param:paramName ']' {
   };
 }
 
-token = token:(oneOf / prose / nonTerminal / regexp / quotedTerminal / terminal) _ constraint:constraint? _ {
+token = token:(prose / nonTerminal / regexp / quotedTerminal / terminal) _ constraint:constraint? _ {
   return !constraint ? token : {
     type: 'Constrained',
     token: token,
     constraint: constraint
-  };
-}
-
-oneOf = 'one of ' _ tokens:token+ {
-  return {
-    type: 'OneOf',
-    tokens: tokens
   };
 }
 
@@ -516,10 +524,12 @@ nonTerminalParam = conditional:'?'? name:paramName $[, ]* {
 
 constraint = butNot
 
-butNot = 'but not ' _ token:token {
+butNot = 'but not ' _ 'one of '? _ first:token rest:(_ 'or ' _ token)* {
   return {
     type: 'ButNot',
-    token: token
+    tokens: [first].concat(rest.map(function (nodes) {
+      return nodes[3];
+    }))
   };
 }
 
