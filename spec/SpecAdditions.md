@@ -734,6 +734,16 @@ Produces:
 Example :: A B but not foo or bar
 
 
+Optionally can mention "one of", this will be omitted when rendered.
+
+```
+Example :: A B but not one of foo or bar
+```
+
+Produces:
+
+Example :: A B but not one of foo or bar
+
 
 ## Algorithms
 
