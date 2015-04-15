@@ -380,8 +380,8 @@ tableCellText = value:$tableCellTextChar+ {
 // Names
 
 localName = $([_a-z][_a-zA-Z0-9]*)
-
 globalName = $([A-Z][_a-zA-Z]*)
+paramName = $([_a-zA-Z][_a-zA-Z0-9]*)
 
 
 // Algorithm
@@ -462,7 +462,7 @@ grammarDef = LINE listBullet _ condition:condition? _ tokens:token+ {
   };
 }
 
-condition = '[' condition:('+' / '~') param:globalName ']' {
+condition = '[' condition:('+' / '~') param:paramName ']' {
   return {
     type: 'Condition',
     param: param,
@@ -506,7 +506,7 @@ nonTerminalParams = '[' _ params:nonTerminalParam+ _ ']' {
   return params;
 }
 
-nonTerminalParam = conditional:'?'? name:globalName $[, ]* {
+nonTerminalParam = conditional:'?'? name:paramName $[, ]* {
   return {
     type: 'NonTerminalParam',
     conditional: conditional === '?',

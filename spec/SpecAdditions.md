@@ -334,18 +334,146 @@ This is an example of an |Algorithm(foo, "string", null)| call reference.
 
 ## Grammar
 
-Spec Markdown makes it easier to describe Grammatical productions in a style of
-BNF. The `::` token indicates a production definition, where the right hand side
-can be written directly after the `::` or immediately after as a Markdown list.
+Spec Markdown makes it easier to describe context-free grammatical productions.
+
+Grammars are defined by a sequence of *terminal* characters or sequence of
+characters, which are then referenced by *non-terminal* rules. The definition
+of a non-terminal is referred to as a *production*.
+
 
 ### Grammar Production
 
-Symbols are defined (ex. Symbol ::) as either one sequence of symbols or a list
-of possible sequences of symbols, either as a bulleted list or using the
-"one of" short hand.
+The `::` token indicates an "is defined as" production for a non-terminal,
+where a single definition can be written directly after the `::`.
 
-A subscript suffix `?` renders as "<sub>opt</sub>" and is a shorthand for two
-possible sequences, one including that symbol and one excluding it.
+```
+PBJ :: Bread PeanutButter Jelly Bread
+```
+
+Produces:
+
+PBJ :: Bread PeanutButter Jelly Bread
+
+Or if |PBJ| has definition options, they are written immediately after as a
+Markdown list.
+
+```
+PBJ ::
+  - Bread PeanutButter Jelly Bread
+  - Bread Jelly PeanutButter Bread
+```
+
+Produces:
+
+PBJ ::
+  - Bread PeanutButter Jelly Bread
+  - Bread Jelly PeanutButter Bread
+
+Each definition is a space seperated list of *terminal* or *non-terminal*
+tokens, and may also include conditionals and constraints.
+
+
+### One of
+
+If each definition option is a single token, it can be expressed as a "one of"
+expression instead of a markdown list.
+
+```
+AssignmentOperator :: one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
+```
+
+Produces:
+
+AssignmentOperator :: one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
+
+
+
+### Non Terminal Token
+
+Non-terminal tokens with a defined as a grammar production can be referred to
+in other grammar productions. Non-terminals must match the regular expression
+|/[A-Z][_a-zA-Z]*/|. That is, they must start with an uppercase letter, followed
+by any number of letters or underscores.
+
+
+
+### Prose
+
+Grammars can describe arbitrary rules by using prose within a grammar
+definition by using `"quotes"`.
+
+```
+Sandwich :: Bread "Any kind of topping" Bread
+```
+
+Produces:
+
+Sandwich :: Bread "Any kind of topping" Bread
+
+
+
+### Terminal Token
+
+Terminal tokens refer to a character or sequence of characters. They can be
+written unadorned in the grammar definition.
+
+```
+BalancedParens :: ( BalancedParens )
+```
+
+Produces:
+
+BalancedParens :: ( BalancedParens )
+
+Any sequence of characters can be written to indicate a terminal token:
+
+```
+WhileStatement :: while ( Expression ) { Statements }
+```
+
+Produces
+
+WhileStatement :: while ( Expression ) { Statements }
+
+Terminals can also be quoted with back-ticks <code>\`</code> to remove any
+ambiguity from other meanings, for example to allow a terminal token to start
+with an uppercase letter, or a slash / or backslash \\.
+
+```
+DivisionExpression :: Expression `/` Expression
+```
+
+Produces
+
+DivisionExpression :: Expression `/` Expression
+
+
+
+### Regular Expression
+
+When a grammar is intended to be interpretted as a single token and can be
+clearly written as a regular expression, you can do so directly.
+
+```
+UppercaseWord :: /[A-Z][a-z]*/
+```
+
+Produces:
+
+UppercaseWord :: /[A-Z][a-z]*/
+
+
+
+### Modifications
+
+Non-terminal tokens can be followed by modifications to alter their meaning and
+as a short-hand for common patterns.
+
+
+**Optional Tokens**
+
+A subscript suffix `Token?` renders as |Token?| and is a shorthand for two
+possible definitions, one including that token and one excluding it.
 
 ```
 Sentence :: Noun Verb Adverb?
@@ -361,8 +489,11 @@ Sentence ::
   - Noun Verb
   - Noun Verb Adverb
 
-A subscript suffix `+` renders as "<sub>list</sub>" and is shorthand for a list
-of one or more of that symbol.
+
+**Token Lists**
+
+A subscript suffix `Token+` renders as |Token+| and is shorthand for a list
+of one or more of that token.
 
 ```
 Book :: Cover Page+ Cover
@@ -372,7 +503,7 @@ Produces:
 
 Book :: Cover Page+ Cover
 
-Which is shorthand for:
+Which, unless your specification document declares otherwise, is shorthand for:
 
 Book :: Cover Page_list Cover
 
@@ -380,7 +511,19 @@ Page_list ::
   - Page
   - Page_list Page
 
-Both `+` and `?` can be used together:
+Some specifications may wish to declare |Token+| as a shorthand for a
+comma-separated list, in which case the previous example would be shorthand for:
+
+Book :: Cover Page_list Cover
+
+Page_list ::
+  - Page
+  - Page_list , Page
+
+
+**Optional Lists**
+
+Both `+` and `?` can be used together as |Token+?|:
 
 ```
 Sandwich :: Bread Topping+? Bread
@@ -401,81 +544,120 @@ Topping_list ::
   - Topping_list Topping
 
 
-A symbol definition subscript suffix parameter in braces `[Param]` renders as
-subscript and is shorthand for two symbol definitions, one appended with that
-parameter name, the other without. The same subscript suffix on a symbol is
-shorthand for that variant of the definition. If the parameter starts with `?`,
-that form of the symbol is used if in a symbol definition with the same
-parameter. Some possible sequences can be included or excluded conditionally
-when respectively prefixed with `[+Param]` and `[~Param]`.
+### Conditional Parameters
+
+It can be a useful short-hand to provide conditional parameters when defining a
+non-terminal token rather than defining two very similar non-terminals.
+
+A conditional parameter is written in braces `Token[Param]` and renders
+as |Token[Param]|. When used in definitions is shorthand for two symbol
+definitions: one appended with that parameter name, the other without.
 
 ```
-Example[Param] ::
-  - A
-  - B[Param]
-  - C[?Param]
-  - [+Param] D
-  - [~Param] E
+Example[WithCondition] :: "Definition TBD"
 ```
 
 Produces:
 
-Example[Param] ::
+Example[WithCondition] :: "Definition TBD"
+
+Which is shorthand for:
+
+Example :: "Definition TBD"
+
+Example_WithCondition :: "Definition TBD"
+
+
+The conditions are applied at the beginning of a definition for the
+non-terminal by prefixing with `[+Param]` or `[~Param]` to only include the
+definition when the variant with the conditional parameter is or is not
+used, respectively.
+
+```
+Example[WithCondition] ::
   - A
-  - B[Param]
-  - C[?Param]
-  - [+Param] D
-  - [~Param] E
+  - [+WithCondition] B
+  - [~WithCondition] C
+```
+
+Produces:
+
+Example[WithCondition] ::
+  - A
+  - [+WithCondition] B
+  - [~WithCondition] C
 
 Which is shorthand for:
 
 Example ::
   - A
-  - B_param
   - C
-  - E
 
-Example_param ::
+Example_WithCondition ::
   - A
-  - B_param
-  - C_param
-  - D
+  - B
 
-Multiple params can be used, and params can be used with lists and optional
-tokens as well:
+
+The same bracket suffix on a non-terminal within a definition is shorthand for
+using that variant of the definition. If the parameter starts with `?`,
+that form of the symbol is used if in a symbol definition with the same
+parameter.
 
 ```
-Example[P, Q] :: A[P, ?Q]+?
+Example[WithCondition] ::
+  - Example
+  - Example[WithCondition]
+  - Example[?WithCondition]
 ```
 
 Produces:
 
-Example[P, Q] :: A[P, ?Q]+?
+Example[WithCondition] ::
+  - Example
+  - Example[WithCondition]
+  - Example[?WithCondition]
+
+Which is shorthand for:
+
+Example ::
+  - Example
+  - Example_WithCondition
+  - Example
+
+Example_WithCondition ::
+  - Example
+  - Example_WithCondition
+  - Example_WithCondition
 
 
-### Terminal
+Multiple conditional parameters can be used, in which case it is short form for
+the permutation of all conditions:
 
-TODO
+```
+Example[P, Q] :: "Definition TBD"
+```
 
+Produces:
 
-### Regular Expression
+Example :: "Definition TBD"
 
-TODO
+Example_P :: "Definition TBD"
 
+Example_Q :: "Definition TBD"
 
-### One of
-
-TODO
-
-
-### Non Terminal
-
-TODO
+Example_P_Q :: "Definition TBD"
 
 
-### Conditions
+Conditional params can be followed by the list and optional modifiers
 
-TODO
+```
+A[P, ?Q]+?
+```
+
+Produces:
+
+|A[P, ?Q]+?|
+
 
 
 ### Constraints
