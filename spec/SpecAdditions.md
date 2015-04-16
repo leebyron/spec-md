@@ -128,17 +128,17 @@ and `\|`.
 
 Similar to Github flavored Markdown
 
-| This | is a | table |
-| ---- | ---- | ----- |
-| key  | val  | etc   |
-
-Can be created by writing:
-
 ```
 | This | is a | table |
 | ---- | ---- | ----- |
 | key  | val  | etc   |
 ```
+
+Produces
+
+| This | is a | table |
+| ---- | ---- | ----- |
+| key  | val  | etc   |
 
 Table cells can contain any content that a paragraph can contain.
 
