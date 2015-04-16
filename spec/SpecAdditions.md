@@ -187,20 +187,15 @@ You may provide a `highlight` function as an option to customize this behavior.
 
 To render this highlighted javascript:
 
+    ```js
+    var baz = foo("bar");
+    ```
+
+Produces:
+
 ```js
 var baz = foo("bar");
 ```
-
-You only have to write:
-
-```
-` ``js
-var baz = foo("bar");
-` ``
-```
-
-TODO: properly preserving content within block elements like \<pre> could make
-this less awful to write. Also supporting double-indent code blocks.
 
 
 ### Counter Examples
@@ -209,16 +204,14 @@ Spec Markdown helps you write counter-examples and visually indicate the
 difference from other code blocks. Just write `!` after the <code>\`\`\`</code>
 and before the language.
 
+    ```!js
+    var shit = dontSwear();
+    ```
+
+Produces:
+
 ```!js
 var shit = dontSwear();
-```
-
-By writing:
-
-```
-` ``!js
-var shit = dontSwear();
-` ``
 ```
 
 

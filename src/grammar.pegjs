@@ -15,14 +15,23 @@
 
 // Lines and Indentation
 
-INDENT = &( lineStart depth:indentDepth &{ return depth === indent + 1 } {
+INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 2; } {
   indentStack.push(indent);
   indent = depth;
 })
 
-BLOCK = blockStart depth:indentDepth &{ return depth === indent; }
+DEEP_INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 4; } {
+  indentStack.push(indent);
+  indent = depth;
+})
 
-LINE = lineStart depth:indentDepth &{ return depth === indent; }
+BLOCK = blockStart depth:indentDepth &{ return depth === indent || depth === indent + 1; } {
+  return depth;
+}
+
+LINE = lineStart depth:indentDepth &{ return depth >= indent; } {
+  return depth;
+}
 
 DEDENT = &lineStart !{ indentStack.length === 0 } {
   indent = indentStack.pop();
@@ -37,7 +46,7 @@ lineStart = NL+ / & { return offset() === 0 }
 
 blockStart = (NL NL+) / & { return offset() === 0 }
 
-indentDepth = sp:$'  '* { return sp.length / 2; }
+indentDepth = sp:$' '* { return sp.length; }
 
 
 // Document
@@ -120,6 +129,7 @@ section5Content = sectionContent
 sectionContent = importRel
                / note
                / todo
+               / indentCode
                / blockCode
                / algorithm
                / production
@@ -266,6 +276,17 @@ blockCode = BLOCK '```' counter:'!'? lang:($NOT_NL+)? NL code:$([^`] / '`' [^`] 
     lang: lang,
     code: code
   };
+}
+
+indentCode = DEEP_INDENT code:(indentCodeLine+)? DEDENT &{ return code !== null } {
+  return {
+    type: 'Code',
+    code: code.join('\n')
+  };
+}
+
+indentCodeLine = depth:LINE code:$NOT_NL+ {
+  return Array(depth - indent + 1).join(' ') + code;
 }
 
 

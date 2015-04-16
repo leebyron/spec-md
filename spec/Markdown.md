@@ -168,19 +168,15 @@ Produces:
 
 ### Code Block
 
-```
-` ``
-var code = sample();
-` ``
-```
+    ```
+    var code = sample();
+    ```
 
-Produces
+Produces:
 
 ```
 var code = sample();
 ```
-
-Note: Spec Markdown does not support 4-space indented code blocks.
 
 
 ### Block Quotes
