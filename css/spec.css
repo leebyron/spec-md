@@ -135,6 +135,9 @@ section .spec-secnum {
 /* Code */
 
 code {
+  background: #FAFAFA;
+  margin: -2px -1px;
+  padding: 3px 3px;
   font-weight: inherit;
   font-family: Consolas, Monaco, monospace;
   white-space: pre;
@@ -143,10 +146,13 @@ code {
 
 pre code {
   font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  background: none;
 }
 
 pre {
-  background: #fcfcfc;
+  background: #FAFAFA;
   display: table;
   margin: 0 -1em;
   min-width: 40ch;
@@ -155,7 +161,7 @@ pre {
 
 .spec-counter-example {
   background: #fffafa;
-  border-left: solid 2px #FF9999;
+  border-top: solid 2px #FF9999;
 }
 
 
