@@ -144,9 +144,20 @@ form a single \<p> tag. Any inline syntax is allowed within a paragraph.
 
 ### Lists
 
-TODO
+Markdown lists are lines which each start with either a ordered bullet `1.` or
+unordered bullet, `*`, `-`, or `+`.
 
-And this is a list
+Lists are optionally indented by two spaces.
+
+```
+  1. this
+  2. is
+  3. a
+    - nested
+  4. list
+```
+
+Produces:
 
   1. this
   2. is
@@ -154,35 +165,34 @@ And this is a list
     - nested
   4. list
 
-And this is a non-indented list
-
-1. this
-2. is
-3. a
-  - nested
-4. list
-
 
 ### Code Block
 
-TODO
+```
+` ``
+var code = sample();
+` ``
+```
 
+Produces
 
-## Not yet implemented
+```
+var code = sample();
+```
 
-TODO
+Note: Spec Markdown does not support 4-space indented code blocks.
 
 
 ### Block Quotes
 
-TODO
+Spec markdown does not yet support Markdown's `>` style block quotes.
 
 
 ### Horizontal Rules
 
-TODO: Spec Markdown does not yet support \<hr>
+Spec Markdown does not yet support Markdown's `---` style \<hr>.
 
 
 ### Automatic Links
 
-TODO
+Spec Markdown does not yet automatically link urls.
