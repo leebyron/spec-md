@@ -128,16 +128,16 @@ and `\|`.
 
 Similar to Github flavored Markdown
 
-| This | is | table |
-| ---- | -- | ----- |
-| key  | val| etc   |
+| This | is a | table |
+| ---- | ---- | ----- |
+| key  | val  | etc   |
 
 Can be created by writing:
 
 ```
-| This | is | table |
-| ---- | -- | ----- |
-| key  | val| etc   |
+| This | is a | table |
+| ---- | ---- | ----- |
+| key  | val  | etc   |
 ```
 
 Table cells can contain any content that a paragraph can contain.
@@ -286,53 +286,6 @@ Note: imports and section headers cannot be marked as added or removed to
 preserve the ability to render a table of contents.
 
 
-## Value Literals
-
-Value literals allow any text to refer to a value which has semantic meaning
-in the specification by wrapping it in `|` pipe characters.
-
-```
-I can reference |foo|, |"foo"|, |null|, |true|.
-```
-
-Produces:
-
-I can reference |foo|, |"foo"|, |null|, |true|.
-
-
-**Variables**
-
-Write `|foo|` to produce a variable (represented by a \<var> tag) like |foo|.
-
-**Constant literal**
-
-Some known constants like |null|, |undefined|, |true| and |false| are rendered
-as constants instead of variables.
-
-**String literal**
-
-Write `|"foo"|` to produce a string literal like |"foo"|.
-
-**Grammar tokens**
-
-Any grammar token can be written inline, like `|Example|` to represent the
-non-terminal token |Example|, <code>\|\`terminal\`\|</code> to represent the
-terminal token |`terminal`|. Even meta tokens like `|[empty]|` for |[empty]| and
-`|[lookahead !{ x, y }]|` for |[lookahead !{ x, y }]|.
-
-**Algorithm calls**
-
-A call to an algorithm can be expressed as a value literal:
-
-```
-|Algorithm(foo, "string", null)|
-```
-
-Produces:
-
-|Algorithm(foo, "string", null)|
-
-
 
 ## Grammar
 
@@ -356,7 +309,7 @@ Produces:
 
 PBJ :: Bread PeanutButter Jelly Bread
 
-Or if |PBJ| has definition options, they are written immediately after as a
+Or if {PBJ} has definition options, they are written immediately after as a
 Markdown list.
 
 ```
@@ -439,7 +392,7 @@ Keyword :: one of
 
 Non-terminal tokens with a defined as a grammar production can be referred to
 in other grammar productions. Non-terminals must match the regular expression
-|/[A-Z][_a-zA-Z]*/|. That is, they must start with an uppercase letter, followed
+{/[A-Z][_a-zA-Z]*/}. That is, they must start with an uppercase letter, followed
 by any number of letters or underscores.
 
 
@@ -519,7 +472,7 @@ as a short-hand for common patterns.
 
 **Optional Tokens**
 
-A subscript suffix `Token?` renders as |Token?| and is a shorthand for two
+A subscript suffix `Token?` renders as {Token?} and is a shorthand for two
 possible definitions, one including that token and one excluding it.
 
 ```
@@ -539,7 +492,7 @@ Sentence ::
 
 **Token Lists**
 
-A subscript suffix `Token+` renders as |Token+| and is shorthand for a list
+A subscript suffix `Token+` renders as {Token+} and is shorthand for a list
 of one or more of that token.
 
 ```
@@ -558,7 +511,7 @@ Page_list ::
   - Page
   - Page_list Page
 
-Some specifications may wish to declare |Token+| as a shorthand for a
+Some specifications may wish to declare {Token+} as a shorthand for a
 comma-separated list, in which case the previous example would be shorthand for:
 
 Book :: Cover Page_list Cover
@@ -570,7 +523,7 @@ Page_list ::
 
 **Optional Lists**
 
-Both `+` and `?` can be used together as |Token+?|:
+Both `+` and `?` can be used together as {Token+?}:
 
 ```
 Sandwich :: Bread Topping+? Bread
@@ -597,7 +550,7 @@ It can be a useful short-hand to provide conditional parameters when defining a
 non-terminal token rather than defining two very similar non-terminals.
 
 A conditional parameter is written in braces `Token[Param]` and renders
-as |Token[Param]|. When used in definitions is shorthand for two symbol
+as {Token[Param]}. When used in definitions is shorthand for two symbol
 definitions: one appended with that parameter name, the other without.
 
 ```
@@ -703,7 +656,7 @@ A[P, ?Q]+?
 
 Produces:
 
-|A[P, ?Q]+?|
+{A[P, ?Q]+?}
 
 
 
@@ -737,7 +690,7 @@ Example :: A B but not one of foo, bar
 
 Spec Markdown can specify some tokens which do not consume any characters.
 
-The empty set, written `[empty]` appears as |[empty]| can be used to define
+The empty set, written `[empty]` appears as {[empty]} can be used to define
 a non-terminal as matching no terminal or non-terminal tokens.
 
 ```
@@ -803,3 +756,51 @@ Algorithm(arg) ::
       * another deep substep
     * another step
   1. okay
+
+
+
+## Value Literals
+
+Value literals allow any text to refer to a value which has semantic meaning
+in the specification by wrapping it in `{ }` curly brace characters.
+
+```
+I can reference {foo}, {"foo"}, {null}, {true}.
+```
+
+Produces:
+
+I can reference {foo}, {"foo"}, {null}, {true}.
+
+
+**Variables**
+
+Write `{foo}` to produce a variable (represented by a \<var> tag) like {foo}.
+
+**Keywords**
+
+Some known keywords like {null}, {undefined}, {true} and {false} are rendered
+as constants instead of variables.
+
+**String literal**
+
+Write `{"foo"}` to produce a string literal like {"foo"}.
+
+**Grammar tokens**
+
+Any grammar token can be written inline, like `{Example}` to represent the
+non-terminal token {Example}, <code>\{\`terminal\`\}</code> to represent the
+terminal token {`terminal`}. Even meta tokens like `{[empty]}` for {[empty]} and
+`{[lookahead !{ x, y }]}` for {[lookahead !{ x, y }]}.
+
+**Algorithm calls**
+
+A call to an algorithm can be expressed as a value literal:
+
+```
+{Algorithm(foo, "string", null)}
+```
+
+Produces:
+
+{Algorithm(foo, "string", null)}

@@ -25,21 +25,21 @@ specMarkdown.html('./path/to/markdown.md').then(function (html) {
 
 The `spec-md` node module provides a few functions:
 
-  * |html(filePath, options)| takes a |filepath| to a Markdown file and returns a
+  * {html(filePath, options)} takes a {filepath} to a Markdown file and returns a
     Promise which will resolve to a beautified HTML string. This function is the
     primary usage of the `spec-md` module.
-  * |parse(filePath)| takes a filepath and returns a Promise which will resolve
+  * {parse(filePath)} takes a filepath and returns a Promise which will resolve
     to an AST *(Abstract Syntax Tree)* representing the contents of the Spec
     Markdown file, with all imports already inlined.
-  * |print(ast, options)| takes an |ast| produced by parse() and returns an HTML
+  * {print(ast, options)} takes an {ast} produced by parse() and returns an HTML
     string.
-  * |visit(ast, visitor)| takes an |ast| and a |visitor|. It walks over the |ast|
-    in a depth-first-traversal calling the |visitor| along the way.
+  * {visit(ast, visitor)} takes an {ast} and a {visitor}. It walks over the {ast}
+    in a depth-first-traversal calling the {visitor} along the way.
 
 
 ## Print Options
 
-The |html(filePath, options)| and |print(filePath)| functions both take |options|
+The {html(filePath, options)} and {print(filePath)} functions both take {options}
 as an optional second argument. These options allow for customization control
 over the returned HTML, more options may be added in the future.
 

@@ -186,11 +186,13 @@ paragraph = BLOCK !"#" contents:content+ {
   };
 }
 
-content = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag / text
+escaped  = '\\' [\\`*_{}[\]()#+\-.!<>|]
+inlineEntity = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag
 
-textChar = '\\' [\\`*_{}[\]()<>#+\-!|]
-         / [^\n\r+\-{`|*[!<]
-         / '{' !('++' / '--')
+content = inlineEntity / text
+
+textChar = escaped
+         / [^\n\r+\-{`*[!<]
          / '++' !'}'
          / '+' !'+}'
          / '--' !'}'
@@ -257,7 +259,10 @@ htmlTag = tag:$("<" "/"? [a-z]+ [^>]* ">") {
   };
 }
 
-reference = '|' ref:(call / value / token) '|' {
+reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
+  if (ref === null || close === null) {
+    error('Malformed {reference}.');
+  }
   return ref;
 }
 
@@ -300,11 +305,10 @@ link = '[' contents:linkContent* '](' _ url:$[^)\n\r]+ _ ')' {
   };
 }
 
-linkContent = inlineEdit / inlineCode / bold / italic / image / htmlTag / linkText
+linkContent = inlineEntity / linkText
 
-linkTextChar = '\\' [\\`*_{}[\]()#+\-!]
+linkTextChar = escaped
              / [^\]\n\r+\-{`*!<]
-             / '{' !('++' / '--')
              / '++' !'}'
              / '+' !'+}'
              / '--' !'}'
@@ -388,11 +392,10 @@ tableCell = contents:tableCellContent+ {
   return contents;
 }
 
-tableCellContent = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag / tableCellText
+tableCellContent = inlineEntity / tableCellText
 
-tableCellTextChar = '\\' [\\`*_{}[\]()#+\-!]
-                  / [^\n\r+\-{`|*[!<]
-                  / '{' !('++' / '--')
+tableCellTextChar = escaped
+                  / [^|\n\r+\-{`*[!<]
                   / '++' !'}'
                   / '+' !'+}'
                   / '--' !'}'
