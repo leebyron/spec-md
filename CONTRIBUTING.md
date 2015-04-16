@@ -10,7 +10,7 @@ answers any questions you may have. If not, feel free to open an
 All active development of Spec Markdown happens on GitHub. We actively welcome
 your [pull requests](https://help.github.com/articles/creating-a-pull-request).
 
-  1. Fork the repo and create your branch from `master`.
+  1. [Fork the repo](https://github.com/leebyron/spec-md/) and create your branch from `master`.
   2. Install all dependencies. (`npm install`)
   3. If you've added code, add tests.
   4. If you've changed APIs, update the documentation.
