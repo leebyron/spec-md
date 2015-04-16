@@ -442,10 +442,13 @@ callArg = value:value [, ]* {
 
 value = stringLiteral / keyword / variable
 
-stringLiteral = value:$('"' [^\"]* '"') {
+stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
+  if (closer === null) {
+    error('Unclosed string literal.');
+  }
   return {
     type: 'StringLiteral',
-    value: value
+    value: '"' + value + '"'
   };
 }
 
@@ -533,7 +536,10 @@ token = token:(prose / emptyToken / lookahead / nonTerminal / regexp / quotedTer
   };
 }
 
-prose = '"' text:$[^\"]+ '"' {
+prose = '"' text:$([^"\n\r]/'\\"')* closer:'"'? {
+  if (closer === null) {
+    error('Unclosed quoted prose.');
+  }
   return {
     type: 'Prose',
     text: text
