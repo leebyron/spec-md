@@ -1,16 +1,16 @@
 body {
+  color: #444444;
   font: 13pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   margin: 6rem auto 10rem;
   max-width: 780px;
-  color: #444;
 }
 
 
 /* Links */
 
 a {
+  color: #3B5998;
   text-decoration: none;
-  color: #3b5998;
 }
 
 a:hover {
@@ -21,8 +21,8 @@ a:hover {
 /* Section headers */
 
 h1, h2, h3, h4, h5, h6, h7, h8 {
-  position: relative;
   margin: 3rem 0 1em;
+  position: relative;
 }
 
 h1 {
@@ -53,10 +53,10 @@ h6, h7, h8 {
 }
 
 section .spec-secnum {
-  position: absolute;
-  text-align: right;
-  right: 100%;
   margin-right: 1ex;
+  position: absolute;
+  right: 100%;
+  text-align: right;
   white-space: nowrap;
 }
 
@@ -70,8 +70,8 @@ section .spec-secnum {
 .spec-toc::before {
   content: 'Contents';
   display: block;
-  margin: 3em 0 1em;
   font-weight: bold;
+  margin: 3em 0 1em;
 }
 
 .spec-toc .spec-secnum {
@@ -84,12 +84,12 @@ section .spec-secnum {
 }
 
 .spec-toc ol ol {
-  padding-left: 2ex;
   list-style: none;
+  padding-left: 2ex;
 }
 
 .spec-toc a {
-  color: #333;
+  color: #333333;
 }
 
 .spec-toc a:hover {
@@ -97,7 +97,7 @@ section .spec-secnum {
 }
 
 .spec-toc a .spec-secnum {
-  color: #3b5998;
+  color: #3B5998;
 }
 
 .spec-toc a:hover .spec-secnum {
@@ -109,7 +109,7 @@ section .spec-secnum {
 
 .spec-note,
 .spec-todo {
-  color: #666;
+  color: #666666;
   margin: 1em 0 1em 5em;
   min-height: 1em;
 }
@@ -117,10 +117,10 @@ section .spec-secnum {
 .spec-note::before,
 .spec-todo::before {
   content: 'note';
-  text-transform: uppercase;
-  margin-left: -5em;
   display: block;
   float: left;
+  margin-left: -5em;
+  text-transform: uppercase;
 }
 
 .spec-note::before {
@@ -136,19 +136,19 @@ section .spec-secnum {
 
 code {
   background: #FAFAFA;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 85%;
+  font-weight: inherit;
   margin: -2px -1px;
   padding: 3px 3px;
-  font-weight: inherit;
-  font-family: Consolas, Monaco, monospace;
   white-space: pre;
-  font-size: 85%;
 }
 
 pre code {
+  background: none;
   font-weight: inherit;
   margin: 0;
   padding: 0;
-  background: none;
 }
 
 pre {
@@ -160,7 +160,7 @@ pre {
 }
 
 .spec-counter-example {
-  background: #fffafa;
+  background: #FFFAFA;
   border-top: solid 2px #FF9999;
 }
 
@@ -195,9 +195,8 @@ del {
 
 .spec-added, .spec-removed {
   border-left: 4px solid;
-  padding-left: 14px;
   margin-left: -18px;
-
+  padding-left: 14px;
 }
 
 .spec-added {
@@ -229,15 +228,13 @@ var {
 /* Algorithms and calls */
 
 .spec-algo {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin-left: 5ex;
+  margin: 1rem 0 1rem 2rem;
 }
 
 .spec-algo > .spec-call:first-child::after {
+  content: ' :: ';
   font-style: normal;
   font-weight: bold;
-  content: ' :: ';
 }
 
 .spec-algo ol, .spec-algo ol ol ol ol {
@@ -282,8 +279,8 @@ var {
 }
 
 .spec-production.oneof .spec-rhs {
-  margin: 0;
   border: none;
+  margin: 0;
   padding: 0 0.5em;
   vertical-align: baseline;
 }
@@ -314,6 +311,10 @@ var {
   content: ']'
 }
 
+.spec-prose {
+  color: #666666;
+}
+
 .spec-nt {
   font-style: italic;
 }
@@ -324,8 +325,8 @@ var {
 
 .spec-mods {
   font-size: 65%;
-  vertical-align: sub;
   font-style: normal;
+  vertical-align: sub;
 }
 
 .spec-mod.list {
@@ -351,8 +352,8 @@ var {
 
 .spec-mod:not(:last-child)::after,
 .spec-param:not(:last-child)::after {
+  color: #666666;
   content: ', ';
-  color: #444;
 }
 
 .spec-param.conditional::before {
@@ -360,23 +361,25 @@ var {
 }
 
 .spec-t, .spec-rx {
+  color: #4A4A4A;
   font-family: monospace;
   font-weight: bold;
-  color: #4A4A4A;
 }
 
 .spec-butnot::before {
+  color: #666666;
   content: 'but not';
-  margin-right: 1ex;
-  font-weight: normal;
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
+  font-weight: normal;
+  margin-right: 1ex;
 }
 
 .spec-butnot > *:not(:first-child)::before {
+  color: #666666;
   content: 'or';
-  margin-right: 1ex;
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   font-weight: normal;
+  margin-right: 1ex;
 }
 
 .spec-rhs .spec-oneof::before,
@@ -385,17 +388,19 @@ var {
 }
 
 .spec-lookahead > *:not(:last-child)::after {
+  color: #666666;
   content: ',';
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
-  font-weight: normal;
   font-style: normal;
+  font-weight: normal;
 }
 
 .spec-lookahead::before {
+  color: #666666;
   content: '[lookahead = ';
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
-  font-weight: normal;
   font-style: normal;
+  font-weight: normal;
 }
 
 .spec-lookahead.not::before {
@@ -412,6 +417,7 @@ var {
 }
 
 .spec-lookahead::after {
+  color: #666666;
   content: ']';
 }
 
