@@ -332,7 +332,7 @@ image = '![' alt:$[^\]\n\r]+ '](' _ url:$[^)\n\r]+ _ ')' {
 
 list = indentedList / unorderedList / orderedList
 
-indentedList = INDENT list:(unorderedList / orderedList) DEDENT {
+indentedList = INDENT list:(unorderedList / orderedList)? DEDENT &{ return list !== null; } {
   return list;
 }
 
@@ -502,7 +502,7 @@ multiProduction = BLOCK name:nonTerminal _ '::' defs:productionDefs {
 
 productionDefs = indentedDefs / grammarDef+
 
-indentedDefs = INDENT defs:grammarDef+ DEDENT {
+indentedDefs = INDENT defs:(grammarDef+)? DEDENT &{ return defs !== null; } {
   return defs;
 }
 
