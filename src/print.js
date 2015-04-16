@@ -1,19 +1,16 @@
 var hljs = require('highlight.js');
 var visit = require('./visit');
 
-var options;
-
 function print(ast, _options) {
-  options = _options || {};
-  if (!options.highlight) {
-    options.highlight = highlight;
-  }
-  var biblio = createBiblioIDs(ast);
+  var options = {};
+  options.highlight = _options.highlight || highlight;
+  options.biblio = _options.biblio ? buildBiblio(_options.biblio) : {};
+  assignBiblioIDs(ast, options);
   return (
     '<!DOCTYPE html><html>' +
       '<!-- Built with spec-md -->' +
       '<head>' + printHead(ast) + '</head>' +
-      '<body>' + printBody(ast, biblio) + '</body>' +
+      '<body>' + printBody(ast, options) + '</body>' +
     '</html>'
   );
 };
@@ -40,13 +37,13 @@ function printHead(ast) {
 var sectionNumber;
 var sectionStack;
 
-function printBody(ast, biblio) {
+function printBody(ast, options) {
   return (
     '<header>' +
       printTitle(ast) +
-      printTOC(ast, biblio) +
+      printTOC(ast, options) +
     '</header>' +
-    printContent(ast, biblio) +
+    printContent(ast, options) +
     '<footer>' +
       'Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
     '</footer>'
@@ -59,10 +56,17 @@ function printTitle(ast) {
   );
 }
 
-
-function createBiblioIDs(ast) {
+function buildBiblio(ref) {
   var biblio = {};
+  Object.keys(ref).forEach(function (site) {
+    Object.keys(ref[site]).forEach(function (id) {
+      biblio[id] = site + ref[site][id];
+    });
+  });
+  return biblio;
+}
 
+function assignBiblioIDs(ast, options) {
   var secnames = {};
   var conflicts = {};
   var secnameStack = [];
@@ -85,23 +89,23 @@ function createBiblioIDs(ast) {
           secname = secnameStack[secnameStack.length - 1] + '.' + secname;
         }
         var id = 'sec-' + secname;
-        if (!biblio[id]) {
-          biblio[id] = '#' + id;
+        if (!options.biblio[id]) {
+          options.biblio[id] = '#' + id;
         }
         node.id = id;
         secnameStack.push(secname);
       }
       if (node.type === 'Algorithm') {
         var id = anchorize(node.name.name) + '()';
-        if (!biblio[id]) {
-          biblio[id] = '#' + id;
+        if (!options.biblio[id]) {
+          options.biblio[id] = '#' + id;
         }
         node.id = id;
       }
       if (node.type === 'Production' || node.type === 'OneOfProduction') {
         var id = anchorize(node.name.name);
-        if (!biblio[id]) {
-          biblio[id] = '#' + id;
+        if (!options.biblio[id]) {
+          options.biblio[id] = '#' + id;
         }
         node.id = id;
       }
@@ -112,14 +116,12 @@ function createBiblioIDs(ast) {
       }
     }
   });
-
-  return biblio;
 }
 
 
 // Table of Contents
 
-function printTOC(ast, biblio) {
+function printTOC(ast, options) {
   var sectionNumber = 0;
   var sectionStack = [];
 
@@ -158,7 +160,7 @@ function printTOC(ast, biblio) {
         var subSections = join(node.contents);
         var printed = (
           '<li>' +
-            '<a href="' + biblio[node.id] + '">' +
+            '<a href="' + options.biblio[node.id] + '">' +
               '<span class="spec-secnum">' + join(sectionStack, '.') + '</span>' +
               escape(node.title) +
             '</a>' +
@@ -183,7 +185,7 @@ function printTOC(ast, biblio) {
 
 // Content
 
-function printContent(doc, biblio) {
+function printContent(doc, options) {
   var intro = doc.contents.filter(function (content) {
     return content.type !== 'Section';
   });
@@ -194,14 +196,14 @@ function printContent(doc, biblio) {
     (intro.length === 0 ? '' :
       '<section id="intro">' +
         '<h2>Introduction</h2>' +
-        printAll(intro, biblio) +
+        printAll(intro, options) +
       '</section>'
     ) +
-    printAll(sections, biblio)
+    printAll(sections, options)
   );
 }
 
-function printAll(list, biblio) {
+function printAll(list, options) {
   var sectionNumber = 0;
   var sectionStack = [];
 
@@ -241,7 +243,7 @@ function printAll(list, biblio) {
             '<section id="' + node.id + '">' +
               '<h' + level + '>' +
               '<span class="spec-secnum" title="link to this section">' +
-                '<a href="' + biblio[node.id] + '">' + secnum + '</a>' +
+                '<a href="' + options.biblio[node.id] + '">' + secnum + '</a>' +
               '</span>' +
               escape(node.title) +
               '</h' + level + '>' +
@@ -342,13 +344,9 @@ function printAll(list, biblio) {
           );
 
         case 'Call':
-          var id = anchorize(node.name) + '()';
-          var href = biblio[id];
           return (
             '<span class="spec-call">' +
-              (href ? '<a href="' + href + '">' : '') +
-                escape(node.name) +
-              (href ? '</a>' : '') +
+              link(node, anchorize(node.name) + '()', options) +
               '(' + join(node.args, ', ') + ')' +
             '</span>'
           );
@@ -362,6 +360,15 @@ function printAll(list, biblio) {
         case 'Variable':
           return '<var>' + node.name + '</var>';
 
+        case 'Semantic':
+          return (
+            '<div class="spec-semantic">' +
+              node.name +
+              node.def +
+              node.steps +
+            '</div>'
+          );
+
         case 'Production':
           return (
             '<div class="spec-production" id="' + node.id + '">' +
@@ -373,7 +380,7 @@ function printAll(list, biblio) {
         case 'OneOfProduction':
           return (
             '<div class="spec-production oneof" id="' + node.id + '">' +
-              node.name +
+              link(node, anchorize(node.name), options) +
               '<table>' +
                 join(node.defs.map(function (defRow) {
                   return (
@@ -407,8 +414,6 @@ function printAll(list, biblio) {
           return '<span class="spec-prose">' + escape(node.text) + '</span>';
 
         case 'NonTerminal':
-          var id = anchorize(node.name);
-          var href = biblio[id];
           var mods = (
             (node.params ? '<span class="spec-params">' + join(node.params) + '</span>' : '') +
             (node.isList ? '<span class="spec-mod list">list</span>' : '') +
@@ -419,9 +424,7 @@ function printAll(list, biblio) {
               (node.isList ? ' list' : '') +
               (node.isOptional ? ' optional' : '') +
             '">' +
-              (href ? '<a href="' + href + '">' : '') +
-                escape(node.name) +
-              (href ? '</a>' : '') +
+              link(node, anchorize(node.name), options) +
               (mods ? '<span class="spec-mods">' + mods + '</span>' : '') +
             '</span>'
           );
@@ -477,6 +480,20 @@ function join(list, joiner) {
 
 function maybe(value) {
   return value ? value : '';
+}
+
+function link(node, id, options) {
+  var href = options.biblio[id];
+  var content = escape(node.name);
+  if (!href) {
+    return content;
+  }
+  return (
+    '<a href="' + href + '"' +
+      (href[0] !== '#' ? ' target="_blank"' : '') + '>' +
+      content +
+    '</a>'
+  );
 }
 
 function anchorize(title) {

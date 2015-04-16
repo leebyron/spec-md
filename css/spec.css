@@ -240,9 +240,10 @@ var {
 }
 
 .spec-algo > .spec-call:first-child::after {
-  content: ' :: ';
+  content: ':';
   font-style: normal;
   font-weight: bold;
+  margin-left: 1ex;
 }
 
 .spec-algo ol, .spec-algo ol ol ol ol {
@@ -269,17 +270,30 @@ var {
 }
 
 .spec-production > .spec-nt::after {
-  content: ' :: ';
+  content: ':';
   font-style: normal;
   font-weight: bold;
+  margin-left: 1ex;
 }
 
 .spec-production.oneof > .spec-nt::after {
-  content: ' :: one of';
+  content: ': one of';
 }
 
 .spec-rhs {
   margin-left: 2rem;
+}
+
+.spec-semantic > .spec-nt::after {
+  content: ':';
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 1ex;
+}
+
+.spec-semantic > .spec-rhs {
+  display: inline-block;
+  margin-left: 1ex;
 }
 
 .spec-production.oneof > table {

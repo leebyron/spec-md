@@ -1,18 +1,28 @@
 #!/usr/bin/env node
 
-var yargs = require('yargs');
+var fs = require('fs');
 var path = require('path');
 var specmd = require('../');
+var yargs = require('yargs');
 
 var argv = yargs
-  .usage('Usage: $0 [filepath]')
-  .require(1, 'Must provide filepath.')
+  .usage('Usage: $0 [filepath.md]')
+  .option('m', {
+    alias : 'metadata',
+    demand: false,
+    describe: 'filepath to json metadata',
+    type: 'string'
+  })
+  .require(1, 'Must provide markdown filepath.')
   .string(1)
   .argv;
 
 var absPath = path.resolve(process.cwd(), argv._[0]);
 
-specmd.html(absPath).then(function (html) {
+var metaPath = argv.m ? path.resolve(process.cwd(), argv.m) : null;
+options = metaPath ? require(metaPath) : {};
+
+specmd.html(absPath, options).then(function (html) {
   process.stdout.write(html);
 }).catch(function (error) {
   process.stderr.write(

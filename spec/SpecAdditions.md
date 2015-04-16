@@ -295,29 +295,29 @@ of a non-terminal is referred to as a *production*.
 
 ### Grammar Production
 
-The `::` token indicates an "is defined as" production for a non-terminal,
-where a single definition can be written directly after the `::`.
+The `:` token indicates an "is defined as" production for a non-terminal,
+where a single definition can be written directly after the `:`.
 
 ```
-PBJ :: Bread PeanutButter Jelly Bread
+PBJ : Bread PeanutButter Jelly Bread
 ```
 
 Produces:
 
-PBJ :: Bread PeanutButter Jelly Bread
+PBJ : Bread PeanutButter Jelly Bread
 
 Or if {PBJ} has definition options, they are written immediately after as a
 Markdown list.
 
 ```
-PBJ ::
+PBJ :
   - Bread PeanutButter Jelly Bread
   - Bread Jelly PeanutButter Bread
 ```
 
 Produces:
 
-PBJ ::
+PBJ :
   - Bread PeanutButter Jelly Bread
   - Bread Jelly PeanutButter Bread
 
@@ -327,7 +327,7 @@ tokens, and may also include conditionals and constraints.
 Definition lists aren't required to be indented:
 
 ```
-PBJ ::
+PBJ :
 
 - Bread PeanutButter Jelly Bread
 - Bread Jelly PeanutButter Bread
@@ -335,7 +335,7 @@ PBJ ::
 
 Produces:
 
-PBJ ::
+PBJ :
 
 - Bread PeanutButter Jelly Bread
 - Bread Jelly PeanutButter Bread
@@ -348,18 +348,18 @@ If each definition option is a single token, it can be expressed as a "one of"
 expression instead of a markdown list.
 
 ```
-AssignmentOperator :: one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
+AssignmentOperator : one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
 ```
 
 Produces:
 
-AssignmentOperator :: one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
+AssignmentOperator : one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
 
 
 "one of" can also be followed by a line break and multiple lines of tokens
 
 ```
-Keyword :: one of
+Keyword : one of
   break     do        in          typeof
   case      else      instanceof  var
   catch     export    new         void
@@ -373,7 +373,7 @@ Keyword :: one of
 
 Produces:
 
-Keyword :: one of
+Keyword : one of
   break     do        in          typeof
   case      else      instanceof  var
   catch     export    new         void
@@ -400,12 +400,12 @@ Grammars can describe arbitrary rules by using prose within a grammar
 definition by using `"quotes"`.
 
 ```
-Sandwich :: Bread "Any kind of topping" Bread
+Sandwich : Bread "Any kind of topping" Bread
 ```
 
 Produces:
 
-Sandwich :: Bread "Any kind of topping" Bread
+Sandwich : Bread "Any kind of topping" Bread
 
 
 
@@ -415,34 +415,34 @@ Terminal tokens refer to a character or sequence of characters. They can be
 written unadorned in the grammar definition.
 
 ```
-BalancedParens :: ( BalancedParens )
+BalancedParens : ( BalancedParens )
 ```
 
 Produces:
 
-BalancedParens :: ( BalancedParens )
+BalancedParens : ( BalancedParens )
 
 Any sequence of characters can be written to indicate a terminal token:
 
 ```
-WhileStatement :: while ( Expression ) { Statements }
+WhileStatement : while ( Expression ) { Statements }
 ```
 
 Produces
 
-WhileStatement :: while ( Expression ) { Statements }
+WhileStatement : while ( Expression ) { Statements }
 
 Terminals can also be quoted with back-ticks <code>\`</code> to remove any
 ambiguity from other meanings, for example to allow a terminal token to start
 with an uppercase letter, or a slash / or backslash \\.
 
 ```
-DivisionExpression :: Expression `/` Expression
+DivisionExpression : Expression `/` Expression
 ```
 
 Produces
 
-DivisionExpression :: Expression `/` Expression
+DivisionExpression : Expression `/` Expression
 
 
 
@@ -452,12 +452,12 @@ When a grammar is intended to be interpretted as a single token and can be
 clearly written as a regular expression, you can do so directly.
 
 ```
-UppercaseWord :: /[A-Z][a-z]*/
+UppercaseWord : /[A-Z][a-z]*/
 ```
 
 Produces:
 
-UppercaseWord :: /[A-Z][a-z]*/
+UppercaseWord : /[A-Z][a-z]*/
 
 
 
@@ -473,16 +473,16 @@ A subscript suffix `Token?` renders as {Token?} and is a shorthand for two
 possible definitions, one including that token and one excluding it.
 
 ```
-Sentence :: Noun Verb Adverb?
+Sentence : Noun Verb Adverb?
 ```
 
 Produces:
 
-Sentence :: Noun Verb Adverb?
+Sentence : Noun Verb Adverb?
 
 Which is shorthand for:
 
-Sentence ::
+Sentence :
   - Noun Verb
   - Noun Verb Adverb
 
@@ -493,27 +493,27 @@ A subscript suffix `Token+` renders as {Token+} and is shorthand for a list
 of one or more of that token.
 
 ```
-Book :: Cover Page+ Cover
+Book : Cover Page+ Cover
 ```
 
 Produces:
 
-Book :: Cover Page+ Cover
+Book : Cover Page+ Cover
 
 Which, unless your specification document declares otherwise, is shorthand for:
 
-Book :: Cover Page_list Cover
+Book : Cover Page_list Cover
 
-Page_list ::
+Page_list :
   - Page
   - Page_list Page
 
 Some specifications may wish to declare {Token+} as a shorthand for a
 comma-separated list, in which case the previous example would be shorthand for:
 
-Book :: Cover Page_list Cover
+Book : Cover Page_list Cover
 
-Page_list ::
+Page_list :
   - Page
   - Page_list , Page
 
@@ -523,20 +523,20 @@ Page_list ::
 Both `+` and `?` can be used together as {Token+?}:
 
 ```
-Sandwich :: Bread Topping+? Bread
+Sandwich : Bread Topping+? Bread
 ```
 
 Produces:
 
-Sandwich :: Bread Topping+? Bread
+Sandwich : Bread Topping+? Bread
 
 Which is shorthand for:
 
-Sandwich ::
+Sandwich :
   - Bread Bread
   - Bread Topping_list Bread
 
-Topping_list ::
+Topping_list :
   - Topping
   - Topping_list Topping
 
@@ -551,18 +551,18 @@ as {Token[Param]}. When used in definitions is shorthand for two symbol
 definitions: one appended with that parameter name, the other without.
 
 ```
-Example[WithCondition] :: "Definition TBD"
+Example[WithCondition] : "Definition TBD"
 ```
 
 Produces:
 
-Example[WithCondition] :: "Definition TBD"
+Example[WithCondition] : "Definition TBD"
 
 Which is shorthand for:
 
-Example :: "Definition TBD"
+Example : "Definition TBD"
 
-Example_WithCondition :: "Definition TBD"
+Example_WithCondition : "Definition TBD"
 
 
 The conditions are applied at the beginning of a definition for the
@@ -571,7 +571,7 @@ definition when the variant with the conditional parameter is or is not
 used, respectively.
 
 ```
-Example[WithCondition] ::
+Example[WithCondition] :
   - A
   - [+WithCondition] B
   - [~WithCondition] C
@@ -579,18 +579,18 @@ Example[WithCondition] ::
 
 Produces:
 
-Example[WithCondition] ::
+Example[WithCondition] :
   - A
   - [+WithCondition] B
   - [~WithCondition] C
 
 Which is shorthand for:
 
-Example ::
+Example :
   - A
   - C
 
-Example_WithCondition ::
+Example_WithCondition :
   - A
   - B
 
@@ -601,7 +601,7 @@ that form of the symbol is used if in a symbol definition with the same
 parameter.
 
 ```
-Example[WithCondition] ::
+Example[WithCondition] :
   - Example
   - Example[WithCondition]
   - Example[?WithCondition]
@@ -609,19 +609,19 @@ Example[WithCondition] ::
 
 Produces:
 
-Example[WithCondition] ::
+Example[WithCondition] :
   - Example
   - Example[WithCondition]
   - Example[?WithCondition]
 
 Which is shorthand for:
 
-Example ::
+Example :
   - Example
   - Example_WithCondition
   - Example
 
-Example_WithCondition ::
+Example_WithCondition :
   - Example
   - Example_WithCondition
   - Example_WithCondition
@@ -631,18 +631,18 @@ Multiple conditional parameters can be used, in which case it is short form for
 the permutation of all conditions:
 
 ```
-Example[P, Q] :: "Definition TBD"
+Example[P, Q] : "Definition TBD"
 ```
 
 Produces:
 
-Example :: "Definition TBD"
+Example : "Definition TBD"
 
-Example_P :: "Definition TBD"
+Example_P : "Definition TBD"
 
-Example_Q :: "Definition TBD"
+Example_Q : "Definition TBD"
 
-Example_P_Q :: "Definition TBD"
+Example_P_Q : "Definition TBD"
 
 
 Conditional params can be followed by the list and optional modifiers
@@ -663,24 +663,24 @@ Any token can be followed by "but not" or "but not one of" to place a further
 constraint on the previous token:
 
 ```
-Example :: A B but not foo or bar
+Example : A B but not foo or bar
 ```
 
 Produces:
 
-Example :: A B but not foo or bar
+Example : A B but not foo or bar
 
 
 Optionally can mention "one of", this will be omitted when rendered. Commas can
 be used instead of "or".
 
 ```
-Example :: A B but not one of foo, bar
+Example : A B but not one of foo, bar
 ```
 
 Produces:
 
-Example :: A B but not one of foo, bar
+Example : A B but not one of foo, bar
 
 
 ### Meta Tokens
@@ -691,12 +691,12 @@ The empty set, written `[empty]` appears as {[empty]} can be used to define
 a non-terminal as matching no terminal or non-terminal tokens.
 
 ```
-Example :: [empty]
+Example : [empty]
 ```
 
 Produces:
 
-Example :: [empty]
+Example : [empty]
 
 
 Lookaheads can appear anywhere in a sequence of tokens, and describe additional
@@ -706,7 +706,7 @@ When specifying tokens in a lookahead, it's important to remember to have
 whitespace on either side of the token.
 
 ```
-Example ::
+Example :
   - [lookahead token ] Token
   - [lookahead ! token ] Token
   - [lookahead { token, set }] Token
@@ -715,7 +715,7 @@ Example ::
 
 Produces:
 
-Example ::
+Example :
   - [lookahead token ] Token
   - [lookahead ! token ] Token
   - [lookahead { token, set }] Token
@@ -733,7 +733,7 @@ decimal, lower-alpha, and lower-roman.
 An algorithm definition also describes its arguments in terms of variables.
 
 ```
-Algorithm(arg) ::
+Algorithm(arg) :
   1. first
   1. then
     * substep
@@ -745,7 +745,7 @@ Algorithm(arg) ::
 
 Produces:
 
-Algorithm(arg) ::
+Algorithm(arg) :
   1. first
   1. then
     * substep
@@ -801,3 +801,52 @@ A call to an algorithm can be expressed as a value literal:
 Produces:
 
 {Algorithm(foo, "string", null)}
+
+
+
+## Biblio
+
+By supplying a `"biblio"` key in a metadata file, you can have Algorithm calls
+and Non-terminal tokens which are not defined in this spec to link to where they
+are defined.
+
+```
+spec-md -m metadata.json myspec.md
+```
+
+Where metadata.json includes:
+
+```
+{
+  "biblio": {
+    "http://people.mozilla.org/~jorendorff/es6-draft.html": {
+      "Identifier": "#sec-names-and-keywords",
+      "PrimaryExpression": "#sec-primary-expression",
+      "ReturnIfAbrupt()": "#sec-returnifabrupt",
+      "Get()": "#sec-get-o-p"
+    }
+  }
+}
+```
+
+Then referring to these tokens will link out to that page.
+
+```
+MemberExpression : PrimaryExpression . Identifier
+
+  * Let {reference} be the result of evaluating {PrimaryExpression}.
+  * Let {propName} be the string value of {Identifier}.
+  * Let {value} be {Get(reference, propName)}.
+  * {ReturnIfAbrupt(value)}.
+  * Return {value}.
+```
+
+Produces:
+
+MemberExpression : PrimaryExpression . Identifier
+
+  * Let {reference} be the result of evaluating {PrimaryExpression}.
+  * Let {propName} be the string value of {Identifier}.
+  * Let {value} be {Get(reference, propName)}.
+  * {ReturnIfAbrupt(value)}.
+  * Return {value}.

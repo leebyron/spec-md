@@ -1,0 +1,10 @@
+{
+  "biblio": {
+    "http://people.mozilla.org/~jorendorff/es6-draft.html": {
+      "Identifier": "#sec-names-and-keywords",
+      "PrimaryExpression": "#sec-primary-expression",
+      "ReturnIfAbrupt()": "#sec-returnifabrupt",
+      "Get()": "#sec-get-o-p"
+    }
+  }
+}

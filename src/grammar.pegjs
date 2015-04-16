@@ -132,6 +132,7 @@ sectionContent = importRel
                / indentCode
                / blockCode
                / algorithm
+               / semantic
                / production
                / table
                / list
@@ -420,7 +421,7 @@ paramName = $([_a-zA-Z][_a-zA-Z0-9]*)
 
 // Algorithm
 
-algorithm = BLOCK name:call _ '::' steps:list {
+algorithm = BLOCK name:call _ ':' ':'? steps:list {
   return {
     type: 'Algorithm',
     name: name,
@@ -469,9 +470,21 @@ variable = name:localName {
 
 // Grammar productions
 
+semantic = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ steps:list {
+  return {
+    type: 'Semantic',
+    name: name,
+    def: {
+      type: 'RHS',
+      tokens: tokens
+    },
+    steps: orderify(steps)
+  };
+}
+
 production = oneOfProduction / simpleProduction / multiProduction
 
-simpleProduction = BLOCK name:nonTerminal _ '::' _ tokens:token+ {
+simpleProduction = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ {
   return {
     type: 'Production',
     name: name,
@@ -482,7 +495,7 @@ simpleProduction = BLOCK name:nonTerminal _ '::' _ tokens:token+ {
   };
 }
 
-oneOfProduction = BLOCK name:nonTerminal _ '::' _ 'one of' tokenRows:oneOfRow+ {
+oneOfProduction = BLOCK name:nonTerminal _ ':' ':'? _ 'one of' tokenRows:oneOfRow+ {
   return {
     type: 'OneOfProduction',
     name: name,
@@ -498,7 +511,7 @@ oneOfToken = _ token:(prose / nonTerminal / regexp / quotedTerminal / terminal) 
   return token;
 }
 
-multiProduction = BLOCK name:nonTerminal _ '::' defs:productionDefs {
+multiProduction = BLOCK name:nonTerminal _ ':' ':'? defs:productionDefs {
   return {
     type: 'Production',
     name: name,
