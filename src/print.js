@@ -48,7 +48,7 @@ function printBody(ast) {
     '</header>' +
     printContent(ast) +
     '<footer>' +
-      'Created with <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
+      'Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
     '</footer>'
   );
 }

@@ -62,6 +62,7 @@ section .spec-secnum {
 
 footer {
   font-size: 75%;
+  opacity: 0.5;
   position: relative;
   text-align: center;
   top: 10rem;
