@@ -119,15 +119,14 @@ section5 = BLOCK '#####' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLO
   };
 }
 
-documentContent = import1 / section1 / sectionContent
-section1Content = import2 / section2 / sectionContent
-section2Content = import3 / section3 / sectionContent
-section3Content = import4 / section4 / sectionContent
-section4Content = import5 / section5 / sectionContent
-section5Content = sectionContent
+documentContent = import1 / section1 / importRel / sectionContent
+section1Content = import2 / section2 / importRel / sectionContent
+section2Content = import3 / section3 / importRel / sectionContent
+section3Content = import4 / section4 / importRel / sectionContent
+section4Content = import5 / section5 / importRel / sectionContent
+section5Content = importRel / sectionContent
 
-sectionContent = importRel
-               / note
+sectionContent = note
                / todo
                / indentCode
                / blockCode
