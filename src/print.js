@@ -480,7 +480,7 @@ function maybe(value) {
 }
 
 function anchorize(title) {
-  return title.toLowerCase().replace(/[^a-z]+/g, '-');
+  return title.replace(/[^A-Za-z0-9\-_]+/g, '-');
 }
 
 var ESCAPE_CODE_REGEX = /[><"'&]/g;
