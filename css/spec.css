@@ -1,5 +1,5 @@
 body {
-  color: #444444;
+  color: #333333;
   font: 13pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   margin: 6rem auto 10rem;
   max-width: 780px;
@@ -311,6 +311,7 @@ var {
   content: ']'
 }
 
+.spec-empty,
 .spec-prose {
   color: #666666;
 }
@@ -361,7 +362,7 @@ var {
 }
 
 .spec-t, .spec-rx {
-  color: #4A4A4A;
+  color: #333333;
   font-family: monospace;
   font-weight: bold;
 }
@@ -387,9 +388,13 @@ var {
   margin-left: 1ex;
 }
 
-.spec-lookahead > *:not(:last-child)::after {
+.spec-lookahead > * {
+  margin: 0 !important;
+}
+
+.spec-lookahead > *:not(:first-child)::before {
   color: #666666;
-  content: ',';
+  content: ', ';
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   font-style: normal;
   font-weight: normal;

@@ -307,33 +307,27 @@ Produces:
 I can reference |foo|, |"foo"|, |null|, |true|.
 
 
-### Variables
+**Variables**
 
-TODO
+Write `|foo|` to produce a variable (represented by a \<var> tag) like |foo|.
 
-|foo|
+**Constant literal**
 
+Some known constants like |null|, |undefined|, |true| and |false| are rendered
+as constants instead of variables.
 
-### String Literals
+**String literal**
 
-TODO
+Write `|"foo"|` to produce a string literal like |"foo"|.
 
-|"foo"|
+**Grammar tokens**
 
+Any grammar token can be written inline, like `|Example|` to represent the
+non-terminal token |Example|, <code>\|\`terminal\`\|</code> to represent the
+terminal token |`terminal`|. Even meta tokens like `|[empty]|` for |[empty]| and
+`|[lookahead !{ x, y }]|` for |[lookahead !{ x, y }]|.
 
-### Builtin Value Literals
-
-TODO
-
-|null| or |true|
-
-
-### Grammar Non-Terminals
-
-TODO
-
-
-### Algorithm Calls
+**Algorithm calls**
 
 A call to an algorithm can be expressed as a value literal:
 
