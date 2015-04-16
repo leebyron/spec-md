@@ -1,7 +1,7 @@
 body {
   color: #333333;
   font: 13pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
-  margin: 6rem auto 10rem;
+  margin: 6rem auto 12rem;
   max-width: 780px;
 }
 
@@ -58,6 +58,13 @@ section .spec-secnum {
   right: 100%;
   text-align: right;
   white-space: nowrap;
+}
+
+footer {
+  font-size: 75%;
+  position: relative;
+  text-align: center;
+  top: 10rem;
 }
 
 

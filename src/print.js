@@ -46,7 +46,10 @@ function printBody(ast) {
       printTitle(ast) +
       printTOC(ast) +
     '</header>' +
-    printContent(ast)
+    printContent(ast) +
+    '<footer>' +
+      'Created with <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
+    '</footer>'
   );
 }
 
