@@ -55,15 +55,23 @@ formatting is allowed in paragraphs, list items, and table cells.
 
 ### Links
 
-This is an [-->*example*<--](https://www.facebook.com) of a link.
+Use `[ ]` square brackets to indicate linked text followed immediately by `( )`
+parenthesis to describe the URL the text will link to.
+
+The linked text can contain any other inline formatting.
 
 ```
 This is an [-->*example*<--](https://www.facebook.com) of a link.
 ```
 
-The linked text can contain any inline formatting except for other links.
+Produces:
 
-TODO: links do not yet support a title attribute.
+This is an [-->*example*<--](https://www.facebook.com) of a link.
+
+
+Todo: Links do not yet support a reference style short-form.
+
+Todo: Links do not yet support a title attribute.
 
 
 ### Emphasis
@@ -71,11 +79,14 @@ TODO: links do not yet support a title attribute.
 Wrapping asterisks *(\*)* indicate emphasis. Like Github-flavored
 Markdown, Spec Markdown does not treat underscore *(_)* as emphasis.
 
+```
+Example of **bold** and *italic* and ***bold italic***.
+```
+
+Produces:
+
 Example of **bold** and *italic* and ***bold italic***.
 
-```
-Example of **bold** and *italic* and ***bold italic***.
-```
 
 
 ### Inline Code
@@ -84,13 +95,16 @@ Wrapping back-ticks *(\`)* indicate inline code, text inside back-ticks is not
 formatted, allowing for special characters to be used in inline code without
 escapes.
 
-This is an `example` of some inline code.
-
 ```
 This is an `example` of some inline code.
 ```
 
-TODO: Markdown's double-back-tick syntax is not yet supported.
+Produces
+
+This is an `example` of some inline code.
+
+
+Todo: Markdown's double-back-tick syntax is not yet supported.
 
 
 ### Images
@@ -99,9 +113,12 @@ TODO: Markdown's double-back-tick syntax is not yet supported.
 ![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
 ```
 
+Produces:
+
 ![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
 
 TODO: the title attribute is not yet supported
+
 
 
 ## Blocks
@@ -145,9 +162,9 @@ form a single \<p> tag. Any inline syntax is allowed within a paragraph.
 ### Lists
 
 Markdown lists are lines which each start with either a ordered bullet `1.` or
-unordered bullet, `*`, `-`, or `+`.
+unordered bullet, `*`, `-`, or `+`. Lists are optionally indented by two spaces.
 
-Lists are optionally indented by two spaces.
+Lists can be nested within other lists by indenting by at least two spaces.
 
 ```
   1. this
@@ -167,6 +184,9 @@ Produces:
 
 
 ### Code Block
+
+A block of code is formed by either indenting by 4 spaces, or wrapping with
+<code>\`\`\`</code> on their own lines.
 
     ```
     var code = sample();

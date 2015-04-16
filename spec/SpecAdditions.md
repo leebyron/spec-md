@@ -134,7 +134,7 @@ Similar to Github flavored Markdown
 | key  | val  | etc   |
 ```
 
-Produces
+Produces:
 
 | This | is a | table |
 | ---- | ---- | ----- |
@@ -148,15 +148,13 @@ Table cells can contain any content that a paragraph can contain.
 It's often helpful to write a draft of a document and leave "to-do" comments in
 not-yet-completed sections. Case insensitive, the `:` is optional.
 
-For example
-
-TODO: finish this section
-
-is written simply as
-
 ```
 TODO: finish this section
 ```
+
+Produces:
+
+TODO: finish this section
 
 You can also write `TK` in place of `TODO`.
 
@@ -167,15 +165,14 @@ Notes can be written inline with a spec document, and are often helpful to
 supply non-normative explanatory text or caveats in a differently formatted
 style. Case insensitive, the `:` is optional.
 
-For example
-
-Note: Notes are awesome.
-
-is written simply as
-
 ```
 Note: Notes are awesome.
 ```
+
+Produces:
+
+Note: Notes are awesome.
+
 
 
 ## Syntax Highlighting
@@ -282,8 +279,8 @@ have been *removed*.
 --}
 ```
 
-Note: imports and section headers cannot be marked as added or removed to
-preserve the ability to render a table of contents.
+Note: imports and section headers cannot be included in a added or removed
+section to preserve the ability to render a table of contents.
 
 
 
