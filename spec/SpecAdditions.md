@@ -113,9 +113,9 @@ Math operators like >=, <=, and ~= can be written as `>=`, `<=`, and `~=`.
 
 ### Arrows
 
-Smart arrows ---> and <- and <-> can be written as `->`, `<-` and `<->`.
+Smart arrows -> and <- and <-> can be written as `->`, `<-` and `<->`.
 
-Fat smart arrows ===> and <== and <=> can be written as `=>`, `<==` and `<=>`.
+Fat smart arrows => and <== and <=> can be written as `=>`, `<==` and `<=>`.
 
 
 ### Additional escape sequence
