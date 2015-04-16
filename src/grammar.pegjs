@@ -37,7 +37,7 @@ DEDENT = &lineStart !{ indentStack.length === 0 } {
   indent = indentStack.pop();
 }
 
-NL = "\n" / "\r" / "\r\n"
+NL = '\n' / '\r' / '\r\n'
 NOT_NL = [^\n\r]
 _ = ' '*
 EOF = NL* !.
@@ -179,7 +179,7 @@ blockDel = BLOCK '{--' &BLOCK contents:sectionContent* BLOCK '--}' &(BLOCK / EOF
 
 // Paragraph
 
-paragraph = BLOCK !"#" contents:content+ {
+paragraph = BLOCK !'#' contents:content+ {
   return {
     type: 'Paragraph',
     contents: contents
@@ -252,7 +252,7 @@ del = '{--' contents:content* '--}' {
   };
 }
 
-htmlTag = tag:$("<" "/"? [a-z]+ [^>]* ">") {
+htmlTag = tag:$('<' '/'? [a-z]+ [^>]* '>') {
   return {
     type: 'HTMLTag',
     tag: tag
@@ -566,7 +566,10 @@ lookahead = '[' _ 'lookahead' _ not:'!'? _ set:(lookaheadSet/lookaheadItem)? _ c
   };
 }
 
-lookaheadSet = '{' set:(_ !'}' token _ ','?)+ _ '}' {
+lookaheadSet = '{' set:((_ !'}' token _ ','?)+)? _ closer:'}'? {
+  if (set === null || closer === null) {
+    error('Malformed lookahead set.');
+  }
   return set.map(function (nodes) { return nodes[2]; });
 }
 
@@ -584,7 +587,10 @@ nonTerminal = name:globalName params:nonTerminalParams? list:'+'? opt:'?'? {
   };
 }
 
-nonTerminalParams = '[' _ params:nonTerminalParam+ _ ']' {
+nonTerminalParams = '[' _ params:(nonTerminalParam+)? _ closer:']'? {
+  if (params === null || closer === null) {
+    error('Malformed terminal params.');
+  }
   return params;
 }
 
@@ -607,14 +613,20 @@ butNot = 'but not ' _ 'one of '? _ first:token rest:(_ ('or '/',') _ token)* {
   };
 }
 
-regexp = value:$('/' ([^/\n] / '\\/')+ '/') {
+regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
+  if (value === null || closer === null) {
+    error('Malformed regular expression.');
+  }
   return {
     type: 'RegExp',
-    value: value
+    value: '/' + value + '/'
   };
 }
 
-quotedTerminal = '`' value:$([^`\n] / ('\\`'))+ '`' {
+quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
+  if (value === null || closer === null) {
+    error('Malformed quoted terminal');
+  }
   return {
     type: 'Terminal',
     value: value
