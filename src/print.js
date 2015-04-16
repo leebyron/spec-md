@@ -420,6 +420,19 @@ function printAll(list) {
             '</span>'
           );
 
+        case 'Empty':
+          return '<span class="spec-empty">[empty]</span>';
+
+        case 'Lookahead':
+          return (
+            '<span class="spec-lookahead'+
+              (node.set.length > 1 ? ' set' : '') +
+              (node.not ? ' not' : '') +
+            '">'+
+              join(node.set) +
+            '</span>'
+          );
+
         case 'ButNot':
           return '<span class="spec-butnot">' + join(node.tokens) + '</span>';
 

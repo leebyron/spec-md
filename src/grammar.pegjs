@@ -247,7 +247,7 @@ htmlTag = tag:$("<" "/"? [a-z]+ [^>]* ">") {
   };
 }
 
-reference = '|' ref:(call / nonTerminal / regexp / quotedTerminal / value) '|' {
+reference = '|' ref:(call / value / token) '|' {
   return ref;
 }
 
@@ -501,7 +501,7 @@ condition = '[' condition:('+' / '~') param:paramName ']' {
   };
 }
 
-token = token:(prose / nonTerminal / regexp / quotedTerminal / terminal) _ constraint:constraint? _ {
+token = token:(prose / emptyToken / lookahead / nonTerminal / regexp / quotedTerminal / terminal) _ constraint:constraint? _ {
   return !constraint ? token : {
     type: 'Constrained',
     token: token,
@@ -514,6 +514,34 @@ prose = '"' text:$[^\"]+ '"' {
     type: 'Prose',
     text: text
   };
+}
+
+emptyToken = '[' _ 'empty' _ ']' {
+  return {
+    type: 'Empty'
+  };
+}
+
+lookahead = '[' _ 'lookahead' _ not:'!'? _ set:(lookaheadSet/lookaheadItem)? _ closer:']'? {
+  if (set === null) {
+    error('Malformed lookahead. Did you forget tokens?');
+  }
+  if (closer === null) {
+    error('Malformed lookahead. Did you forget a space after the token?');
+  }
+  return {
+    type: 'Lookahead',
+    not: not !== null,
+    set: set
+  };
+}
+
+lookaheadSet = '{' set:(_ !'}' token _ ','?)+ _ '}' {
+  return set.map(function (nodes) { return nodes[2]; });
+}
+
+lookaheadItem = !']' token:token {
+  return [token];
 }
 
 nonTerminal = name:globalName params:nonTerminalParams? list:'+'? opt:'?'? {
@@ -540,7 +568,7 @@ nonTerminalParam = conditional:'?'? name:paramName $[, ]* {
 
 constraint = butNot
 
-butNot = 'but not ' _ 'one of '? _ first:token rest:(_ 'or ' _ token)* {
+butNot = 'but not ' _ 'one of '? _ first:token rest:(_ ('or '/',') _ token)* {
   return {
     type: 'ButNot',
     tokens: [first].concat(rest.map(function (nodes) {
@@ -563,7 +591,7 @@ quotedTerminal = '`' value:$([^`\n] / ('\\`'))+ '`' {
   };
 }
 
-terminal = value:$([^ \n"/`] [^ \n]*) {
+terminal = value:$([^ \n"/`] [^ \n"\`,]*) {
   return {
     type: 'Terminal',
     value: value

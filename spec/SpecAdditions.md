@@ -734,15 +734,56 @@ Produces:
 Example :: A B but not foo or bar
 
 
-Optionally can mention "one of", this will be omitted when rendered.
+Optionally can mention "one of", this will be omitted when rendered. Commas can
+be used instead of "or".
 
 ```
-Example :: A B but not one of foo or bar
+Example :: A B but not one of foo, bar
 ```
 
 Produces:
 
-Example :: A B but not one of foo or bar
+Example :: A B but not one of foo, bar
+
+
+### Meta Tokens
+
+Spec Markdown can specify some tokens which do not consume any characters.
+
+The empty set, written `[empty]` appears as |[empty]| can be used to define
+a non-terminal as matching no terminal or non-terminal tokens.
+
+```
+Example :: [empty]
+```
+
+Produces:
+
+Example :: [empty]
+
+
+Lookaheads can appear anywhere in a sequence of tokens, and describe additional
+constraints on the following token.
+
+When specifying tokens in a lookahead, it's important to remember to have
+whitespace on either side of the token.
+
+```
+Example ::
+  - [lookahead token ] Token
+  - [lookahead ! token ] Token
+  - [lookahead { token, set }] Token
+  - [lookahead ! { token, set }] Token
+```
+
+Produces:
+
+Example ::
+  - [lookahead token ] Token
+  - [lookahead ! token ] Token
+  - [lookahead { token, set }] Token
+  - [lookahead ! { token, set }] Token
+
 
 
 ## Algorithms

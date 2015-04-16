@@ -282,15 +282,14 @@ var {
   vertical-align: baseline;
 }
 
-.spec-rhs .spec-nt,
-.spec-rhs .spec-t,
-.spec-rhs .spec-rx,
-.spec-rhs .spec-prose {
+.spec-rhs .spec-constrained:not(:first-child),
+.spec-rhs .spec-nt:not(:first-child),
+.spec-rhs .spec-t:not(:first-child),
+.spec-rhs .spec-rx:not(:first-child),
+.spec-rhs .spec-prose:not(:first-child),
+.spec-rhs .spec-empty:not(:first-child),
+.spec-rhs .spec-lookahead:not(:first-child) {
   margin-left: 1ex;
-}
-
-.spec-rhs > *:first-child {
-  margin-left: 0;
 }
 
 .spec-condition {
@@ -362,7 +361,8 @@ var {
 
 .spec-butnot::before {
   content: 'but not';
-  font-weight: bold;
+  margin-right: 1ex;
+  font-weight: normal;
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
 }
 
@@ -370,10 +370,45 @@ var {
   content: 'or';
   margin-right: 1ex;
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .spec-rhs .spec-oneof::before,
 .spec-rhs .spec-butnot::before {
   margin-left: 1ex;
+}
+
+.spec-lookahead > *:not(:last-child)::after {
+  content: ',';
+  font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.spec-lookahead::before {
+  content: '[lookahead = ';
+  font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.spec-lookahead.not::before {
+  content: '[lookahead \2260  ';
+}
+
+.spec-lookahead.set::before {
+  content: '[lookahead \2208  {';
+  margin-right: 0;
+}
+
+.spec-lookahead.set.not::before {
+  content: '[lookahead \2209  {';
+}
+
+.spec-lookahead::after {
+  content: ']';
+}
+
+.spec-lookahead.set::after {
+  content: '}]';
 }
