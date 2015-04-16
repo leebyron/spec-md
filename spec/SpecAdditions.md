@@ -284,6 +284,39 @@ section to preserve the ability to render a table of contents.
 
 
 
+## Algorithms
+
+Specifications for procedures or algorithms can be defined in terms of nested
+markdown lists. These lists can be of any kind, but will always have ordered
+formatting. The bullet labeling for algorithms is specific will cycle between
+decimal, lower-alpha, and lower-roman.
+
+An algorithm definition also describes its arguments in terms of variables.
+
+```
+Algorithm(arg) :
+  1. first
+  1. then
+    * substep
+      * deeper substep
+      * another deep substep
+    * another step
+  1. okay
+```
+
+Produces:
+
+Algorithm(arg) :
+  1. first
+  1. then
+    * substep
+      * deeper substep
+      * another deep substep
+    * another step
+  1. okay
+
+
+
 ## Grammar
 
 Spec Markdown makes it easier to describe context-free grammatical productions.
@@ -723,36 +756,37 @@ Example :
 
 
 
-## Algorithms
+## Grammar Semantics
 
-Specifications for procedures or algorithms can be defined in terms of nested
-markdown lists. These lists can be of any kind, but will always have ordered
-formatting. The bullet labeling for algorithms is specific will cycle between
-decimal, lower-alpha, and lower-roman.
-
-An algorithm definition also describes its arguments in terms of variables.
+Once grammar is defined, it can be useful to define the semantics of the grammar
+in terms of algorithm steps. A single grammar definition followed by a list
+is interpretted as a grammar semantic:
 
 ```
-Algorithm(arg) :
-  1. first
-  1. then
-    * substep
-      * deeper substep
-      * another deep substep
-    * another step
-  1. okay
+PBJ : Bread PeanutButter Jelly Bread
+
+* Let {bottomBread} be the result of placing the first {Bread} on the plate.
+* Let {pbSpread} be the result of getting {PeanutButter} from the jar.
+* Spread {pbSpread} onto {bottomBread}.
+* Let {topBread} be the result of placing the last {Bread} on the plate.
+* Let {jamSpread} be the result of getting {Jelly} from the jar.
+* Spread {jamSpread} onto {topBread}.
+* Let {sandwich} be the result of rotating {topBread} 180&deg; and placing on {bottomBread}.
+* Return {sandwich}.
 ```
 
 Produces:
 
-Algorithm(arg) :
-  1. first
-  1. then
-    * substep
-      * deeper substep
-      * another deep substep
-    * another step
-  1. okay
+PBJ : Bread PeanutButter Jelly Bread
+
+* Let {bottomBread} be the result of placing the first {Bread} on the plate.
+* Let {pbSpread} be the result of {PeanutButter}.
+* Spread {pbSpread} onto {bottomBread}.
+* Let {topBread} be the result of placing the last {Bread} on the plate.
+* Let {jamSpread} be the result of {Jelly}.
+* Spread {jamSpread} onto {topBread}.
+* Let {sandwich} be the result of rotating {topBread} 180&deg; and placing on {bottomBread}.
+* Return {sandwich}.
 
 
 
