@@ -96,14 +96,14 @@ function assignBiblioIDs(ast, options) {
         secnameStack.push(secname);
       }
       if (node.type === 'Algorithm') {
-        var id = anchorize(node.name.name) + '()';
+        var id = anchorize(node.call.name) + '()';
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
         node.id = id;
       }
       if (node.type === 'Production' || node.type === 'OneOfProduction') {
-        var id = anchorize(node.name.name);
+        var id = anchorize(node.token.name);
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
@@ -338,7 +338,7 @@ function printAll(list, options) {
         case 'Algorithm':
           return (
             '<div class="spec-algo" id="' + node.id + '">' +
-              node.name +
+              node.call +
               node.steps +
             '</div>'
           );
@@ -372,7 +372,7 @@ function printAll(list, options) {
         case 'Production':
           return (
             '<div class="spec-production" id="' + node.id + '">' +
-              node.name +
+              node.token +
               join(node.defs) +
             '</div>'
           );
@@ -380,7 +380,7 @@ function printAll(list, options) {
         case 'OneOfProduction':
           return (
             '<div class="spec-production oneof" id="' + node.id + '">' +
-              link(node, anchorize(node.name), options) +
+              node.token +
               '<table>' +
                 join(node.defs.map(function (defRow) {
                   return (

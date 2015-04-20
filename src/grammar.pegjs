@@ -420,10 +420,10 @@ paramName = $([_a-zA-Z][_a-zA-Z0-9]*)
 
 // Algorithm
 
-algorithm = BLOCK name:call _ ':' ':'? steps:list {
+algorithm = BLOCK call:call _ ':' ':'? steps:list {
   return {
     type: 'Algorithm',
-    name: name,
+    call: call,
     steps: orderify(steps)
   };
 }
@@ -483,10 +483,10 @@ semantic = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ steps:list {
 
 production = oneOfProduction / simpleProduction / multiProduction
 
-simpleProduction = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ {
+simpleProduction = BLOCK token:nonTerminal _ ':' ':'? _ tokens:token+ {
   return {
     type: 'Production',
-    name: name,
+    token: token,
     defs: [{
       type: 'RHS',
       tokens: tokens
@@ -494,10 +494,10 @@ simpleProduction = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ {
   };
 }
 
-oneOfProduction = BLOCK name:nonTerminal _ ':' ':'? _ 'one of' tokenRows:oneOfRow+ {
+oneOfProduction = BLOCK token:nonTerminal _ ':' ':'? _ 'one of' tokenRows:oneOfRow+ {
   return {
     type: 'OneOfProduction',
-    name: name,
+    token: token,
     defs: tokenRows
   };
 }
@@ -510,10 +510,10 @@ oneOfToken = _ token:(prose / nonTerminal / regexp / quotedTerminal / terminal) 
   return token;
 }
 
-multiProduction = BLOCK name:nonTerminal _ ':' ':'? defs:productionDefs {
+multiProduction = BLOCK token:nonTerminal _ ':' ':'? defs:productionDefs {
   return {
     type: 'Production',
-    name: name,
+    token: token,
     defs: defs
   };
 }
