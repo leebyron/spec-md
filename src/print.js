@@ -41,6 +41,7 @@ function printBody(ast, options) {
   return (
     '<header>' +
       printTitle(ast) +
+      printIntro(ast, options) +
       printTOC(ast, options) +
     '</header>' +
     printContent(ast, options) +
@@ -125,9 +126,6 @@ function printTOC(ast, options) {
   var sectionNumber = 0;
   var sectionStack = [];
 
-  var intro = ast.contents.filter(function (content) {
-    return content.type !== 'Section';
-  });
   var sections = ast.contents.filter(function (content) {
     return content.type === 'Section';
   });
@@ -176,8 +174,7 @@ function printTOC(ast, options) {
 
   return (
     '<div class="spec-toc"><ol>' +
-        (intro.length === 0 ? '' : '<li><a href="#intro">Introduction</a></li>') +
-        join(items) +
+      join(items) +
     '</ol></div>'
   );
 }
@@ -185,22 +182,21 @@ function printTOC(ast, options) {
 
 // Content
 
-function printContent(doc, options) {
+function printIntro(doc, options) {
   var intro = doc.contents.filter(function (content) {
     return content.type !== 'Section';
   });
+  return intro.length === 0 ? '' :
+    '<section id="intro">' +
+      printAll(intro, options) +
+    '</section>';
+}
+
+function printContent(doc, options) {
   var sections = doc.contents.filter(function (content) {
     return content.type === 'Section';
   });
-  return (
-    (intro.length === 0 ? '' :
-      '<section id="intro">' +
-        '<h2>Introduction</h2>' +
-        printAll(intro, options) +
-      '</section>'
-    ) +
-    printAll(sections, options)
-  );
+  return printAll(sections, options);
 }
 
 function printAll(list, options) {
