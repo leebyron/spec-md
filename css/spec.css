@@ -233,12 +233,19 @@ var {
 }
 
 
-/* Algorithms and calls */
+/* Grammar semantics, algorithms and calls */
 
+.spec-semantic,
 .spec-algo {
   margin: 1rem 0 1rem 2rem;
 }
 
+.spec-semantic > .spec-rhs {
+  display: inline-block;
+  margin-left: 1ex;
+}
+
+.spec-semantic > .spec-nt::after,
 .spec-algo > .spec-call:first-child::after {
   content: ':';
   font-style: normal;
@@ -246,15 +253,18 @@ var {
   margin-left: 1ex;
 }
 
+.spec-semantic ol, .spec-semantic ol ol ol ol,
 .spec-algo ol, .spec-algo ol ol ol ol {
   list-style-type: decimal;
 }
 
+.spec-semantic ol ol, .spec-semantic ol ol ol ol ol
 .spec-algo ol ol, .spec-algo ol ol ol ol ol {
   list-style-type: lower-alpha;
 }
 
-.spec-algo ol ol ol, ol ol ol ol ol ol {
+.spec-semantic ol ol ol, .spec-semantic ol ol ol ol ol ol
+.spec-algo ol ol ol, .spec-algo ol ol ol ol ol ol {
   list-style-type: lower-roman;
 }
 
@@ -282,18 +292,6 @@ var {
 
 .spec-rhs {
   margin-left: 2rem;
-}
-
-.spec-semantic > .spec-nt::after {
-  content: ':';
-  font-style: normal;
-  font-weight: bold;
-  margin-left: 1ex;
-}
-
-.spec-semantic > .spec-rhs {
-  display: inline-block;
-  margin-left: 1ex;
 }
 
 .spec-production.oneof > table {
