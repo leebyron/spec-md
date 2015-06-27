@@ -452,7 +452,7 @@ stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
   };
 }
 
-keyword = value:$('null' / 'true' / 'false' / 'undefined') {
+keyword = value:$('null' / 'true' / 'false' / 'undefined') ![a-zA-Z] {
   return {
     type: 'Keyword',
     value: value
