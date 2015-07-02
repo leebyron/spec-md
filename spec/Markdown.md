@@ -64,7 +64,7 @@ The linked text can contain any other inline formatting.
 This is an [-->*example*<--](https://www.facebook.com) of a link.
 ```
 
-Produces:
+Produces the following:
 
 This is an [-->*example*<--](https://www.facebook.com) of a link.
 
@@ -83,7 +83,7 @@ Markdown, Spec Markdown does not treat underscore *(_)* as emphasis.
 Example of **bold** and *italic* and ***bold italic***.
 ```
 
-Produces:
+Produces the following:
 
 Example of **bold** and *italic* and ***bold italic***.
 
@@ -113,7 +113,7 @@ Todo: Markdown's double-back-tick syntax is not yet supported.
 ![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
 ```
 
-Produces:
+Produces the following:
 
 ![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
 
@@ -174,7 +174,7 @@ Lists can be nested within other lists by indenting by at least two spaces.
   4. list
 ```
 
-Produces:
+Produces the following:
 
   1. this
   2. is
@@ -192,7 +192,7 @@ A block of code is formed by either indenting by 4 spaces, or wrapping with
     var code = sample();
     ```
 
-Produces:
+Produces the following:
 
 ```
 var code = sample();

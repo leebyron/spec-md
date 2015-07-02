@@ -134,7 +134,7 @@ Similar to Github flavored Markdown
 | key  | val  | etc   |
 ```
 
-Produces:
+Produces the following:
 
 | This | is a | table |
 | ---- | ---- | ----- |
@@ -152,7 +152,7 @@ not-yet-completed sections. Case insensitive, the `:` is optional.
 TODO: finish this section
 ```
 
-Produces:
+Produces the following:
 
 TODO: finish this section
 
@@ -169,7 +169,7 @@ style. Case insensitive, the `:` is optional.
 Note: Notes are awesome.
 ```
 
-Produces:
+Produces the following:
 
 Note: Notes are awesome.
 
@@ -188,7 +188,7 @@ To render this highlighted javascript:
     var baz = foo("bar");
     ```
 
-Produces:
+Produces the following:
 
 ```js
 var baz = foo("bar");
@@ -205,7 +205,7 @@ and before the language.
     var shit = dontSwear();
     ```
 
-Produces:
+Produces the following:
 
 ```!js
 var shit = dontSwear();
@@ -304,7 +304,7 @@ Algorithm(arg) :
   1. okay
 ```
 
-Produces:
+Produces the following:
 
 Algorithm(arg) :
   1. first
@@ -335,7 +335,7 @@ where a single definition can be written directly after the `:`.
 PBJ : Bread PeanutButter Jelly Bread
 ```
 
-Produces:
+Produces the following:
 
 PBJ : Bread PeanutButter Jelly Bread
 
@@ -348,7 +348,7 @@ PBJ :
   - Bread Jelly PeanutButter Bread
 ```
 
-Produces:
+Produces the following:
 
 PBJ :
   - Bread PeanutButter Jelly Bread
@@ -366,7 +366,7 @@ PBJ :
 - Bread Jelly PeanutButter Bread
 ```
 
-Produces:
+Produces the following:
 
 PBJ :
 
@@ -384,7 +384,7 @@ expression instead of a markdown list.
 AssignmentOperator : one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
 ```
 
-Produces:
+Produces the following:
 
 AssignmentOperator : one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
 
@@ -404,7 +404,7 @@ Keyword : one of
   delete    import    try
 ```
 
-Produces:
+Produces the following:
 
 Keyword : one of
   break     do        in          typeof
@@ -436,7 +436,7 @@ definition by using `"quotes"`.
 Sandwich : Bread "Any kind of topping" Bread
 ```
 
-Produces:
+Produces the following:
 
 Sandwich : Bread "Any kind of topping" Bread
 
@@ -451,7 +451,7 @@ written unadorned in the grammar definition.
 BalancedParens : ( BalancedParens )
 ```
 
-Produces:
+Produces the following:
 
 BalancedParens : ( BalancedParens )
 
@@ -488,7 +488,7 @@ clearly written as a regular expression, you can do so directly.
 UppercaseWord : /[A-Z][a-z]*/
 ```
 
-Produces:
+Produces the following:
 
 UppercaseWord : /[A-Z][a-z]*/
 
@@ -509,7 +509,7 @@ possible definitions, one including that token and one excluding it.
 Sentence : Noun Verb Adverb?
 ```
 
-Produces:
+Produces the following:
 
 Sentence : Noun Verb Adverb?
 
@@ -529,7 +529,7 @@ of one or more of that token.
 Book : Cover Page+ Cover
 ```
 
-Produces:
+Produces the following:
 
 Book : Cover Page+ Cover
 
@@ -559,7 +559,7 @@ Both `+` and `?` can be used together as {Token+?}:
 Sandwich : Bread Topping+? Bread
 ```
 
-Produces:
+Produces the following:
 
 Sandwich : Bread Topping+? Bread
 
@@ -587,7 +587,7 @@ definitions: one appended with that parameter name, the other without.
 Example[WithCondition] : "Definition TBD"
 ```
 
-Produces:
+Produces the following:
 
 Example[WithCondition] : "Definition TBD"
 
@@ -610,7 +610,7 @@ Example[WithCondition] :
   - [~WithCondition] C
 ```
 
-Produces:
+Produces the following:
 
 Example[WithCondition] :
   - A
@@ -640,7 +640,7 @@ Example[WithCondition] :
   - Example[?WithCondition]
 ```
 
-Produces:
+Produces the following:
 
 Example[WithCondition] :
   - Example
@@ -667,7 +667,7 @@ the permutation of all conditions:
 Example[P, Q] : "Definition TBD"
 ```
 
-Produces:
+Produces the following:
 
 Example : "Definition TBD"
 
@@ -684,7 +684,7 @@ Conditional params can be followed by the list and optional modifiers
 A[P, ?Q]+?
 ```
 
-Produces:
+Produces the following:
 
 {A[P, ?Q]+?}
 
@@ -699,7 +699,7 @@ constraint on the previous token:
 Example : A B but not foo or bar
 ```
 
-Produces:
+Produces the following:
 
 Example : A B but not foo or bar
 
@@ -711,7 +711,7 @@ be used instead of "or".
 Example : A B but not one of foo, bar
 ```
 
-Produces:
+Produces the following:
 
 Example : A B but not one of foo, bar
 
@@ -727,7 +727,7 @@ a non-terminal as matching no terminal or non-terminal tokens.
 Example : [empty]
 ```
 
-Produces:
+Produces the following:
 
 Example : [empty]
 
@@ -746,7 +746,7 @@ Example :
   - [lookahead ! { token, set }] Token
 ```
 
-Produces:
+Produces the following:
 
 Example :
   - [lookahead token ] Token
@@ -775,7 +775,7 @@ PBJ : Bread PeanutButter Jelly Bread
 * Return {sandwich}.
 ```
 
-Produces:
+Produces the following:
 
 PBJ : Bread PeanutButter Jelly Bread
 
@@ -799,7 +799,7 @@ in the specification by wrapping it in `{ }` curly brace characters.
 I can reference {foo}, {"foo"}, {null}, {true}.
 ```
 
-Produces:
+Produces the following:
 
 I can reference {foo}, {"foo"}, {null}, {true}.
 
@@ -832,7 +832,7 @@ A call to an algorithm can be expressed as a value literal:
 {Algorithm(foo, "string", null)}
 ```
 
-Produces:
+Produces the following:
 
 {Algorithm(foo, "string", null)}
 
@@ -875,7 +875,7 @@ MemberExpression : PrimaryExpression . Identifier
   * Return {value}.
 ```
 
-Produces:
+Produces the following:
 
 MemberExpression : PrimaryExpression . Identifier
 
