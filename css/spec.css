@@ -17,7 +17,7 @@ body {
     overflow-y: auto;
   }
 }
-@media (max-width: 1130px) {
+@media (max-width: 1129px) {
   body {
     margin: 6rem auto 12rem;
   }
@@ -89,7 +89,6 @@ footer {
 
 
 /* Table of contents */
-
 
 .spec-toc::before {
   content: 'Contents';
