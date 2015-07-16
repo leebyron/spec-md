@@ -494,9 +494,9 @@ UppercaseWord : /[A-Z][a-z]*/
 
 
 
-### Modifications
+### Quantifiers
 
-Non-terminal tokens can be followed by modifications to alter their meaning and
+Non-terminal tokens can be followed by quantifiers to alter their meaning and
 as a short-hand for common patterns.
 
 
