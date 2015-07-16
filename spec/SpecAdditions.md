@@ -553,15 +553,16 @@ Page_list :
 
 **Optional Lists**
 
-Both `+` and `?` can be used together as {Token+?}:
+A subscript suffix `Token*` renders as {Token*} and is shorthand for an
+optional list, which describes zero or more of that token.
 
 ```
-Sandwich : Bread Topping+? Bread
+Sandwich : Bread Topping* Bread
 ```
 
 Produces the following:
 
-Sandwich : Bread Topping+? Bread
+Sandwich : Bread Topping* Bread
 
 Which is shorthand for:
 
@@ -678,15 +679,15 @@ Example_Q : "Definition TBD"
 Example_P_Q : "Definition TBD"
 
 
-Conditional params can be followed by the list and optional modifiers
+Conditional params can be followed by the optional list quantifier
 
 ```
-A[P, ?Q]+?
+A[P, ?Q]*
 ```
 
 Produces the following:
 
-{A[P, ?Q]+?}
+{A[P, ?Q]*}
 
 
 

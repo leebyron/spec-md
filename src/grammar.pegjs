@@ -589,13 +589,13 @@ lookaheadItem = !']' token:token {
   return [token];
 }
 
-nonTerminal = name:globalName params:nonTerminalParams? list:'+'? opt:'?'? {
+nonTerminal = name:globalName params:nonTerminalParams? quantifier:('+' / '?' / '*')? {
   return {
     type: 'NonTerminal',
     name: name,
     params: params,
-    isList: list !== null,
-    isOptional: opt !== null
+    isList: quantifier === '+' || quantifier === '*',
+    isOptional: quantifier === '?' || quantifier === '*'
   };
 }
 
