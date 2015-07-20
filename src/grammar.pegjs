@@ -474,7 +474,7 @@ variable = name:localName {
 
 // Grammar productions
 
-semantic = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ steps:list {
+semantic = BLOCK name:nonTerminal _ ':' _ tokens:token+ steps:list {
   return {
     type: 'Semantic',
     name: name,
@@ -486,50 +486,45 @@ semantic = BLOCK name:nonTerminal _ ':' ':'? _ tokens:token+ steps:list {
   };
 }
 
-production = oneOfProduction / simpleProduction / multiProduction
-
-simpleProduction = BLOCK token:nonTerminal _ ':' ':'? _ tokens:token+ {
+production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') _ rhs:productionRHS {
   return {
     type: 'Production',
     token: token,
-    defs: [{
-      type: 'RHS',
-      tokens: tokens
-    }]
+    defType: defType.length,
+    rhs: rhs
   };
 }
 
-oneOfProduction = BLOCK token:nonTerminal _ ':' ':'? _ 'one of' tokenRows:oneOfRow+ {
+productionRHS = oneOfRHS / singleRHS / listRHS
+
+oneOfRHS = 'one of' rows:(_ NL? (_ token)+)+ {
   return {
-    type: 'OneOfProduction',
-    token: token,
-    defs: tokenRows
+    type: 'OneOfRHS',
+    rows: rows.map(function (row) {
+      return row[2].map(function (tokens) {
+        return tokens[1];
+      });
+    })
   };
 }
 
-oneOfRow = _ NL? _ tokens:oneOfToken+ {
-  return tokens;
-}
-
-oneOfToken = _ token:(prose / nonTerminal / regexp / quotedTerminal / terminal) {
-  return token;
-}
-
-multiProduction = BLOCK token:nonTerminal _ ':' ':'? defs:productionDefs {
+singleRHS = condition:condition? _ tokens:token+ {
   return {
-    type: 'Production',
-    token: token,
-    defs: defs
+    type: 'RHS',
+    condition: condition,
+    tokens: tokens
   };
 }
 
-productionDefs = indentedDefs / grammarDef+
+listRHS = defs:(indentedRHS / listItemRHS+) {
+  return { type: 'ListRHS', defs: defs };
+}
 
-indentedDefs = INDENT defs:(grammarDef+)? DEDENT &{ return defs !== null; } {
+indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
   return defs;
 }
 
-grammarDef = LINE listBullet _ condition:condition? _ tokens:token+ {
+listItemRHS = LINE listBullet _ condition:condition? _ tokens:token+ {
   return {
     type: 'RHS',
     condition: condition,

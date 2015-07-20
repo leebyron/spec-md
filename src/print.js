@@ -395,22 +395,22 @@ function printAll(list, options) {
           );
 
         case 'Production':
+          var defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
-            '<div class="spec-production" id="' + node.id + '">' +
+            '<div class="spec-production' + defType + '" id="' + node.id + '">' +
               node.token +
-              join(node.defs) +
+              node.rhs +
             '</div>'
           );
 
-        case 'OneOfProduction':
+        case 'OneOfRHS':
           return (
-            '<div class="spec-production oneof" id="' + node.id + '">' +
-              node.token +
+            '<div class="spec-oneof">' +
               '<table>' +
-                join(node.defs.map(function (defRow) {
+                join(node.rows.map(function (row) {
                   return (
                     '<tr>' +
-                      join(defRow.map(function (def) {
+                      join(row.map(function (def) {
                         return '<td class="spec-rhs">' + def + '</td>';
                       })) +
                     '</tr>'
@@ -419,6 +419,9 @@ function printAll(list, options) {
               '</table>' +
             '</div>'
           );
+
+        case 'ListRHS':
+          return join(node.defs);
 
         case 'RHS':
           return (

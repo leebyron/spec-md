@@ -383,6 +383,29 @@ PBJ :
 - Bread Jelly PeanutButter Bread
 
 
+### Production types
+
+Often languages wish to specify different types of grammar productions, such as
+lexical or syntactical, or if certain characters line whitespace or newlines are
+permitted between symbols in the right-hand-side. Spec-md allows this this
+distinction based on the number of colons:
+
+```
+TypeOne : `type` `one`
+
+TypeTwo :: `type` `two`
+
+TypeThree ::: `type` `three`
+```
+
+Produces the following:
+
+TypeOne : `type` `one`
+
+TypeTwo :: `type` `two`
+
+TypeThree ::: `type` `three`
+
 
 ### One of
 
