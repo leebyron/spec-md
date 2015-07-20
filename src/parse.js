@@ -2,34 +2,27 @@
 
 var fs = require('fs');
 var path = require('path');
-var pegjs = require('pegjs');
 var Promise = require('bluebird');
+var grammar = require('./grammar');
 var visit = require('./visit');
 
-Promise.promisifyAll(fs);
-
-function parse(filepath) {
-  return getParser().then(function (parser) {
-    return importAST(parser, filepath);
-  });
-}
 
 module.exports = parse;
 
-var _parser;
-function getParser() {
-  return _parser || (_parser =
-    fs.readFileAsync(__dirname + '/grammar.pegjs', 'utf8').then(function (text) {
-      return pegjs.buildParser(text, {
-        output: 'parser',
-        allowedStartRules: ['document']
-      });
-    })
-  );
+function parse(filepath) {
+  return importAST(grammar, filepath);
+}
+
+function readFile(filepath) {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(filepath, { encoding: 'utf8' }, function (err, result) {
+      return err ? reject(err) : resolve(result);
+    });
+  });
 }
 
 function importAST(parser, filepath) {
-  return fs.readFileAsync(filepath, { encoding: 'utf8' }).then(function (source) {
+  return readFile(filepath).then(function (source) {
     try {
       var ast = parser.parse(source);
     } catch (error) {

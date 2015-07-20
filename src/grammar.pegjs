@@ -13,42 +13,6 @@
   }
 }
 
-// Lines and Indentation
-
-INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 2; } {
-  indentStack.push(indent);
-  indent = depth;
-})
-
-DEEP_INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 4; } {
-  indentStack.push(indent);
-  indent = depth;
-})
-
-BLOCK = blockStart depth:indentDepth &{ return depth === indent || depth === indent + 1; } {
-  return depth;
-}
-
-LINE = lineStart depth:indentDepth &{ return depth >= indent; } {
-  return depth;
-}
-
-DEDENT = &lineStart !{ indentStack.length === 0 } {
-  indent = indentStack.pop();
-}
-
-NL = '\n' / '\r' / '\r\n'
-NOT_NL = [^\n\r]
-_ = ' '*
-EOF = NL* !.
-
-lineStart = NL+ / & { return offset() === 0 }
-
-blockStart = (NL NL+) / & { return offset() === 0 }
-
-indentDepth = sp:$' '* { return sp.length; }
-
-
 // Document
 
 document = title:title? contents:documentContent* EOF {
@@ -651,3 +615,39 @@ terminal = value:$([^ \n"/`] [^ \n"\`,]*) {
     value: value
   };
 }
+
+
+// Lines and Indentation
+
+INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 2; } {
+  indentStack.push(indent);
+  indent = depth;
+})
+
+DEEP_INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 4; } {
+  indentStack.push(indent);
+  indent = depth;
+})
+
+BLOCK = blockStart depth:indentDepth &{ return depth === indent || depth === indent + 1; } {
+  return depth;
+}
+
+LINE = lineStart depth:indentDepth &{ return depth >= indent; } {
+  return depth;
+}
+
+DEDENT = &lineStart !{ indentStack.length === 0 } {
+  indent = indentStack.pop();
+}
+
+NL = '\n' / '\r' / '\r\n'
+NOT_NL = [^\n\r]
+_ = ' '*
+EOF = NL* !.
+
+lineStart = NL+ / & { return offset() === 0 }
+
+blockStart = (NL NL+) / & { return offset() === 0 }
+
+indentDepth = sp:$' '* { return sp.length; }
