@@ -386,10 +386,11 @@ function printAll(list, options) {
           return '<var>' + node.name + '</var>';
 
         case 'Semantic':
+          var defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
-            '<div class="spec-semantic">' +
+            '<div class="spec-semantic' + defType + '">' +
               node.name +
-              node.def +
+              node.rhs +
               node.steps +
             '</div>'
           );

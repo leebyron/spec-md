@@ -438,11 +438,12 @@ variable = name:localName {
 
 // Grammar productions
 
-semantic = BLOCK name:nonTerminal _ ':' _ tokens:token+ steps:list {
+semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') _ tokens:token+ steps:list {
   return {
     type: 'Semantic',
     name: name,
-    def: {
+    defType: defType.length,
+    rhs: {
       type: 'RHS',
       tokens: tokens
     },

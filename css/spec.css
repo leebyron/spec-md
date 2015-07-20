@@ -286,10 +286,12 @@ var {
   margin-left: 1ex;
 }
 
+.spec-semantic.d2 > .spec-nt::after,
 .spec-production.d2 > .spec-nt::after {
   content: '::';
 }
 
+.spec-semantic.d3 > .spec-nt::after,
 .spec-production.d3 > .spec-nt::after {
   content: ':::';
 }
