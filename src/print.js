@@ -34,9 +34,6 @@ function printHead(ast) {
   );
 }
 
-var sectionNumber;
-var sectionStack;
-
 function printBody(ast, options) {
   return (
     '<header>' +
@@ -119,12 +116,32 @@ function assignBiblioIDs(ast, options) {
   });
 }
 
+var IS_LETTER_RX = /^[A-Z]+$/;
+
+function nextSecID(id) {
+  var isLetter = IS_LETTER_RX.test(id);
+  if (!isLetter) {
+    return id + 1;
+  }
+
+  // A -> B, Z -> AA, AA -> AB, ZZ -> AAA
+  var letters = id.split('');
+  var numB26 = '1' + letters.map(function (ch) {
+    return (ch.charCodeAt(0) - 65).toString(26);
+  }).join('');
+  var nextDigitsB26 = (parseInt(numB26, 26) + 1).toString(26).split('');
+  return nextDigitsB26.map(function (digit, index) {
+    if (index === 0) return digit === '1' ? '' : 'A';
+    return String.fromCharCode(parseInt(digit, 26) + 65);
+  }).join('');
+}
+
 
 // Table of Contents
 
 function printTOC(ast, options) {
-  var sectionNumber = 0;
-  var sectionStack = [];
+  var sectionIDPart = 0;
+  var sectionIDStack = [];
 
   var sections = ast.contents.filter(function (content) {
     return content.type === 'Section';
@@ -133,24 +150,31 @@ function printTOC(ast, options) {
   var items = visit(sections, {
     enter: function (node) {
       if (node.type === 'Section') {
-        if (node.secnum) {
-          var nextNum = node.secnum.split('.').pop();
-          if (nextNum === '*') {
+        if (node.secID) {
+          var nextIDPart = node.secID[node.secID.length - 1];
+          var nextIsLetter = IS_LETTER_RX.test(nextIDPart);
+          if (nextIDPart === '*') {
             throw new Error('Not yet supported');
+          } else if (!nextIsLetter) {
+            nextIDPart = parseInt(nextIDPart, 10);
           }
-          nextNum = parseInt(nextNum, 10);
-          if (nextNum <= sectionNumber) {
+          if (!nextIsLetter && IS_LETTER_RX.test(sectionIDPart)) {
             throw new Error(
-              'Cannot change to section number ' + nextNum +
-              ' which would be earlier than ' + (sectionNumber+1)
+              'Cannot change to numbered section ' + nextIDPart +
+              ' after lettered section ' + sectionIDPart
+            );
+          } else if (!nextIsLetter && nextIDPart <= sectionIDPart) {
+            throw new Error(
+              'Cannot change to section number ' + nextIDPart +
+              ' which would be earlier than ' + nextSecID(sectionIDPart)
             );
           }
-          sectionNumber = nextNum;
+          sectionIDPart = nextIDPart;
         } else {
-          sectionNumber++;
+          sectionIDPart = nextSecID(sectionIDPart);
         }
-        sectionStack.push(sectionNumber);
-        sectionNumber = 0;
+        sectionIDStack.push(sectionIDPart);
+        sectionIDPart = 0;
       }
     },
     leave: function (node) {
@@ -159,13 +183,13 @@ function printTOC(ast, options) {
         var printed = (
           '<li>' +
             '<a href="' + options.biblio[node.id] + '">' +
-              '<span class="spec-secnum">' + join(sectionStack, '.') + '</span>' +
+              '<span class="spec-secid">' + join(sectionIDStack, '.') + '</span>' +
               escape(node.title) +
             '</a>' +
             (subSections ? '<ol>' + subSections + '</ol>' : subSections) +
           '</li>'
         );
-        sectionNumber = sectionStack.pop();
+        sectionIDPart = sectionIDStack.pop();
         return printed;
       }
       return '';
@@ -200,46 +224,51 @@ function printContent(doc, options) {
 }
 
 function printAll(list, options) {
-  var sectionNumber = 0;
-  var sectionStack = [];
+  var sectionIDPart = 0;
+  var sectionIDStack = [];
 
   return join(visit(list, {
     enter: function (node) {
-      switch (node.type) {
-        case 'Section':
-          if (node.secnum) {
-            var nextNum = node.secnum.split('.').pop();
-            if (nextNum === '*') {
-              throw new Error('Not yet supported');
-            }
-            nextNum = parseInt(nextNum, 10);
-            if (nextNum <= sectionNumber) {
-              throw new Error(
-                'Cannot change to section number ' + nextNum +
-                ' which would be earlier than ' + (sectionNumber+1)
-              );
-            }
-            sectionNumber = nextNum;
-          } else {
-            sectionNumber++;
+      if (node.type === 'Section') {
+        if (node.secID) {
+          var nextIDPart = node.secID[node.secID.length - 1];
+          var nextIsLetter = IS_LETTER_RX.test(nextIDPart);
+          if (nextIDPart === '*') {
+            throw new Error('Not yet supported');
+          } else if (!nextIsLetter) {
+            nextIDPart = parseInt(nextIDPart, 10);
           }
-          sectionStack.push(sectionNumber);
-          sectionNumber = 0;
-          break;
+          if (!nextIsLetter &&  IS_LETTER_RX.test(sectionIDPart)) {
+            throw new Error(
+              'Cannot change to numbered section ' + nextIDPart +
+              ' after lettered section ' + sectionIDPart
+            );
+          } else if (!nextIsLetter && nextIDPart <= sectionIDPart) {
+            throw new Error(
+              'Cannot change to section number ' + nextIDPart +
+              ' which would be earlier than ' + (sectionIDPart+1)
+            );
+          }
+          sectionIDPart = nextIDPart;
+        } else {
+          sectionIDPart = nextSecID(sectionIDPart);
+        }
+        sectionIDStack.push(sectionIDPart);
+        sectionIDPart = 0;
       }
     },
 
     leave: function (node) {
       switch (node.type) {
         case 'Section':
-          var level = sectionStack.length + 1;
-          var secnum = join(sectionStack, '.');
-          sectionNumber = sectionStack.pop();
+          var level = sectionIDStack.length + 1;
+          var secID = join(sectionIDStack, '.');
+          sectionIDPart = sectionIDStack.pop();
           return (
             '<section id="' + node.id + '">' +
               '<h' + level + '>' +
-              '<span class="spec-secnum" title="link to this section">' +
-                '<a href="' + options.biblio[node.id] + '">' + secnum + '</a>' +
+              '<span class="spec-secid" title="link to this section">' +
+                '<a href="' + options.biblio[node.id] + '">' + secID + '</a>' +
               '</span>' +
               escape(node.title) +
               '</h' + level + '>' +

@@ -71,49 +71,54 @@ SEC_CLOSE = _ '#'* &NL
 sectionTitle = $titleChar+
 titleChar = [^\n\r# ] / [# ] titleChar
 
-sectionNum = (sectionNumPart '.')* sectionNumPart
-sectionNumPart = [0-9]+ / '*'
+sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
+  return [start].concat(rest.map(function (nodes) {
+    return nodes[1];
+  }));
+}
+sectionIDStart = [0-9]+ / [A-Z]+ / '*'
+sectionIDPart = [0-9]+ / '*'
 
-section1 = BLOCK '#' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLOSE contents:section1Content* {
+section1 = BLOCK '#' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section1Content* {
   return {
     type: 'Section',
-    secnum: secnum,
+    secID: secID,
     title: title,
     contents: contents
   };
 }
 
-section2 = BLOCK '##' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLOSE contents:section2Content* {
+section2 = BLOCK '##' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section2Content* {
   return {
     type: 'Section',
-    secnum: secnum,
+    secID: secID,
     title: title,
     contents: contents
   };
 }
 
-section3 = BLOCK '###' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLOSE contents:section3Content* {
+section3 = BLOCK '###' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section3Content* {
   return {
     type: 'Section',
-    secnum: secnum,
+    secID: secID,
     title: title,
     contents: contents
   };
 }
 
-section4 = BLOCK '####' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLOSE contents:section4Content* {
+section4 = BLOCK '####' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section4Content* {
   return {
     type: 'Section',
-    secnum: secnum,
+    secID: secID,
     title: title,
     contents: contents
   };
 }
 
-section5 = BLOCK '#####' !'#' _ secnum:$sectionNum? _ title:sectionTitle SEC_CLOSE contents:section5Content* {
+section5 = BLOCK '#####' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section5Content* {
   return {
     type: 'Section',
-    secnum: secnum,
+    secID: secID,
     title: title,
     contents: contents
   };

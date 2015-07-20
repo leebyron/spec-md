@@ -1,4 +1,4 @@
-# Using Spec Markdown
+# A. Using Spec Markdown
 
 If installed globally, using `spec-md` as a shell executable is the easiest way
 to use Spec Markdown. The `spec-md` executable expects a filepath to a Markdown

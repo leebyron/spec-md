@@ -52,7 +52,7 @@ h6, h7, h8 {
   font-size: 1.1em;
 }
 
-section .spec-secnum {
+section .spec-secid {
   margin-right: 1ex;
   position: absolute;
   right: 100%;
@@ -82,7 +82,7 @@ footer {
   margin: 3em 0 1em;
 }
 
-.spec-toc .spec-secnum {
+.spec-toc .spec-secid {
   margin-right: 1ex;
 }
 
@@ -104,11 +104,11 @@ footer {
   text-decoration: none;
 }
 
-.spec-toc a .spec-secnum {
+.spec-toc a .spec-secid {
   color: #3B5998;
 }
 
-.spec-toc a:hover .spec-secnum {
+.spec-toc a:hover .spec-secid {
   text-decoration: underline;
 }
 

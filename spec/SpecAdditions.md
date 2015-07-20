@@ -72,7 +72,7 @@ location identifier for a given section in a document.
 You can specify these section numbers directly in your Markdown documents if you
 wish by writing them directly after the `#` and before the text of the header.
 
-#### 3.2.3.8 Custom Numbers
+#### 3.2.3.8. Custom Numbers
 
 If the section number is written in the document, the last number will be used
 as the number for that section. This is useful when writing a proposal against
@@ -81,7 +81,16 @@ an existing spec and wish to reference a particular section.
 The header for this section was written as
 
 ```
-#### 3.2.3.8 Custom Numbers
+#### 3.2.3.8. Custom Numbers
+```
+
+#### Appendix / Annex Sections
+
+If a top level section is written with a letter, such as `A` instead of a
+number, that will begin an Appendix section.
+
+```
+# A. Appendix: Grammar
 ```
 
 
