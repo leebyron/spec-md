@@ -23,7 +23,6 @@
   "dependencies": {
     "bluebird": "~2.9.0",
     "highlight.js": "^8.4.0",
-    "js-beautify": "^1.5.5",
     "yargs": "^3.6.0"
   },
   "devDependencies": {

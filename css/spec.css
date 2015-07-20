@@ -283,7 +283,7 @@ var {
   content: ':';
   font-style: normal;
   font-weight: bold;
-  margin-left: 1ex;
+  margin: 0 1ex;
 }
 
 .spec-semantic.d2 > .spec-nt::after,
@@ -302,7 +302,6 @@ var {
 
 .spec-oneof {
   display: inline;
-  margin-left: 1ex;
 }
 
 .spec-oneof::before {
