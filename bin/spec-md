@@ -8,7 +8,7 @@ var yargs = require('yargs');
 var argv = yargs
   .usage('Usage: $0 [filepath.md]')
   .option('m', {
-    alias : 'metadata',
+    alias: 'metadata',
     demand: false,
     describe: 'filepath to json metadata',
     type: 'string'

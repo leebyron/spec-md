@@ -2,7 +2,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var Promise = require('bluebird');
 var grammar = require('./grammar');
 var visit = require('./visit');
 
