@@ -3,8 +3,8 @@ var visit = require('./visit');
 
 function print(ast, _options) {
   var options = {};
-  options.highlight = _options ? _options.highlight || highlight : highlight;
-  options.biblio = _options && _options.biblio ? buildBiblio(_options.biblio) : {};
+  options.highlight = _options && _options.highlight || highlight;
+  options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
   assignBiblioIDs(ast, options);
   return (
     '<!DOCTYPE html><html>' +
