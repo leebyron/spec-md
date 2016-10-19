@@ -18,7 +18,7 @@
     "build": "pegjs src/grammar.pegjs && mkdir -p out && cp css/* out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "prepublish": "npm run build",
     "predeploy": "npm run build",
-    "deploy": "(cd out && git init && git config user.name \"Travis CI\" && git config user.email \"lee@leebyron.com\" && git add . && git commit -m \"Deploy to GitHub Pages\" && git push --force --quiet \"https://${GH_TOKEN}@github.com/leebyron/spec-md.git\" master:gh-pages)"
+    "deploy": "(cd out && git init && git config user.name \"Travis CI\" && git config user.email \"lee@leebyron.com\" && git add . && git commit -m \"Deploy to GitHub Pages\" && git push --force --quiet \"https://${GH_TOKEN}@github.com/leebyron/spec-md.git\" master:gh-pages > /dev/null 2>&1)"
   },
   "dependencies": {
     "bluebird": "~2.9.0",

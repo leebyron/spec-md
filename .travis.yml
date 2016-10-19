@@ -5,11 +5,11 @@ language: node_js
 node_js: 6
 
 before_install:
-  - npm config set spin false --global
+- npm config set spin false --global
 
 cache:
   directories:
-    - ~/.npm
+  - ~/.npm
 
 deploy:
   provider: script
@@ -20,4 +20,4 @@ deploy:
 
 env:
   global:
-  - secure: "DREp9PcuZE6OWJPZx68ponPgp1x9HPOV0FMCJ6jhh9VzPhA3Een3+UK6vgn3dPJjK2TdE+DrBhlLEQiaQAkvIi3W1b9zn67357hBDI59VWMmX9rPv/8tke2UFXptzDCKaFrx9qcJ2hTcrSaFe+V6zj8nQZrl7t9DZgF/aKq3sc0="
+  - secure: aZNSHHt/4yEfzPl+L2Q+A7USvwjklv2/3Tyd+w3zipqlTiZDSNeqA0vuiKUvHY0XE/cs54v/1sb0CYopB4lDCRTAH6cB7qi7qaSlBg1wcfs5DhKwPWQC2pJrXmnaUVnVrYlzqcZ1RcpK7AxlUw4QIeMUCDGCkSVCLTYogWPXNYY=
