@@ -53,6 +53,16 @@ Markdown allows for inline stylistic and structual formatting. Inline
 formatting is allowed in paragraphs, list items, and table cells.
 
 
+### Inline HTML
+
+Markdown is not a replacement for HTML and instead leverages HTML by allowing
+its use inline within paragraphs, links, etc.
+
+This code has <blink>blinking</blink> and <em>emphasized</em> formatting.
+
+Markdown syntax can continue to be <u>used *within* inline HTML</u>.
+
+
 ### Links
 
 Use `[ ]` square brackets to indicate linked text followed immediately by `( )`
@@ -126,6 +136,89 @@ TODO: the title attribute is not yet supported
 Markdown allows for block-level structual formatting. Every block is seperated
 by at least two new lines. Spec Markdown makes use of Markdown's blocks to
 produce more specific structural formatting.
+
+
+### Block HTML
+
+Markdown is not a replacement for HTML and instead leverages HTML by allowing
+its use as complete blocks when separated from surrounding content by blank
+lines.
+
+Note: Markdown formatting syntax is not processed within block-level HTML tags.
+
+For example, to add an HTML table to a Markdown article:
+
+```
+Unrelated previous paragraph followed by a blank line
+
+<table>
+<tr>
+<td>Table cell</td>
+<td>
+
+<table>
+<tr>
+<td>*Tables in tables*</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+```
+
+Produces the following:
+
+Unrelated previous paragraph followed by a blank line
+
+<table>
+<tr>
+<td>Table cell</td>
+<td>
+
+<table>
+<tr>
+  <td>*Tables in tables*</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+And using `<pre>` produces a simple code block:
+
+```
+<pre>
+Buffalo Bill ’s
+defunct
+       who used to
+       ride a watersmooth-silver
+                                stallion
+and break onetwothreefourfive pigeonsjustlikethat
+                                                 Jesus
+he was a handsome man
+                     and what i want to know is
+how do you like your blueeyed boy
+Mister Death
+</pre>
+```
+
+Produces the following:
+
+<pre>
+Buffalo Bill ’s
+defunct
+       who used to
+       ride a watersmooth-silver
+                                stallion
+and break onetwothreefourfive pigeonsjustlikethat
+                                                 Jesus
+he was a handsome man
+                     and what i want to know is
+how do you like your blueeyed boy
+Mister Death
+</pre>
 
 
 ### Section Headers
