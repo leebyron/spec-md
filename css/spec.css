@@ -96,6 +96,12 @@ footer {
   padding-left: 2ex;
 }
 
+.spec-toc li {
+  position: relative;
+  padding: 5px 0 0 30px;
+  margin: -5px 0 0 -30px;
+}
+
 .spec-toc a {
   color: #333333;
 }
@@ -110,6 +116,45 @@ footer {
 
 .spec-toc a:hover .spec-secid {
   text-decoration: underline;
+}
+
+.spec-toc .toggle {
+  display: none;
+}
+
+.spec-toc .toggle + label {
+  cursor: pointer;
+  left: 10px;
+  opacity: 1;
+  padding: 3px 5px 3px 6px;
+  position: absolute;
+  position: absolute;
+  top: 8px;
+  transform: rotate(0deg);
+  transition: all 0.18s ease-in-out;
+}
+
+.spec-toc .toggle + label:after {
+  border-color: transparent transparent transparent #bbc;
+  border-style: solid;
+  border-width: 6px 0 6px 7px;
+  content: ' ';
+  display: block;
+  height: 0;
+  width: 0;
+}
+
+.spec-toc .toggle:checked + label {
+  transform: rotate(90deg);
+}
+
+.spec-toc li:not(:hover) > .toggle:checked + label {
+  opacity: 0;
+}
+
+.spec-toc .toggle:not(:checked) ~ ol {
+  max-height: 0;
+  overflow: hidden;
 }
 
 
