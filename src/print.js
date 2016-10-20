@@ -45,7 +45,8 @@ function printBody(ast, options) {
     printContent(ast, options) +
     '<footer>' +
       'Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
-    '</footer>'
+    '</footer>' +
+    printSidebar(ast, options)
   );
 }
 
@@ -194,15 +195,16 @@ function printTOC(ast, options) {
     leave: function (node) {
       if (node.type === 'Section') {
         var subSections = join(node.contents);
+        var secID = join(node.secID, '.');
         return (
           '<li>' +
             '<a href="' + options.biblio[node.id] + '">' +
-              '<span class="spec-secid">' + join(node.secID, '.') + '</span>' +
+              '<span class="spec-secid">' + secID + '</span>' +
               escape(node.title) +
             '</a>' +
             (subSections &&
-              '<input hidden class="toggle" type="checkbox" checked id="_toggle_' + node.id + '" />' +
-              '<label for="_toggle_' + node.id + '"></label>' +
+              '<input hidden class="toggle" type="checkbox" checked id="_toggle_' + secID + '" />' +
+              '<label for="_toggle_' + secID + '"></label>' +
               '<ol>' + subSections + '</ol>') +
           '</li>'
         );
@@ -212,9 +214,53 @@ function printTOC(ast, options) {
   });
 
   return (
-    '<div class="spec-toc"><ol>' +
-      join(items) +
-    '</ol></div>'
+    '<div class="spec-toc">' +
+      '<div class="title">Contents</div>' +
+      '<ol>' + join(items) + '</ol>' +
+    '</div>'
+  );
+}
+
+
+// Sidebar
+
+function printSidebar(ast, options) {
+  var sections = ast.contents.filter(function (content) {
+    return content.type === 'Section';
+  });
+
+  var items = visit(sections, {
+    leave: function (node) {
+      if (node.type === 'Section') {
+        var subSections = join(node.contents);
+        var secID = join(node.secID, '.');
+        return (
+          '<li id="_sidebar_' + secID + '">' +
+            '<a href="' + options.biblio[node.id] + '">' +
+              '<span class="spec-secid">' + join(node.secID, '.') + '</span>' +
+              escape(node.title) +
+            '</a>' +
+            (subSections &&
+              '<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_' + secID + '" />' +
+              '<label for="_sidebar_toggle_' + secID + '"></label>' +
+              '<ol>' + subSections + '</ol>') +
+          '</li>'
+        );
+      }
+      return '';
+    }
+  });
+
+  return (
+    '<input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden />' +
+    '<label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label>' +
+    '<div class="spec-sidebar" aria-hidden>' +
+      '<div class="spec-toc">' +
+        '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>' +
+        '<ol>' + join(items) + '</ol>' +
+      '</div>' +
+      '<script>' + SIDEBAR_JS + '</script>' +
+    '</div>'
   );
 }
 
@@ -246,7 +292,7 @@ function printAll(list, options) {
           var level = node.secID.length + 1;
           var secID = join(node.secID, '.');
           return (
-            '<section id="' + node.id + '">' +
+            '<section id="' + node.id + '" secid="' + secID + '">' +
               '<h' + level + '>' +
               '<span class="spec-secid" title="link to this section">' +
                 '<a href="' + options.biblio[node.id] + '">' + secID + '</a>' +
@@ -577,3 +623,62 @@ function formatText(text) {
     .replace(/'/g, '\u2019')
   );
 }
+
+var SIDEBAR_JS = `
+(function () {
+var currentSection;
+var numberedSections = [];
+
+var sections = document.getElementsByTagName('section');
+for (var i = 0; i < sections.length; i++) {
+  if (sections[i].getAttribute('secid')) {
+    numberedSections.push(sections[i]);
+  }
+}
+
+var scrollPos = window.scrollY;
+var pending = false;
+window.addEventListener('scroll', function (e) {
+  scrollPos = window.scrollY;
+  if (!pending) {
+    pending = true;
+    window.requestAnimationFrame(function () {
+      updateSectionFocus(scrollPos);
+      pending = false;
+    });
+  }
+});
+
+function updateSectionFocus(pos) {
+  var readLine = pos + document.documentElement.clientHeight / 4;
+
+  var focusedSection;
+  for (var n = numberedSections.length - 1; n >= 0; n--) {
+    if (numberedSections[n].offsetTop < readLine) {
+      focusedSection = numberedSections[n];
+      break;
+    }
+  }
+
+  var secid = focusedSection && focusedSection.getAttribute('secid');
+  if (secid !== currentSection) {
+    currentSection && fold(currentSection, false);
+    secid && fold(secid, true);
+    currentSection = secid;
+  }
+}
+
+function fold(secid, check) {
+  document.getElementById('_sidebar_' + secid).className = check ? 'viewing' : '';
+  var sections = secid.split('.');
+  while (sections.length) {
+    var toggle = document.getElementById('_sidebar_toggle_' + sections.join('.'));
+    if (toggle) {
+      toggle.checked = check;
+    }
+    sections.pop();
+  }
+}
+
+updateSectionFocus(window.scrollY);
+})();`;
