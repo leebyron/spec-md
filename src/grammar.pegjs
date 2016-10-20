@@ -11,6 +11,10 @@
     });
     return list;
   }
+
+  var htmlBlockName;
+
+  var BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
 }
 
 // Document
@@ -105,6 +109,7 @@ sectionContent = note
                / table
                / list
                / blockEdit
+               / htmlBlock
                / paragraph
 
 
@@ -144,6 +149,37 @@ blockDel = BLOCK '{--' &BLOCK contents:sectionContent* BLOCK '--}' &(BLOCK / EOF
     contents: contents
   };
 }
+
+
+// HTML Block
+
+htmlBlock = BLOCK html:$(
+  name:tagOpen &{
+    if (BLOCK_TAGS_RX.test(name)) {
+      htmlBlockName = name;
+      return true;
+    }
+  }
+  htmlContent*
+  close:tagClose &{ return htmlBlockName === close; }
+) {
+  return {
+    type: 'HTMLBlock',
+    name: htmlBlockName,
+    html: html
+  };
+}
+
+htmlContent = [^<]+
+            / inner:tagOpen &{ return htmlBlockName === inner; }
+              htmlContent*
+              close:tagClose &{ return htmlBlockName === close; }
+            / open:tagOpen &{ return htmlBlockName !== open; }
+            / close:tagClose &{ return htmlBlockName !== close; }
+            / !tagClose '<'
+
+tagOpen = '<' name:$[a-z]+ $[^>]* '>' { return name; }
+tagClose = '</' name:$[a-z]+ '>' { return name; }
 
 
 // Paragraph

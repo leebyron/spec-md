@@ -161,7 +161,7 @@ pre code {
 
 pre {
   background: #FAFAFA;
-  display: table;
+  display: inline-block;
   margin: 0 -1em;
   min-width: 40ch;
   padding: 1ex 1em;

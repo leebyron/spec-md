@@ -300,6 +300,9 @@ function printAll(list, options) {
         case 'Todo':
           return '<div class="spec-todo">' + join(node.contents) + '</div>';
 
+        case 'HTMLBlock':
+          return node.html;
+
         case 'HTMLTag':
           return node.tag;
 
