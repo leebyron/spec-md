@@ -5,6 +5,7 @@ function print(ast, _options) {
   var options = {};
   options.highlight = _options && _options.highlight || highlight;
   options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
+  validateSecIDs(ast, options);
   assignBiblioIDs(ast, options);
   return (
     '<!DOCTYPE html><html>' +
@@ -62,6 +63,51 @@ function buildBiblio(ref) {
     });
   });
   return biblio;
+}
+
+function validateSecIDs(ast, options) {
+  var sectionIDPart = 0;
+  var sectionIDStack = [];
+
+  var items = visit(ast, {
+    enter: function (node) {
+      if (node.type === 'Section') {
+        if (node.secID) {
+          var nextIDPart = node.secID[node.secID.length - 1];
+          var nextIsLetter = IS_LETTER_RX.test(nextIDPart);
+          if (nextIDPart === '*') {
+            throw new Error('Not yet supported');
+          } else if (!nextIsLetter) {
+            nextIDPart = parseInt(nextIDPart, 10);
+          }
+          if (!nextIsLetter && IS_LETTER_RX.test(sectionIDPart)) {
+            throw new Error(
+              'Cannot change to numbered section ' + nextIDPart +
+              ' after lettered section ' + sectionIDPart
+            );
+          } else if (!nextIsLetter && nextIDPart <= sectionIDPart) {
+            throw new Error(
+              'Cannot change to section number ' + nextIDPart +
+              ' which would be earlier than ' + nextSecID(sectionIDPart)
+            );
+          }
+          sectionIDPart = nextIDPart;
+        } else {
+          sectionIDPart = nextSecID(sectionIDPart);
+        }
+        sectionIDStack.push(sectionIDPart);
+        sectionIDPart = 0;
+        // Copy the validatd secID stack at this point.
+        node.secID = sectionIDStack.slice();
+      }
+    },
+    leave: function (node) {
+      if (node.type === 'Section') {
+        sectionIDPart = sectionIDStack.pop();
+      }
+      return '';
+    }
+  });
 }
 
 function assignBiblioIDs(ast, options) {
@@ -140,50 +186,18 @@ function nextSecID(id) {
 // Table of Contents
 
 function printTOC(ast, options) {
-  var sectionIDPart = 0;
-  var sectionIDStack = [];
-
   var sections = ast.contents.filter(function (content) {
     return content.type === 'Section';
   });
 
   var items = visit(sections, {
-    enter: function (node) {
-      if (node.type === 'Section') {
-        if (node.secID) {
-          var nextIDPart = node.secID[node.secID.length - 1];
-          var nextIsLetter = IS_LETTER_RX.test(nextIDPart);
-          if (nextIDPart === '*') {
-            throw new Error('Not yet supported');
-          } else if (!nextIsLetter) {
-            nextIDPart = parseInt(nextIDPart, 10);
-          }
-          if (!nextIsLetter && IS_LETTER_RX.test(sectionIDPart)) {
-            throw new Error(
-              'Cannot change to numbered section ' + nextIDPart +
-              ' after lettered section ' + sectionIDPart
-            );
-          } else if (!nextIsLetter && nextIDPart <= sectionIDPart) {
-            throw new Error(
-              'Cannot change to section number ' + nextIDPart +
-              ' which would be earlier than ' + nextSecID(sectionIDPart)
-            );
-          }
-          sectionIDPart = nextIDPart;
-        } else {
-          sectionIDPart = nextSecID(sectionIDPart);
-        }
-        sectionIDStack.push(sectionIDPart);
-        sectionIDPart = 0;
-      }
-    },
     leave: function (node) {
       if (node.type === 'Section') {
         var subSections = join(node.contents);
-        var printed = (
+        return (
           '<li>' +
             '<a href="' + options.biblio[node.id] + '">' +
-              '<span class="spec-secid">' + join(sectionIDStack, '.') + '</span>' +
+              '<span class="spec-secid">' + join(node.secID, '.') + '</span>' +
               escape(node.title) +
             '</a>' +
             (subSections &&
@@ -192,8 +206,6 @@ function printTOC(ast, options) {
               '<ol>' + subSections + '</ol>') +
           '</li>'
         );
-        sectionIDPart = sectionIDStack.pop();
-        return printed;
       }
       return '';
     }
@@ -227,46 +239,12 @@ function printContent(doc, options) {
 }
 
 function printAll(list, options) {
-  var sectionIDPart = 0;
-  var sectionIDStack = [];
-
   return join(visit(list, {
-    enter: function (node) {
-      if (node.type === 'Section') {
-        if (node.secID) {
-          var nextIDPart = node.secID[node.secID.length - 1];
-          var nextIsLetter = IS_LETTER_RX.test(nextIDPart);
-          if (nextIDPart === '*') {
-            throw new Error('Not yet supported');
-          } else if (!nextIsLetter) {
-            nextIDPart = parseInt(nextIDPart, 10);
-          }
-          if (!nextIsLetter &&  IS_LETTER_RX.test(sectionIDPart)) {
-            throw new Error(
-              'Cannot change to numbered section ' + nextIDPart +
-              ' after lettered section ' + sectionIDPart
-            );
-          } else if (!nextIsLetter && nextIDPart <= sectionIDPart) {
-            throw new Error(
-              'Cannot change to section number ' + nextIDPart +
-              ' which would be earlier than ' + (sectionIDPart+1)
-            );
-          }
-          sectionIDPart = nextIDPart;
-        } else {
-          sectionIDPart = nextSecID(sectionIDPart);
-        }
-        sectionIDStack.push(sectionIDPart);
-        sectionIDPart = 0;
-      }
-    },
-
     leave: function (node) {
       switch (node.type) {
         case 'Section':
-          var level = sectionIDStack.length + 1;
-          var secID = join(sectionIDStack, '.');
-          sectionIDPart = sectionIDStack.pop();
+          var level = node.secID.length + 1;
+          var secID = join(node.secID, '.');
           return (
             '<section id="' + node.id + '">' +
               '<h' + level + '>' +
