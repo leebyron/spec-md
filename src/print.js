@@ -187,7 +187,7 @@ function printTOC(ast, options) {
               escape(node.title) +
             '</a>' +
             (subSections &&
-              '<input class="toggle" type="checkbox" checked id="_toggle_' + node.id + '" />' +
+              '<input hidden class="toggle" type="checkbox" checked id="_toggle_' + node.id + '" />' +
               '<label for="_toggle_' + node.id + '"></label>' +
               '<ol>' + subSections + '</ol>') +
           '</li>'
