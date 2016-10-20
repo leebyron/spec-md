@@ -186,7 +186,10 @@ function printTOC(ast, options) {
               '<span class="spec-secid">' + join(sectionIDStack, '.') + '</span>' +
               escape(node.title) +
             '</a>' +
-            (subSections ? '<ol>' + subSections + '</ol>' : subSections) +
+            (subSections &&
+              '<input class="toggle" type="checkbox" checked id="_toggle_' + node.id + '" />' +
+              '<label for="_toggle_' + node.id + '"></label>' +
+              '<ol>' + subSections + '</ol>') +
           '</li>'
         );
         sectionIDPart = sectionIDStack.pop();
