@@ -3,31 +3,39 @@
 var fs = require('fs');
 var path = require('path');
 var specmd = require('../');
-var yargs = require('yargs');
 
-var argv = yargs
-  .usage('Usage: $0 [filepath.md]')
-  .option('m', {
-    alias: 'metadata',
-    demand: false,
-    describe: 'filepath to json metadata',
-    type: 'string'
-  })
-  .require(1, 'Must provide markdown filepath.')
-  .string(1)
-  .argv;
+var filepath;
+var metadata;
+for (var i = 2; i < process.argv.length; i++) {
+  if (process.argv[i] === '-m' || process.argv[i] === '--metadata') {
+    metadata = process.argv[++i];
+  } else if (process.argv[i][0] === '-') {
+    errorExit('Unknown argument: ' + process.argv[i]);
+  } else if (!filepath) {
+    filepath = process.argv[i];
+  } else {
+    errorExit('Must provide only one markdown file.');
+  }
+}
 
-var absPath = path.resolve(process.cwd(), argv._[0]);
+if (!filepath) {
+  errorExit(
+    'Usage: spec-md initial-file.md\n\n' +
+    'Options:\n' +
+    '  -m, --metadata  filepath to json metadata'
+  );
+}
 
-var metaPath = argv.m ? path.resolve(process.cwd(), argv.m) : null;
-options = metaPath ? require(metaPath) : {};
+var options = metadata ? require(path.resolve(process.cwd(), metadata)) : {};
+var absPath = path.resolve(process.cwd(), filepath);
 
 specmd.html(absPath, options).then(function (html) {
   process.stdout.write(html);
 }).catch(function (error) {
-  process.stderr.write(
-    error.line ? error.message : (error.stack || error) +
-    '\n'
-  );
-  process.exit(1);
+  errorExit(error.line ? error.message : (error.stack || error));
 });
+
+function errorExit(msg) {
+  process.stderr.write(msg + '\n');
+  process.exit(1);
+}

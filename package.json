@@ -21,8 +21,7 @@
     "deploy": "(cd out && git init && git config user.name \"Travis CI\" && git config user.email \"lee@leebyron.com\" && git add . && git commit -m \"Deploy to GitHub Pages\" && git push --force --quiet \"https://${GH_TOKEN}@github.com/leebyron/spec-md.git\" master:gh-pages > /dev/null 2>&1)"
   },
   "dependencies": {
-    "highlight.js": "^9.7.0",
-    "yargs": "^6.2.0"
+    "highlight.js": "^9.7.0"
   },
   "devDependencies": {
     "pegjs": "~0.8.0"
