@@ -565,12 +565,9 @@ emptyToken = '[' _ 'empty' _ ']' {
   };
 }
 
-lookahead = '[' _ 'lookahead' _ not:'!'? _ set:(lookaheadSet/lookaheadItem)? _ closer:']'? {
+lookahead = '[' _ 'lookahead' _ not:('!=' / '!')? _ set:(lookaheadSet/lookaheadItem)? _ closer:']' {
   if (set === null) {
     error('Malformed lookahead. Did you forget tokens?');
-  }
-  if (closer === null) {
-    error('Malformed lookahead. Did you forget a space after the token?');
   }
   return {
     type: 'Lookahead',
@@ -581,7 +578,7 @@ lookahead = '[' _ 'lookahead' _ not:'!'? _ set:(lookaheadSet/lookaheadItem)? _ c
 
 lookaheadSet = '{' set:((_ !'}' token _ ','?)+)? _ closer:'}'? {
   if (set === null || closer === null) {
-    error('Malformed lookahead set.');
+    error('Malformed lookahead set. Did you forget tokens?');
   }
   return set.map(function (nodes) { return nodes[2]; });
 }
@@ -646,7 +643,7 @@ quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
   };
 }
 
-terminal = value:$([^ \n"/`] [^ \n"\`,]*) {
+terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
   return {
     type: 'Terminal',
     value: value

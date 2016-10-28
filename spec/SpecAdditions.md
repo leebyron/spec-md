@@ -499,7 +499,8 @@ WhileStatement : while ( Expression ) { Statements }
 
 Terminals can also be quoted with back-ticks <code>\`</code> to remove any
 ambiguity from other meanings, for example to allow a terminal token to start
-with an uppercase letter, or a slash / or backslash \\.
+with an uppercase letter, or a slash `/` or backslash `\`, or later
+contain a `]` or `}`.
 
 ```
 DivisionExpression : Expression `/` Expression
@@ -768,24 +769,26 @@ Example : [empty]
 Lookaheads can appear anywhere in a sequence of tokens, and describe additional
 constraints on the following token.
 
-When specifying tokens in a lookahead, it's important to remember to have
-whitespace on either side of the token.
-
 ```
 Example :
-  - [lookahead token ] Token
-  - [lookahead ! token ] Token
-  - [lookahead { token, set }] Token
-  - [lookahead ! { token, set }] Token
+  - [lookahead token] Token
+  - [lookahead ! token] Token
+  - [lookahead != token] Token
+  - [lookahead {token, set}] Token
+  - [lookahead ! {token, set}] Token
+  - [lookahead != {token, set}] Token
 ```
 
 Produces the following:
 
 Example :
-  - [lookahead token ] Token
-  - [lookahead ! token ] Token
-  - [lookahead { token, set }] Token
-  - [lookahead ! { token, set }] Token
+  - [lookahead token] Token
+  - [lookahead ! token] Token
+  - [lookahead != token] Token
+  - [lookahead {token, set}] Token
+  - [lookahead {token, set}] Token
+  - [lookahead ! {token, set}] Token
+  - [lookahead != {token, set}] Token
 
 
 
