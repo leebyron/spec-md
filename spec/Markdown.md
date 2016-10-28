@@ -120,12 +120,12 @@ Todo: Markdown's double-back-tick syntax is not yet supported.
 ### Images
 
 ```
-![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
+![Specs](http://i.imgur.com/aV8o3rE.png)
 ```
 
 Produces the following:
 
-![Specs](http://stmcoatech.com/Admin/Welding/d639c91b-f07b-4629-83fd-a00739c21b57.jpg)
+![Specs](http://i.imgur.com/aV8o3rE.png)
 
 TODO: the title attribute is not yet supported
 
