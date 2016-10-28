@@ -152,22 +152,6 @@ Produces the following:
 Table cells can contain any content that a paragraph can contain.
 
 
-## Todo
-
-It's often helpful to write a draft of a document and leave "to-do" comments in
-not-yet-completed sections. Case insensitive, the `:` is optional.
-
-```
-TODO: finish this section
-```
-
-Produces the following:
-
-TODO: finish this section
-
-You can also write `TK` in place of `TODO`.
-
-
 ## Note
 
 Notes can be written inline with a spec document, and are often helpful to
@@ -182,6 +166,21 @@ Produces the following:
 
 Note: Notes are awesome.
 
+
+## Todo
+
+It's often helpful to write a draft of a document and leave "to-do" comments in
+not-yet-completed sections. Case insensitive, the `:` is optional.
+
+```
+TODO: finish this section
+```
+
+Produces the following:
+
+TODO: finish this section
+
+Note: You can also write `TK` in place of `TODO`, nerds.
 
 
 ## Syntax Highlighting
