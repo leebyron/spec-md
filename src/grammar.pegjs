@@ -302,7 +302,7 @@ indentCodeLine = depth:LINE code:$NOT_NL+ {
 
 // Link & Image
 
-link = '[' contents:linkContent* '](' _ url:$[^)\n\r]+ _ ')' {
+link = '[' contents:linkContent* '](' _ url:$[^)]+ _ ')' {
   return {
     type: 'Link',
     contents: contents,
@@ -328,7 +328,7 @@ linkText = value:$linkTextChar+ {
   };
 }
 
-image = '![' alt:$[^\]\n\r]+ '](' _ url:$[^)\n\r]+ _ ')' {
+image = '![' alt:$[^\]]+ '](' _ url:$[^)]+ _ ')' {
   return {
     type: 'Image',
     alt: alt,
