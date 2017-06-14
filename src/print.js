@@ -523,7 +523,13 @@ function printAll(list, options) {
           return '<span class="spec-rx">' + escape(node.value) + '</span>';
 
         case 'Terminal':
-          return '<span class="spec-t">' + escape(node.value) + '</span>';
+          var mods = (
+            (node.isOptional ? '<span class="spec-mod optional">opt</span>' : '')
+          );
+          return (
+            '<span class="spec-t">' + escape(node.value) + '</span>' +
+            (mods ? '<span class="spec-mods">' + mods + '</span>' : '')
+          );
 
         default:
           throw new Error('Unknown AST node: ' + node.type + ' ' + node);
