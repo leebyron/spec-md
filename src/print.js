@@ -524,6 +524,7 @@ function printAll(list, options) {
 
         case 'Terminal':
           var mods = (
+            (node.isList ? '<span class="spec-mod list">list</span>' : '') +
             (node.isOptional ? '<span class="spec-mod optional">opt</span>' : '')
           );
           return (

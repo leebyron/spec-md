@@ -528,7 +528,7 @@ UppercaseWord : /[A-Z][a-z]*/
 
 ### Quantifiers
 
-Non-terminal tokens can be followed by quantifiers to alter their meaning and
+Quoted-terminal and Non-terminal tokens can be followed by quantifiers to alter their meaning and
 as a short-hand for common patterns.
 
 
@@ -550,6 +550,23 @@ Which is shorthand for:
 Sentence :
   - Noun Verb
   - Noun Verb Adverb
+
+
+AND
+
+```
+UnionMembers :
+  - `|`? NamedType
+  - UnionMembers | NamedType
+```
+
+Produces the following:
+
+UnionMembers :
+  - `|`? NamedType
+  - UnionMembers | NamedType
+
+Which is shorthand for a list of separated `NamedType` joined with `|` and an optional leading `|` 
 
 
 **Token Lists**

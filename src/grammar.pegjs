@@ -633,22 +633,22 @@ regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
   };
 }
 
-quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' quantifier:('?')? {
+quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' quantifier:('+' / '?' / '*')? {
   if (value === null || closer === null) {
     error('Malformed quoted terminal');
   }
   return {
     type: 'Terminal',
     value: value,
-    isOptional: quantifier === '?'
+    isList: quantifier === '+' || quantifier === '*',
+    isOptional: quantifier === '?' || quantifier === '*'
   };
 }
 
-terminal = value:$(([^ ?\n"/`] [^ ?\n"\`,\]\}]*)) quantifier:('?')? {
+terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
   return {
     type: 'Terminal',
-    value: value,
-    isOptional: quantifier === '?'
+    value: value
   };
 }
 
