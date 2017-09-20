@@ -541,13 +541,15 @@ condition = '[' condition:('+' / '~') param:paramName ']' {
   };
 }
 
-token = token:(prose / emptyToken / lookahead / nonTerminal / regexp / quotedTerminal / terminal) _ constraint:constraint? _ {
+token = token:unconstrainedToken _ constraint:constraint? _ {
   return !constraint ? token : {
     type: 'Constrained',
     token: token,
     constraint: constraint
   };
 }
+
+unconstrainedToken = prose / emptyToken / lookahead / nonTerminal / regexp / quotedTerminal / terminal
 
 prose = '"' text:$([^"\n\r]/'\\"')* closer:'"'? {
   if (closer === null) {
