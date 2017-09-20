@@ -635,13 +635,15 @@ regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
   };
 }
 
-quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
+quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' quantifier:('+' / '?' / '*')? {
   if (value === null || closer === null) {
     error('Malformed quoted terminal');
   }
   return {
     type: 'Terminal',
-    value: value
+    value: value,
+    isList: quantifier === '+' || quantifier === '*',
+    isOptional: quantifier === '?' || quantifier === '*'
   };
 }
 
