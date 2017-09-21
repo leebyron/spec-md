@@ -1,4 +1,4 @@
-var hljs = require('highlight.js');
+var prism = require('./prism');
 var visit = require('./visit');
 
 function print(ast, _options) {
@@ -20,7 +20,7 @@ module.exports = print;
 
 function highlight(code, lang) {
   try {
-    return lang ? hljs.highlight(lang, code).value : escapeCode(code);
+    return lang ? prism.highlight(code, prism.languages[lang]) : escapeCode(code);
   } catch (error) {
     return escapeCode(code);
   }
@@ -31,7 +31,7 @@ function printHead(ast) {
     '<meta charset="utf-8">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>' +
     '<link href="spec.css" rel="stylesheet">' +
-    '<link href="highlight.css" rel="stylesheet">'
+    '<link href="prism.css" rel="stylesheet">'
   );
 }
 
