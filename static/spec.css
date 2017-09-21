@@ -227,10 +227,12 @@ footer {
 .spec-note {
   background: #FEFEF3;
   border-left: solid 4px #F4E925;
-  display: inline-block;
-  margin: 0 -1em;
-  min-width: 40ch;
+  margin: 1em -1em;
+  min-width: 416px;
   padding: 1ex 1em 1ex calc(1em - 4px);
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
 }
 
 .spec-note::before {
@@ -295,10 +297,12 @@ pre code {
 pre {
   background: #FAFAFA;
   border-left: solid 4px #E9E9E9;
-  display: inline-block;
-  margin: 0 -1em;
+  margin: 1em -1em;
   min-width: 40ch;
   padding: 1ex 1em 1ex calc(1em - 4px);
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
 }
 
 .spec-example {
