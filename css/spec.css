@@ -1,7 +1,7 @@
 body {
   color: #333333;
   font: 13pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
-  margin: 6rem auto 12rem;
+  margin: 6rem auto 3rem;
   max-width: 780px;
 }
 
@@ -63,9 +63,8 @@ section .spec-secid {
 footer {
   font-size: 75%;
   opacity: 0.5;
-  position: relative;
   text-align: center;
-  top: 10rem;
+  margin-top: 12rem;
 }
 
 
@@ -248,6 +247,19 @@ footer {
   content: 'todo';
 }
 
+/* Index table */
+
+.spec-index ol {
+  list-style-type: none;
+  margin: 0 0 0 2rem;
+  padding: 0;
+  column-width: 210px;
+  column-gap: 2rem;
+}
+
+.spec-index ol li {
+  width: min-content;
+}
 
 /* Code */
 
