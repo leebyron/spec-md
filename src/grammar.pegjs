@@ -278,14 +278,22 @@ inlineCode = '`' code:$[^`\n\r]+ '`' {
   };
 }
 
-blockCode = BLOCK '```' counter:'!'? lang:($NOT_NL+)? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' {
+blockCode = BLOCK '```' deprecatedCounterExample:'!'? lang:codeLang? _ example:('example'/'counter-example')? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' {
   // dedent codeblock by current indent level?
+  if (deprecatedCounterExample) {
+    console.warn(line() + ':' + column() + ': Use of `!` is deprecated, use `counter-example` instead.');
+  }
   return {
     type: 'Code',
-    counter: counter !== null,
     lang: lang,
+    example: example !== null,
+    counter: example === 'counter-example' || deprecatedCounterExample !== null,
     code: code
   };
+}
+
+codeLang = !('example'/'counter-example') lang:$([a-z][-a-z0-9]*) {
+  return lang;
 }
 
 indentCode = DEEP_INDENT code:(indentCodeLine+)? DEDENT &{ return code !== null } {

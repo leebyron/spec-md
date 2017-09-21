@@ -221,30 +221,42 @@ footer {
   }
 }
 
-/* Notes and Todos */
 
-.spec-note,
+/* Notes */
+
+.spec-note {
+  background: #FEFEF3;
+  border-left: solid 4px #F4E925;
+  display: inline-block;
+  margin: 0 -1em;
+  min-width: 40ch;
+  padding: 1ex 1em 1ex calc(1em - 4px);
+}
+
+.spec-note::before {
+  color: #6C6613;
+  content: 'Note';
+  display: block;
+  font: italic 11pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
+  opacity: 0.6;
+  user-select: none;
+}
+
+
+/* Todos */
+
 .spec-todo {
   color: #666666;
   margin: 1em 0 1em 5em;
   min-height: 1em;
 }
 
-.spec-note::before,
 .spec-todo::before {
-  content: 'note';
+  content: 'todo';
   display: block;
   float: left;
   margin-left: -5em;
   text-transform: uppercase;
-}
-
-.spec-note::before {
-  content: 'note';
-}
-
-.spec-todo::before {
-  content: 'todo';
 }
 
 /* Index table */
@@ -282,15 +294,33 @@ pre code {
 
 pre {
   background: #FAFAFA;
+  border-left: solid 4px #E9E9E9;
   display: inline-block;
   margin: 0 -1em;
   min-width: 40ch;
-  padding: 1ex 1em;
+  padding: 1ex 1em 1ex calc(1em - 4px);
+}
+
+.spec-example {
+  background: #FAFAFF;
+  border-left: solid 4px #BBBBFF;
 }
 
 .spec-counter-example {
   background: #FFFAFA;
-  border-top: solid 2px #FF9999;
+  border-left: solid 4px #FFBBBB;
+}
+
+.spec-example > a,
+.spec-counter-example > a {
+  display: block;
+  font: italic 11pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.spec-counter-example > a {
+  color: #98593b;
 }
 
 

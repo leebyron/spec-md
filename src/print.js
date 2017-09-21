@@ -1,3 +1,4 @@
+var crypto = require('crypto');
 var fs = require('fs');
 var path = require('path');
 var prism = require('prismjs');
@@ -8,6 +9,7 @@ function print(ast, _options) {
   options.highlight = _options && _options.highlight || highlight;
   options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
   validateSecIDs(ast, options);
+  assignExampleNumbers(ast, options);
   assignBiblioIDs(ast, options);
   return (
     '<!DOCTYPE html>\n' +
@@ -166,6 +168,17 @@ function validateSecIDs(ast, options) {
   });
 }
 
+function assignExampleNumbers(ast, options) {
+  var exampleNum = 1;
+  visit(ast, {
+    enter(node) {
+      if (node.type === 'Code' && node.example) {
+        node.number = exampleNum++;
+      }
+    }
+  });
+}
+
 function assignBiblioIDs(ast, options) {
   var secnames = {};
   var conflicts = {};
@@ -204,6 +217,14 @@ function assignBiblioIDs(ast, options) {
       }
       if (node.type === 'Production' || node.type === 'OneOfProduction') {
         var id = anchorize(node.token.name);
+        if (!options.biblio[id]) {
+          options.biblio[id] = '#' + id;
+        }
+        node.id = id;
+      }
+      if (node.type === 'Code' && node.example) {
+        var hash = stableCodeHash(node.code);
+        var id = anchorize('example-' + hash);
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
@@ -405,8 +426,11 @@ function printAll(list, options) {
         case 'Code':
           return (
             '<pre' +
-              (node.counter ? ' class="spec-counter-example"' : '') +
-            '><code>' +
+              (node.id ? ' id="' + node.id + '"' : '') +
+              (node.counter ? ' class="spec-counter-example"' : node.example ? ' class="spec-example"' : '') +
+            '>' +
+            (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
+            '<code>' +
               options.highlight(node.code, node.lang) +
             '</code></pre>'
           );
@@ -757,4 +781,9 @@ function formatText(text) {
 
 function readStatic(filename) {
   return fs.readFileSync(path.join(__dirname, '../static/', filename));
+}
+
+function stableCodeHash(code) {
+  var trimmedCode = code.split(/(\n|\r|\r\n)/).map(line => line.trim()).join('\n');
+  return crypto.createHash('md5').update(trimmedCode).digest('hex').slice(0, 5);
 }

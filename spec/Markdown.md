@@ -259,13 +259,13 @@ Mister Death
 Regular Markdown supports two styles of headers, Setext and atx, however Spec
 Markdown generally only supports atx style headers.
 
-```
+```example
 # Header
 ```
 
 Setext headers are not supported by Spec Markdown.
 
-```!
+```counter-example
 Header
 ------
 ```
@@ -292,7 +292,7 @@ unordered bullet, `*`, `-`, or `+`. Lists are optionally indented by two spaces.
 
 Lists can be nested within other lists by indenting by at least two spaces.
 
-```
+```example
   1. this
   2. is
   3. a

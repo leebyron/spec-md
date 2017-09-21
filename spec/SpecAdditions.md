@@ -47,7 +47,7 @@ Markdown only supports atx style headers as section headers.
 
 Only use Setext style headers for the title of the document.
 
-```!
+```markdown counter-example
 Header
 ------
 ```
@@ -202,20 +202,49 @@ Produces the following:
 var baz = foo("bar");
 ```
 
+### Examples
+
+Spec Markdown helps you write examples, visually indicaticating the difference
+from normative code blocks, and generating permalinks to those examples. Just
+write `example` after the <code>\`\`\`</code>.
+
+    ```example
+    var great = useOf.example("code");
+    ```
+
+Produces the following:
+
+```example
+var great = useOf.example("code");
+```
+
+Examples can also be syntax highlighted, by placing the language directly before
+writing `example`:
+
+    ```js example
+    var great = useOf.example("code");
+    ```
+
+Produces the following:
+
+```js example
+var great = useOf.example("code");
+```
 
 ### Counter Examples
 
-Spec Markdown helps you write counter-examples and visually indicate the
-difference from other code blocks. Just write `!` after the <code>\`\`\`</code>
-and before the language.
+In addition to examples, Spec Markdown helps you write *counter-examples*, which
+are examples of things you should not do. These are visually indicated as
+different from normative code blocks and other examples. Just write
+`counter-example` after the <code>\`\`\`</code> (and optional language).
 
-    ```!js
+    ```js counter-example
     var shit = dontSwear();
     ```
 
 Produces the following:
 
-```!js
+```js counter-example
 var shit = dontSwear();
 ```
 
@@ -626,7 +655,7 @@ UnionMembers :
 However, unquoted non-terminals may use the `*`, `?` and `+` characters, so
 always quote the terminal if the intent is to apply a quantifer.
 
-```!markdown
+```markdown counter-example
 UnionMembers :
   - |? NamedType
   - UnionMembers | NamedType
