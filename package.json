@@ -31,8 +31,8 @@
   },
   "files": [
     "bin",
-    "css",
     "src",
+    "static",
     "LICENSE"
   ],
   "keywords": [
