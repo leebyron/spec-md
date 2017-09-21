@@ -1,4 +1,6 @@
-var hljs = require('highlight.js');
+var fs = require('fs');
+var path = require('path');
+var prism = require('prismjs');
 var visit = require('./visit');
 
 function print(ast, _options) {
@@ -19,10 +21,61 @@ function print(ast, _options) {
 module.exports = print;
 
 function highlight(code, lang) {
+  var prismLang = getPrismLanguage(lang);
   try {
-    return lang ? hljs.highlight(lang, code).value : escapeCode(code);
+    return prismLang ? prism.highlight(code, prismLang) : escapeCode(code);
   } catch (error) {
     return escapeCode(code);
+  }
+}
+
+function getPrismLanguage(lang) {
+  if (!lang) {
+    return lang;
+  }
+  // If this language isn't in the list, it might not be loaded yet.
+  if (!prism.languages[lang]) {
+    loadAllLanguages();
+  }
+  return prism.languages[lang];
+}
+
+// Unfortuantely, Prism does not export all of its languages by default, so
+// this function does so. Its memoized so it is only executed once.
+var hasLoadedAllLanguages;
+function loadAllLanguages() {
+  hasLoadedAllLanguages = true;
+
+  // Find all language components.
+  var componentsDir = path.join(path.dirname(require.resolve('prismjs')), 'components');
+  var blacklist = /\.min\.js$/;
+  var extendsLang = /languages\.extend\('(.+?)'/;
+  var langPaths = {};
+  fs.readdirSync(componentsDir)
+    .forEach(filepath => {
+      if (!blacklist.test(filepath)) {
+        var lang = filepath.slice(6, -3);
+        if (lang !== 'core') {
+          langPaths[lang] = path.join(componentsDir, filepath);
+        }
+      }
+    });
+
+  // Load every language into Prism.
+  Object.keys(langPaths).forEach(loadLanguage);
+
+  // Load extended dependencies first.
+  function loadLanguage(lang) {
+    if (prism.languages[lang]) {
+      return;
+    }
+    var langPath = langPaths[lang];
+    var source = fs.readFileSync(langPath, 'utf8');
+    var extendLangMatch = source.match(extendsLang);
+    if (extendLangMatch) {
+      loadLanguage(extendLangMatch[1]);
+    }
+    require(langPath);
   }
 }
 
@@ -31,7 +84,7 @@ function printHead(ast) {
     '<meta charset="utf-8">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>' +
     '<link href="spec.css" rel="stylesheet">' +
-    '<link href="highlight.css" rel="stylesheet">'
+    '<link href="prism.css" rel="stylesheet">'
   );
 }
 
