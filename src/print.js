@@ -223,11 +223,12 @@ function assignBiblioIDs(ast, options) {
         node.id = id;
       }
       if (node.type === 'Code' && node.example) {
-        var hash = stableCodeHash(node.code);
-        var id = anchorize('example-' + hash);
-        if (!options.biblio[id]) {
-          options.biblio[id] = '#' + id;
-        }
+        var hashSize = 5;
+        do {
+          var hash = stableCodeHash(node.code, hashSize++);
+          var id = anchorize('example-' + hash);
+        } while (options.biblio[id]);
+        options.biblio[id] = '#' + id;
         node.id = id;
       }
     },
@@ -783,7 +784,7 @@ function readStatic(filename) {
   return fs.readFileSync(path.join(__dirname, '../static/', filename));
 }
 
-function stableCodeHash(code) {
+function stableCodeHash(code, size) {
   var trimmedCode = code.split(/(\n|\r|\r\n)/).map(line => line.trim()).join('\n');
-  return crypto.createHash('md5').update(trimmedCode).digest('hex').slice(0, 5);
+  return crypto.createHash('md5').update(trimmedCode).digest('hex').slice(0, size);
 }
