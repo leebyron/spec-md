@@ -51,8 +51,6 @@ specMarkdown.html('./path/to/markdown.md').then(function (html) {
 });
 ```
 
-Don't forget to copy CSS files from this library's `css/` directory.
-
 Spec Markdown also provides utilities for generating and operating on an
 intermediate representation of the markdown, which you can explore in
 [Using Spec Markdown](#using-spec-markdown).

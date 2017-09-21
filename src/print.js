@@ -10,11 +10,12 @@ function print(ast, _options) {
   validateSecIDs(ast, options);
   assignBiblioIDs(ast, options);
   return (
-    '<!DOCTYPE html><html>' +
-      '<!-- Built with spec-md -->' +
+    '<!DOCTYPE html>\n' +
+    '<!-- Built with spec-md -->\n' +
+    '<html>' +
       '<head>' + printHead(ast) + '</head>' +
       '<body>' + printBody(ast, options) + '</body>' +
-    '</html>'
+    '</html>\n'
   );
 };
 
@@ -83,8 +84,8 @@ function printHead(ast) {
   return (
     '<meta charset="utf-8">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>' +
-    '<link href="spec.css" rel="stylesheet">' +
-    '<link href="prism.css" rel="stylesheet">'
+    '<style>' + readStatic('spec.css') + '</style>' +
+    '<style>' + readStatic('prism.css') + '</style>'
   );
 }
 
@@ -321,7 +322,7 @@ function printSidebar(ast, options) {
         '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>' +
         '<ol>' + join(items) + '</ol>' +
       '</div>' +
-      '<script>' + SIDEBAR_JS + '</script>' +
+      '<script>(function (){\n' + readStatic('sidebar.js') + '})()</script>' +
     '</div>'
   );
 }
@@ -754,61 +755,6 @@ function formatText(text) {
   );
 }
 
-var SIDEBAR_JS = `
-(function () {
-var currentSection;
-var numberedSections = [];
-
-var sections = document.getElementsByTagName('section');
-for (var i = 0; i < sections.length; i++) {
-  if (sections[i].getAttribute('secid')) {
-    numberedSections.push(sections[i]);
-  }
+function readStatic(filename) {
+  return fs.readFileSync(path.join(__dirname, '../static/', filename));
 }
-
-var scrollPos = window.scrollY;
-var pending = false;
-window.addEventListener('scroll', function (e) {
-  scrollPos = window.scrollY;
-  if (!pending) {
-    pending = true;
-    window.requestAnimationFrame(function () {
-      updateSectionFocus(scrollPos);
-      pending = false;
-    });
-  }
-});
-
-function updateSectionFocus(pos) {
-  var readLine = pos + document.documentElement.clientHeight / 4;
-
-  var focusedSection;
-  for (var n = numberedSections.length - 1; n >= 0; n--) {
-    if (numberedSections[n].offsetTop < readLine) {
-      focusedSection = numberedSections[n];
-      break;
-    }
-  }
-
-  var secid = focusedSection && focusedSection.getAttribute('secid');
-  if (secid !== currentSection) {
-    currentSection && fold(currentSection, false);
-    secid && fold(secid, true);
-    currentSection = secid;
-  }
-}
-
-function fold(secid, check) {
-  document.getElementById('_sidebar_' + secid).className = check ? 'viewing' : '';
-  var sections = secid.split('.');
-  while (sections.length) {
-    var toggle = document.getElementById('_sidebar_toggle_' + sections.join('.'));
-    if (toggle) {
-      toggle.checked = check;
-    }
-    sections.pop();
-  }
-}
-
-updateSectionFocus(window.scrollY);
-})();`;
