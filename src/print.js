@@ -96,6 +96,7 @@ function printBody(ast, options) {
       printTOC(ast, options) +
     '</header>' +
     printContent(ast, options) +
+    printIndex(ast, options) +
     '<footer>' +
       'Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
     '</footer>' +
@@ -266,11 +267,15 @@ function printTOC(ast, options) {
     }
   });
 
+  if (hasIndex(ast, options)) {
+    items.push('<li><a href="#index"><span class="spec-secid">§</span>Index</a></li>');
+  }
+
   return (
-    '<div class="spec-toc">' +
+    '<nav class="spec-toc">' +
       '<div class="title">Contents</div>' +
       '<ol>' + join(items) + '</ol>' +
-    '</div>'
+    '</nav>'
   );
 }
 
@@ -303,6 +308,10 @@ function printSidebar(ast, options) {
       return '';
     }
   });
+
+  if (hasIndex(ast, options)) {
+    items.push('<li id="_sidebar_index"><a href="#index"><span class="spec-secid">§</span>Index</a></li>');
+  }
 
   return (
     '<input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden />' +
@@ -590,6 +599,68 @@ function printAll(list, options) {
 
     }
   }));
+}
+
+function getTerms(ast) {
+  var terms = {};
+  var sectionIDs = [];
+  visit(ast, {
+    enter(node) {
+      if (node.type === 'Section') {
+        sectionIDs.push(node.secID);
+      }
+      // Do not include terms defined in an appendix.
+      if (IS_LETTER_RX.test(sectionIDs[0])) {
+        return;
+      }
+      if (node.type === 'Algorithm') {
+        var algorithmName = node.call.name;
+        if (!terms[algorithmName]) {
+          terms[algorithmName] = node;
+        }
+      } else if (node.type === 'Production' || node.type === 'OneOfProduction') {
+        var productionName = node.token.name;
+        if (!terms[productionName]) {
+          terms[productionName] = node;
+        }
+      }
+    },
+    leave(node) {
+      if (node.type === 'Section') {
+        sectionIDs.pop();
+      }
+    }
+  });
+  return terms;
+}
+
+function hasIndex(ast, options) {
+  return Object.keys(getTerms(ast)).length !== 0;
+}
+
+function printIndex(ast, options) {
+  var terms = getTerms(ast);
+  var termNames = Object.keys(terms).sort();
+  if (termNames.length === 0) {
+    return '';
+  }
+
+  var items = termNames.map(function (termName) {
+    var node = terms[termName];
+    return '<li>' + link({name: termName}, node.id, options) + '</li>';
+  });
+
+  return (
+    '<section id="index" class="spec-index">' +
+      '<h1>' +
+        '<span class="spec-secid" title="link to the index">' +
+          '<a href="#index">§</a>' +
+        '</span>' +
+        'Index' +
+      '</h1>' +
+      '<ol>' + join(items) + '</ol>' +
+    '</section>'
+  );
 }
 
 function join(list, joiner) {

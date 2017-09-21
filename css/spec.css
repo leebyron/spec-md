@@ -248,6 +248,19 @@ footer {
   content: 'todo';
 }
 
+/* Index table */
+
+.spec-index ol {
+  list-style-type: none;
+  margin: 0 0 0 2rem;
+  padding: 0;
+  column-width: 210px;
+  column-gap: 2rem;
+}
+
+.spec-index ol li {
+  width: min-content;
+}
 
 /* Code */
 
