@@ -1,5 +1,5 @@
 Spec Markdown
--------------
+=============
 
 Renders Markdown with some additions into an HTML format commonly used for
 writing technical specification documents. Markdown additions include code
