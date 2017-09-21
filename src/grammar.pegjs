@@ -541,12 +541,23 @@ condition = '[' condition:('+' / '~') param:paramName ']' {
   };
 }
 
-token = token:unconstrainedToken _ constraint:constraint? _ {
-  return !constraint ? token : {
-    type: 'Constrained',
-    token: token,
-    constraint: constraint
-  };
+token = token:unconstrainedToken quantifier:('+' / '?' / '*')? _ constraint:constraint? _ {
+  if (quantifier) {
+    token = {
+      type: 'Quantified',
+      token: token,
+      isList: quantifier === '+' || quantifier === '*',
+      isOptional: quantifier === '?' || quantifier === '*'
+    };
+  }
+  if (constraint) {
+    token = {
+      type: 'Constrained',
+      token: token,
+      constraint: constraint
+    }
+  }
+  return token;
 }
 
 unconstrainedToken = prose / emptyToken / lookahead / nonTerminal / regexp / quotedTerminal / terminal
@@ -589,13 +600,11 @@ lookaheadItem = !']' token:token {
   return [token];
 }
 
-nonTerminal = name:globalName params:nonTerminalParams? quantifier:('+' / '?' / '*')? {
+nonTerminal = name:globalName params:nonTerminalParams? {
   return {
     type: 'NonTerminal',
     name: name,
     params: params,
-    isList: quantifier === '+' || quantifier === '*',
-    isOptional: quantifier === '?' || quantifier === '*'
   };
 }
 

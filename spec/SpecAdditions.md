@@ -528,8 +528,8 @@ UppercaseWord : /[A-Z][a-z]*/
 
 ### Quantifiers
 
-Non-terminal tokens can be followed by quantifiers to alter their meaning and
-as a short-hand for common patterns.
+Tokens can be followed by quantifiers to alter their meaning and as a short-hand
+for common patterns of optionality and repetition.
 
 
 **Optional Tokens**
@@ -606,6 +606,37 @@ Topping_list :
   - Topping
   - Topping_list Topping
 
+
+**Use with Non-Terminals**
+
+Quantifiers also apply to non-terminal tokens with the same rules. For example:
+
+```markdown
+UnionMembers :
+  - `|`? NamedType
+  - UnionMembers | NamedType
+```
+
+Produces the following:
+
+UnionMembers :
+  - `|`? NamedType
+  - UnionMembers | NamedType
+
+However, unquoted non-terminals may use the `*`, `?` and `+` characters, so
+always quote the terminal if the intent is to apply a quantifer.
+
+```!markdown
+UnionMembers :
+  - |? NamedType
+  - UnionMembers | NamedType
+```
+
+Produces the terminal `|?`, not an optional `|`:
+
+UnionMembers :
+  - |? NamedType
+  - UnionMembers | NamedType
 
 ### Conditional Parameters
 

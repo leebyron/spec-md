@@ -431,6 +431,7 @@ var {
 }
 
 .spec-rhs .spec-constrained:not(:first-child),
+.spec-rhs .spec-quantified:not(:first-child),
 .spec-rhs .spec-nt:not(:first-child),
 .spec-rhs .spec-t:not(:first-child),
 .spec-rhs .spec-rx:not(:first-child),
@@ -469,17 +470,18 @@ var {
   color: inherit;
 }
 
-.spec-mods {
+.spec-quantifiers,
+.spec-params {
   font-size: 65%;
   font-style: normal;
   vertical-align: sub;
 }
 
-.spec-mod.list {
+.spec-quantifier.list {
   color: #3348D3;
 }
 
-.spec-mod.optional {
+.spec-quantifier.optional {
   color: #83238E;
 }
 
@@ -496,7 +498,7 @@ var {
   content: ']';
 }
 
-.spec-mod:not(:last-child)::after,
+.spec-quantifier:not(:last-child)::after,
 .spec-param:not(:last-child)::after {
   color: #666666;
   content: ', ';

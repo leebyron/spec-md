@@ -473,18 +473,13 @@ function printAll(list, options) {
           return '<span class="spec-prose">' + escape(node.text) + '</span>';
 
         case 'NonTerminal':
-          var mods = (
-            (node.params ? '<span class="spec-params">' + join(node.params) + '</span>' : '') +
-            (node.isList ? '<span class="spec-mod list">list</span>' : '') +
-            (node.isOptional ? '<span class="spec-mod optional">opt</span>' : '')
-          );
           return (
             '<span class="spec-nt' +
               (node.isList ? ' list' : '') +
               (node.isOptional ? ' optional' : '') +
             '">' +
               link(node, anchorize(node.name), options) +
-              (mods ? '<span class="spec-mods">' + mods + '</span>' : '') +
+              (node.params ? '<span class="spec-params">' + join(node.params) + '</span>' : '') +
             '</span>'
           );
 
@@ -492,6 +487,17 @@ function printAll(list, options) {
           return (
             '<span class="spec-param' + (node.conditional ? ' conditional' : '') + '">' +
               node.name +
+            '</span>'
+          );
+
+        case 'Quantified':
+          var quantifiers =
+            (node.isList ? '<span class="spec-quantifier list">list</span>' : '') +
+            (node.isOptional ? '<span class="spec-quantifier optional">opt</span>' : '');
+          return (
+            '<span class="spec-quantified">' +
+              node.token +
+              '<span class="spec-quantifiers">' + quantifiers + '</span>' +
             '</span>'
           );
 
