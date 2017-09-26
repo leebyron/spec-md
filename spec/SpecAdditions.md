@@ -845,7 +845,6 @@ Example :
   - [lookahead ! token] Token
   - [lookahead != token] Token
   - [lookahead {token, set}] Token
-  - [lookahead {token, set}] Token
   - [lookahead ! {token, set}] Token
   - [lookahead != {token, set}] Token
 
