@@ -387,6 +387,13 @@ var {
   font-style: italic;
 }
 
+*[data-name] {
+  transition: 0.15s background ease-out;
+  border-radius: 2px;
+  padding: 0 3px;
+  margin: 0 -3px;
+}
+
 
 /* Grammar semantics, algorithms and calls */
 
