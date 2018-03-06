@@ -9,7 +9,8 @@ npm install -g spec-md
 spec-md ./path/to/markdown.md > ./path/to/output.html
 ```
 
-You can also require `spec-md` as a node module.
+You can also require `spec-md` as a node module, after which you might add the
+`spec-md` command as a [node script](https://docs.npmjs.com/cli/run-script).
 
 ```sh
 npm install --save-dev spec-md
@@ -48,3 +49,14 @@ over the returned HTML, more options may be added in the future.
     argument being the language specified. This function should return well
     formed HTML, complete with escaped special characters.
 
+
+## Hot rebuilding with nodemon
+
+The `spec-md` shell executable follows the [Unix Philosophy](http://www.faqs.org/docs/artu/ch01s06.html)
+of doing one thing and doing it well. Try out `nodemon` to continuously rebuild
+the HTML output as you edit the markdown specification:
+
+```sh
+npm install -g nodemon
+nodemon --exec "spec-md > ./path/to/output.html" ./path/to/markdown.md
+```
