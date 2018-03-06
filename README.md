@@ -51,6 +51,27 @@ specMarkdown.html('./path/to/markdown.md').then(function (html) {
 });
 ```
 
+You can use `nodemon` to continuously regenerate HTML as you edit the 
+specification.  For example, the following scripts can be added to
+`package.json`:
+
+```json
+{
+   "scripts": {
+     "spec": "spec-md ./specification/SPEC.md > ./specification/spec.html",
+     "spec:watch": "nodemon --watch specification/SPEC.md --exec 'yarn spec'"
+     ...
+   }
+}
+```
+
+Invoking `yarn spec` will generate the `specification/spec.html` file while
+invoking `yarn spec:watch` will continuously watch for changes and regenerate
+the HTML whenever `specification/SPEC.md` is modified.  This functionality can
+be used in conjunction with live previewing functionality (*e.g.,* the "Live 
+Server Preview" extension in VSCode) to immediately preview changes as they 
+are made.
+
 Spec Markdown also provides utilities for generating and operating on an
 intermediate representation of the markdown, which you can explore in
 [Using Spec Markdown](#using-spec-markdown).
