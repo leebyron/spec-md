@@ -58,7 +58,7 @@ intermediate representation of the markdown, which you can explore in
 
 # [Markdown](./spec/Markdown.md)
 
-# [Spec additions](./spec/SpecAdditions.md)
+# [Spec additions](./spec/Spec%20Additions.md)
 
 # [Using Spec Markdown](./spec/Usage.md)
 

@@ -1,4 +1,4 @@
-# Spec additions
+# Spec Additions
 
 Spec Markdown makes some additions to Markdown to support cases relevant to
 writing technical specs and documentation. It attempts to be as minimally

@@ -37,7 +37,7 @@ function importAST(parser, filepath) {
     var importASTs = [];
     visit(ast, function (node) {
       if (node.type === 'Import') {
-        var subfilepath = path.resolve(path.dirname(filepath), node.path);
+        var subfilepath = path.resolve(path.dirname(filepath), decodeURI(node.path));
         importASTs.push(importAST(parser, subfilepath));
       }
     });
