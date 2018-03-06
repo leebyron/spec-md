@@ -87,7 +87,8 @@ function printHead(ast) {
     '<meta charset="utf-8">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>' +
     '<style>' + readStatic('spec.css') + '</style>' +
-    '<style>' + readStatic('prism.css') + '</style>'
+    '<style>' + readStatic('prism.css') + '</style>' +
+    '<script>(function (){\n' + readStatic('highlightName.js') + '})()</script>'
   );
 }
 
@@ -489,7 +490,7 @@ function printAll(list, options) {
         case 'Call':
           return (
             '<span class="spec-call">' +
-              link(node, anchorize(node.name) + '()', options) +
+              link(node, anchorize(node.name) + '()', options, true) +
               '(' + join(node.args, ', ') + ')' +
             '</span>'
           );
@@ -501,7 +502,7 @@ function printAll(list, options) {
           return '<span class="spec-string">' + node.value + '</span>';
 
         case 'Variable':
-          return '<var>' + node.name + '</var>';
+          return '<var data-name="' + anchorize(node.name) + '">' + node.name + '</var>';
 
         case 'Semantic':
           var defType = node.defType === 1 ? '' : ' d' + node.defType;
@@ -566,7 +567,7 @@ function printAll(list, options) {
               (node.isList ? ' list' : '') +
               (node.isOptional ? ' optional' : '') +
             '">' +
-              link(node, anchorize(node.name), options) +
+              link(node, anchorize(node.name), options, true) +
               (node.params ? '<span class="spec-params">' + join(node.params) + '</span>' : '') +
             '</span>'
           );
@@ -697,14 +698,22 @@ function maybe(value) {
   return value ? value : '';
 }
 
-function link(node, id, options) {
+function link(node, id, options, doHighlight) {
   var href = options.biblio[id];
   var content = escape(node.name);
   if (!href) {
+    if (doHighlight) {
+      return (
+        '<span data-name="' + anchorize(node.name) + '">' +
+          content +
+        '</span>'
+      );
+    }
     return content;
   }
   return (
     '<a href="' + href + '"' +
+      (doHighlight ? ' data-name="' + anchorize(node.name) + '"' : '') +
       (href[0] !== '#' ? ' target="_blank"' : '') + '>' +
       content +
     '</a>'
