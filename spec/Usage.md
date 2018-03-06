@@ -37,7 +37,6 @@ The `spec-md` node module provides a few functions:
   * {visit(ast, visitor)} takes an {ast} and a {visitor}. It walks over the {ast}
     in a depth-first-traversal calling the {visitor} along the way.
 
-
 ## Print Options
 
 The {html(filePath, options)} and {print(filePath)} functions both take {options}
@@ -49,6 +48,8 @@ over the returned HTML, more options may be added in the future.
     argument being the language specified. This function should return well
     formed HTML, complete with escaped special characters.
 
+  * **head** - a string which is inserted in the `<head>` tag in the returned
+    HTML. Use this to introduce additional meta tags and scripts.
 
 ## Hot rebuilding with nodemon
 

@@ -8,6 +8,7 @@ function print(ast, _options) {
   var options = {};
   options.highlight = _options && _options.highlight || highlight;
   options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
+  options.head = _options && _options.head || '';
   validateSecIDs(ast, options);
   assignExampleNumbers(ast, options);
   assignBiblioIDs(ast, options);
@@ -15,7 +16,7 @@ function print(ast, _options) {
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md -->\n' +
     '<html>' +
-      '<head>' + printHead(ast) + '</head>' +
+      '<head>' + printHead(ast, options) + '</head>' +
       '<body>' + printBody(ast, options) + '</body>' +
     '</html>\n'
   );
@@ -82,13 +83,14 @@ function loadAllLanguages() {
   }
 }
 
-function printHead(ast) {
+function printHead(ast, options) {
   return (
     '<meta charset="utf-8">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>' +
     '<style>' + readStatic('spec.css') + '</style>' +
     '<style>' + readStatic('prism.css') + '</style>' +
-    '<script>(function (){\n' + readStatic('highlightName.js') + '})()</script>'
+    '<script>(function (){\n' + readStatic('highlightName.js') + '})()</script>' +
+    options.head
   );
 }
 
