@@ -1,4 +1,5 @@
 {
+  "head": "<meta property=\"og:title\" content=\"Spec Markdown\" />",
   "biblio": {
     "http://people.mozilla.org/~jorendorff/es6-draft.html": {
       "Identifier": "#sec-names-and-keywords",
