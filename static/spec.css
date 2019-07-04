@@ -235,9 +235,8 @@ footer {
   width: fit-content;
 }
 
-.spec-note::before {
+.spec-note > a:first-child {
   color: #6C6613;
-  content: 'Note';
   display: block;
   font: italic 11pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   opacity: 0.6;

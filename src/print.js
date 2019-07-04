@@ -233,6 +233,16 @@ function assignBiblioIDs(ast, options) {
         options.biblio[id] = '#' + id;
         node.id = id;
       }
+      if (node.type === 'Note') {
+        var content = printAll(node.contents, options);
+        var hashSize = 5;
+        do {
+          var hash = stableContentHash(content, hashSize++);
+          var id = anchorize('note-' + hash);
+        } while (options.biblio[id]);
+        options.biblio[id] = '#' + id;
+        node.id = id;
+      }
     },
     leave: function (node) {
       if (node.type === 'Section') {
@@ -409,7 +419,12 @@ function printAll(list, options) {
           return '<em>' + join(node.contents) + '</em>';
 
         case 'Note':
-          return '<div class="spec-note">' + join(node.contents) + '</div>';
+          return (
+            '<div id="' + node.id + '" class="spec-note">' +
+              '<a href="#' + node.id + '">Note</a>' +
+              join(node.contents) +
+            '</div>'
+          );
 
         case 'Todo':
           return '<div class="spec-todo">' + join(node.contents) + '</div>';
@@ -799,4 +814,9 @@ function readStatic(filename) {
 function stableCodeHash(code, size) {
   var trimmedCode = code.split(/(\n|\r|\r\n)/).map(line => line.trim()).join('\n');
   return crypto.createHash('md5').update(trimmedCode).digest('hex').slice(0, size);
+}
+
+function stableContentHash(content, size) {
+  var trimmedContent = content.split(/(\n|\r|\r\n)/).map(line => line.trim()).join(' ');
+  return crypto.createHash('md5').update(trimmedContent).digest('hex').slice(0, size);
 }
