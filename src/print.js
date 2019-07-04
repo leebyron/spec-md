@@ -210,6 +210,17 @@ function assignBiblioIDs(ast, options) {
         node.id = id;
         secnameStack.push(secname);
       }
+      if (node.type === 'Subsection') {
+        var subsecname = anchorize(node.title);
+        var secname = secnameStack.length > 0
+          ? secnameStack[secnameStack.length - 1] + '.' + subsecname
+          : subsecname;
+        var id = 'sec-' + secname;
+        if (!options.biblio[id]) {
+          options.biblio[id] = '#' + id;
+        }
+        node.id = id;
+      }
       if (node.type === 'Algorithm') {
         var id = anchorize(node.call.name) + '()';
         if (!options.biblio[id]) {
@@ -396,6 +407,18 @@ function printAll(list, options) {
               '</span>' +
               escape(node.title) +
               '</h' + level + '>' +
+              join(node.contents) +
+            '</section>'
+          );
+
+        case 'Subsection':
+          return (
+            '<section id="' + node.id + '" class="subsec">' +
+              '<h6>' +
+                '<a href="' + options.biblio[node.id] + '" title="link to this subsection">' +
+                  escape(node.title) +
+                '</a>' +
+              '</h6>' +
               join(node.contents) +
             '</section>'
           );

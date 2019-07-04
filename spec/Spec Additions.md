@@ -47,7 +47,7 @@ Markdown only supports atx style headers as section headers.
 
 Only use Setext style headers for the title of the document.
 
-```markdown counter-example
+```counter-example
 Header
 ------
 ```
@@ -55,6 +55,21 @@ Header
 Spec Markdown also requires that only single `#` headers appear at the top of a
 document, and that only a `##` header (and not a `###` header) can be contained
 with the section started by a `#` header.
+
+
+### Subsection Headers
+
+While sections are numbered and appear in the table of contents, a subsection
+is similar but not numbered or in the table of contents.
+
+**This is a subsection**
+
+The subsection's content appears below the subsection header.
+
+**Another subsection**
+
+Sections may contain multiple subsections, but subsections cannot contain
+sections or subsections.
 
 
 ### Table of Contents

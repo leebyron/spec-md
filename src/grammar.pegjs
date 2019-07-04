@@ -92,12 +92,24 @@ section5 = BLOCK '#####' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE 
   };
 }
 
-documentContent = import1 / section1 / importRel / sectionContent
-section1Content = import2 / section2 / importRel / sectionContent
-section2Content = import3 / section3 / importRel / sectionContent
-section3Content = import4 / section4 / importRel / sectionContent
-section4Content = import5 / section5 / importRel / sectionContent
-section5Content = importRel / sectionContent
+subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
+  return title
+}
+
+subsection = BLOCK title:subsectionHeader contents:sectionContent* {
+  return {
+    type: 'Subsection',
+    title: title,
+    contents: contents,
+  }
+}
+
+documentContent = import1 / section1 / subsection / importRel / sectionContent
+section1Content = import2 / section2 / subsection / importRel / sectionContent
+section2Content = import3 / section3 / subsection / importRel / sectionContent
+section3Content = import4 / section4 / subsection / importRel / sectionContent
+section4Content = import5 / section5 / subsection / importRel / sectionContent
+section5Content = subsection / importRel / sectionContent
 
 sectionContent = note
                / todo
@@ -184,7 +196,7 @@ tagClose = '</' name:$[a-z]+ '>' { return name; }
 
 // Paragraph
 
-paragraph = BLOCK !'#' contents:content+ {
+paragraph = BLOCK !'#' !subsectionHeader contents:content+ {
   return {
     type: 'Paragraph',
     contents: contents

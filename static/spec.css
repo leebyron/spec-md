@@ -21,35 +21,35 @@ a:hover {
 /* Section headers */
 
 h1, h2, h3, h4, h5, h6, h7, h8 {
-  margin: 3rem 0 1em;
+  font-weight: bold;
+  margin: 3em 0 1em;
   position: relative;
 }
 
 h1 {
   font-size: 1.5em;
-  margin: 8rem 0 2em;
+  margin: 6em 0 3em;
 }
 
 h2 {
-  font-size: 1.45em;
-  margin: 8rem 0 1em;
+  font-size: 1.5em;
+  margin-top: 5em;
 }
 
-h3 {
-  font-size: 1.30em;
-  margin: 5rem 0 1em;
+h3, h4 {
+  font-size: 1.25em;
 }
 
-h4 {
-  font-size: 1.20em;
+h5, h6 {
+  font-size: 1em;
 }
 
-h5 {
-  font-size: 1.12em;
+section.subsec > h6 {
+  margin-top: 2em;
 }
 
-h6, h7, h8 {
-  font-size: 1.1em;
+section.subsec > h6 > a {
+  color: #333333;
 }
 
 section .spec-secid {
@@ -78,7 +78,7 @@ footer {
   content: 'Contents';
   display: block;
   font-weight: bold;
-  margin: 3rem 0 1rem;
+  margin: 5em 0 1em;
 }
 
 .spec-toc .spec-secid {
