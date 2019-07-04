@@ -27,7 +27,7 @@ async function runTests(tests) {
         );
       }
     } else {
-      process.stderr.write(error);
+      process.stderr.write('\n\n' + String(error && error.stack || error));
     }
   }
 }
@@ -36,21 +36,10 @@ function runTest(input, ast, html) {
   const start = Date.now();
   process.stdout.write(`testing: ${input} ... `);
   return specMarkdown.parse(path.resolve(__dirname, input)).then(actualAST => {
-    // Read expected snapshot files.
-    let expectedAST;
-    let expectedHTML;
     try {
-      expectedAST = JSON.parse(
+      const expectedAST = JSON.parse(
         fs.readFileSync(path.resolve(__dirname, ast), 'utf8')
       );
-      expectedHTML = fs.readFileSync(path.resolve(__dirname, html), 'utf8');
-    } catch (error) {
-      if (error.code !== 'ENOENT') {
-        throw error;
-      }
-    }
-
-    try {
       assert.deepEqual(
         actualAST,
         expectedAST,
@@ -59,7 +48,7 @@ function runTest(input, ast, html) {
           '  $ RECORD=1 yarn test'
       );
     } catch (error) {
-      if (shouldRecord) {
+      if (error.code === 'ERR_ASSERTION' && shouldRecord) {
         fs.writeFileSync(
           path.resolve(__dirname, ast),
           JSON.stringify(actualAST, null, 2)
@@ -72,6 +61,7 @@ function runTest(input, ast, html) {
     // Print HTML after testing AST since it memoizes values in the AST.
     const actualHTML = specMarkdown.print(actualAST);
     try {
+      const expectedHTML = fs.readFileSync(path.resolve(__dirname, html), 'utf8');
       assert.equal(
         actualHTML,
         expectedHTML,
@@ -80,14 +70,8 @@ function runTest(input, ast, html) {
           '  $ RECORD=1 yarn test'
       );
     } catch (error) {
-      if (shouldRecord) {
-        fs.writeFileSync(
-          path.resolve(__dirname, ast),
-          JSON.stringify(actualAST, null, 2)
-        );
-        if (actualHTML) {
-          fs.writeFileSync(path.resolve(__dirname, html), actualHTML);
-        }
+      if (error.code === 'ERR_ASSERTION' && shouldRecord) {
+        fs.writeFileSync(path.resolve(__dirname, html), actualHTML);
       } else {
         throw error;
       }
