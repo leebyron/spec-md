@@ -577,8 +577,8 @@ Sentence : Noun Verb Adverb?
 Which is shorthand for:
 
 Sentence :
-  - Noun Verb
   - Noun Verb Adverb
+  - Noun Verb
 
 
 **Token Lists**
@@ -599,8 +599,8 @@ Which, unless your specification document declares otherwise, is shorthand for:
 Book : Cover Page_list Cover
 
 Page_list :
-  - Page
   - Page_list Page
+  - Page
 
 Some specifications may wish to declare {Token+} as a shorthand for a
 comma-separated list, in which case the previous example would be shorthand for:
@@ -608,8 +608,8 @@ comma-separated list, in which case the previous example would be shorthand for:
 Book : Cover Page_list Cover
 
 Page_list :
-  - Page
   - Page_list , Page
+  - Page
 
 
 **Optional Lists**
@@ -628,12 +628,12 @@ Sandwich : Bread Topping* Bread
 Which is shorthand for:
 
 Sandwich :
-  - Bread Bread
   - Bread Topping_list Bread
+  - Bread Bread
 
 Topping_list :
-  - Topping
   - Topping_list Topping
+  - Topping
 
 
 **Use with Non-Terminals**
@@ -642,30 +642,30 @@ Quantifiers also apply to non-terminal tokens with the same rules. For example:
 
 ```markdown
 UnionMembers :
-  - `|`? NamedType
   - UnionMembers | NamedType
+  - `|`? NamedType
 ```
 
 Produces the following:
 
 UnionMembers :
-  - `|`? NamedType
   - UnionMembers | NamedType
+  - `|`? NamedType
 
 However, unquoted non-terminals may use the `*`, `?` and `+` characters, so
 always quote the terminal if the intent is to apply a quantifer.
 
 ```markdown counter-example
 UnionMembers :
-  - |? NamedType
   - UnionMembers | NamedType
+  - |? NamedType
 ```
 
 Produces the terminal `|?`, not an optional `|`:
 
 UnionMembers :
-  - |? NamedType
   - UnionMembers | NamedType
+  - |? NamedType
 
 ### Conditional Parameters
 
