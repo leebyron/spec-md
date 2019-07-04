@@ -17,17 +17,17 @@ async function runTests(tests) {
     }
   } catch (error) {
     if (error.code === 'ERR_ASSERTION') {
-      process.stderr.write('\n' + error.message + '\n');
+      process.stderr.write('\n' + error.message + '\n\n');
       if (!error.expected) {
         process.stderr.write('\nNo recorded output found to compare to.\n\n');
       } else {
         const jestDiff = require('jest-diff');
         process.stderr.write(
-          jestDiff(error.actual, error.expected, { expand: false })
+          jestDiff(error.actual, error.expected, { expand: false }) + '\n\n'
         );
       }
     } else {
-      process.stderr.write('\n\n' + String(error && error.stack || error));
+      process.stderr.write('\n\n' + String(error && error.stack || error) + '\n\n');
     }
   }
 }
