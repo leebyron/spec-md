@@ -1,16 +1,14 @@
+language: node_js
+node_js: stable
+
 git:
   depth: 5
 
-language: node_js
-node_js: 10
-
 deploy:
-  provider: script
+  provider: pages
   skip_cleanup: true
-  script: yarn run deploy
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: out
   on:
     branch: master
-
-env:
-  global:
-  - secure: aZNSHHt/4yEfzPl+L2Q+A7USvwjklv2/3Tyd+w3zipqlTiZDSNeqA0vuiKUvHY0XE/cs54v/1sb0CYopB4lDCRTAH6cB7qi7qaSlBg1wcfs5DhKwPWQC2pJrXmnaUVnVrYlzqcZ1RcpK7AxlUw4QIeMUCDGCkSVCLTYogWPXNYY=

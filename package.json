@@ -14,12 +14,9 @@
   "bin": "./bin/spec-md",
   "main": "./src/index.js",
   "scripts": {
-    "test": "pegjs src/grammar.pegjs && ./bin/spec-md README.md > /dev/null && node ./test/runner.js",
+    "test": "yarn build && node ./test/runner.js",
     "build": "pegjs src/grammar.pegjs && mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
-    "watch": "nodemon --exec './bin/spec-md -m spec/metadata.json > out/index.html' README.md",
-    "prepublish": "npm run build",
-    "predeploy": "npm run build",
-    "deploy": "(cd out && git init && git config user.name \"Travis CI\" && git config user.email \"lee@leebyron.com\" && git add . && git commit -m \"Deploy to GitHub Pages\" && git push --force --quiet \"https://${GH_TOKEN}@github.com/leebyron/spec-md.git\" master:gh-pages > /dev/null 2>&1)"
+    "watch": "nodemon -e js,json,pegjs,md --ignore src/grammar.js --exec 'yarn test'"
   },
   "dependencies": {
     "prismjs": ">=1.16.0"
