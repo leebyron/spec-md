@@ -50,7 +50,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "This is not a normative spec for Spec Markdown, but just documentation of\nthis tool. It is also very much a work in progress."
+              "value": "This is not a normative spec for Spec Markdown, but just documentation of\nthis tool. Of course, written in Spec Markdown!"
             }
           ]
         }
