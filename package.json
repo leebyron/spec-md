@@ -14,7 +14,7 @@
   "bin": "./bin/spec-md",
   "main": "./src/index.js",
   "scripts": {
-    "test": "pegjs src/grammar.pegjs && ./bin/spec-md README.md > /dev/null",
+    "test": "pegjs src/grammar.pegjs && ./bin/spec-md README.md > /dev/null && node ./test/runner.js",
     "build": "pegjs src/grammar.pegjs && mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "watch": "nodemon --exec './bin/spec-md -m spec/metadata.json > out/index.html' README.md",
     "prepublish": "npm run build",
@@ -25,6 +25,7 @@
     "prismjs": ">=1.16.0"
   },
   "devDependencies": {
+    "jest-diff": "^24.8.0",
     "nodemon": "1.19.1",
     "pegjs": "~0.8.0"
   },
