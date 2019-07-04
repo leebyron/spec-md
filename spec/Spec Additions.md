@@ -692,45 +692,54 @@ Example_WithCondition : "Definition TBD"
 
 
 The conditions are applied at the beginning of a definition for the
-non-terminal by prefixing with `[+Param]` or `[~Param]` to only include the
-definition when the variant with the conditional parameter is or is not
-used, respectively.
+non-terminal by prefixing with `[if Param]` (alternatively `[+Param]`) or
+`[if not Param]` (alternatively `[~Param]`) to only include the definition when
+the variant with the conditional parameter is or is not used, respectively.
 
 ```
 Example[WithCondition] :
   - A
-  - [+WithCondition] B
-  - [~WithCondition] C
+  - [if WithCondition] B
+  - [if not WithCondition] C
+  - [+WithCondition] D
+  - [~WithCondition] E
+
 ```
 
 Produces the following:
 
 Example[WithCondition] :
   - A
-  - [+WithCondition] B
-  - [~WithCondition] C
+  - [if WithCondition] B
+  - [if not WithCondition] C
+  - [+WithCondition] D
+  - [~WithCondition] E
 
 Which is shorthand for:
 
 Example :
   - A
   - C
+  - E
 
 Example_WithCondition :
   - A
   - B
+  - D
 
 
-The same bracket suffix on a non-terminal within a definition is shorthand for
-using that variant of the definition. If the parameter starts with `?`,
-that form of the symbol is used if in a symbol definition with the same
-parameter.
+The same bracket suffix on a non-terminal within a rule is shorthand for
+using that variant of the rule. If the parameter starts with `?`,
+that form of the symbol is conditionally used only in the derived production
+with the same parameter. If the parameter starts with `!`, that form of the
+symbol is only used when in the derived production *without* that parameter.
 
 ```
 Example[WithCondition] :
   - Example
   - Example[WithCondition]
   - Example[?WithCondition]
+  - Example[!WithCondition]
 ```
 
 Produces the following:
@@ -739,6 +748,7 @@ Example[WithCondition] :
   - Example
   - Example[WithCondition]
   - Example[?WithCondition]
+  - Example[!WithCondition]
 
 Which is shorthand for:
 
@@ -746,40 +756,61 @@ Example :
   - Example
   - Example_WithCondition
   - Example
+  - Example_WithCondition
 
 Example_WithCondition :
   - Example
   - Example_WithCondition
   - Example_WithCondition
+  - Example
 
 
-Multiple conditional parameters can be used, in which case it is short form for
-the permutation of all conditions:
-
-```
-Example[P, Q] : "Definition TBD"
-```
-
-Produces the following:
-
-Example : "Definition TBD"
-
-Example_P : "Definition TBD"
-
-Example_Q : "Definition TBD"
-
-Example_P_Q : "Definition TBD"
-
-
-Conditional params can be followed by the optional list quantifier
+Multiple conditional parameters can be used on both the production definition
+and on non-terminals within a rule, in which case it is short form for the
+permutation of all conditions:
 
 ```
-A[P, ?Q]*
+Example[P, Q] :
+  - [if P] `p`
+  - [if Q] `q`
+  - Example[!P, ?Q]
 ```
 
 Produces the following:
 
-{A[P, ?Q]*}
+Example[P, Q] :
+  - [if P] `p`
+  - [if Q] `q`
+  - Example[!P, ?Q]
+
+Which is shorthand for:
+
+Example :
+  - Example_P
+
+Example_P :
+  - `p`
+  - Example
+
+Example_Q :
+  - `q`
+  - Example_P_Q
+
+Example_P_Q :
+  - `p`
+  - `q`
+  - Example_Q
+
+
+Conditional parameters on a usage can be followed by a quantifier.
+
+```
+Example[P, ?Q]*
+```
+
+Produces the following:
+
+{Example[P, ?Q]*}
 
 
 

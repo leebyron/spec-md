@@ -499,11 +499,11 @@ var {
 }
 
 .spec-condition::before {
-  content: '[+'
+  content: '[if '
 }
 
 .spec-condition.not::before {
-  content: '[~'
+  content: '[if not '
 }
 
 .spec-condition::after {
@@ -559,6 +559,10 @@ var {
 
 .spec-param.conditional::before {
   content: '?';
+}
+
+.spec-param.negated::before {
+  content: '!';
 }
 
 .spec-t, .spec-rx {

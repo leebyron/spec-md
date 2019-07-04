@@ -575,7 +575,9 @@ function printAll(list, options) {
 
         case 'NonTerminalParam':
           return (
-            '<span class="spec-param' + (node.conditional ? ' conditional' : '') + '">' +
+            '<span class="spec-param' +
+              (node.negated ? ' negated' : node.conditional ? ' conditional' : '') +
+            '">' +
               node.name +
             '</span>'
           );

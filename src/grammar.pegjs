@@ -541,11 +541,11 @@ listItemRHS = LINE listBullet _ condition:condition? _ tokens:token+ {
   };
 }
 
-condition = '[' condition:('+' / '~') param:paramName ']' {
+condition = '[' condition:$('+' / '~' / 'if' (_ 'not')?) _ param:paramName ']' {
   return {
     type: 'Condition',
     param: param,
-    not: condition === '~'
+    not: condition === '~' || condition.indexOf('not') !== -1
   };
 }
 
@@ -617,17 +617,18 @@ nonTerminal = name:globalName params:nonTerminalParams? {
   };
 }
 
-nonTerminalParams = '[' _ params:(nonTerminalParam+)? _ closer:']'? {
-  if (params === null || closer === null) {
+nonTerminalParams = '[' _ params:(nonTerminalParam _ ',' _)* param:nonTerminalParam? _ closer:']'? {
+  if (param === null || closer === null) {
     error('Malformed terminal params.');
   }
-  return params;
+  return params.map(param => param[0]).concat(param);
 }
 
-nonTerminalParam = conditional:'?'? name:paramName $[, ]* {
+nonTerminalParam = conditional:[?!]? name:paramName {
   return {
     type: 'NonTerminalParam',
     conditional: conditional === '?',
+    negated: conditional === '!',
     name: name
   };
 }
