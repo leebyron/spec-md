@@ -21,7 +21,7 @@ may be limited or removed. As an example, Spec Markdown is strict about the
 order and locations of headers in a document.
 
 Note: This is not a normative spec for Spec Markdown, but just documentation of
-this tool. It is also very much a work in progress.
+this tool. Of course, written in Spec Markdown!
 
 
 # Getting Started
