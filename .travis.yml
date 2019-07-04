@@ -2,19 +2,12 @@ git:
   depth: 5
 
 language: node_js
-node_js: 6
-
-before_install:
-- npm config set spin false --global
-
-cache:
-  directories:
-  - ~/.npm
+node_js: 10
 
 deploy:
   provider: script
   skip_cleanup: true
-  script: npm run deploy
+  script: yarn run deploy
   on:
     branch: master
 
