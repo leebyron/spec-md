@@ -27,7 +27,7 @@ this tool. Of course, written in Spec Markdown!
 # Getting Started
 
 To use Spec Markdown, just write Markdown files. There are some conventions used
-by Spec Markdown which you can read about in [Spec additions](#sec-spec-additions).
+by Spec Markdown which you can read about in [Spec additions](#sec-Spec-Additions).
 
 To convert your Markdown files into an HTML spec document, use the `spec-md`
 utility.
@@ -53,7 +53,7 @@ specMarkdown.html('./path/to/markdown.md').then(function (html) {
 
 Spec Markdown also provides utilities for generating and operating on an
 intermediate representation of the markdown, which you can explore in
-[Using Spec Markdown](#sec-using-spec-markdown).
+[Using Spec Markdown](#sec-Using-Spec-Markdown).
 
 
 # [Markdown](./spec/Markdown.md)
