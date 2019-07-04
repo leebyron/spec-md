@@ -833,6 +833,9 @@ Example :
   - [lookahead token] Token
   - [lookahead ! token] Token
   - [lookahead != token] Token
+  - [lookahead NonTerminal] Token
+  - [lookahead ! NonTerminal] Token
+  - [lookahead != NonTerminal] Token
   - [lookahead {token, set}] Token
   - [lookahead ! {token, set}] Token
   - [lookahead != {token, set}] Token
@@ -844,6 +847,9 @@ Example :
   - [lookahead token] Token
   - [lookahead ! token] Token
   - [lookahead != token] Token
+  - [lookahead NonTerminal] Token
+  - [lookahead ! NonTerminal] Token
+  - [lookahead != NonTerminal] Token
   - [lookahead {token, set}] Token
   - [lookahead ! {token, set}] Token
   - [lookahead != {token, set}] Token

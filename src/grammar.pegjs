@@ -593,6 +593,7 @@ lookahead = '[' _ 'lookahead' _ not:('!=' / '!')? _ set:(lookaheadSet/lookaheadI
   return {
     type: 'Lookahead',
     not: not !== null,
+    nt: set.length === 1 && set[0].type === 'NonTerminal',
     set: set
   };
 }

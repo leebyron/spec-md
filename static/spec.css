@@ -621,6 +621,15 @@ var {
   content: '[lookahead \2209  {';
 }
 
+.spec-lookahead.ntset::before {
+  content: '[lookahead \2208  ';
+  margin-right: 0;
+}
+
+.spec-lookahead.ntset.not::before {
+  content: '[lookahead \2209  ';
+}
+
 .spec-lookahead::after {
   color: #666666;
   content: ']';

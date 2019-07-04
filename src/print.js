@@ -605,7 +605,7 @@ function printAll(list, options) {
         case 'Lookahead':
           return (
             '<span class="spec-lookahead'+
-              (node.set.length > 1 ? ' set' : '') +
+              (node.set.length > 1 ? ' set' : node.nt ? ' ntset' : '') +
               (node.not ? ' not' : '') +
             '">'+
               join(node.set) +
