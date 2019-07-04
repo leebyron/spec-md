@@ -15,9 +15,9 @@ function print(ast, _options) {
   return (
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md -->\n' +
-    '<html>' +
-      '<head>' + printHead(ast, options) + '</head>' +
-      '<body>' + printBody(ast, options) + '</body>' +
+    '<html>\n' +
+      '<head>' + printHead(ast, options) + '</head>\n' +
+      '<body>' + printBody(ast, options) + '</body>\n' +
     '</html>\n'
   );
 };
@@ -84,34 +84,36 @@ function loadAllLanguages() {
 
 function printHead(ast, options) {
   return (
-    '<meta charset="utf-8">' +
-    '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>' +
-    '<style>' + readStatic('spec.css') + '</style>' +
-    '<style>' + readStatic('prism.css') + '</style>' +
-    '<script>(function (){\n' + readStatic('highlightName.js') + '})()</script>' +
+    '<meta charset="utf-8">\n' +
+    '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
+    '<style>' + readStatic('spec.css') + '</style>\n' +
+    '<style>' + readStatic('prism.css') + '</style>\n' +
+    '<script>(function (){\n' + readStatic('highlightName.js') + '})()</script>\n' +
     options.head
   );
 }
 
 function printBody(ast, options) {
   return (
-    '<header>' +
-      printTitle(ast) +
-      printIntro(ast, options) +
-      printTOC(ast, options) +
-    '</header>' +
-    printContent(ast, options) +
-    printIndex(ast, options) +
-    '<footer>' +
+    '<article>\n' +
+      '<header>\n' +
+        printTitle(ast) +
+        printIntro(ast, options) +
+        printTOC(ast, options) +
+      '</header>\n' +
+      printContent(ast, options) +
+      printIndex(ast, options) +
+    '</article>\n' +
+    '<footer>\n' +
       'Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
-    '</footer>' +
+    '</footer>\n' +
     printSidebar(ast, options)
   );
 }
 
 function printTitle(ast) {
   return !ast.title ? '' : (
-    '<h1>' + escape(ast.title.value) + '</h1>'
+    '<h1>' + escape(ast.title.value) + '</h1>\n'
   );
 }
 
@@ -303,10 +305,10 @@ function printTOC(ast, options) {
               escape(node.title) +
             '</a>' +
             (subSections &&
-              '<input hidden class="toggle" type="checkbox" checked id="_toggle_' + secID + '" />' +
-              '<label for="_toggle_' + secID + '"></label>' +
-              '<ol>' + subSections + '</ol>') +
-          '</li>'
+              '\n<input hidden class="toggle" type="checkbox" checked id="_toggle_' + secID + '" />' +
+              '<label for="_toggle_' + secID + '"></label>\n' +
+              '<ol>\n' + subSections + '</ol>\n') +
+          '</li>\n'
         );
       }
       return '';
@@ -314,14 +316,14 @@ function printTOC(ast, options) {
   });
 
   if (hasIndex(ast, options)) {
-    items.push('<li><a href="#index"><span class="spec-secid">§</span>Index</a></li>');
+    items.push('<li><a href="#index"><span class="spec-secid">§</span>Index</a></li>\n');
   }
 
   return (
-    '<nav class="spec-toc">' +
-      '<div class="title">Contents</div>' +
-      '<ol>' + join(items) + '</ol>' +
-    '</nav>'
+    '<nav class="spec-toc">\n' +
+      '<div class="title">Contents</div>\n' +
+      '<ol>\n' + join(items) + '</ol>\n' +
+    '</nav>\n'
   );
 }
 
@@ -345,10 +347,10 @@ function printSidebar(ast, options) {
               escape(node.title) +
             '</a>' +
             (subSections &&
-              '<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_' + secID + '" />' +
-              '<label for="_sidebar_toggle_' + secID + '"></label>' +
-              '<ol>' + subSections + '</ol>') +
-          '</li>'
+              '\n<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_' + secID + '" />' +
+              '<label for="_sidebar_toggle_' + secID + '"></label>\n' +
+              '<ol>\n' + subSections + '</ol>\n') +
+          '</li>\n'
         );
       }
       return '';
@@ -356,19 +358,19 @@ function printSidebar(ast, options) {
   });
 
   if (hasIndex(ast, options)) {
-    items.push('<li id="_sidebar_index"><a href="#index"><span class="spec-secid">§</span>Index</a></li>');
+    items.push('<li id="_sidebar_index"><a href="#index"><span class="spec-secid">§</span>Index</a></li>\n');
   }
 
   return (
     '<input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden />' +
-    '<label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label>' +
-    '<div class="spec-sidebar" aria-hidden>' +
-      '<div class="spec-toc">' +
-        '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>' +
-        '<ol>' + join(items) + '</ol>' +
-      '</div>' +
-      '<script>(function (){\n' + readStatic('sidebar.js') + '})()</script>' +
-    '</div>'
+    '<label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label>\n' +
+    '<div class="spec-sidebar" aria-hidden>\n' +
+      '<div class="spec-toc">\n' +
+        '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>\n' +
+        '<ol>' + join(items) + '</ol>\n' +
+      '</div>\n' +
+      '<script>(function (){\n' + readStatic('sidebar.js') + '})()</script>\n' +
+    '</div>\n'
   );
 }
 
@@ -380,9 +382,9 @@ function printIntro(doc, options) {
     return content.type !== 'Section';
   });
   return intro.length === 0 ? '' :
-    '<section id="intro">' +
+    '<section id="intro">\n' +
       printAll(intro, options) +
-    '</section>';
+    '</section>\n';
 }
 
 function printContent(doc, options) {
@@ -400,37 +402,37 @@ function printAll(list, options) {
           var level = node.secID.length + 1;
           var secID = join(node.secID, '.');
           return (
-            '<section id="' + node.id + '" secid="' + secID + '">' +
+            '<section id="' + node.id + '" secid="' + secID + '">\n' +
               '<h' + level + '>' +
               '<span class="spec-secid" title="link to this section">' +
                 '<a href="' + options.biblio[node.id] + '">' + secID + '</a>' +
               '</span>' +
               escape(node.title) +
-              '</h' + level + '>' +
+              '</h' + level + '>\n' +
               join(node.contents) +
-            '</section>'
+            '</section>\n'
           );
 
         case 'Subsection':
           return (
-            '<section id="' + node.id + '" class="subsec">' +
+            '<section id="' + node.id + '" class="subsec">\n' +
               '<h6>' +
                 '<a href="' + options.biblio[node.id] + '" title="link to this subsection">' +
                   escape(node.title) +
                 '</a>' +
-              '</h6>' +
+              '</h6>\n' +
               join(node.contents) +
-            '</section>'
+            '</section>\n'
           );
 
         case 'BlockIns':
-          return '<div class="spec-added">' + join(node.contents) + '</div>';
+          return '<div class="spec-added">' + join(node.contents) + '</div>\n';
 
         case 'BlockDel':
-          return '<div class="spec-removed">' + join(node.contents) + '</div>';
+          return '<div class="spec-removed">' + join(node.contents) + '</div>\n';
 
         case 'Paragraph':
-          return '<p>' + join(node.contents) + '</p>';
+          return '<p>' + join(node.contents) + '</p>\n';
 
         case 'Text':
           return formatText(node.value);
@@ -443,14 +445,14 @@ function printAll(list, options) {
 
         case 'Note':
           return (
-            '<div id="' + node.id + '" class="spec-note">' +
-              '<a href="#' + node.id + '">Note</a>' +
+            '<div id="' + node.id + '" class="spec-note">\n' +
+              '<a href="#' + node.id + '">Note</a>\n' +
               join(node.contents) +
-            '</div>'
+            '</div>\n'
           );
 
         case 'Todo':
-          return '<div class="spec-todo">' + join(node.contents) + '</div>';
+          return '<div class="spec-todo">\n' + join(node.contents) + '</div>\n';
 
         case 'HTMLBlock':
           return node.html;
@@ -473,7 +475,7 @@ function printAll(list, options) {
             (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
             '<code>' +
               options.highlight(node.code, node.lang) +
-            '</code></pre>'
+            '</code></pre>\n'
           );
 
         case 'InlineCode':
@@ -491,39 +493,39 @@ function printAll(list, options) {
 
         case 'List':
           var olul = node.ordered ? 'ol' : 'ul';
-          return '<' + olul + '>' + join(node.items) + '</' + olul + '>';
+          return '<' + olul + '>\n' + join(node.items) + '</' + olul + '>\n';
 
         case 'ListItem':
-          return '<li>' + join(node.contents) + '</li>';
+          return '<li>' + join(node.contents) + '</li>\n';
 
         case 'Table':
           return (
-            '<table>' +
-              '<thead><tr>' +
+            '<table>\n' +
+              '<thead><tr>\n' +
                 join(node.headers.map(function (cell) {
-                  return '<th>' + join(cell) + '</th>';
+                  return '<th>' + join(cell) + '</th>\n';
                 })) +
-              '</tr></thead>' +
-              '<tbody>' +
+              '</tr></thead>\n' +
+              '<tbody>\n' +
                 join(node.rows.map(function (row) {
                   return (
-                    '<tr>' +
+                    '<tr>\n' +
                       join(row.map(function (cell) {
                         return '<td>' + join(cell) + '</td>';
                       })) +
-                    '</tr>'
+                    '</tr>\n'
                   );
                 })) +
-              '</tbody>' +
-            '</table>'
+              '</tbody>\n' +
+            '</table>\n'
           );
 
         case 'Algorithm':
           return (
-            '<div class="spec-algo" id="' + node.id + '">' +
+            '<div class="spec-algo" id="' + node.id + '">\n' +
               node.call +
               node.steps +
-            '</div>'
+            '</div>\n'
           );
 
         case 'Call':
@@ -546,37 +548,37 @@ function printAll(list, options) {
         case 'Semantic':
           var defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
-            '<div class="spec-semantic' + defType + '">' +
+            '<div class="spec-semantic' + defType + '">\n' +
               node.name +
               node.rhs +
               node.steps +
-            '</div>'
+            '</div>\n'
           );
 
         case 'Production':
           var defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
-            '<div class="spec-production' + defType + '" id="' + node.id + '">' +
+            '<div class="spec-production' + defType + '" id="' + node.id + '">\n' +
               node.token +
               node.rhs +
-            '</div>'
+            '</div>\n'
           );
 
         case 'OneOfRHS':
           return (
             '<div class="spec-oneof">' +
-              '<table>' +
+              '<table>\n' +
                 join(node.rows.map(function (row) {
                   return (
-                    '<tr>' +
+                    '<tr>\n' +
                       join(row.map(function (def) {
                         return '<td class="spec-rhs">' + def + '</td>';
                       })) +
-                    '</tr>'
+                    '</tr>\n'
                   );
                 })) +
               '</table>' +
-            '</div>'
+            '</div>\n'
           );
 
         case 'ListRHS':
@@ -587,7 +589,7 @@ function printAll(list, options) {
             '<div class="spec-rhs">' +
               maybe(node.condition) +
               join(node.tokens) +
-            '</div>'
+            '</div>\n'
           );
 
         case 'Condition':

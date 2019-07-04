@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <!-- Built with spec-md -->
-<html><head><meta charset="utf-8"><title>Simple Header</title><style>body {
+<html>
+<head><meta charset="utf-8">
+<title>Simple Header</title>
+<style>body {
   color: #333333;
   font: 13pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   margin: 6rem auto 3rem;
@@ -644,7 +647,8 @@ var {
 .spec-lookahead.set::after {
   content: '}]';
 }
-</style><style>/* Copied from node_modules/prismjs/themes/prism.css */
+</style>
+<style>/* Copied from node_modules/prismjs/themes/prism.css */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -782,7 +786,8 @@ pre[class*="language-"] {
 .token.entity {
 	cursor: help;
 }
-</style><script>(function (){
+</style>
+<script>(function (){
 var styleSheet = document.getElementsByTagName('style')[0].sheet;
 var ruleIndex;
 
@@ -809,7 +814,30 @@ document.documentElement.addEventListener('mouseover', function (event) {
 });
 
 document.documentElement.addEventListener('mouseout', removeHighlight);
-})()</script></head><body><header><h1>Simple Header</h1><section id="intro"><p>This is a simple document with only a header. </p></section><nav class="spec-toc"><div class="title">Contents</div><ol></ol></nav></header><footer>Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.</footer><input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden /><label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label><div class="spec-sidebar" aria-hidden><div class="spec-toc"><div class="title"><a href="#">Simple Header</a></div><ol></ol></div><script>(function (){
+})()</script>
+</head>
+<body><article>
+<header>
+<h1>Simple Header</h1>
+<section id="intro">
+<p>This is a simple document with only a header. </p>
+</section>
+<nav class="spec-toc">
+<div class="title">Contents</div>
+<ol>
+</ol>
+</nav>
+</header>
+</article>
+<footer>
+Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.</footer>
+<input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden /><label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label>
+<div class="spec-sidebar" aria-hidden>
+<div class="spec-toc">
+<div class="title"><a href="#">Simple Header</a></div>
+<ol></ol>
+</div>
+<script>(function (){
 var currentSection;
 var numberedSections = [];
 
@@ -865,4 +893,7 @@ function fold(secid, check) {
 }
 
 updateSectionFocus(window.scrollY);
-})()</script></div></body></html>
+})()</script>
+</div>
+</body>
+</html>
