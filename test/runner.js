@@ -5,7 +5,10 @@ const specMarkdown = require('../');
 
 const shouldRecord = Boolean(process.env.RECORD);
 
-runTests([['../README.md', 'readme/ast.json', 'readme/output.html']]);
+runTests([
+  ['../README.md', 'readme/ast.json', 'readme/output.html'],
+  ['simple-header/input.md', 'simple-header/ast.json', 'simple-header/output.html'],
+]);
 
 async function runTests(tests) {
   try {

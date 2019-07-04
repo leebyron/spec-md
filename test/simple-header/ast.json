@@ -1,0 +1,18 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Simple Header"
+  },
+  "contents": [
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "This is a simple document with only a header.\n"
+        }
+      ]
+    }
+  ]
+}
