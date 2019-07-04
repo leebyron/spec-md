@@ -48,22 +48,18 @@ function getPrismLanguage(lang) {
 // this function does so. Its memoized so it is only executed once.
 var hasLoadedAllLanguages;
 function loadAllLanguages() {
+  if (hasLoadedAllLanguages) {
+    return
+  }
   hasLoadedAllLanguages = true;
-
-  // Find all language components.
+  var prismComponents = require('prismjs/components.json')
   var componentsDir = path.join(path.dirname(require.resolve('prismjs')), 'components');
-  var blacklist = /\.min\.js$/;
-  var extendsLang = /languages\.extend\('(.+?)'/;
   var langPaths = {};
-  fs.readdirSync(componentsDir)
-    .forEach(filepath => {
-      if (!blacklist.test(filepath)) {
-        var lang = filepath.slice(6, -3);
-        if (lang !== 'core') {
-          langPaths[lang] = path.join(componentsDir, filepath);
-        }
-      }
-    });
+  Object.keys(prismComponents.languages).forEach(lang => {
+    if (lang !== 'meta') {
+      langPaths[lang] = path.join(componentsDir, `prism-${lang}.js`);
+    }
+  });
 
   // Load every language into Prism.
   Object.keys(langPaths).forEach(loadLanguage);
@@ -74,10 +70,13 @@ function loadAllLanguages() {
       return;
     }
     var langPath = langPaths[lang];
-    var source = fs.readFileSync(langPath, 'utf8');
-    var extendLangMatch = source.match(extendsLang);
-    if (extendLangMatch) {
-      loadLanguage(extendLangMatch[1]);
+    var requiresLang = prismComponents.languages[lang].require
+    if (requiresLang) {
+      if (Array.isArray(requiresLang)) {
+        requiresLang.forEach(loadLanguage)
+      } else {
+        loadLanguage(requiresLang)
+      }
     }
     require(langPath);
   }
