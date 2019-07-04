@@ -14,7 +14,7 @@ function print(ast, _options) {
   assignBiblioIDs(ast, options);
   return (
     '<!DOCTYPE html>\n' +
-    '<!-- Built with spec-md -->\n' +
+    '<!-- Built with spec-md https://leebyron.com/spec-md/ -->\n' +
     '<html>\n' +
       '<head>' + printHead(ast, options) + '</head>\n' +
       '<body>' + printBody(ast, options) + '</body>\n' +
@@ -105,7 +105,7 @@ function printBody(ast, options) {
       printIndex(ast, options) +
     '</article>\n' +
     '<footer>\n' +
-      'Written in <a href="http://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
+      'Written in <a href="https://leebyron.com/spec-md/" target="_blank">Spec Markdown</a>.' +
     '</footer>\n' +
     printSidebar(ast, options)
   );
