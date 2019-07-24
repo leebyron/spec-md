@@ -191,6 +191,13 @@ footer {
   background: #f0f0f0;
 }
 
+.spec-sidebar {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 .spec-sidebar-toggle:checked ~ .spec-sidebar {
   display: block;
   box-shadow:
