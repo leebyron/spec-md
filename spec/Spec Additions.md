@@ -9,6 +9,19 @@ Spec Markdown also makes restrictions to the overall format of the Markdown
 document in order to derive a structure to the entire document.
 
 
+## Link Anything
+
+Everything unique in a Spec Markdown file has a link created for it. Sections
+each have a link, as do named [Algorithms](#sec-Algorithms) and
+[Grammar](#sec-Grammar). You'll find that [Notes](#sec-Note) and
+[Examples](#sec-Examples) are also given stable links based on their contents,
+just in case things move around.
+
+However, you can also link *anything* in a Spec Markdown file. Just highlight
+any bit of text and a link will be created just for that selection, making
+referencing specific parts of your document easy. Try it here!
+
+
 ## Title and Introduction
 
 A Spec Markdown document should start with one Setext style header which will be

@@ -1316,6 +1316,100 @@
         {
           "type": "Section",
           "secID": null,
+          "title": "Link Anything",
+          "contents": [
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Everything unique in a Spec Markdown file has a link created for it. Sections\neach have a link, as do named "
+                },
+                {
+                  "type": "Link",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Algorithms"
+                    }
+                  ],
+                  "url": "#sec-Algorithms"
+                },
+                {
+                  "type": "Text",
+                  "value": " and\n"
+                },
+                {
+                  "type": "Link",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Grammar"
+                    }
+                  ],
+                  "url": "#sec-Grammar"
+                },
+                {
+                  "type": "Text",
+                  "value": ". You'll find that "
+                },
+                {
+                  "type": "Link",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Notes"
+                    }
+                  ],
+                  "url": "#sec-Note"
+                },
+                {
+                  "type": "Text",
+                  "value": " and\n"
+                },
+                {
+                  "type": "Link",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Examples"
+                    }
+                  ],
+                  "url": "#sec-Examples"
+                },
+                {
+                  "type": "Text",
+                  "value": " are also given stable links based on their contents,\njust in case things move around."
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "However, you can also link "
+                },
+                {
+                  "type": "Italic",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "anything"
+                    }
+                  ]
+                },
+                {
+                  "type": "Text",
+                  "value": " in a Spec Markdown file. Just highlight\nany bit of text and a link will be created just for that selection, making\nreferencing specific parts of your document easy. Try it here!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "secID": null,
           "title": "Title and Introduction",
           "contents": [
             {
