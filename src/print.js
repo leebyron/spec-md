@@ -2,6 +2,7 @@ var crypto = require('crypto');
 var fs = require('fs');
 var path = require('path');
 var prism = require('prismjs');
+var terser = require('terser');
 var visit = require('./visit');
 
 function print(ast, _options) {
@@ -833,11 +834,15 @@ function formatText(text) {
 }
 
 function execStaticJS(filename) {
-  return '<script>(function(){\n' + readStatic(filename) + '})()</script>\n';
+  var minified = terser.minify(readStatic(filename), { toplevel: true })
+  if (minified.error) {
+    throw minified.error
+  }
+  return '<script>(function(){' + minified.code + '})()</script>\n';
 }
 
 function readStatic(filename) {
-  return fs.readFileSync(path.join(__dirname, '../static/', filename));
+  return fs.readFileSync(path.join(__dirname, '../static/', filename), 'utf8');
 }
 
 function stableCodeHash(code, size) {

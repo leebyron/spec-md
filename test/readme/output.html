@@ -794,34 +794,7 @@ pre[class*="language-"] {
 	cursor: help;
 }
 </style>
-<script>(function(){
-var styleSheet = document.getElementsByTagName('style')[0].sheet;
-var ruleIndex;
-
-function removeHighlight() {
-  if (ruleIndex) {
-    styleSheet.deleteRule(ruleIndex);
-    ruleIndex = void 0;
-  }
-}
-
-function highlightKeyword(name) {
-  removeHighlight();
-  ruleIndex = styleSheet.insertRule(
-    '*[data-name="' + name + '"] { background: #FBF8D0; }',
-    styleSheet.cssRules.length
-  );
-}
-
-document.documentElement.addEventListener('mouseover', function (event) {
-  var nameAttribute = event.target.attributes['data-name'];
-  if (nameAttribute) {
-    highlightKeyword(nameAttribute.value);
-  }
-});
-
-document.documentElement.addEventListener('mouseout', removeHighlight);
-})()</script>
+<script>(function(){var e,t=document.getElementsByTagName("style")[0].sheet;function n(){e&&(t.deleteRule(e),e=void 0)}document.documentElement.addEventListener("mouseover",function(a){var u,d=a.target.attributes["data-name"];d&&(u=d.value,n(),e=t.insertRule('*[data-name="'+u+'"] { background: #FBF8D0; }',t.cssRules.length))}),document.documentElement.addEventListener("mouseout",n);})()</script>
 </head>
 <body><article>
 <header>
@@ -2157,63 +2130,7 @@ Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</foo
 <li id="_sidebar_index"><a href="#index"><span class="spec-secid">§</span>Index</a></li>
 </ol>
 </div>
-<script>(function(){
-var currentSection;
-var numberedSections = [];
-
-var sections = document.getElementsByTagName('section');
-for (var i = 0; i < sections.length; i++) {
-  if (sections[i].getAttribute('secid')) {
-    numberedSections.push(sections[i]);
-  }
-}
-
-var scrollPos = window.scrollY;
-var pending = false;
-window.addEventListener('scroll', function (e) {
-  scrollPos = window.scrollY;
-  if (!pending) {
-    pending = true;
-    window.requestAnimationFrame(function () {
-      updateSectionFocus(scrollPos);
-      pending = false;
-    });
-  }
-});
-
-function updateSectionFocus(pos) {
-  var readLine = pos + document.documentElement.clientHeight / 4;
-
-  var focusedSection;
-  for (var n = numberedSections.length - 1; n >= 0; n--) {
-    if (numberedSections[n].offsetTop < readLine) {
-      focusedSection = numberedSections[n];
-      break;
-    }
-  }
-
-  var secid = focusedSection && focusedSection.getAttribute('secid');
-  if (secid !== currentSection) {
-    currentSection && fold(currentSection, false);
-    secid && fold(secid, true);
-    currentSection = secid;
-  }
-}
-
-function fold(secid, check) {
-  document.getElementById('_sidebar_' + secid).className = check ? 'viewing' : '';
-  var sections = secid.split('.');
-  while (sections.length) {
-    var toggle = document.getElementById('_sidebar_toggle_' + sections.join('.'));
-    if (toggle) {
-      toggle.checked = check;
-    }
-    sections.pop();
-  }
-}
-
-updateSectionFocus(window.scrollY);
-})()</script>
+<script>(function(){for(var e,t=[],n=document.getElementsByTagName("section"),o=0;o<n.length;o++)n[o].getAttribute("secid")&&t.push(n[o]);var i=window.scrollY,r=!1;function c(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&d(e,!1),c&&d(c,!0),e=c)}function d(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_sidebar_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",function(e){i=window.scrollY,r||(r=!0,window.requestAnimationFrame(function(){c(i),r=!1}))}),c(window.scrollY);})()</script>
 </div>
 </body>
 </html>

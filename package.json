@@ -19,7 +19,8 @@
     "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'yarn test'"
   },
   "dependencies": {
-    "prismjs": ">=1.16.0"
+    "prismjs": ">=1.16.0",
+    "terser": "^4.1.2"
   },
   "devDependencies": {
     "jest-diff": "^24.8.0",
