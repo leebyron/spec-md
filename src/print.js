@@ -90,6 +90,7 @@ function printHead(ast, options) {
     '<style>' + readStatic('spec.css') + '</style>\n' +
     '<style>' + readStatic('prism.css') + '</style>\n' +
     execStaticJS('highlightName.js') +
+    execStaticJS('linkSelections.js') +
     options.head
   );
 }

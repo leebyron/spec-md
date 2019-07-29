@@ -5,6 +5,47 @@ body {
   max-width: 780px;
 }
 
+/* Selections */
+
+.selection-link {
+  position: absolute;
+  display: block;
+  color: #fff;
+  background: #cacee0;
+  border-radius: 4px;
+  font-size: 36px;
+  height: 23px;
+  line-height: 48px;
+  text-align: center;
+  text-decoration: none;
+  width: 25px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.selection-link:before {
+  border: 5px solid transparent;
+  border-left-color: #cacee0;
+  border-right: 0;
+  content: '';
+  height: 0;
+  margin-top: -5px;
+  margin-right: -5px;
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  width: 0;
+}
+
+.selection-link:hover {
+  background: #3b5998;
+}
+
+.selection-link:hover:before {
+  border-left-color: #3b5998;
+}
 
 /* Links */
 
