@@ -88,7 +88,7 @@ function printHead(ast, options) {
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
     '<style>' + readStatic('spec.css') + '</style>\n' +
     '<style>' + readStatic('prism.css') + '</style>\n' +
-    '<script>(function (){\n' + readStatic('highlightName.js') + '})()</script>\n' +
+    execStaticJS('highlightName.js') +
     options.head
   );
 }
@@ -369,7 +369,7 @@ function printSidebar(ast, options) {
         '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>\n' +
         '<ol>' + join(items) + '</ol>\n' +
       '</div>\n' +
-      '<script>(function (){\n' + readStatic('sidebar.js') + '})()</script>\n' +
+      execStaticJS('sidebar.js') +
     '</div>\n'
   );
 }
@@ -830,6 +830,10 @@ function formatText(text) {
     .replace(/'(?=\w)/g, '\u2018')
     .replace(/'/g, '\u2019')
   );
+}
+
+function execStaticJS(filename) {
+  return '<script>(function(){\n' + readStatic(filename) + '})()</script>\n';
 }
 
 function readStatic(filename) {
