@@ -10,6 +10,47 @@
   max-width: 780px;
 }
 
+/* Selections */
+
+.selection-link {
+  position: absolute;
+  display: block;
+  color: #fff;
+  background: #cacee0;
+  border-radius: 4px;
+  font-size: 36px;
+  height: 23px;
+  line-height: 48px;
+  text-align: center;
+  text-decoration: none;
+  width: 25px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.selection-link:before {
+  border: 5px solid transparent;
+  border-left-color: #cacee0;
+  border-right: 0;
+  content: '';
+  height: 0;
+  margin-top: -5px;
+  margin-right: -5px;
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  width: 0;
+}
+
+.selection-link:hover {
+  background: #3b5998;
+}
+
+.selection-link:hover:before {
+  border-left-color: #3b5998;
+}
 
 /* Links */
 
@@ -795,6 +836,7 @@ pre[class*="language-"] {
 }
 </style>
 <script>(function(){var e,t=document.getElementsByTagName("style")[0].sheet;function n(){e&&(t.deleteRule(e),e=void 0)}document.documentElement.addEventListener("mouseover",function(a){var u,d=a.target.attributes["data-name"];d&&(u=d.value,n(),e=t.insertRule('*[data-name="'+u+'"] { background: #FBF8D0; }',t.cssRules.length))}),document.documentElement.addEventListener("mouseout",n);})()</script>
+<script>(function(){var e,n,t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";function o(e){a(new URL(e.target.href))}function r(){a(window.location)}function a(e){var n=e.hash.match(/^#sel-([A-Za-z0-9-_]+)$/);if(n){var o=document.getSelection(),r=function(e){for(var n=new Array(64),o=0;o<64;o++)n[t.charCodeAt(o)]=o;var r=0,a=f(),i=l(a.concat(f())),c=l(a.concat(f())),d=document.createRange();return d.setStart(i[0],i[1]),d.setEnd(c[0],c[1]),d;function s(){for(var t=0,o=0;;){var a=n[e.charCodeAt(r++)];if(t|=(31&a)<<o,o+=5,a<32)return t}}function f(){for(var e=s(),n=new Array(e),t=0;t<e;t++)n[t]=s();return n}}(n[1]),a=r.getBoundingClientRect(),i=Math.max(20,Math.floor(.4*(window.innerHeight-a.height)));window.scrollTo(0,window.scrollY+a.y-i),o.empty(),o.addRange(r)}}function i(){var r=document.getSelection();if(r.isCollapsed)e&&(e.parentNode.removeChild(e),e=null);else{var a=r.getRangeAt(0),i=a.getBoundingClientRect(),l=function(e){var n="",o=c(e.startContainer,e.startOffset),r=c(e.endContainer,e.endOffset),a=function(e,n){var t=0;for(;t<e.length&&t<n.length&&e[t]===n[t];)t++;return e.slice(0,t)}(o,r);return l(a),l(o.slice(a.length)),l(r.slice(a.length)),n;function i(e){do{n+=t[31&e|(e>31?32:0)],e>>=5}while(e>0)}function l(e){i(e.length);for(var n=0;n<e.length;n++)i(e[n])}}(a);n||(n=document.getElementsByTagName("article")[0]),e||((e=document.createElement("a")).className="selection-link",e.innerText="‟",document.body.appendChild(e));var d=n.getBoundingClientRect().x;e.href="#sel-"+l,e.onclick=o,e.style.left=Math.floor(d+window.scrollX-37)+"px",e.style.top=Math.floor(i.y+window.scrollY-3)+"px"}}function c(e,n){for(var t=[n];e!=document.body;){var o=e.parentNode;t.push(Array.prototype.indexOf.call(o.childNodes,e)),e=o}return t.reverse()}function l(e){for(var n=document.body,t=0;t<e.length-1&&n;t++)n=n.childNodes[e[t]];return[n,e[e.length-1]]}document.addEventListener("selectionchange",i),window.addEventListener("resize",i),window.addEventListener("hashchange",r),window.addEventListener("load",r);})()</script>
 <meta property="og:title" content="Spec Markdown" /></head>
 <body><article>
 <header>
@@ -852,64 +894,65 @@ This is not a normative spec for Spec Markdown, but just documentation of this t
 <li><a href="#sec-Spec-Additions"><span class="spec-secid">3</span>Spec Additions</a>
 <input hidden class="toggle" type="checkbox" checked id="_toggle_3" /><label for="_toggle_3"></label>
 <ol>
-<li><a href="#sec-Title-and-Introduction"><span class="spec-secid">3.1</span>Title and Introduction</a></li>
-<li><a href="#sec-Sections"><span class="spec-secid">3.2</span>Sections</a>
-<input hidden class="toggle" type="checkbox" checked id="_toggle_3.2" /><label for="_toggle_3.2"></label>
-<ol>
-<li><a href="#sec-Sections.Section-Headers"><span class="spec-secid">3.2.1</span>Section Headers</a></li>
-<li><a href="#sec-Subsection-Headers"><span class="spec-secid">3.2.2</span>Subsection Headers</a></li>
-<li><a href="#sec-Table-of-Contents"><span class="spec-secid">3.2.3</span>Table of Contents</a></li>
-<li><a href="#sec-Section-Numbers"><span class="spec-secid">3.2.4</span>Section Numbers</a>
-<input hidden class="toggle" type="checkbox" checked id="_toggle_3.2.4" /><label for="_toggle_3.2.4"></label>
-<ol>
-<li><a href="#sec-Custom-Numbers"><span class="spec-secid">3.2.4.8</span>Custom Numbers</a></li>
-<li><a href="#sec-Appendix-Annex-Sections"><span class="spec-secid">3.2.4.9</span>Appendix / Annex Sections</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#sec-Smart-Characters"><span class="spec-secid">3.3</span>Smart Characters</a>
+<li><a href="#sec-Link-Anything"><span class="spec-secid">3.1</span>Link Anything</a></li>
+<li><a href="#sec-Title-and-Introduction"><span class="spec-secid">3.2</span>Title and Introduction</a></li>
+<li><a href="#sec-Sections"><span class="spec-secid">3.3</span>Sections</a>
 <input hidden class="toggle" type="checkbox" checked id="_toggle_3.3" /><label for="_toggle_3.3"></label>
 <ol>
-<li><a href="#sec-Quotes-and-Dashes"><span class="spec-secid">3.3.1</span>Quotes and Dashes</a></li>
-<li><a href="#sec-Math"><span class="spec-secid">3.3.2</span>Math</a></li>
-<li><a href="#sec-Arrows"><span class="spec-secid">3.3.3</span>Arrows</a></li>
-<li><a href="#sec-Additional-escape-sequence"><span class="spec-secid">3.3.4</span>Additional escape sequence</a></li>
-<li><a href="#sec-Tables"><span class="spec-secid">3.3.5</span>Tables</a></li>
-</ol>
-</li>
-<li><a href="#sec-Note"><span class="spec-secid">3.4</span>Note</a></li>
-<li><a href="#sec-Todo"><span class="spec-secid">3.5</span>Todo</a></li>
-<li><a href="#sec-Syntax-Highlighting"><span class="spec-secid">3.6</span>Syntax Highlighting</a>
-<input hidden class="toggle" type="checkbox" checked id="_toggle_3.6" /><label for="_toggle_3.6"></label>
+<li><a href="#sec-Sections.Section-Headers"><span class="spec-secid">3.3.1</span>Section Headers</a></li>
+<li><a href="#sec-Subsection-Headers"><span class="spec-secid">3.3.2</span>Subsection Headers</a></li>
+<li><a href="#sec-Table-of-Contents"><span class="spec-secid">3.3.3</span>Table of Contents</a></li>
+<li><a href="#sec-Section-Numbers"><span class="spec-secid">3.3.4</span>Section Numbers</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_3.3.4" /><label for="_toggle_3.3.4"></label>
 <ol>
-<li><a href="#sec-Examples"><span class="spec-secid">3.6.1</span>Examples</a></li>
-<li><a href="#sec-Counter-Examples"><span class="spec-secid">3.6.2</span>Counter Examples</a></li>
+<li><a href="#sec-Custom-Numbers"><span class="spec-secid">3.3.4.8</span>Custom Numbers</a></li>
+<li><a href="#sec-Appendix-Annex-Sections"><span class="spec-secid">3.3.4.9</span>Appendix / Annex Sections</a></li>
 </ol>
 </li>
-<li><a href="#sec-Imports"><span class="spec-secid">3.7</span>Imports</a></li>
-<li><a href="#sec-Inline-editing"><span class="spec-secid">3.8</span>Inline editing</a></li>
-<li><a href="#sec-Block-editing"><span class="spec-secid">3.9</span>Block editing</a></li>
-<li><a href="#sec-Algorithms"><span class="spec-secid">3.10</span>Algorithms</a></li>
-<li><a href="#sec-Grammar"><span class="spec-secid">3.11</span>Grammar</a>
-<input hidden class="toggle" type="checkbox" checked id="_toggle_3.11" /><label for="_toggle_3.11"></label>
+</ol>
+</li>
+<li><a href="#sec-Smart-Characters"><span class="spec-secid">3.4</span>Smart Characters</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_3.4" /><label for="_toggle_3.4"></label>
 <ol>
-<li><a href="#sec-Grammar-Production"><span class="spec-secid">3.11.1</span>Grammar Production</a></li>
-<li><a href="#sec-Production-types"><span class="spec-secid">3.11.2</span>Production types</a></li>
-<li><a href="#sec-One-of"><span class="spec-secid">3.11.3</span>One of</a></li>
-<li><a href="#sec-Non-Terminal-Token"><span class="spec-secid">3.11.4</span>Non Terminal Token</a></li>
-<li><a href="#sec-Prose"><span class="spec-secid">3.11.5</span>Prose</a></li>
-<li><a href="#sec-Terminal-Token"><span class="spec-secid">3.11.6</span>Terminal Token</a></li>
-<li><a href="#sec-Regular-Expression"><span class="spec-secid">3.11.7</span>Regular Expression</a></li>
-<li><a href="#sec-Quantifiers"><span class="spec-secid">3.11.8</span>Quantifiers</a></li>
-<li><a href="#sec-Conditional-Parameters"><span class="spec-secid">3.11.9</span>Conditional Parameters</a></li>
-<li><a href="#sec-Constraints"><span class="spec-secid">3.11.10</span>Constraints</a></li>
-<li><a href="#sec-Meta-Tokens"><span class="spec-secid">3.11.11</span>Meta Tokens</a></li>
+<li><a href="#sec-Quotes-and-Dashes"><span class="spec-secid">3.4.1</span>Quotes and Dashes</a></li>
+<li><a href="#sec-Math"><span class="spec-secid">3.4.2</span>Math</a></li>
+<li><a href="#sec-Arrows"><span class="spec-secid">3.4.3</span>Arrows</a></li>
+<li><a href="#sec-Additional-escape-sequence"><span class="spec-secid">3.4.4</span>Additional escape sequence</a></li>
+<li><a href="#sec-Tables"><span class="spec-secid">3.4.5</span>Tables</a></li>
 </ol>
 </li>
-<li><a href="#sec-Grammar-Semantics"><span class="spec-secid">3.12</span>Grammar Semantics</a></li>
-<li><a href="#sec-Value-Literals"><span class="spec-secid">3.13</span>Value Literals</a></li>
-<li><a href="#sec-Biblio"><span class="spec-secid">3.14</span>Biblio</a></li>
+<li><a href="#sec-Note"><span class="spec-secid">3.5</span>Note</a></li>
+<li><a href="#sec-Todo"><span class="spec-secid">3.6</span>Todo</a></li>
+<li><a href="#sec-Syntax-Highlighting"><span class="spec-secid">3.7</span>Syntax Highlighting</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_3.7" /><label for="_toggle_3.7"></label>
+<ol>
+<li><a href="#sec-Examples"><span class="spec-secid">3.7.1</span>Examples</a></li>
+<li><a href="#sec-Counter-Examples"><span class="spec-secid">3.7.2</span>Counter Examples</a></li>
+</ol>
+</li>
+<li><a href="#sec-Imports"><span class="spec-secid">3.8</span>Imports</a></li>
+<li><a href="#sec-Inline-editing"><span class="spec-secid">3.9</span>Inline editing</a></li>
+<li><a href="#sec-Block-editing"><span class="spec-secid">3.10</span>Block editing</a></li>
+<li><a href="#sec-Algorithms"><span class="spec-secid">3.11</span>Algorithms</a></li>
+<li><a href="#sec-Grammar"><span class="spec-secid">3.12</span>Grammar</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_3.12" /><label for="_toggle_3.12"></label>
+<ol>
+<li><a href="#sec-Grammar-Production"><span class="spec-secid">3.12.1</span>Grammar Production</a></li>
+<li><a href="#sec-Production-types"><span class="spec-secid">3.12.2</span>Production types</a></li>
+<li><a href="#sec-One-of"><span class="spec-secid">3.12.3</span>One of</a></li>
+<li><a href="#sec-Non-Terminal-Token"><span class="spec-secid">3.12.4</span>Non Terminal Token</a></li>
+<li><a href="#sec-Prose"><span class="spec-secid">3.12.5</span>Prose</a></li>
+<li><a href="#sec-Terminal-Token"><span class="spec-secid">3.12.6</span>Terminal Token</a></li>
+<li><a href="#sec-Regular-Expression"><span class="spec-secid">3.12.7</span>Regular Expression</a></li>
+<li><a href="#sec-Quantifiers"><span class="spec-secid">3.12.8</span>Quantifiers</a></li>
+<li><a href="#sec-Conditional-Parameters"><span class="spec-secid">3.12.9</span>Conditional Parameters</a></li>
+<li><a href="#sec-Constraints"><span class="spec-secid">3.12.10</span>Constraints</a></li>
+<li><a href="#sec-Meta-Tokens"><span class="spec-secid">3.12.11</span>Meta Tokens</a></li>
+</ol>
+</li>
+<li><a href="#sec-Grammar-Semantics"><span class="spec-secid">3.13</span>Grammar Semantics</a></li>
+<li><a href="#sec-Value-Literals"><span class="spec-secid">3.14</span>Value Literals</a></li>
+<li><a href="#sec-Biblio"><span class="spec-secid">3.15</span>Biblio</a></li>
 </ol>
 </li>
 <li><a href="#sec-Using-Spec-Markdown"><span class="spec-secid">A</span>Using Spec Markdown</a>
@@ -1187,8 +1230,13 @@ var code = sample();
 <h2><span class="spec-secid" title="link to this section"><a href="#sec-Spec-Additions">3</a></span>Spec Additions</h2>
 <p>Spec Markdown makes some additions to Markdown to support cases relevant to writing technical specs and documentation. It attempts to be as minimally invasive as possible, leveraging existing Markdown formatting features whenever possible so Spec Markdown documents may render adequately as regular Markdown.</p>
 <p>Spec Markdown also makes restrictions to the overall format of the Markdown document in order to derive a structure to the entire document.</p>
-<section id="sec-Title-and-Introduction" secid="3.1">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Title-and-Introduction">3.1</a></span>Title and Introduction</h3>
+<section id="sec-Link-Anything" secid="3.1">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Link-Anything">3.1</a></span>Link Anything</h3>
+<p>Everything unique in a Spec Markdown file has a link created for it. Sections each have a link, as do named <a href="#sec-Algorithms">Algorithms</a> and <a href="#sec-Grammar">Grammar</a>. You&rsquo;ll find that <a href="#sec-Note">Notes</a> and <a href="#sec-Examples">Examples</a> are also given stable links based on their contents, just in case things move around.</p>
+<p>However, you can also link <em>anything</em> in a Spec Markdown file. Just highlight any bit of text and a link will be created just for that selection, making referencing specific parts of your document easy. Try it here!</p>
+</section>
+<section id="sec-Title-and-Introduction" secid="3.2">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Title-and-Introduction">3.2</a></span>Title and Introduction</h3>
 <p>A Spec Markdown document should start with one Setext style header which will be used as the title of the document. Any content before the first atx (<code>#</code>) style header will become the introduction to the document.</p>
 <p>A Spec Markdown document starts in this form:</p>
 <pre><code>Spec Markdown
@@ -1199,11 +1247,11 @@ Introductory paragraph.
 # First Section Header
 </code></pre>
 </section>
-<section id="sec-Sections" secid="3.2">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Sections">3.2</a></span>Sections</h3>
+<section id="sec-Sections" secid="3.3">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Sections">3.3</a></span>Sections</h3>
 <p>A Spec Markdown document is separated into a sequence and hierarchy of sections. Those sections can then be used as navigation points and can be used to create a table of contents. A section is started by a header and ends at either the next header of similar or greater precedence or the end of the document. A section can contain other sections if their headers are of lower precedence.</p>
-<section id="sec-Sections.Section-Headers" secid="3.2.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Sections.Section-Headers">3.2.1</a></span>Section Headers</h4>
+<section id="sec-Sections.Section-Headers" secid="3.3.1">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Sections.Section-Headers">3.3.1</a></span>Section Headers</h4>
 <p>Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown only supports atx style headers as section headers.</p>
 <pre><code># Header
 </code></pre>
@@ -1213,8 +1261,8 @@ Introductory paragraph.
 </code></pre>
 <p>Spec Markdown also requires that only single <code>#</code> headers appear at the top of a document, and that only a <code>##</code> header (and not a <code>###</code> header) can be contained with the section started by a <code>#</code> header.</p>
 </section>
-<section id="sec-Subsection-Headers" secid="3.2.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Subsection-Headers">3.2.2</a></span>Subsection Headers</h4>
+<section id="sec-Subsection-Headers" secid="3.3.2">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Subsection-Headers">3.3.2</a></span>Subsection Headers</h4>
 <p>While sections are numbered and appear in the table of contents, a subsection is similar but not numbered or in the table of contents.</p>
 <section id="sec-Subsection-Headers.This-is-a-subsection" class="subsec">
 <h6><a href="#sec-Subsection-Headers.This-is-a-subsection" title="link to this subsection">This is a subsection</a></h6>
@@ -1225,55 +1273,55 @@ Introductory paragraph.
 <p>Sections may contain multiple subsections, but subsections cannot contain sections or subsections.</p>
 </section>
 </section>
-<section id="sec-Table-of-Contents" secid="3.2.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Table-of-Contents">3.2.3</a></span>Table of Contents</h4>
+<section id="sec-Table-of-Contents" secid="3.3.3">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Table-of-Contents">3.3.3</a></span>Table of Contents</h4>
 <p>A table of contents is automatically generated from the hierarchy of sections in the Spec Markdown document.</p>
 </section>
-<section id="sec-Section-Numbers" secid="3.2.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Section-Numbers">3.2.4</a></span>Section Numbers</h4>
+<section id="sec-Section-Numbers" secid="3.3.4">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Section-Numbers">3.3.4</a></span>Section Numbers</h4>
 <p>A number is associated with each section, starting with 1. In a hierarchy of sections, the parent sections are joined with dots. This provides an unambiguous location identifier for a given section in a document.</p>
 <p>You can specify these section numbers directly in your Markdown documents if you wish by writing them directly after the <code>#</code> and before the text of the header.</p>
-<section id="sec-Custom-Numbers" secid="3.2.4.8">
-<h5><span class="spec-secid" title="link to this section"><a href="#sec-Custom-Numbers">3.2.4.8</a></span>Custom Numbers</h5>
+<section id="sec-Custom-Numbers" secid="3.3.4.8">
+<h5><span class="spec-secid" title="link to this section"><a href="#sec-Custom-Numbers">3.3.4.8</a></span>Custom Numbers</h5>
 <p>If the section number is written in the document, the last number will be used as the number for that section. This is useful when writing a proposal against an existing spec and wish to reference a particular section.</p>
 <p>The header for this section was written as</p>
 <pre><code>#### 3.2.3.8. Custom Numbers
 </code></pre>
 </section>
-<section id="sec-Appendix-Annex-Sections" secid="3.2.4.9">
-<h5><span class="spec-secid" title="link to this section"><a href="#sec-Appendix-Annex-Sections">3.2.4.9</a></span>Appendix / Annex Sections</h5>
+<section id="sec-Appendix-Annex-Sections" secid="3.3.4.9">
+<h5><span class="spec-secid" title="link to this section"><a href="#sec-Appendix-Annex-Sections">3.3.4.9</a></span>Appendix / Annex Sections</h5>
 <p>If a top level section is written with a letter, such as <code>A</code> instead of a number, that will begin an Appendix section.</p>
 <pre><code># A. Appendix: Grammar
 </code></pre>
 </section>
 </section>
 </section>
-<section id="sec-Smart-Characters" secid="3.3">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Smart-Characters">3.3</a></span>Smart Characters</h3>
+<section id="sec-Smart-Characters" secid="3.4">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Smart-Characters">3.4</a></span>Smart Characters</h3>
 <p>The Spec Markdown renderer will replace easy to type characters like quotes and dashes with their appropriate typographic entities. These replacements will not occur within blocks of code.</p>
-<section id="sec-Quotes-and-Dashes" secid="3.3.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Quotes-and-Dashes">3.3.1</a></span>Quotes and Dashes</h4>
+<section id="sec-Quotes-and-Dashes" secid="3.4.1">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Quotes-and-Dashes">3.4.1</a></span>Quotes and Dashes</h4>
 <p>Prose text has &ldquo;smart quotes&rdquo;, hyphens, en&#8208;dashes and em&#8208;dashes&mdash;you shouldn&rsquo;t have to think about it, they&rsquo;ll just work.</p>
 <p>For example, a quote of a quote (with an inner apostrophe and emphasis for flair):</p>
 <p><code>&quot;She told me that &#x27;he isn&#x27;t here right *now*&#x27; - so I left.&quot;</code></p>
 <p>Will render as:</p>
 <p>&ldquo;She told me that&lsquo;he isn&rsquo;t here right <em>now</em>&rsquo; &ndash; so I left.&rdquo;</p>
 </section>
-<section id="sec-Math" secid="3.3.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Math">3.3.2</a></span>Math</h4>
+<section id="sec-Math" secid="3.4.2">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Math">3.4.2</a></span>Math</h4>
 <p>Math operators like &ge;, &le;, and &cong; can be written as <code>&gt;=</code>, <code>&lt;=</code>, and <code>~=</code>.</p>
 </section>
-<section id="sec-Arrows" secid="3.3.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">3.3.3</a></span>Arrows</h4>
+<section id="sec-Arrows" secid="3.4.3">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">3.4.3</a></span>Arrows</h4>
 <p>Smart arrows &rarr; and &larr; and &harr; can be written as <code>-&gt;</code>, <code>&lt;-</code> and <code>&lt;-&gt;</code>.</p>
 <p>Fat smart arrows &rArr; and &lArr; and &hArr; can be written as <code>=&gt;</code>, <code>&lt;==</code> and <code>&lt;=&gt;</code>.</p>
 </section>
-<section id="sec-Additional-escape-sequence" secid="3.3.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Additional-escape-sequence">3.3.4</a></span>Additional escape sequence</h4>
+<section id="sec-Additional-escape-sequence" secid="3.4.4">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Additional-escape-sequence">3.4.4</a></span>Additional escape sequence</h4>
 <p>Spec Markdown allows escaping &lt; &gt; and | character with <code>\&gt;</code>, <code>\&lt;</code>, and <code>\|</code>.</p>
 </section>
-<section id="sec-Tables" secid="3.3.5">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Tables">3.3.5</a></span>Tables</h4>
+<section id="sec-Tables" secid="3.4.5">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Tables">3.4.5</a></span>Tables</h4>
 <p>Similar to Github flavored Markdown</p>
 <pre><code>| This | is a | table |
 | ---- | ---- | ----- |
@@ -1294,8 +1342,8 @@ Introductory paragraph.
 <p>Table cells can contain any content that a paragraph can contain.</p>
 </section>
 </section>
-<section id="sec-Note" secid="3.4">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Note">3.4</a></span>Note</h3>
+<section id="sec-Note" secid="3.5">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Note">3.5</a></span>Note</h3>
 <p>Notes can be written inline with a spec document, and are often helpful to supply non&#8208;normative explanatory text or caveats in a differently formatted style. Case insensitive, the <code>:</code> is optional.</p>
 <pre><code>Note: Notes are awesome.
 </code></pre>
@@ -1304,8 +1352,8 @@ Introductory paragraph.
 <a href="#note-cf2ae">Note</a>
 Notes are awesome.</div>
 </section>
-<section id="sec-Todo" secid="3.5">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Todo">3.5</a></span>Todo</h3>
+<section id="sec-Todo" secid="3.6">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Todo">3.6</a></span>Todo</h3>
 <p>It&rsquo;s often helpful to write a draft of a document and leave &ldquo;to&#8208;do&rdquo; comments in not&#8208;yet&#8208;completed sections. Case insensitive, the <code>:</code> is optional.</p>
 <pre><code>TODO: finish this section
 </code></pre>
@@ -1316,8 +1364,8 @@ finish this section</div>
 <a href="#note-2ac5f">Note</a>
 You can also write <code>TK</code> in place of <code>TODO</code>, nerds.</div>
 </section>
-<section id="sec-Syntax-Highlighting" secid="3.6">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Syntax-Highlighting">3.6</a></span>Syntax Highlighting</h3>
+<section id="sec-Syntax-Highlighting" secid="3.7">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Syntax-Highlighting">3.7</a></span>Syntax Highlighting</h3>
 <p>Spec Markdown will apply syntax highlighting to blocks of code if a github&#8208;flavored&#8208;markdown style language is supplied.</p>
 <p>You may provide a <code>highlight</code> function as an option to customize this behavior.</p>
 <p>To render this highlighted javascript:</p>
@@ -1327,8 +1375,8 @@ var baz = foo(&quot;bar&quot;);
 <p>Produces the following:</p>
 <pre><code><span class="token keyword">var</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<section id="sec-Examples" secid="3.6.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.6.1</a></span>Examples</h4>
+<section id="sec-Examples" secid="3.7.1">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.7.1</a></span>Examples</h4>
 <p>Spec Markdown helps you write examples, visually indicaticating the difference from normative code blocks, and generating permalinks to those examples. Just write <code>example</code> after the <code>```</code>.</p>
 <pre><code>```example
 var great = useOf.example(&quot;code&quot;);
@@ -1344,8 +1392,8 @@ var great = useOf.example(&quot;code&quot;);
 <pre id="example-d0380e" class="spec-example"><a href="#example-d0380e">Example № 6</a><code><span class="token keyword">var</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
-<section id="sec-Counter-Examples" secid="3.6.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Counter-Examples">3.6.2</a></span>Counter Examples</h4>
+<section id="sec-Counter-Examples" secid="3.7.2">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Counter-Examples">3.7.2</a></span>Counter Examples</h4>
 <p>In addition to examples, Spec Markdown helps you write <em>counter&#8208;examples</em>, which are examples of things you should not do. These are visually indicated as different from normative code blocks and other examples. Just write <code>counter-example</code> after the <code>```</code> (and optional language).</p>
 <pre><code>```js counter-example
 var shit = dontSwear();
@@ -1355,20 +1403,20 @@ var shit = dontSwear();
 </code></pre>
 </section>
 </section>
-<section id="sec-Imports" secid="3.7">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Imports">3.7</a></span>Imports</h3>
+<section id="sec-Imports" secid="3.8">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Imports">3.8</a></span>Imports</h3>
 <p>When compiled, an import reference will be inlined into the same document. An import reference looks like a link to a &ldquo;.md&rdquo; file as a single paragraph.</p>
 <pre><code>[AnythingGoesHere](SomeName.md)
 </code></pre>
 <p>You can optionally prefix the import reference with <code>#</code> characters to describe at what section level the import should apply. By default an import reference will be imported as a child of the current section.</p>
 </section>
-<section id="sec-Inline-editing" secid="3.8">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Inline-editing">3.8</a></span>Inline editing</h3>
+<section id="sec-Inline-editing" secid="3.9">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Inline-editing">3.9</a></span>Inline editing</h3>
 <p>A portion of the <a href="http://criticmarkup.com/">CriticMarkup</a> spec is supported.</p>
 <p>For example, we can <ins>add</ins> or <del>remove</del> text with the <code>{++add++}</code> or <code>{--remove--}</code> syntax.</p>
 </section>
-<section id="sec-Block-editing" secid="3.9">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Block-editing">3.9</a></span>Block editing</h3>
+<section id="sec-Block-editing" secid="3.10">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Block-editing">3.10</a></span>Block editing</h3>
 <p>We can also add and remove entire blocks of content, by using <code>{++</code> or <code>{--</code> on their own line with empty lines on either side:</p>
 <div class="spec-added"><p>These paragraphs</p>
 <p>have been <em>added</em>.</p>
@@ -1400,8 +1448,8 @@ have been *removed*.
 <a href="#note-e394e">Note</a>
 imports and section headers cannot be included in a added or removed section to preserve the ability to render a table of contents.</div>
 </section>
-<section id="sec-Algorithms" secid="3.10">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">3.10</a></span>Algorithms</h3>
+<section id="sec-Algorithms" secid="3.11">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">3.11</a></span>Algorithms</h3>
 <p>Specifications for procedures or algorithms can be defined in terms of nested markdown lists. These lists can be of any kind, but will always have ordered formatting. The bullet labeling for algorithms is specific will cycle between decimal, lower&#8208;alpha, and lower&#8208;roman.</p>
 <p>An algorithm definition also describes its arguments in terms of variables.</p>
 <pre><code>Algorithm(arg) :
@@ -1430,12 +1478,12 @@ imports and section headers cannot be included in a added or removed section to 
 </ol>
 </div>
 </section>
-<section id="sec-Grammar" secid="3.11">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar">3.11</a></span>Grammar</h3>
+<section id="sec-Grammar" secid="3.12">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar">3.12</a></span>Grammar</h3>
 <p>Spec Markdown makes it easier to describe context&#8208;free grammatical productions.</p>
 <p>Grammars are defined by a sequence of <em>terminal</em> characters or sequence of characters, which are then referenced by <em>non&#8208;terminal</em> rules. The definition of a non&#8208;terminal is referred to as a <em>production</em>.</p>
-<section id="sec-Grammar-Production" secid="3.11.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Production">3.11.1</a></span>Grammar Production</h4>
+<section id="sec-Grammar-Production" secid="3.12.1">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Production">3.12.1</a></span>Grammar Production</h4>
 <p>The <code>:</code> token indicates an &ldquo;is defined as&rdquo; production for a non&#8208;terminal, where a single definition can be written directly after the <code>:</code>.</p>
 <pre><code>PBJ : Bread PeanutButter Jelly Bread
 </code></pre>
@@ -1466,8 +1514,8 @@ imports and section headers cannot be included in a added or removed section to 
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
 </section>
-<section id="sec-Production-types" secid="3.11.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Production-types">3.11.2</a></span>Production types</h4>
+<section id="sec-Production-types" secid="3.12.2">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Production-types">3.12.2</a></span>Production types</h4>
 <p>Often languages wish to specify different types of grammar productions, such as lexical or syntactical, or if certain characters line whitespace or newlines are permitted between symbols in the right&#8208;hand&#8208;side. Spec&#8208;md allows this this distinction based on the number of colons:</p>
 <pre><code>TypeOne : `type` `one`
 
@@ -1486,8 +1534,8 @@ TypeThree ::: `type` `three`
 <span class="spec-nt"><a href="#TypeThree" data-name="TypeThree">TypeThree</a></span><div class="spec-rhs"><span class="spec-t">type</span><span class="spec-t">three</span></div>
 </div>
 </section>
-<section id="sec-One-of" secid="3.11.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-One-of">3.11.3</a></span>One of</h4>
+<section id="sec-One-of" secid="3.12.3">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-One-of">3.12.3</a></span>One of</h4>
 <p>If each definition option is a single token, it can be expressed as a &ldquo;one of&rdquo; expression instead of a markdown list.</p>
 <pre><code>AssignmentOperator : one of *= `/=` %= += -= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &amp;= ^= |=
 </code></pre>
@@ -1534,12 +1582,12 @@ TypeThree ::: `type` `three`
 </table></div>
 </div>
 </section>
-<section id="sec-Non-Terminal-Token" secid="3.11.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Non-Terminal-Token">3.11.4</a></span>Non Terminal Token</h4>
+<section id="sec-Non-Terminal-Token" secid="3.12.4">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Non-Terminal-Token">3.12.4</a></span>Non Terminal Token</h4>
 <p>Non&#8208;terminal tokens with a defined as a grammar production can be referred to in other grammar productions. Non&#8208;terminals must match the regular expression <span class="spec-rx">/[A-Z][_a-zA-Z]*/</span>. That is, they must start with an uppercase letter, followed by any number of letters or underscores.</p>
 </section>
-<section id="sec-Prose" secid="3.11.5">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Prose">3.11.5</a></span>Prose</h4>
+<section id="sec-Prose" secid="3.12.5">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Prose">3.12.5</a></span>Prose</h4>
 <p>Grammars can describe arbitrary rules by using prose within a grammar definition by using <code>&quot;quotes&quot;</code>.</p>
 <pre><code>Sandwich : Bread &quot;Any kind of topping&quot; Bread
 </code></pre>
@@ -1548,8 +1596,8 @@ TypeThree ::: `type` `three`
 <span class="spec-nt"><a href="#Sandwich" data-name="Sandwich">Sandwich</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-prose">Any kind of topping</span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
 </section>
-<section id="sec-Terminal-Token" secid="3.11.6">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Terminal-Token">3.11.6</a></span>Terminal Token</h4>
+<section id="sec-Terminal-Token" secid="3.12.6">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Terminal-Token">3.12.6</a></span>Terminal Token</h4>
 <p>Terminal tokens refer to a character or sequence of characters. They can be written unadorned in the grammar definition.</p>
 <pre><code>BalancedParens : ( BalancedParens )
 </code></pre>
@@ -1572,8 +1620,8 @@ TypeThree ::: `type` `three`
 <span class="spec-nt"><a href="#DivisionExpression" data-name="DivisionExpression">DivisionExpression</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Expression">Expression</span></span><span class="spec-t">/</span><span class="spec-nt"><span data-name="Expression">Expression</span></span></div>
 </div>
 </section>
-<section id="sec-Regular-Expression" secid="3.11.7">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Regular-Expression">3.11.7</a></span>Regular Expression</h4>
+<section id="sec-Regular-Expression" secid="3.12.7">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Regular-Expression">3.12.7</a></span>Regular Expression</h4>
 <p>When a grammar is intended to be interpretted as a single token and can be clearly written as a regular expression, you can do so directly.</p>
 <pre><code>UppercaseWord : /[A-Z][a-z]*/
 </code></pre>
@@ -1582,8 +1630,8 @@ TypeThree ::: `type` `three`
 <span class="spec-nt"><a href="#UppercaseWord" data-name="UppercaseWord">UppercaseWord</a></span><div class="spec-rhs"><span class="spec-rx">/[A-Z][a-z]*/</span></div>
 </div>
 </section>
-<section id="sec-Quantifiers" secid="3.11.8">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Quantifiers">3.11.8</a></span>Quantifiers</h4>
+<section id="sec-Quantifiers" secid="3.12.8">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Quantifiers">3.12.8</a></span>Quantifiers</h4>
 <p>Tokens can be followed by quantifiers to alter their meaning and as a short&#8208;hand for common patterns of optionality and repetition.</p>
 <section id="sec-Quantifiers.Optional-Tokens" class="subsec">
 <h6><a href="#sec-Quantifiers.Optional-Tokens" title="link to this subsection">Optional Tokens</a></h6>
@@ -1669,8 +1717,8 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 </section>
-<section id="sec-Conditional-Parameters" secid="3.11.9">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Conditional-Parameters">3.11.9</a></span>Conditional Parameters</h4>
+<section id="sec-Conditional-Parameters" secid="3.12.9">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Conditional-Parameters">3.12.9</a></span>Conditional Parameters</h4>
 <p>It can be a useful short&#8208;hand to provide conditional parameters when defining a non&#8208;terminal token rather than defining two very similar non&#8208;terminals.</p>
 <p>A conditional parameter is written in braces <code>Token[Param]</code> and renders as <span class="spec-nt"><span data-name="Token">Token</span><span class="spec-params"><span class="spec-param">Param</span></span></span>. When used in definitions is shorthand for two symbol definitions: one appended with that parameter name, the other without.</p>
 <pre><code>Example[WithCondition] : &quot;Definition TBD&quot;
@@ -1776,8 +1824,8 @@ TypeThree ::: `type` `three`
 <p>Produces the following:</p>
 <p><span class="spec-quantified"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">P</span><span class="spec-param conditional">Q</span></span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span></p>
 </section>
-<section id="sec-Constraints" secid="3.11.10">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Constraints">3.11.10</a></span>Constraints</h4>
+<section id="sec-Constraints" secid="3.12.10">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Constraints">3.12.10</a></span>Constraints</h4>
 <p>Any token can be followed by &ldquo;but not&rdquo; or &ldquo;but not one of&rdquo; to place a further constraint on the previous token:</p>
 <pre><code>Example : A B but not foo or bar
 </code></pre>
@@ -1793,8 +1841,8 @@ TypeThree ::: `type` `three`
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="A">A</span></span><span class="spec-constrained"><span class="spec-nt"><span data-name="B">B</span></span><span class="spec-butnot"><span class="spec-t">foo</span><span class="spec-t">bar</span></span></span></div>
 </div>
 </section>
-<section id="sec-Meta-Tokens" secid="3.11.11">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Meta-Tokens">3.11.11</a></span>Meta Tokens</h4>
+<section id="sec-Meta-Tokens" secid="3.12.11">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Meta-Tokens">3.12.11</a></span>Meta Tokens</h4>
 <p>Spec Markdown can specify some tokens which do not consume any characters.</p>
 <p>The empty set, written <code>[empty]</code> appears as <span class="spec-empty">[empty]</span> can be used to define a non&#8208;terminal as matching no terminal or non&#8208;terminal tokens.</p>
 <pre><code>Example : [empty]
@@ -1829,8 +1877,8 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 </section>
-<section id="sec-Grammar-Semantics" secid="3.12">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Semantics">3.12</a></span>Grammar Semantics</h3>
+<section id="sec-Grammar-Semantics" secid="3.13">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Semantics">3.13</a></span>Grammar Semantics</h3>
 <p>Once grammar is defined, it can be useful to define the semantics of the grammar in terms of algorithm steps. A single grammar definition followed by a list is interpretted as a grammar semantic:</p>
 <pre><code>PBJ : Bread PeanutButter Jelly Bread
 
@@ -1858,8 +1906,8 @@ TypeThree ::: `type` `three`
 </ol>
 </div>
 </section>
-<section id="sec-Value-Literals" secid="3.13">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Value-Literals">3.13</a></span>Value Literals</h3>
+<section id="sec-Value-Literals" secid="3.14">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Value-Literals">3.14</a></span>Value Literals</h3>
 <p>Value literals allow any text to refer to a value which has semantic meaning in the specification by wrapping it in <code>{ }</code> curly brace characters.</p>
 <pre><code>I can reference {foo}, {&quot;foo&quot;}, {null}, {true}.
 </code></pre>
@@ -1890,8 +1938,8 @@ TypeThree ::: `type` `three`
 <p><span class="spec-call"><a href="#Algorithm()" data-name="Algorithm">Algorithm</a>(<var data-name="foo">foo</var>, <span class="spec-string">"string"</span>, <span class="spec-keyword">null</span>)</span></p>
 </section>
 </section>
-<section id="sec-Biblio" secid="3.14">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Biblio">3.14</a></span>Biblio</h3>
+<section id="sec-Biblio" secid="3.15">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Biblio">3.15</a></span>Biblio</h3>
 <p>By supplying a <code>&quot;biblio&quot;</code> key in a metadata file, you can have Algorithm calls and Non&#8208;terminal tokens which are not defined in this spec to link to where they are defined.</p>
 <pre><code>spec-md -m metadata.json myspec.md
 </code></pre>
@@ -2050,64 +2098,65 @@ Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</foo
 <li id="_sidebar_3"><a href="#sec-Spec-Additions"><span class="spec-secid">3</span>Spec Additions</a>
 <input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3" /><label for="_sidebar_toggle_3"></label>
 <ol>
-<li id="_sidebar_3.1"><a href="#sec-Title-and-Introduction"><span class="spec-secid">3.1</span>Title and Introduction</a></li>
-<li id="_sidebar_3.2"><a href="#sec-Sections"><span class="spec-secid">3.2</span>Sections</a>
-<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.2" /><label for="_sidebar_toggle_3.2"></label>
-<ol>
-<li id="_sidebar_3.2.1"><a href="#sec-Sections.Section-Headers"><span class="spec-secid">3.2.1</span>Section Headers</a></li>
-<li id="_sidebar_3.2.2"><a href="#sec-Subsection-Headers"><span class="spec-secid">3.2.2</span>Subsection Headers</a></li>
-<li id="_sidebar_3.2.3"><a href="#sec-Table-of-Contents"><span class="spec-secid">3.2.3</span>Table of Contents</a></li>
-<li id="_sidebar_3.2.4"><a href="#sec-Section-Numbers"><span class="spec-secid">3.2.4</span>Section Numbers</a>
-<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.2.4" /><label for="_sidebar_toggle_3.2.4"></label>
-<ol>
-<li id="_sidebar_3.2.4.8"><a href="#sec-Custom-Numbers"><span class="spec-secid">3.2.4.8</span>Custom Numbers</a></li>
-<li id="_sidebar_3.2.4.9"><a href="#sec-Appendix-Annex-Sections"><span class="spec-secid">3.2.4.9</span>Appendix / Annex Sections</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li id="_sidebar_3.3"><a href="#sec-Smart-Characters"><span class="spec-secid">3.3</span>Smart Characters</a>
+<li id="_sidebar_3.1"><a href="#sec-Link-Anything"><span class="spec-secid">3.1</span>Link Anything</a></li>
+<li id="_sidebar_3.2"><a href="#sec-Title-and-Introduction"><span class="spec-secid">3.2</span>Title and Introduction</a></li>
+<li id="_sidebar_3.3"><a href="#sec-Sections"><span class="spec-secid">3.3</span>Sections</a>
 <input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.3" /><label for="_sidebar_toggle_3.3"></label>
 <ol>
-<li id="_sidebar_3.3.1"><a href="#sec-Quotes-and-Dashes"><span class="spec-secid">3.3.1</span>Quotes and Dashes</a></li>
-<li id="_sidebar_3.3.2"><a href="#sec-Math"><span class="spec-secid">3.3.2</span>Math</a></li>
-<li id="_sidebar_3.3.3"><a href="#sec-Arrows"><span class="spec-secid">3.3.3</span>Arrows</a></li>
-<li id="_sidebar_3.3.4"><a href="#sec-Additional-escape-sequence"><span class="spec-secid">3.3.4</span>Additional escape sequence</a></li>
-<li id="_sidebar_3.3.5"><a href="#sec-Tables"><span class="spec-secid">3.3.5</span>Tables</a></li>
-</ol>
-</li>
-<li id="_sidebar_3.4"><a href="#sec-Note"><span class="spec-secid">3.4</span>Note</a></li>
-<li id="_sidebar_3.5"><a href="#sec-Todo"><span class="spec-secid">3.5</span>Todo</a></li>
-<li id="_sidebar_3.6"><a href="#sec-Syntax-Highlighting"><span class="spec-secid">3.6</span>Syntax Highlighting</a>
-<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.6" /><label for="_sidebar_toggle_3.6"></label>
+<li id="_sidebar_3.3.1"><a href="#sec-Sections.Section-Headers"><span class="spec-secid">3.3.1</span>Section Headers</a></li>
+<li id="_sidebar_3.3.2"><a href="#sec-Subsection-Headers"><span class="spec-secid">3.3.2</span>Subsection Headers</a></li>
+<li id="_sidebar_3.3.3"><a href="#sec-Table-of-Contents"><span class="spec-secid">3.3.3</span>Table of Contents</a></li>
+<li id="_sidebar_3.3.4"><a href="#sec-Section-Numbers"><span class="spec-secid">3.3.4</span>Section Numbers</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.3.4" /><label for="_sidebar_toggle_3.3.4"></label>
 <ol>
-<li id="_sidebar_3.6.1"><a href="#sec-Examples"><span class="spec-secid">3.6.1</span>Examples</a></li>
-<li id="_sidebar_3.6.2"><a href="#sec-Counter-Examples"><span class="spec-secid">3.6.2</span>Counter Examples</a></li>
+<li id="_sidebar_3.3.4.8"><a href="#sec-Custom-Numbers"><span class="spec-secid">3.3.4.8</span>Custom Numbers</a></li>
+<li id="_sidebar_3.3.4.9"><a href="#sec-Appendix-Annex-Sections"><span class="spec-secid">3.3.4.9</span>Appendix / Annex Sections</a></li>
 </ol>
 </li>
-<li id="_sidebar_3.7"><a href="#sec-Imports"><span class="spec-secid">3.7</span>Imports</a></li>
-<li id="_sidebar_3.8"><a href="#sec-Inline-editing"><span class="spec-secid">3.8</span>Inline editing</a></li>
-<li id="_sidebar_3.9"><a href="#sec-Block-editing"><span class="spec-secid">3.9</span>Block editing</a></li>
-<li id="_sidebar_3.10"><a href="#sec-Algorithms"><span class="spec-secid">3.10</span>Algorithms</a></li>
-<li id="_sidebar_3.11"><a href="#sec-Grammar"><span class="spec-secid">3.11</span>Grammar</a>
-<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.11" /><label for="_sidebar_toggle_3.11"></label>
+</ol>
+</li>
+<li id="_sidebar_3.4"><a href="#sec-Smart-Characters"><span class="spec-secid">3.4</span>Smart Characters</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.4" /><label for="_sidebar_toggle_3.4"></label>
 <ol>
-<li id="_sidebar_3.11.1"><a href="#sec-Grammar-Production"><span class="spec-secid">3.11.1</span>Grammar Production</a></li>
-<li id="_sidebar_3.11.2"><a href="#sec-Production-types"><span class="spec-secid">3.11.2</span>Production types</a></li>
-<li id="_sidebar_3.11.3"><a href="#sec-One-of"><span class="spec-secid">3.11.3</span>One of</a></li>
-<li id="_sidebar_3.11.4"><a href="#sec-Non-Terminal-Token"><span class="spec-secid">3.11.4</span>Non Terminal Token</a></li>
-<li id="_sidebar_3.11.5"><a href="#sec-Prose"><span class="spec-secid">3.11.5</span>Prose</a></li>
-<li id="_sidebar_3.11.6"><a href="#sec-Terminal-Token"><span class="spec-secid">3.11.6</span>Terminal Token</a></li>
-<li id="_sidebar_3.11.7"><a href="#sec-Regular-Expression"><span class="spec-secid">3.11.7</span>Regular Expression</a></li>
-<li id="_sidebar_3.11.8"><a href="#sec-Quantifiers"><span class="spec-secid">3.11.8</span>Quantifiers</a></li>
-<li id="_sidebar_3.11.9"><a href="#sec-Conditional-Parameters"><span class="spec-secid">3.11.9</span>Conditional Parameters</a></li>
-<li id="_sidebar_3.11.10"><a href="#sec-Constraints"><span class="spec-secid">3.11.10</span>Constraints</a></li>
-<li id="_sidebar_3.11.11"><a href="#sec-Meta-Tokens"><span class="spec-secid">3.11.11</span>Meta Tokens</a></li>
+<li id="_sidebar_3.4.1"><a href="#sec-Quotes-and-Dashes"><span class="spec-secid">3.4.1</span>Quotes and Dashes</a></li>
+<li id="_sidebar_3.4.2"><a href="#sec-Math"><span class="spec-secid">3.4.2</span>Math</a></li>
+<li id="_sidebar_3.4.3"><a href="#sec-Arrows"><span class="spec-secid">3.4.3</span>Arrows</a></li>
+<li id="_sidebar_3.4.4"><a href="#sec-Additional-escape-sequence"><span class="spec-secid">3.4.4</span>Additional escape sequence</a></li>
+<li id="_sidebar_3.4.5"><a href="#sec-Tables"><span class="spec-secid">3.4.5</span>Tables</a></li>
 </ol>
 </li>
-<li id="_sidebar_3.12"><a href="#sec-Grammar-Semantics"><span class="spec-secid">3.12</span>Grammar Semantics</a></li>
-<li id="_sidebar_3.13"><a href="#sec-Value-Literals"><span class="spec-secid">3.13</span>Value Literals</a></li>
-<li id="_sidebar_3.14"><a href="#sec-Biblio"><span class="spec-secid">3.14</span>Biblio</a></li>
+<li id="_sidebar_3.5"><a href="#sec-Note"><span class="spec-secid">3.5</span>Note</a></li>
+<li id="_sidebar_3.6"><a href="#sec-Todo"><span class="spec-secid">3.6</span>Todo</a></li>
+<li id="_sidebar_3.7"><a href="#sec-Syntax-Highlighting"><span class="spec-secid">3.7</span>Syntax Highlighting</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.7" /><label for="_sidebar_toggle_3.7"></label>
+<ol>
+<li id="_sidebar_3.7.1"><a href="#sec-Examples"><span class="spec-secid">3.7.1</span>Examples</a></li>
+<li id="_sidebar_3.7.2"><a href="#sec-Counter-Examples"><span class="spec-secid">3.7.2</span>Counter Examples</a></li>
+</ol>
+</li>
+<li id="_sidebar_3.8"><a href="#sec-Imports"><span class="spec-secid">3.8</span>Imports</a></li>
+<li id="_sidebar_3.9"><a href="#sec-Inline-editing"><span class="spec-secid">3.9</span>Inline editing</a></li>
+<li id="_sidebar_3.10"><a href="#sec-Block-editing"><span class="spec-secid">3.10</span>Block editing</a></li>
+<li id="_sidebar_3.11"><a href="#sec-Algorithms"><span class="spec-secid">3.11</span>Algorithms</a></li>
+<li id="_sidebar_3.12"><a href="#sec-Grammar"><span class="spec-secid">3.12</span>Grammar</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_3.12" /><label for="_sidebar_toggle_3.12"></label>
+<ol>
+<li id="_sidebar_3.12.1"><a href="#sec-Grammar-Production"><span class="spec-secid">3.12.1</span>Grammar Production</a></li>
+<li id="_sidebar_3.12.2"><a href="#sec-Production-types"><span class="spec-secid">3.12.2</span>Production types</a></li>
+<li id="_sidebar_3.12.3"><a href="#sec-One-of"><span class="spec-secid">3.12.3</span>One of</a></li>
+<li id="_sidebar_3.12.4"><a href="#sec-Non-Terminal-Token"><span class="spec-secid">3.12.4</span>Non Terminal Token</a></li>
+<li id="_sidebar_3.12.5"><a href="#sec-Prose"><span class="spec-secid">3.12.5</span>Prose</a></li>
+<li id="_sidebar_3.12.6"><a href="#sec-Terminal-Token"><span class="spec-secid">3.12.6</span>Terminal Token</a></li>
+<li id="_sidebar_3.12.7"><a href="#sec-Regular-Expression"><span class="spec-secid">3.12.7</span>Regular Expression</a></li>
+<li id="_sidebar_3.12.8"><a href="#sec-Quantifiers"><span class="spec-secid">3.12.8</span>Quantifiers</a></li>
+<li id="_sidebar_3.12.9"><a href="#sec-Conditional-Parameters"><span class="spec-secid">3.12.9</span>Conditional Parameters</a></li>
+<li id="_sidebar_3.12.10"><a href="#sec-Constraints"><span class="spec-secid">3.12.10</span>Constraints</a></li>
+<li id="_sidebar_3.12.11"><a href="#sec-Meta-Tokens"><span class="spec-secid">3.12.11</span>Meta Tokens</a></li>
+</ol>
+</li>
+<li id="_sidebar_3.13"><a href="#sec-Grammar-Semantics"><span class="spec-secid">3.13</span>Grammar Semantics</a></li>
+<li id="_sidebar_3.14"><a href="#sec-Value-Literals"><span class="spec-secid">3.14</span>Value Literals</a></li>
+<li id="_sidebar_3.15"><a href="#sec-Biblio"><span class="spec-secid">3.15</span>Biblio</a></li>
 </ol>
 </li>
 <li id="_sidebar_A"><a href="#sec-Using-Spec-Markdown"><span class="spec-secid">A</span>Using Spec Markdown</a>
