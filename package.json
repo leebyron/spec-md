@@ -14,8 +14,8 @@
   "bin": "./bin/spec-md",
   "main": "./src/index.js",
   "scripts": {
+    "build": "pegjs src/grammar.pegjs && mkdir -p out && echo 'spec-md.com' > out/CNAME && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "test": "yarn build && node ./test/runner.js",
-    "build": "pegjs src/grammar.pegjs && mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'yarn test'"
   },
   "dependencies": {
