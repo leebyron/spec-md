@@ -23,17 +23,16 @@ function scrollToSelectionHash(url) {
   if (!match) {
     return;
   }
-    var selection = document.getSelection();
-    var range = decodeRange(match[1]);
-    var rect = range.getBoundingClientRect();
-    var topOffset = Math.max(
-      20,
-      Math.floor((window.innerHeight - rect.height) * 0.4)
-    );
-    window.scrollTo(0, window.scrollY + rect.y - topOffset);
-    selection.empty();
-    selection.addRange(range);
-
+  var selection = document.getSelection();
+  var range = decodeRange(match[1]);
+  var rect = range.getBoundingClientRect();
+  var topOffset = Math.max(
+    20,
+    Math.floor((window.innerHeight - rect.height) * 0.4)
+  );
+  window.scrollTo(0, window.scrollY + rect.y - topOffset);
+  selection.empty();
+  selection.addRange(range);
 }
 
 // If there is currently a selection on the page, render a link encoding it.
