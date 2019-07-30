@@ -3,9 +3,11 @@ var URL64Code =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 var selectionLink;
 var article;
+var currentRange;
+var currentEncodedRange;
 
-document.addEventListener("selectionchange", renderLinkedSelection);
-window.addEventListener("resize", renderLinkedSelection);
+document.addEventListener("selectionchange", handleSelectionChange);
+window.addEventListener("resize", renderCurrentRange);
 window.addEventListener("hashchange", scrollToWindowLocation);
 window.addEventListener("load", scrollToWindowLocation);
 
@@ -23,45 +25,60 @@ function scrollToSelectionHash(url) {
   if (!match) {
     return;
   }
-  var selection = document.getSelection();
-  var range = decodeRange(match[1]);
-  var rect = range.getBoundingClientRect();
+  currentEncodedRange = match[1];
+  currentRange = decodeRange(currentEncodedRange);
+  var rect = currentRange.getBoundingClientRect();
   var topOffset = Math.max(
     20,
     Math.floor((window.innerHeight - rect.height) * 0.4)
   );
   window.scrollTo(0, window.scrollY + rect.y - topOffset);
+  var selection = document.getSelection();
   selection.empty();
-  selection.addRange(range);
+  selection.addRange(currentRange);
+  renderCurrentRange();
 }
 
 // If there is currently a selection on the page, render a link encoding it.
-function renderLinkedSelection() {
+function handleSelectionChange(event) {
   var selection = document.getSelection();
   if (selection.isCollapsed) {
     if (selectionLink) {
       selectionLink.parentNode.removeChild(selectionLink);
       selectionLink = null;
     }
-    return;
+  } else {
+    var range = selection.getRangeAt(0);
+    if (
+      !currentRange ||
+      range.compareBoundaryPoints(Range.START_TO_START, currentRange) !== 0 ||
+      range.compareBoundaryPoints(Range.END_TO_END, currentRange) !== 0
+    ) {
+      currentRange = range;
+      currentEncodedRange = encodeRange(currentRange);
+      renderCurrentRange();
+    }
   }
-  var range = selection.getRangeAt(0);
-  var rect = range.getBoundingClientRect();
-  var encoded = encodeRange(range);
+}
+
+function renderCurrentRange() {
   if (!article) {
     article = document.getElementsByTagName("article")[0];
   }
   if (!selectionLink) {
     selectionLink = document.createElement("a");
-    selectionLink.className = "selection-link";
-    selectionLink.innerText = "\u201F";
     document.body.appendChild(selectionLink);
   }
-  var left = article.getBoundingClientRect().x;
-  selectionLink.href = "#sel-" + encoded;
+  selectionLink.href = "#sel-" + currentEncodedRange;
   selectionLink.onclick = onClickHash;
+  selectionLink.className = currentRange.isOutdated
+    ? "outdated-selection-link"
+    : "selection-link";
+  selectionLink.innerText = currentRange.isOutdated ? "!" : "\u201F";
+  var left = article.getBoundingClientRect().x;
+  var top = currentRange.getBoundingClientRect().y;
   selectionLink.style.left = Math.floor(left + window.scrollX - 37) + "px";
-  selectionLink.style.top = Math.floor(rect.y + window.scrollY - 3) + "px";
+  selectionLink.style.top = Math.floor(top + window.scrollY - 3) + "px";
 }
 
 // Encodes the range of a selection on the page as a string. The string is a
@@ -74,12 +91,13 @@ function renderLinkedSelection() {
 // common node to the end container and the end text index.
 function encodeRange(range) {
   var encoded = "";
-  var startPath = encodeRangePoint(range.startContainer, range.startOffset);
-  var endPath = encodeRangePoint(range.endContainer, range.endOffset);
+  var startPath = encodeNodePath(range.startContainer);
+  var endPath = encodeNodePath(range.endContainer);
   var commonPath = getCommonPath(startPath, endPath);
   writeList(commonPath);
-  writeList(startPath.slice(commonPath.length));
-  writeList(endPath.slice(commonPath.length));
+  writeList(startPath.slice(commonPath.length).concat(range.startOffset));
+  writeList(endPath.slice(commonPath.length).concat(range.endOffset));
+  writeInt(getFNVChecksum(range.toString()));
   return encoded;
 
   // Unsigned ints are represented in a go-style varint encoding. Each hexad
@@ -109,17 +127,25 @@ function decodeRange(encoded) {
   }
   var offset = 0;
   var commonPath = readList();
-  var startPoint = decodeRangePoint(commonPath.concat(readList()));
-  var endPoint = decodeRangePoint(commonPath.concat(readList()));
+  var startPath = readList();
+  var endPath = readList();
+  var expectedChecksum = readInt();
+  var startOffset = startPath.pop();
+  var startNode = decodeNodePath(commonPath.concat(startPath));
+  var endOffset = endPath.pop();
+  var endNode = decodeNodePath(commonPath.concat(endPath));
   var range = document.createRange();
-  range.setStart(startPoint[0], startPoint[1]);
-  range.setEnd(endPoint[0], endPoint[1]);
+  range.setStart(startNode, startOffset);
+  range.setEnd(endNode, endOffset);
+  range.isOutdated =
+    expectedChecksum !== undefined &&
+    expectedChecksum !== getFNVChecksum(range.toString());
   return range;
 
   function readInt() {
     var number = 0;
     var sign = 0;
-    while (true) {
+    while (offset < encoded.length) {
       var byte = URL64Decode[encoded.charCodeAt(offset++)];
       number |= (byte & 0x1f) << sign;
       sign += 5;
@@ -131,19 +157,20 @@ function decodeRange(encoded) {
 
   function readList() {
     var length = readInt();
-    var list = new Array(length);
-    for (var i = 0; i < length; i++) {
-      list[i] = readInt();
+    if (length != undefined) {
+      var list = new Array(length);
+      for (var i = 0; i < length; i++) {
+        list[i] = readInt();
+      }
+      return list;
     }
-    return list;
   }
 }
 
-// A range point is a tuple of a node, and offset into that node. We encode it
-// as a list of integers representing the tree traversal path from the document
-// body, followed by the text offset.
-function encodeRangePoint(node, offset) {
-  var path = [offset];
+// A node's identity is encoded as a list of integers representing the tree
+// traversal path from the document body.
+function encodeNodePath(node) {
+  var path = [];
   while (node != document.body) {
     var parentNode = node.parentNode;
     path.push(Array.prototype.indexOf.call(parentNode.childNodes, node));
@@ -152,12 +179,12 @@ function encodeRangePoint(node, offset) {
   return path.reverse();
 }
 
-function decodeRangePoint(path) {
+function decodeNodePath(path) {
   var node = document.body;
-  for (var i = 0; i < path.length - 1 && node; i++) {
+  for (var i = 0; i < path.length && node; i++) {
     node = node.childNodes[path[i]];
   }
-  return [node, path[path.length - 1]];
+  return node;
 }
 
 // Given two arrays of integers, returns the common prefix of the two.
@@ -167,4 +194,15 @@ function getCommonPath(p1, p2) {
     i++;
   }
   return p1.slice(0, i);
+}
+
+// Given a string, produce a 15-bit unsigned int checksum.
+// Later used to catch if a range may have changed since the link was created.
+function getFNVChecksum(str) {
+  var sum = 0x811c9dc5;
+  for (var i = 0; i < str.length; ++i) {
+    sum ^= str.charCodeAt(i);
+    sum += (sum << 1) + (sum << 4) + (sum << 7) + (sum << 8) + (sum << 24);
+  }
+  return ((sum >> 15) ^ sum) & 0x7fff;
 }

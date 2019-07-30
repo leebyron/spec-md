@@ -7,6 +7,7 @@ body {
 
 /* Selections */
 
+.outdated-selection-link,
 .selection-link {
   position: absolute;
   display: block;
@@ -25,6 +26,12 @@ body {
   -ms-user-select: none;
 }
 
+.outdated-selection-link:hover,
+.selection-link:hover {
+  text-decoration: none;
+}
+
+.outdated-selection-link:before,
 .selection-link:before {
   border: 5px solid transparent;
   border-left-color: #cacee0;
@@ -45,6 +52,29 @@ body {
 
 .selection-link:hover:before {
   border-left-color: #3b5998;
+}
+
+.outdated-selection-link {
+  background: #f0babe;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 27px;
+}
+
+.outdated-selection-link:before {
+  border-left-color: #f0babe;
+}
+
+.outdated-selection-link:hover:after {
+  content: "This selection content has changed since this link was created.";
+  font: 9pt/11pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
+  position: absolute;
+  display: block;
+  white-space: nowrap;
+  padding: 2px 5px 1px;
+  top: -20px;
+  background: black;
+  color: white;
 }
 
 /* Links */
