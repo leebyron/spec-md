@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const specMarkdown = require('../');
 
-const shouldRecord = Boolean(process.env.RECORD);
+const shouldRecord = process.env.RECORD ? Boolean.parse(process.env.RECORD) : false;
 
 runTests([
   ['../README.md', 'readme/ast.json', 'readme/output.html'],

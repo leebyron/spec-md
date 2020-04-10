@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var grammar = require('./grammar');
+var grammar = require(path.resolve(__dirname, './grammar'));
 var visit = require('./visit');
 
 

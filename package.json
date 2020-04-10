@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "prismjs": ">=1.16.0",
-    "terser": "^4.1.2"
+    "terser": "^4.1.2",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
     "jest-diff": "^24.8.0",
