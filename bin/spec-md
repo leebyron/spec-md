@@ -21,12 +21,10 @@ yargs.strict()
       .catch(errorExit);
     }
   )
-  .command(['plugin <package> <markdown>'], 'Outputs in the format of the specified plugin', 
-  (yargs)=>{
-    yargs.usage('plugin <package> <markdown> [-- plugin-args...]');
-  }, 
+  .command(['plugin <package> <markdown> [args..]'], 'Outputs in the format of the specified plugin', 
+  (yargs)=>{}, 
   (argv)=>{
-    return argv.package([markdown, ...argv._], 
+    return argv.package([markdown, ...argv.args], 
                 specmd.parse(argv.markdown), argv.metadata ? argv.metadata : {})
                 .then(_=>process.stdout.write(_))
                 .catch(errorExit);
