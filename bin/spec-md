@@ -26,7 +26,7 @@ yargs.strict()
     yargs.usage('plugin <package> <markdown> [-- plugin-args...]');
   }, 
   (argv)=>{
-    return argv.package(argv._, 
+    return argv.package([markdown, ...argv._], 
                 specmd.parse(argv.markdown), argv.metadata ? argv.metadata : {})
                 .then(_=>process.stdout.write(_))
                 .catch(errorExit);
