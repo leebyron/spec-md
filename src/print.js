@@ -6,13 +6,7 @@ var terser = require('terser');
 var visit = require('./visit');
 
 function print(ast, _options) {
-  var options = {};
-  options.highlight = _options && _options.highlight || highlight;
-  options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
-  options.head = _options && _options.head || '';
-  validateSecIDs(ast, options);
-  assignExampleNumbers(ast, options);
-  assignBiblioIDs(ast, options);
+  var options = updateBiblio(ast, _options);
   return (
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md https://spec-md.com -->\n' +
@@ -23,7 +17,27 @@ function print(ast, _options) {
   );
 };
 
-module.exports = print;
+function updateBiblio(ast, _options) {
+  var options = {};
+  options.highlight = _options && _options.highlight || highlight;
+  options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
+  options.head = _options && _options.head || '';
+  validateSecIDs(ast, options);
+  assignExampleNumbers(ast, options);
+  assignBiblioIDs(ast, options);
+  return options;
+}
+
+module.exports = {
+  print,
+  formatText,
+  escape,
+  escapeCode,
+  updateBiblio,
+  getTerms,
+  anchorize,
+  join
+};
 
 function highlight(code, lang) {
   var prismLang = getPrismLanguage(lang);

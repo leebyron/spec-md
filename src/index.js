@@ -1,4 +1,4 @@
-var print = require('./print');
+var {print, ...others} = require('./print');
 var parse = require('./parse');
 var visit = require('./visit');
 
@@ -8,7 +8,11 @@ function html(filepath, options) {
   });
 }
 
-exports.html = html;
-exports.print = print;
-exports.parse = parse;
-exports.visit = visit;
+module.exports = {
+  html,
+  print,
+  parse,
+  visit,
+  ...others
+}
+

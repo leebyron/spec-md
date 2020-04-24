@@ -1,41 +1,61 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
 var path = require('path');
 var specmd = require('../');
+var yargs = require('yargs');
 
-var filepath;
-var metadata;
-for (var i = 2; i < process.argv.length; i++) {
-  if (process.argv[i] === '-m' || process.argv[i] === '--metadata') {
-    metadata = process.argv[++i];
-  } else if (process.argv[i][0] === '-') {
-    errorExit('Unknown argument: ' + process.argv[i]);
-  } else if (!filepath) {
-    filepath = process.argv[i];
-  } else {
-    errorExit('Must provide only one markdown file.');
-  }
-}
 
-if (!filepath) {
-  errorExit(
-    'Usage: spec-md initial-file.md\n\n' +
-    'Options:\n' +
-    '  -m, --metadata  filepath to json metadata'
-  );
-}
+yargs.strict()
+  .config('config')
+  .option('metadata', {
+    alias: 'm',
+    describe: 'Additional metadata to be used in construction of the output',
+    string: true,
+    global: true,
+    coerce: arg=>require(path.resolve(process.cwd(), path.normalize(arg))),
+  })
+  .command(['$0 <markdown>','html <markdown>'], 'Outputs HTML5', {}, 
+    (argv)=>{
+      return specmd.html(argv.markdown,argv.metadata ? argv.metadata : {})
+      .then(_=>process.stdout.write(_))
+      .catch(errorExit);
+    }
+  )
+  .command(['plugin <package> <markdown> [args..]'], 'Outputs in the format of the specified plugin', 
+  (yargs)=>{}, 
+  (argv)=>{
+    return argv.package([argv.markdown, ...argv.args], 
+                specmd.parse(argv.markdown), argv.metadata ? argv.metadata : {})
+                .then(_=>process.stdout.write(_))
+                .catch(errorExit);
+  })
+  .coerce('markdown', (arg)=>path.resolve(process.cwd(), path.normalize(arg)))
+  .coerce('package', (arg)=>{
+    console.error(`Loading ${arg} ...`);
+    let package = null;
+    let plugin = null;
+    try {
+      package = require.resolve(arg, {
+        paths: [process.cwd()]
+      });
+      plugin = require(package);
+    }
+    catch(error) {
+      console.error(`Could not load plugin (${arg}).`); 
+      console.error('If the plugin is installed globally, is /usr/lib/node_modules in your NODE_PATH variable (%AppData%\\npm\\node_modules on windows)?');
+      errorExit(error);
+    }
 
-var options = metadata ? require(path.resolve(process.cwd(), metadata)) : {};
-var absPath = path.resolve(process.cwd(), filepath);
+    if(typeof plugin !== 'function') {
+      errorExit(`The specified package (${package}) does not appear to be a plugin...`);
+    }
+    return plugin;
+  })
+  .help()
+  .parse();
 
-specmd.html(absPath, options).then(function (html) {
-  process.stdout.write(html);
-}).catch(function (error) {
-  errorExit(error.line ? error.message : (error.stack || error));
-});
-
-function errorExit(msg) {
-  process.stderr.write(msg + '\n');
+function errorExit(error) {
+  error.line ? error.message : (error.stack || error)
+  process.stderr.write(error + '\n');
   process.exit(1);
 }
