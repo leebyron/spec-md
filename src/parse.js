@@ -22,7 +22,10 @@ function readFile(filepath) {
   });
 }
 
-function importAST(parser, filepath) {
+function importAST(parser, filepath, subdir) {
+  if(!subdir)
+    subdir = path.dirname(filepath);
+
   return readFile(filepath).then(function (source) {
     try {
       var ast = parser.parse(source);
@@ -36,9 +39,10 @@ function importAST(parser, filepath) {
     }
     var importASTs = [];
     visit(ast, function (node) {
+      node.subdir = subdir;
       if (node.type === 'Import') {
         var subfilepath = path.resolve(path.dirname(filepath), decodeURI(node.path));
-        importASTs.push(importAST(parser, subfilepath));
+        importASTs.push(importAST(parser, subfilepath, path.dirname(subfilepath)));
       }
     });
     return Promise.all(importASTs).then(function (asts) {
