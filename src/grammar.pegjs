@@ -592,7 +592,7 @@ tokenAfterSpace = _ token:token {
   return token;
 }
 
-tokenAfterSpaceOrNewline = __ token:token {
+tokenAfterSpaceOrNewline = __ !listBullet token:token {
   return token;
 }
 
