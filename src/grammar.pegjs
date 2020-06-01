@@ -494,7 +494,7 @@ variable = name:localName {
 
 // Grammar productions
 
-semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') _ tokens:token+ steps:list {
+semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') _ tokens:tokenListMultiline steps:list {
   return {
     type: 'Semantic',
     name: name,
@@ -516,7 +516,7 @@ production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') _ rhs:production
   };
 }
 
-productionRHS = oneOfRHS / singleRHS / listRHS
+productionRHS = oneOfRHS / listRHS / singleRHS
 
 oneOfRHS = 'one of' rows:(_ NL? (_ token)+)+ {
   return {
@@ -529,7 +529,7 @@ oneOfRHS = 'one of' rows:(_ NL? (_ token)+)+ {
   };
 }
 
-singleRHS = condition:condition? _ tokens:token+ {
+singleRHS = condition:condition? _ tokens:tokenListMultiline {
   return {
     type: 'RHS',
     condition: condition,
@@ -545,7 +545,7 @@ indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
   return defs;
 }
 
-listItemRHS = LINE listBullet _ condition:condition? _ tokens:token+ {
+listItemRHS = LINE listBullet _ condition:condition? _ tokens:tokenListOneLine {
   return {
     type: 'RHS',
     condition: condition,
@@ -561,7 +561,11 @@ condition = '[' condition:$('+' / '~' / 'if' (_ 'not')?) _ param:paramName ']' {
   };
 }
 
-token = token:unconstrainedToken quantifier:('+' / '?' / '*')? _ constraint:constraint? _ {
+constraintAfterGap = _ constraint:constraint {
+  return constraint;
+}
+
+token = token:unconstrainedToken quantifier:('+' / '?' / '*')? constraint:constraintAfterGap? {
   if (quantifier) {
     token = {
       type: 'Quantified',
@@ -578,6 +582,22 @@ token = token:unconstrainedToken quantifier:('+' / '?' / '*')? _ constraint:cons
     }
   }
   return token;
+}
+
+tokenAfterSpace = _ token:token {
+  return token;
+}
+
+tokenAfterSpaceOrNewline = __ token:token {
+  return token;
+}
+
+tokenListOneLine = head:token tail:tokenAfterSpace* {
+  return [head, ...tail];
+}
+
+tokenListMultiline = head:token tail:tokenAfterSpaceOrNewline* {
+  return [head, ...tail];
 }
 
 unconstrainedToken = prose / emptyToken / lookahead / nonTerminal / regexp / quotedTerminal / terminal
@@ -711,6 +731,7 @@ DEDENT = &lineStart !{ indentStack.length === 0 } {
 NL = '\n' / '\r' / '\r\n'
 NOT_NL = [^\n\r]
 _ = ' '*
+__ = ' '* NL ' '* / ' '*
 EOF = NL* !.
 
 lineStart = NL+ / & { return offset() === 0 }
