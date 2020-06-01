@@ -36,7 +36,9 @@ title = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
 
 SEC_CLOSE = _ '#'* &NL
 
-sectionTitle = $titleChar+
+sectionTitle = t:$titleChar+ {
+  return t.replace(/\\_/g, '_');
+}
 titleChar = [^\n\r# ] / [# ] titleChar
 
 sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
