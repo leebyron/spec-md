@@ -574,7 +574,7 @@ function printAll(list, options) {
                   return (
                     '<tr>\n' +
                       join(row.map(function (def) {
-                        return '<td class="spec-rhs">' + def + '</td>';
+                        return '<td class="spec-rhs">' + def + '</td>\n';
                       })) +
                     '</tr>\n'
                   );
