@@ -276,7 +276,7 @@ htmlTag = tag:$('<' '/'? [a-z]+ [^>]* '>') {
   };
 }
 
-reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
+reference = '{' !('++'/'--') __ ref:(call / value / token)? __ close:'}'? {
   if (ref === null || close === null) {
     error('Malformed {reference}.');
   }
@@ -453,7 +453,7 @@ algorithm = BLOCK call:call _ ':' ':'? steps:list {
   };
 }
 
-call = name:(globalName / localName) '(' _ args:callArg* _ ')' {
+call = name:(globalName / localName) '(' __ args:callArg* __ ')' {
   return {
     type: 'Call',
     name: name,
@@ -461,7 +461,9 @@ call = name:(globalName / localName) '(' _ args:callArg* _ ')' {
   };
 }
 
-callArg = value:value [, ]* {
+callSep = __ ',' __ / __
+
+callArg = value:value callSep {
   return value;
 }
 
