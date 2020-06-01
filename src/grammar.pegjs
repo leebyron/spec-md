@@ -547,7 +547,7 @@ indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
   return defs;
 }
 
-listItemRHS = LINE listBullet _ condition:condition? _ tokens:tokenListOneLine {
+listItemRHS = LINE listBullet _ condition:condition? _ tokens:tokenListMultiline {
   return {
     type: 'RHS',
     condition: condition,
