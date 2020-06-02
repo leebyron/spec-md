@@ -42,6 +42,13 @@ function getPrismLanguage(lang) {
   if (!prism.languages[lang]) {
     loadAllLanguages();
   }
+  if (!prism.languages[lang] && lang.startsWith("raw")) {
+    // To prevent 'prettier' formatting code in your markdown, you may prefix
+    // the language with "raw" and we will still format it as you would expect
+    // in the output.
+    // e.g. ```graphql -> ```rawgraphql
+    return prism.languages[lang.substr(3)];
+  }
   return prism.languages[lang];
 }
 
