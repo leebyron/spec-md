@@ -223,7 +223,7 @@ textChar = escaped
 text = value:$textChar+ {
   return {
     type: 'Text',
-    value: value
+    value: value.replace(/\\([$_*])/g, '$1')
   };
 }
 
@@ -355,7 +355,7 @@ linkTextChar = escaped
 linkText = value:$linkTextChar+ {
   return {
     type: 'Text',
-    value: value
+    value: value.replace(/\\[$_*]/g, '$1')
   };
 }
 
@@ -449,9 +449,16 @@ tableCellText = value:$tableCellTextChar+ {
 
 // Names
 
-localName = $([_a-z][_a-zA-Z0-9]*)
-globalName = $([A-Z][_a-zA-Z]*)
-paramName = $([_a-zA-Z][_a-zA-Z0-9]*)
+localName = text:$(('\\_' / [_a-z]) ('\\_' / [_a-zA-Z0-9])*) {
+  return text.replace(/\\_/g, '_');
+}
+
+globalName = text:$([A-Z] ('\\_' / [_a-zA-Z])*) {
+  return text.replace(/\\_/g, '_');
+}
+paramName = text:$(('\\_' / [_a-zA-Z]) ('\\_' / [_a-zA-Z0-9])*) {
+  return text.replace(/\\_/g, '_');
+}
 
 
 // Algorithm
@@ -486,7 +493,7 @@ stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
   }
   return {
     type: 'StringLiteral',
-    value: '"' + value + '"'
+    value: '"' + value.replace(/\\([$_*])/g, '$1') + '"'
   };
 }
 
@@ -712,7 +719,7 @@ quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
 terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
   return {
     type: 'Terminal',
-    value: value.replace(/\\([$_])/g, '$1')
+    value: value.replace(/\\([$_*])/g, '$1')
   };
 }
 
