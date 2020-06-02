@@ -569,13 +569,13 @@ constraintAfterGap = _ constraint:constraint {
   return constraint;
 }
 
-token = token:unconstrainedToken quantifier:('+' / '?' / '*')? constraint:constraintAfterGap? {
+token = token:unconstrainedToken quantifier:('+' / '?' / '*' / '\\*')? constraint:constraintAfterGap? {
   if (quantifier) {
     token = {
       type: 'Quantified',
       token: token,
-      isList: quantifier === '+' || quantifier === '*',
-      isOptional: quantifier === '?' || quantifier === '*'
+      isList: quantifier === '+' || quantifier === '*' || quantifier === '\\*',
+      isOptional: quantifier === '?' || quantifier === '*' || quantifier === '\\*'
     };
   }
   if (constraint) {
