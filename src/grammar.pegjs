@@ -27,12 +27,21 @@ document = title:title? contents:documentContent* EOF {
   };
 }
 
-title = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
+oldTitle = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
   return {
     type: 'DocumentTitle',
     value: value
   };
 }
+
+newTitle = BLOCK '# **' value:$([^*\r\n]+) '**' &NL {
+  return {
+    type: 'DocumentTitle',
+    value: value
+  };
+}
+
+title = newTitle / oldTitle
 
 SEC_CLOSE = _ '#'* &NL
 
