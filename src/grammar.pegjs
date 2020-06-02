@@ -12,6 +12,10 @@
     return list;
   }
 
+  function markdownUnescape(text) {
+    return text.replace(/\\([$_*])/g, '$1');
+  }
+
   var htmlBlockName;
 
   var BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
@@ -46,7 +50,7 @@ title = newTitle / oldTitle
 SEC_CLOSE = _ '#'* &NL
 
 sectionTitle = t:$titleChar+ {
-  return t.replace(/\\_/g, '_');
+  return markdownUnescape(t);
 }
 titleChar = [^\n\r# ] / [# ] titleChar
 
@@ -232,7 +236,7 @@ textChar = escaped
 text = value:$textChar+ {
   return {
     type: 'Text',
-    value: value.replace(/\\([$_*])/g, '$1')
+    value: markdownUnescape(value)
   };
 }
 
@@ -364,7 +368,7 @@ linkTextChar = escaped
 linkText = value:$linkTextChar+ {
   return {
     type: 'Text',
-    value: value.replace(/\\[$_*]/g, '$1')
+    value: markdownUnescape(value)
   };
 }
 
@@ -459,14 +463,14 @@ tableCellText = value:$tableCellTextChar+ {
 // Names
 
 localName = text:$($('\\_' / [_a-z]) $('\\_' / [_a-zA-Z0-9])*) {
-  return text.replace(/\\_/g, '_');
+  return markdownUnescape(text);
 }
 
 globalName = text:$([A-Z] $('\\_' / [_a-zA-Z])*) {
-  return text.replace(/\\_/g, '_');
+  return markdownUnescape(text);
 }
 paramName = text:$($('\\_' / [_a-zA-Z]) $('\\_' / [_a-zA-Z0-9])*) {
-  return text.replace(/\\_/g, '_');
+  return markdownUnescape(text);
 }
 
 
@@ -502,7 +506,7 @@ stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
   }
   return {
     type: 'StringLiteral',
-    value: '"' + value.replace(/\\([$_*])/g, '$1') + '"'
+    value: '"' + markdownUnescape(value) + '"'
   };
 }
 
@@ -728,7 +732,7 @@ quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
 terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
   return {
     type: 'Terminal',
-    value: value.replace(/\\([$_*])/g, '$1')
+    value: markdownUnescape(value)
   };
 }
 
