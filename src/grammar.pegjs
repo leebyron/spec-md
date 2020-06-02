@@ -703,7 +703,7 @@ quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
 terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
   return {
     type: 'Terminal',
-    value: value
+    value: value.replace(/\\([$_])/g, '$1')
   };
 }
 
