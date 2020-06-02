@@ -211,7 +211,7 @@ inlineEntity = inlineEdit / inlineCode / reference / bold / italic / link / imag
 content = inlineEntity / text
 
 textChar = escaped
-         / [^\n\r+\-{`*[!<]
+         / [^\n\r+\-{`*[!<_]
          / '++' !'}'
          / '+' !'+}'
          / '--' !'}'
@@ -248,12 +248,21 @@ bold = '**' contents:(inlineCode / link / italic / text)+ '**' {
   };
 }
 
-italic = '*' contents:(inlineCode / link / text)+ '*' {
+asteriskItalic = '*' contents:(inlineCode / link / text)+ '*' {
   return {
     type: 'Italic',
     contents: contents
   };
 }
+
+underscoreItalic = '_' contents:(inlineCode / link / text)+ '_' {
+  return {
+    type: 'Italic',
+    contents: contents
+  };
+}
+
+italic = underscoreItalic / asteriskItalic
 
 inlineEdit = ins / del
 
