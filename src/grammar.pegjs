@@ -458,14 +458,14 @@ tableCellText = value:$tableCellTextChar+ {
 
 // Names
 
-localName = text:$(('\\_' / [_a-z]) ('\\_' / [_a-zA-Z0-9])*) {
+localName = text:$($('\\_' / [_a-z]) $('\\_' / [_a-zA-Z0-9])*) {
   return text.replace(/\\_/g, '_');
 }
 
-globalName = text:$([A-Z] ('\\_' / [_a-zA-Z])*) {
+globalName = text:$([A-Z] $('\\_' / [_a-zA-Z])*) {
   return text.replace(/\\_/g, '_');
 }
-paramName = text:$(('\\_' / [_a-zA-Z]) ('\\_' / [_a-zA-Z0-9])*) {
+paramName = text:$($('\\_' / [_a-zA-Z]) $('\\_' / [_a-zA-Z0-9])*) {
   return text.replace(/\\_/g, '_');
 }
 
