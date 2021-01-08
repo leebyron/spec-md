@@ -2,7 +2,7 @@
 <!-- Built with spec-md https://spec-md.com -->
 <html>
 <head><meta charset="utf-8">
-<title>Simple Header</title>
+<title>Sections</title>
 <style>body {
   color: #333333;
   font: 13pt/18pt Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
@@ -897,24 +897,99 @@ pre[class*="language-"] {
 </head>
 <body><article>
 <header>
-<h1>Simple Header</h1>
+<h1>Sections</h1>
 <section id="intro">
-<p>This is a simple document with only a header. </p>
+<p>Nested</p>
 </section>
 <nav class="spec-toc">
 <div class="title">Contents</div>
 <ol>
+<li><a href="#sec-Level-1"><span class="spec-secid">1</span>Level 1</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_1" /><label for="_toggle_1"></label>
+<ol>
+<li><a href="#sec-Level-2"><span class="spec-secid">1.1</span>Level 2</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_1.1" /><label for="_toggle_1.1"></label>
+<ol>
+<li><a href="#sec-Level-3"><span class="spec-secid">1.1.1</span>Level #3</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_1.1.1" /><label for="_toggle_1.1.1"></label>
+<ol>
+<li><a href="#sec-Level-4"><span class="spec-secid">1.1.1.1</span>Level 4</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_1.1.1.1" /><label for="_toggle_1.1.1.1"></label>
+<ol>
+<li><a href="#sec-Level-5"><span class="spec-secid">1.1.1.1.1</span>Level 5</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_1.1.1.1.1" /><label for="_toggle_1.1.1.1.1"></label>
+<ol>
+<li><a href="#sec-Level-6"><span class="spec-secid">1.1.1.1.1.1</span>Level 6</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 </nav>
 </header>
+<section id="sec-Level-1" secid="1">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Level-1">1</a></span>Level 1</h1>
+<section id="sec-Level-2" secid="1.1">
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Level-2">1.1</a></span>Level 2</h2>
+<section id="sec-Level-3" secid="1.1.1">
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Level-3">1.1.1</a></span>Level #3</h3>
+<section id="sec-Level-4" secid="1.1.1.1">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Level-4">1.1.1.1</a></span>Level 4</h4>
+<section id="sec-Level-5" secid="1.1.1.1.1">
+<h5><span class="spec-secid" title="link to this section"><a href="#sec-Level-5">1.1.1.1.1</a></span>Level 5</h5>
+<section id="sec-Level-6" secid="1.1.1.1.1.1">
+<h6><span class="spec-secid" title="link to this section"><a href="#sec-Level-6">1.1.1.1.1.1</a></span>Level 6</h6>
+<p>Wow</p>
+<section id="sec-Level-6.Sub-section" class="subsec">
+<h6><a href="#sec-Level-6.Sub-section" title="link to this subsection">Sub section</a></h6>
+<p>This is a subsection </p>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
 </article>
 <footer>
 Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</footer>
 <input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden /><label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label>
 <div class="spec-sidebar" aria-hidden>
 <div class="spec-toc">
-<div class="title"><a href="#">Simple Header</a></div>
-<ol></ol>
+<div class="title"><a href="#">Sections</a></div>
+<ol><li id="_sidebar_1"><a href="#sec-Level-1"><span class="spec-secid">1</span>Level 1</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_1" /><label for="_sidebar_toggle_1"></label>
+<ol>
+<li id="_sidebar_1.1"><a href="#sec-Level-2"><span class="spec-secid">1.1</span>Level 2</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_1.1" /><label for="_sidebar_toggle_1.1"></label>
+<ol>
+<li id="_sidebar_1.1.1"><a href="#sec-Level-3"><span class="spec-secid">1.1.1</span>Level #3</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_1.1.1" /><label for="_sidebar_toggle_1.1.1"></label>
+<ol>
+<li id="_sidebar_1.1.1.1"><a href="#sec-Level-4"><span class="spec-secid">1.1.1.1</span>Level 4</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_1.1.1.1" /><label for="_sidebar_toggle_1.1.1.1"></label>
+<ol>
+<li id="_sidebar_1.1.1.1.1"><a href="#sec-Level-5"><span class="spec-secid">1.1.1.1.1</span>Level 5</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_1.1.1.1.1" /><label for="_sidebar_toggle_1.1.1.1.1"></label>
+<ol>
+<li id="_sidebar_1.1.1.1.1.1"><a href="#sec-Level-6"><span class="spec-secid">1.1.1.1.1.1</span>Level 6</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 </div>
 <script>(function(){for(var e,t=[],n=document.getElementsByTagName("section"),o=0;o<n.length;o++)n[o].getAttribute("secid")&&t.push(n[o]);var i=window.scrollY,r=!1;function c(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&d(e,!1),c&&d(c,!0),e=c)}function d(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_sidebar_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",(function(e){i=window.scrollY,r||(r=!0,window.requestAnimationFrame((function(){c(i),r=!1})))})),c(window.scrollY);})()</script>
 </div>

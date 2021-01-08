@@ -1,0 +1,84 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Sections"
+  },
+  "contents": [
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Nested"
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Level 1",
+      "contents": [
+        {
+          "type": "Section",
+          "secID": null,
+          "title": "Level 2",
+          "contents": [
+            {
+              "type": "Section",
+              "secID": null,
+              "title": "Level #3",
+              "contents": [
+                {
+                  "type": "Section",
+                  "secID": null,
+                  "title": "Level 4",
+                  "contents": [
+                    {
+                      "type": "Section",
+                      "secID": null,
+                      "title": "Level 5",
+                      "contents": [
+                        {
+                          "type": "Section",
+                          "secID": null,
+                          "title": "Level 6",
+                          "contents": [
+                            {
+                              "type": "Paragraph",
+                              "contents": [
+                                {
+                                  "type": "Text",
+                                  "value": "Wow"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Subsection",
+                              "title": "Sub section",
+                              "contents": [
+                                {
+                                  "type": "Paragraph",
+                                  "contents": [
+                                    {
+                                      "type": "Text",
+                                      "value": "This is a subsection\n"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

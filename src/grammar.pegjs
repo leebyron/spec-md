@@ -55,6 +55,7 @@ H2 = '##' !'#' _
 H3 = '###' !'#' _
 H4 = '####' !'#' _
 H5 = '#####' !'#' _
+H6 = '######' !'#' _
 H_END = _ '#'* &NL
 headerText = $headerChar+
 headerChar = [^\n\r# ] / [# ] headerChar
@@ -112,6 +113,15 @@ section5 = BLOCK H5 secID:sectionID? _ title:headerText H_END contents:section5C
   };
 }
 
+section6 = BLOCK H6 secID:sectionID? _ title:headerText H_END contents:section6Content* {
+  return {
+    type: 'Section',
+    secID: secID,
+    title: title,
+    contents: contents
+  };
+}
+
 subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
   return title
 }
@@ -129,7 +139,8 @@ section1Content = import2 / section2 / subsection / importRel / sectionContent
 section2Content = import3 / section3 / subsection / importRel / sectionContent
 section3Content = import4 / section4 / subsection / importRel / sectionContent
 section4Content = import5 / section5 / subsection / importRel / sectionContent
-section5Content = subsection / importRel / sectionContent
+section5Content = import6 / section6 / subsection / importRel / sectionContent
+section6Content = subsection / importRel / sectionContent
 
 sectionContent = note
                / todo
@@ -162,6 +173,7 @@ import2 = BLOCK H2 importLink:importLink H_END { return importLink; }
 import3 = BLOCK H3 importLink:importLink H_END { return importLink; }
 import4 = BLOCK H4 importLink:importLink H_END { return importLink; }
 import5 = BLOCK H5 importLink:importLink H_END { return importLink; }
+import6 = BLOCK H6 importLink:importLink H_END { return importLink; }
 
 
 // Block Edit
