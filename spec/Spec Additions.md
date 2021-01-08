@@ -186,6 +186,11 @@ Notes can be written inline with a spec document, and are often helpful to
 supply non-normative explanatory text or caveats in a differently formatted
 style. Case insensitive, the `:` is optional.
 
+Notes automatically have short links generated for them. If the contents of the
+note changes, so will the link URL. However if a note moves around, or content
+around the note changes the existing links will still point to the right place,
+very useful for consistently evolving specifications!
+
 ```
 Note: Notes are awesome.
 ```

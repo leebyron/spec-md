@@ -201,6 +201,7 @@ function assignBiblioIDs(ast, options) {
     }
   });
 
+  const hashUsed = {};
   visit(ast, {
     enter: function (node) {
       if (node.type === 'Section') {
@@ -242,20 +243,30 @@ function assignBiblioIDs(ast, options) {
       }
       if (node.type === 'Code' && node.example) {
         let id;
+        let hash = '';
+        do {
+          hash = stableCodeHash(hash + node.code);
+        } while (hashUsed[hash]);
+        hashUsed[hash] = true;
         let hashSize = 5;
         do {
-          id = anchorize('example-' + stableCodeHash(node.code, hashSize++));
-        } while (options.biblio[id]);
+          id = anchorize('example-' + hash.slice(0, hashSize++));
+        } while (options.biblio[id] && hashSize < 32);
         options.biblio[id] = '#' + id;
         node.id = id;
       }
       if (node.type === 'Note') {
         let content = printAll(node.contents, options);
         let id;
+        let hash = '';
+        do {
+          hash = stableContentHash(hash + content);
+        } while (hashUsed[hash]);
+        hashUsed[hash] = true;
         let hashSize = 5;
         do {
-          id = anchorize('note-' + stableContentHash(content, hashSize++));
-        } while (options.biblio[id]);
+          id = anchorize('note-' + hash.slice(0, hashSize++));
+        } while (options.biblio[id] && hashSize < 32);
         options.biblio[id] = '#' + id;
         node.id = id;
       }
@@ -829,12 +840,12 @@ function readStatic(filename) {
   return fs.readFileSync(path.join(__dirname, '../static/', filename), 'utf8');
 }
 
-function stableCodeHash(code, size) {
+function stableCodeHash(code) {
   const trimmedCode = code.split(/(\n|\r|\r\n)/).map(line => line.trim()).join('\n');
-  return crypto.createHash('md5').update(trimmedCode).digest('hex').slice(0, size);
+  return crypto.createHash('md5').update(trimmedCode).digest('hex');
 }
 
-function stableContentHash(content, size) {
+function stableContentHash(content) {
   const trimmedContent = content.split(/(\n|\r|\r\n)/).map(line => line.trim()).join(' ');
-  return crypto.createHash('md5').update(trimmedContent).digest('hex').slice(0, size);
+  return crypto.createHash('md5').update(trimmedContent).digest('hex');
 }
