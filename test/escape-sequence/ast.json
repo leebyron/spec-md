@@ -1,0 +1,125 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Escape _ Sequences"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Can be < in titles >",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "And in _ text."
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Bold",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "And * sub-sections"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "Grammar",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "RHS",
+            "condition": null,
+            "tokens": [
+              {
+                "type": "Terminal",
+                "value": "<"
+              },
+              {
+                "type": "Terminal",
+                "value": "rules"
+              },
+              {
+                "type": "Terminal",
+                "value": ">"
+              },
+              {
+                "type": "Prose",
+                "text": "and _ prose"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Algorithm",
+          "call": {
+            "type": "Call",
+            "name": "Algorithm_Names",
+            "args": [
+              {
+                "type": "Variable",
+                "name": "and_param"
+              },
+              {
+                "type": "Variable",
+                "name": "_names"
+              }
+            ]
+          },
+          "steps": {
+            "type": "List",
+            "ordered": true,
+            "items": [
+              {
+                "type": "ListItem",
+                "contents": [
+                  {
+                    "type": "Text",
+                    "value": "And * steps"
+                  }
+                ]
+              },
+              {
+                "type": "ListItem",
+                "contents": [
+                  {
+                    "type": "Text",
+                    "value": "And "
+                  },
+                  {
+                    "type": "Call",
+                    "name": "Call_with",
+                    "args": [
+                      {
+                        "type": "StringLiteral",
+                        "value": "\"string _ literal\""
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "value": "\n"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

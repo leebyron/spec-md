@@ -815,7 +815,6 @@ function escape(text) {
 
 function formatText(text) {
   return escape(text
-    .replace(/\\([\\`*_{}[\]()<>#+\-!|])/g, '$1')
     .replace(/[ \n\r]+/g, ' ')
     .replace(/<-+>/g, '\u2194')
     .replace(/<-+/g, '\u2190')
