@@ -19,16 +19,16 @@
     "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'npm run build && npm test'"
   },
   "dependencies": {
-    "prismjs": ">=1.16.0",
-    "terser": "^4.1.2"
+    "prismjs": ">=1.23.0",
+    "terser": "^5.5.0"
   },
   "devDependencies": {
-    "jest-diff": "^24.8.0",
-    "nodemon": "1.19.1",
+    "jest-diff": "26.6.2",
+    "nodemon": "2.0.7",
     "pegjs": "~0.8.0"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=10.14.2"
   },
   "files": [
     "bin",

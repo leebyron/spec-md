@@ -1,13 +1,4 @@
 /**
- *  Copyright (c) 2015, Facebook, Inc.
- *  All rights reserved.
- *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
- */
-
-/**
  * visit(root, {
  *   keyProp: 'type',
  *   keys: { 'Foo': [ 'bar', 'baz' ] },
@@ -32,39 +23,39 @@ function visit(root, visitor) {
   if (typeof visitor === 'function') {
     visitor = { enter: visitor };
   }
-  var visitorKeys = visitor.keys;
-  var visitorKeyProp = visitor.keyProp;
+  const visitorKeys = visitor.keys;
+  const visitorKeyProp = visitor.keyProp;
   if (visitorKeys && !visitorKeyProp) {
     throw new Error('Must provide keyProp in addition to keys');
   }
 
-  var stack;
-  var inArray = Array.isArray(root);
-  var keys = [root];
-  var index = -1;
-  var edits = [];
-  var parent;
-  var path = [];
-  var ancestors = [];
+  let stack;
+  let inArray = Array.isArray(root);
+  let keys = [root];
+  let index = -1;
+  let edits = [];
+  let parent;
+  let path = [];
+  let ancestors = [];
 
   do {
     index++;
-    var isLeaving = index === keys.length;
-    var key, node;
-    var isEdited = isLeaving && edits.length !== 0;
+    const isLeaving = index === keys.length;
+    const isEdited = isLeaving && edits.length !== 0;
+    let key, node;
     if (isLeaving) {
       key = ancestors.length === 0 ? undefined : path.pop();
       node = parent;
       parent = ancestors.pop();
       if (isEdited) {
         node = inArray ? node.slice() :
-          Object.keys(node).reduce(function (o, k) {
+          Object.keys(node).reduce((o, k) => {
             o[k] = node[k];
             return o;
           }, {});
-        for (var ii = 0; ii < edits.length; ii++) {
-          var editKey = edits[ii][0];
-          var editValue = edits[ii][1];
+        for (let ii = 0; ii < edits.length; ii++) {
+          const editKey = edits[ii][0];
+          const editValue = edits[ii][1];
           if (editValue === null && inArray) {
             node.splice(editKey, 1);
           } else {
@@ -88,9 +79,9 @@ function visit(root, visitor) {
       }
     }
 
-    var result = undefined;
+    let result = undefined;
     if (!Array.isArray(node)) {
-      var visitFn = isLeaving ? visitor.leave : visitor.enter;
+      const visitFn = isLeaving ? visitor.leave : visitor.enter;
       if (visitFn) {
         result = visitFn.call(visitor, node, key, parent, path, ancestors);
 
@@ -152,6 +143,6 @@ function visit(root, visitor) {
   return root;
 };
 
-var BREAK = visit.BREAK = {};
+const BREAK = visit.BREAK = {};
 
 module.exports = visit;

@@ -137,7 +137,7 @@
           "lang": "js",
           "example": false,
           "counter": false,
-          "code": "var fs = require('fs');\nvar specMarkdown = require('spec-md');\nspecMarkdown.html('./path/to/markdown.md').then(function (html) {\n  fs.writeFile('./path/to/output.html', html);\n});\n"
+          "code": "const fs = require('fs');\nconst specMarkdown = require('spec-md');\nspecMarkdown.html('./path/to/markdown.md').then(html => {\n  fs.writeFile('./path/to/output.html', html);\n});\n"
         },
         {
           "type": "Paragraph",
@@ -1202,7 +1202,7 @@
                 },
                 {
                   "type": "Code",
-                  "code": "```\nvar code = sample();\n```"
+                  "code": "```\nconst code = sample();\n```"
                 },
                 {
                   "type": "Paragraph",
@@ -1218,7 +1218,7 @@
                   "lang": null,
                   "example": false,
                   "counter": false,
-                  "code": "var code = sample();\n"
+                  "code": "const code = sample();\n"
                 }
               ]
             },
@@ -2191,7 +2191,7 @@
             },
             {
               "type": "Code",
-              "code": "```js\nvar baz = foo(\"bar\");\n```"
+              "code": "```js\nconst baz = foo(\"bar\");\n```"
             },
             {
               "type": "Paragraph",
@@ -2207,7 +2207,7 @@
               "lang": "js",
               "example": false,
               "counter": false,
-              "code": "var baz = foo(\"bar\");\n"
+              "code": "const baz = foo(\"bar\");\n"
             },
             {
               "type": "Section",
@@ -2249,7 +2249,7 @@
                 },
                 {
                   "type": "Code",
-                  "code": "```example\nvar great = useOf.example(\"code\");\n```"
+                  "code": "```example\nconst great = useOf.example(\"code\");\n```"
                 },
                 {
                   "type": "Paragraph",
@@ -2265,7 +2265,7 @@
                   "lang": null,
                   "example": true,
                   "counter": false,
-                  "code": "var great = useOf.example(\"code\");\n"
+                  "code": "const great = useOf.example(\"code\");\n"
                 },
                 {
                   "type": "Paragraph",
@@ -2286,7 +2286,7 @@
                 },
                 {
                   "type": "Code",
-                  "code": "```js example\nvar great = useOf.example(\"code\");\n```"
+                  "code": "```js example\nconst great = useOf.example(\"code\");\n```"
                 },
                 {
                   "type": "Paragraph",
@@ -2302,7 +2302,7 @@
                   "lang": "js",
                   "example": true,
                   "counter": false,
-                  "code": "var great = useOf.example(\"code\");\n"
+                  "code": "const great = useOf.example(\"code\");\n"
                 }
               ]
             },
@@ -2359,7 +2359,7 @@
                 },
                 {
                   "type": "Code",
-                  "code": "```js counter-example\nvar shit = dontSwear();\n```"
+                  "code": "```js counter-example\nconst shit = dontSwear();\n```"
                 },
                 {
                   "type": "Paragraph",
@@ -2375,7 +2375,7 @@
                   "lang": "js",
                   "example": true,
                   "counter": true,
-                  "code": "var shit = dontSwear();\n"
+                  "code": "const shit = dontSwear();\n"
                 }
               ]
             }
@@ -7097,7 +7097,7 @@
           "lang": "js",
           "example": false,
           "counter": false,
-          "code": "var fs = require('fs');\nvar specMarkdown = require('spec-md');\nspecMarkdown.html('./path/to/markdown.md').then(function (html) {\n  fs.writeFile('./path/to/output.html', html);\n});\n"
+          "code": "const fs = require('fs');\nconst specMarkdown = require('spec-md');\nspecMarkdown.html('./path/to/markdown.md').then(html => {\n  fs.writeFile('./path/to/output.html', html);\n});\n"
         },
         {
           "type": "Paragraph",
@@ -7218,7 +7218,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " produced by parse() and returns an HTML\n    string."
+                  "value": " produced by parse() and returns a\n    Promise which will resolve to a beautified HTML string."
                 }
               ]
             },

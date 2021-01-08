@@ -1,59 +1,61 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var grammar = require('./grammar');
-var visit = require('./visit');
+const fs = require('fs');
+const path = require('path');
+const grammar = require('./grammar');
+const visit = require('./visit');
 
 
 module.exports = parse;
 
-function parse(filepath) {
-  return importAST(grammar, filepath).then(function (ast) {
-    return validate(filepath, ast);
-  });
+async function parse(filepath) {
+  const ast = await importAST(grammar, filepath);
+  return validate(filepath, ast);
 }
 
 function readFile(filepath) {
-  return new Promise(function (resolve, reject) {
-    fs.readFile(filepath, { encoding: 'utf8' }, function (err, result) {
-      return err ? reject(err) : resolve(result);
-    });
+  return new Promise((resolve, reject) => {
+    fs.readFile(filepath, { encoding: 'utf8' }, (err, result) =>
+      err ? reject(err) : resolve(result)
+    );
   });
 }
 
-function importAST(parser, filepath) {
-  return readFile(filepath).then(function (source) {
-    try {
-      var ast = parser.parse(source);
-    } catch (error) {
+async function importAST(parser, filepath) {
+  const source = await readFile(filepath)
+  try {
+    const ast = parser.parse(source);
+    const importASTs = [];
+    visit(ast, function (node) {
+      if (node.type === 'Import') {
+        const subfilepath = path.resolve(
+          path.dirname(filepath),
+          decodeURI(node.path)
+        );
+        importASTs.push(importAST(parser, subfilepath));
+      }
+    });
+    const asts = await Promise.all(importASTs);
+    return flattenDocuments(ast, asts);
+  } catch (error) {
+    if (error && error.line) {
       error.message =
         filepath + ':' + error.line + ':' + error.column + '\n' +
         source.split(/\r\n|\n|\r/g)[error.line - 1] + '\n' +
         Array(error.column).join(' ') + '^\n' +
         error.message;
-      throw error;
     }
-    var importASTs = [];
-    visit(ast, function (node) {
-      if (node.type === 'Import') {
-        var subfilepath = path.resolve(path.dirname(filepath), decodeURI(node.path));
-        importASTs.push(importAST(parser, subfilepath));
-      }
-    });
-    return Promise.all(importASTs).then(function (asts) {
-      return flattenDocuments(ast, asts);
-    });
-  });
+    throw error;
+  }
 }
 
 /**
  * Returns a single AST from a collection of ASTs.
  */
 function flattenDocuments(ast, asts) {
-  var cursor = 0;
-  var needToFlattenStack = [];
-  var needToFlatten;
+  let cursor = 0;
+  const needToFlattenStack = [];
+  let needToFlatten;
   return visit(ast, {
     leave: function (node, key, parent, keyPath) {
       if (needToFlatten !== undefined && keyPath.join('.') === needToFlatten) {
@@ -61,7 +63,7 @@ function flattenDocuments(ast, asts) {
         needToFlatten = needToFlattenStack.pop();
       }
       if (node.type === 'Import') {
-        var pathToFlatten = keyPath.slice(0, -1).join('.');
+        const pathToFlatten = keyPath.slice(0, -1).join('.');
         if (pathToFlatten !== needToFlatten) {
           needToFlattenStack.push(needToFlatten);
           needToFlatten = pathToFlatten;
@@ -95,13 +97,13 @@ function validate(filepath, ast) {
 
 function validateDocument(filepath, ast) {
   if (!ast.title) {
-    var message =
+    const message =
       'Primary document ' + filepath + ' is missing a title. ' +
       'It must begin with a Setext-style header. Example:\n\n' +
       'Title of Spec\n' +
       '=============\n';
 
-    var firstItem = ast.contents && ast.contents[0];
+    const firstItem = ast.contents && ast.contents[0];
     if (firstItem && firstItem.type === 'Section') {
       message +=
         '\nDid you mean to use Setext-style for the first title?\n\n' +

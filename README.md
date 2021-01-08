@@ -44,9 +44,9 @@ npm install --save-dev spec-md
 ```
 
 ```js
-var fs = require('fs');
-var specMarkdown = require('spec-md');
-specMarkdown.html('./path/to/markdown.md').then(function (html) {
+const fs = require('fs');
+const specMarkdown = require('spec-md');
+specMarkdown.html('./path/to/markdown.md').then(html => {
   fs.writeFile('./path/to/output.html', html);
 });
 ```

@@ -1,15 +1,16 @@
-var crypto = require('crypto');
-var fs = require('fs');
-var path = require('path');
-var prism = require('prismjs');
-var terser = require('terser');
-var visit = require('./visit');
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+const prism = require('prismjs');
+const terser = require('terser');
+const visit = require('./visit');
 
-function print(ast, _options) {
-  var options = {};
-  options.highlight = _options && _options.highlight || highlight;
-  options.biblio = _options && _options.biblio && buildBiblio(_options.biblio) || {};
-  options.head = _options && _options.head || '';
+async function print(ast, _options) {
+  const options = {
+    highlight: _options && _options.highlight || highlight,
+    biblio: _options && _options.biblio && buildBiblio(_options.biblio) || {},
+    head: _options && _options.head || '',
+  };
   validateSecIDs(ast, options);
   assignExampleNumbers(ast, options);
   assignBiblioIDs(ast, options);
@@ -17,8 +18,8 @@ function print(ast, _options) {
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md https://spec-md.com -->\n' +
     '<html>\n' +
-      '<head>' + printHead(ast, options) + '</head>\n' +
-      '<body>' + printBody(ast, options) + '</body>\n' +
+      '<head>' + await printHead(ast, options) + '</head>\n' +
+      '<body>' + await printBody(ast, options) + '</body>\n' +
     '</html>\n'
   );
 };
@@ -26,7 +27,7 @@ function print(ast, _options) {
 module.exports = print;
 
 function highlight(code, lang) {
-  var prismLang = getPrismLanguage(lang);
+  const prismLang = getPrismLanguage(lang);
   try {
     return prismLang ? prism.highlight(code, prismLang) : escapeCode(code);
   } catch (error) {
@@ -53,14 +54,14 @@ function loadAllLanguages() {
     return
   }
   hasLoadedAllLanguages = true;
-  var prismComponents = require('prismjs/components.json')
-  var componentsDir = path.join(path.dirname(require.resolve('prismjs')), 'components');
-  var langPaths = {};
-  Object.keys(prismComponents.languages).forEach(lang => {
+  const prismComponents = require('prismjs/components.json')
+  const componentsDir = path.join(path.dirname(require.resolve('prismjs')), 'components');
+  const langPaths = {};
+  for (const lang of Object.keys(prismComponents.languages)) {
     if (lang !== 'meta') {
       langPaths[lang] = path.join(componentsDir, `prism-${lang}.js`);
     }
-  });
+  }
 
   // Load every language into Prism.
   Object.keys(langPaths).forEach(loadLanguage);
@@ -70,8 +71,8 @@ function loadAllLanguages() {
     if (prism.languages[lang]) {
       return;
     }
-    var langPath = langPaths[lang];
-    var requiresLang = prismComponents.languages[lang].require
+    const langPath = langPaths[lang];
+    const requiresLang = prismComponents.languages[lang].require
     if (requiresLang) {
       if (Array.isArray(requiresLang)) {
         requiresLang.forEach(loadLanguage)
@@ -83,19 +84,19 @@ function loadAllLanguages() {
   }
 }
 
-function printHead(ast, options) {
+async function printHead(ast, options) {
   return (
     '<meta charset="utf-8">\n' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
     '<style>' + readStatic('spec.css') + '</style>\n' +
     '<style>' + readStatic('prism.css') + '</style>\n' +
-    execStaticJS('highlightName.js') +
-    execStaticJS('linkSelections.js') +
+    await execStaticJS('highlightName.js') +
+    await execStaticJS('linkSelections.js') +
     options.head
   );
 }
 
-function printBody(ast, options) {
+async function printBody(ast, options) {
   return (
     '<article>\n' +
       '<header>\n' +
@@ -109,7 +110,7 @@ function printBody(ast, options) {
     '<footer>\n' +
       'Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.' +
     '</footer>\n' +
-    printSidebar(ast, options)
+    await printSidebar(ast, options)
   );
 }
 
@@ -120,25 +121,25 @@ function printTitle(ast) {
 }
 
 function buildBiblio(ref) {
-  var biblio = {};
-  Object.keys(ref).forEach(function (site) {
-    Object.keys(ref[site]).forEach(function (id) {
+  const biblio = {};
+  for (const site of Object.keys(ref)) {
+    for (const id of Object.keys(ref[site])) {
       biblio[id] = site + ref[site][id];
-    });
-  });
+    }
+  }
   return biblio;
 }
 
 function validateSecIDs(ast, options) {
-  var sectionIDPart = 0;
-  var sectionIDStack = [];
+  let sectionIDPart = 0;
+  const sectionIDStack = [];
 
-  var items = visit(ast, {
+  const items = visit(ast, {
     enter: function (node) {
       if (node.type === 'Section') {
         if (node.secID) {
-          var nextIDPart = node.secID[node.secID.length - 1];
-          var nextIsLetter = IS_LETTER_RX.test(nextIDPart);
+          let nextIDPart = node.secID[node.secID.length - 1];
+          const nextIsLetter = IS_LETTER_RX.test(nextIDPart);
           if (nextIDPart === '*') {
             throw new Error('Not yet supported');
           } else if (!nextIsLetter) {
@@ -175,7 +176,7 @@ function validateSecIDs(ast, options) {
 }
 
 function assignExampleNumbers(ast, options) {
-  var exampleNum = 1;
+  let exampleNum = 1;
   visit(ast, {
     enter(node) {
       if (node.type === 'Code' && node.example) {
@@ -186,12 +187,12 @@ function assignExampleNumbers(ast, options) {
 }
 
 function assignBiblioIDs(ast, options) {
-  var secnames = {};
-  var conflicts = {};
-  var secnameStack = [];
+  const secnames = {};
+  const conflicts = {};
+  const secnameStack = [];
   visit(ast, function (node) {
     if (node.type === 'Section') {
-      var secname = anchorize(node.title);
+      const secname = anchorize(node.title);
       if (secnames.hasOwnProperty(secname)) {
         conflicts[secname] = true;
       } else {
@@ -203,11 +204,11 @@ function assignBiblioIDs(ast, options) {
   visit(ast, {
     enter: function (node) {
       if (node.type === 'Section') {
-        var secname = anchorize(node.title);
+        let secname = anchorize(node.title);
         if (conflicts.hasOwnProperty(secname)) {
           secname = secnameStack[secnameStack.length - 1] + '.' + secname;
         }
-        var id = 'sec-' + secname;
+        let id = 'sec-' + secname;
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
@@ -215,45 +216,45 @@ function assignBiblioIDs(ast, options) {
         secnameStack.push(secname);
       }
       if (node.type === 'Subsection') {
-        var subsecname = anchorize(node.title);
-        var secname = secnameStack.length > 0
+        let subsecname = anchorize(node.title);
+        let secname = secnameStack.length > 0
           ? secnameStack[secnameStack.length - 1] + '.' + subsecname
           : subsecname;
-        var id = 'sec-' + secname;
+        let id = 'sec-' + secname;
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
         node.id = id;
       }
       if (node.type === 'Algorithm') {
-        var id = anchorize(node.call.name) + '()';
+        let id = anchorize(node.call.name) + '()';
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
         node.id = id;
       }
       if (node.type === 'Production' || node.type === 'OneOfProduction') {
-        var id = anchorize(node.token.name);
+        let id = anchorize(node.token.name);
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
         node.id = id;
       }
       if (node.type === 'Code' && node.example) {
-        var hashSize = 5;
+        let id;
+        let hashSize = 5;
         do {
-          var hash = stableCodeHash(node.code, hashSize++);
-          var id = anchorize('example-' + hash);
+          id = anchorize('example-' + stableCodeHash(node.code, hashSize++));
         } while (options.biblio[id]);
         options.biblio[id] = '#' + id;
         node.id = id;
       }
       if (node.type === 'Note') {
-        var content = printAll(node.contents, options);
-        var hashSize = 5;
+        let content = printAll(node.contents, options);
+        let id;
+        let hashSize = 5;
         do {
-          var hash = stableContentHash(content, hashSize++);
-          var id = anchorize('note-' + hash);
+          id = anchorize('note-' + stableContentHash(content, hashSize++));
         } while (options.biblio[id]);
         options.biblio[id] = '#' + id;
         node.id = id;
@@ -267,21 +268,19 @@ function assignBiblioIDs(ast, options) {
   });
 }
 
-var IS_LETTER_RX = /^[A-Z]+$/;
+const IS_LETTER_RX = /^[A-Z]+$/;
 
 function nextSecID(id) {
-  var isLetter = IS_LETTER_RX.test(id);
+  const isLetter = IS_LETTER_RX.test(id);
   if (!isLetter) {
     return id + 1;
   }
 
   // A -> B, Z -> AA, AA -> AB, ZZ -> AAA
-  var letters = id.split('');
-  var numB26 = '1' + letters.map(function (ch) {
-    return (ch.charCodeAt(0) - 65).toString(26);
-  }).join('');
-  var nextDigitsB26 = (parseInt(numB26, 26) + 1).toString(26).split('');
-  return nextDigitsB26.map(function (digit, index) {
+  const letters = id.split('');
+  const numB26 = '1' + letters.map(ch => (ch.charCodeAt(0) - 65).toString(26)).join('');
+  const nextDigitsB26 = (parseInt(numB26, 26) + 1).toString(26).split('');
+  return nextDigitsB26.map((digit, index) => {
     if (index === 0) return digit === '1' ? '' : 'A';
     return String.fromCharCode(parseInt(digit, 26) + 65);
   }).join('');
@@ -291,15 +290,13 @@ function nextSecID(id) {
 // Table of Contents
 
 function printTOC(ast, options) {
-  var sections = ast.contents.filter(function (content) {
-    return content.type === 'Section';
-  });
+  const sections = ast.contents.filter(content => content.type === 'Section');
 
-  var items = visit(sections, {
+  const items = visit(sections, {
     leave: function (node) {
       if (node.type === 'Section') {
-        var subSections = join(node.contents);
-        var secID = join(node.secID, '.');
+        const subSections = join(node.contents);
+        const secID = join(node.secID, '.');
         return (
           '<li>' +
             '<a href="' + options.biblio[node.id] + '">' +
@@ -332,16 +329,14 @@ function printTOC(ast, options) {
 
 // Sidebar
 
-function printSidebar(ast, options) {
-  var sections = ast.contents.filter(function (content) {
-    return content.type === 'Section';
-  });
+async function printSidebar(ast, options) {
+  const sections = ast.contents.filter(content => content.type === 'Section');
 
-  var items = visit(sections, {
+  const items = visit(sections, {
     leave: function (node) {
       if (node.type === 'Section') {
-        var subSections = join(node.contents);
-        var secID = join(node.secID, '.');
+        const subSections = join(node.contents);
+        const secID = join(node.secID, '.');
         return (
           '<li id="_sidebar_' + secID + '">' +
             '<a href="' + options.biblio[node.id] + '">' +
@@ -371,7 +366,7 @@ function printSidebar(ast, options) {
         '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>\n' +
         '<ol>' + join(items) + '</ol>\n' +
       '</div>\n' +
-      execStaticJS('sidebar.js') +
+      await execStaticJS('sidebar.js') +
     '</div>\n'
   );
 }
@@ -380,9 +375,7 @@ function printSidebar(ast, options) {
 // Content
 
 function printIntro(doc, options) {
-  var intro = doc.contents.filter(function (content) {
-    return content.type !== 'Section';
-  });
+  const intro = doc.contents.filter(content => content.type !== 'Section');
   return intro.length === 0 ? '' :
     '<section id="intro">\n' +
       printAll(intro, options) +
@@ -390,9 +383,7 @@ function printIntro(doc, options) {
 }
 
 function printContent(doc, options) {
-  var sections = doc.contents.filter(function (content) {
-    return content.type === 'Section';
-  });
+  const sections = doc.contents.filter(content => content.type === 'Section');
   return printAll(sections, options);
 }
 
@@ -400,9 +391,9 @@ function printAll(list, options) {
   return join(visit(list, {
     leave: function (node) {
       switch (node.type) {
-        case 'Section':
-          var level = node.secID.length + 1;
-          var secID = join(node.secID, '.');
+        case 'Section': {
+          const level = node.secID.length + 1;
+          const secID = join(node.secID, '.');
           return (
             '<section id="' + node.id + '" secid="' + secID + '">\n' +
               '<h' + level + '>' +
@@ -414,6 +405,7 @@ function printAll(list, options) {
               join(node.contents) +
             '</section>\n'
           );
+        }
 
         case 'Subsection':
           return (
@@ -493,9 +485,10 @@ function printAll(list, options) {
             '/>'
           );
 
-        case 'List':
-          var olul = node.ordered ? 'ol' : 'ul';
+        case 'List': {
+          const olul = node.ordered ? 'ol' : 'ul';
           return '<' + olul + '>\n' + join(node.items) + '</' + olul + '>\n';
+        }
 
         case 'ListItem':
           return '<li>' + join(node.contents) + '</li>\n';
@@ -504,20 +497,14 @@ function printAll(list, options) {
           return (
             '<table>\n' +
               '<thead><tr>\n' +
-                join(node.headers.map(function (cell) {
-                  return '<th>' + join(cell) + '</th>\n';
-                })) +
+                join(node.headers.map(cell => '<th>' + join(cell) + '</th>\n')) +
               '</tr></thead>\n' +
               '<tbody>\n' +
-                join(node.rows.map(function (row) {
-                  return (
-                    '<tr>\n' +
-                      join(row.map(function (cell) {
-                        return '<td>' + join(cell) + '</td>';
-                      })) +
-                    '</tr>\n'
-                  );
-                })) +
+                join(node.rows.map(row =>
+                  '<tr>\n' +
+                    join(row.map(cell => '<td>' + join(cell) + '</td>')) +
+                  '</tr>\n'
+                )) +
               '</tbody>\n' +
             '</table>\n'
           );
@@ -547,8 +534,8 @@ function printAll(list, options) {
         case 'Variable':
           return '<var data-name="' + anchorize(node.name) + '">' + node.name + '</var>';
 
-        case 'Semantic':
-          var defType = node.defType === 1 ? '' : ' d' + node.defType;
+        case 'Semantic': {
+          const defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
             '<div class="spec-semantic' + defType + '">\n' +
               node.name +
@@ -556,29 +543,27 @@ function printAll(list, options) {
               node.steps +
             '</div>\n'
           );
+        }
 
-        case 'Production':
-          var defType = node.defType === 1 ? '' : ' d' + node.defType;
+        case 'Production': {
+          const defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
             '<div class="spec-production' + defType + '" id="' + node.id + '">\n' +
               node.token +
               node.rhs +
             '</div>\n'
           );
+        }
 
         case 'OneOfRHS':
           return (
             '<div class="spec-oneof">' +
               '<table>\n' +
-                join(node.rows.map(function (row) {
-                  return (
-                    '<tr>\n' +
-                      join(row.map(function (def) {
-                        return '<td class="spec-rhs">' + def + '</td>';
-                      })) +
-                    '</tr>\n'
-                  );
-                })) +
+                join(node.rows.map(row =>
+                  '<tr>\n' +
+                    join(row.map(def => '<td class="spec-rhs">' + def + '</td>')) +
+                  '</tr>\n'
+                )) +
               '</table>' +
             '</div>\n'
           );
@@ -624,8 +609,8 @@ function printAll(list, options) {
             '</span>'
           );
 
-        case 'Quantified':
-          var quantifiers =
+        case 'Quantified': {
+          const quantifiers =
             (node.isList ? '<span class="spec-quantifier list">list</span>' : '') +
             (node.isOptional ? '<span class="spec-quantifier optional">opt</span>' : '');
           return (
@@ -634,6 +619,7 @@ function printAll(list, options) {
               '<span class="spec-quantifiers">' + quantifiers + '</span>' +
             '</span>'
           );
+        }
 
         case 'Constrained':
           return (
@@ -674,8 +660,8 @@ function printAll(list, options) {
 }
 
 function getTerms(ast) {
-  var terms = {};
-  var sectionIDs = [];
+  const terms = {};
+  const sectionIDs = [];
   visit(ast, {
     enter(node) {
       if (node.type === 'Section') {
@@ -686,12 +672,12 @@ function getTerms(ast) {
         return;
       }
       if (node.type === 'Algorithm') {
-        var algorithmName = node.call.name;
+        const algorithmName = node.call.name;
         if (!terms[algorithmName]) {
           terms[algorithmName] = node;
         }
       } else if (node.type === 'Production' || node.type === 'OneOfProduction') {
-        var productionName = node.token.name;
+        const productionName = node.token.name;
         if (!terms[productionName]) {
           terms[productionName] = node;
         }
@@ -711,14 +697,14 @@ function hasIndex(ast, options) {
 }
 
 function printIndex(ast, options) {
-  var terms = getTerms(ast);
-  var termNames = Object.keys(terms).sort();
+  const terms = getTerms(ast);
+  const termNames = Object.keys(terms).sort();
   if (termNames.length === 0) {
     return '';
   }
 
-  var items = termNames.map(function (termName) {
-    var node = terms[termName];
+  const items = termNames.map(termName => {
+    const node = terms[termName];
     return '<li>' + link({name: termName}, node.id, options) + '</li>';
   });
 
@@ -736,7 +722,7 @@ function printIndex(ast, options) {
 }
 
 function join(list, joiner) {
-  return list ? list.filter(function (x) { return !!x }).join(joiner || '') : '';
+  return list ? list.filter(x => !!x).join(joiner || '') : '';
 }
 
 function maybe(value) {
@@ -744,8 +730,8 @@ function maybe(value) {
 }
 
 function link(node, id, options, doHighlight) {
-  var href = options.biblio[id];
-  var content = escape(node.name);
+  const href = options.biblio[id];
+  const content = escape(node.name);
   if (!href) {
     if (doHighlight) {
       return (
@@ -769,10 +755,10 @@ function anchorize(title) {
   return title.replace(/[^A-Za-z0-9\-_]+/g, '-');
 }
 
-var ESCAPE_CODE_REGEX = /[><"'&]/g;
-var ESCAPE_REGEX = /\u2010|\u2013|\u2014|\u2018|\u2019|\u201C|\u201D|\u2190|\u2192|\u2194|\u21D0|\u21D2|\u21D4|\u2245|\u2264|\u2265|[><"']|(?:&(?!\S{1,10};))/g;
+const ESCAPE_CODE_REGEX = /[><"'&]/g;
+const ESCAPE_REGEX = /\u2010|\u2013|\u2014|\u2018|\u2019|\u201C|\u201D|\u2190|\u2192|\u2194|\u21D0|\u21D2|\u21D4|\u2245|\u2264|\u2265|[><"']|(?:&(?!\S{1,10};))/g;
 
-var ESCAPE_LOOKUP = {
+const ESCAPE_LOOKUP = {
   '&': '&amp;',
   '>': '&gt;',
   '<': '&lt;',
@@ -834,11 +820,8 @@ function formatText(text) {
   );
 }
 
-function execStaticJS(filename) {
-  var minified = terser.minify(readStatic(filename), { toplevel: true })
-  if (minified.error) {
-    throw minified.error
-  }
+async function execStaticJS(filename) {
+  const minified = await terser.minify(readStatic(filename), { toplevel: true })
   return '<script>(function(){' + minified.code + '})()</script>\n';
 }
 
@@ -847,11 +830,11 @@ function readStatic(filename) {
 }
 
 function stableCodeHash(code, size) {
-  var trimmedCode = code.split(/(\n|\r|\r\n)/).map(line => line.trim()).join('\n');
+  const trimmedCode = code.split(/(\n|\r|\r\n)/).map(line => line.trim()).join('\n');
   return crypto.createHash('md5').update(trimmedCode).digest('hex').slice(0, size);
 }
 
 function stableContentHash(content, size) {
-  var trimmedContent = content.split(/(\n|\r|\r\n)/).map(line => line.trim()).join(' ');
+  const trimmedContent = content.split(/(\n|\r|\r\n)/).map(line => line.trim()).join(' ');
   return crypto.createHash('md5').update(trimmedContent).digest('hex').slice(0, size);
 }

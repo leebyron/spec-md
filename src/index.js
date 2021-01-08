@@ -1,11 +1,9 @@
-var print = require('./print');
-var parse = require('./parse');
-var visit = require('./visit');
+const print = require('./print');
+const parse = require('./parse');
+const visit = require('./visit');
 
-function html(filepath, options) {
-  return parse(filepath).then(function (ast) {
-    return print(ast, options);
-  });
+async function html(filepath, options) {
+  return await print(await parse(filepath), options);
 }
 
 exports.html = html;
