@@ -216,7 +216,7 @@ textChar = escaped
          / '-' !'-}'
          / !image '!'
          / !htmlTag '<'
-         / NL !(NL / ' '* listBullet)
+         / SINGLE_NL
 
 text = value:$textChar+ {
   return {
@@ -225,14 +225,14 @@ text = value:$textChar+ {
   };
 }
 
-note = BLOCK 'NOTE'i (':' / ' ') _ contents:content* {
+note = BLOCK 'NOTE'i (':' / WB) _ contents:content* {
   return {
     type: 'Note',
     contents: contents
   };
 }
 
-todo = BLOCK ('TODO'i / 'TK'i) (':' / ' ') _ contents:content* {
+todo = BLOCK ('TODO'i / 'TK'i) (':' / WB) _ contents:content* {
   return {
     type: 'Todo',
     contents: contents
@@ -290,7 +290,7 @@ inlineCode = '`' code:$[^`\n\r]+ '`' {
   };
 }
 
-blockCode = BLOCK '```' raw:"raw "? deprecatedCounterExample:'!'? lang:codeLang? _ example:('example'/'counter-example')? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' {
+blockCode = BLOCK '```' raw:('raw' WB _)? deprecatedCounterExample:'!'? lang:codeLang? _ example:('example'/'counter-example')? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' {
   // dedent codeblock by current indent level?
   if (deprecatedCounterExample) {
     console.warn(line() + ':' + column() + ': Use of `!` is deprecated, use `counter-example` instead.');
@@ -458,7 +458,7 @@ algorithm = BLOCK call:call _ ':' ':'? steps:list {
   };
 }
 
-call = name:(globalName / localName) '(' _ args:callArg* _ ')' {
+call = name:(globalName / localName) '(' args:(noCallArgs / callArgs) ')' {
   return {
     type: 'Call',
     name: name,
@@ -466,8 +466,12 @@ call = name:(globalName / localName) '(' _ args:callArg* _ ')' {
   };
 }
 
-callArg = value:value [, ]* {
-  return value;
+noCallArgs = &')' {
+  return [];
+}
+
+callArgs = __ first:value rest:(_ ','? __ token:value)* __ {
+  return [first].concat(rest.map(nodes => nodes[3]));
 }
 
 value = stringLiteral / keyword / variable
@@ -482,7 +486,7 @@ stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
   };
 }
 
-keyword = value:$('null' / 'true' / 'false' / 'undefined') ![a-zA-Z] {
+keyword = value:$('null' / 'true' / 'false' / 'undefined') WB {
   return {
     type: 'Keyword',
     value: value
@@ -499,7 +503,7 @@ variable = name:localName {
 
 // Grammar productions
 
-semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') _ tokens:token+ steps:list {
+semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ tokens:tokens steps:list {
   return {
     type: 'Semantic',
     name: name,
@@ -512,7 +516,7 @@ semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') _ tokens:token+ ste
   };
 }
 
-production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') _ rhs:productionRHS {
+production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRHS {
   return {
     type: 'Production',
     token: token,
@@ -523,21 +527,17 @@ production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') _ rhs:production
 
 productionRHS = oneOfRHS / singleRHS / listRHS
 
-oneOfRHS = 'one of' rows:(_ NL? (_ token)+)+ {
+oneOfRHS = !(LINE listBullet) __ 'one of' rows:(_ NL? (_ token)+)+ {
   return {
     type: 'OneOfRHS',
-    rows: rows.map(function (row) {
-      return row[2].map(function (tokens) {
-        return tokens[1];
-      });
-    })
+    rows: rows.map(row => row[2].map(tokens => tokens[1]))
   };
 }
 
-singleRHS = condition:condition? _ tokens:token+ {
+singleRHS = !(LINE listBullet) __ condition:(condition __)? tokens:tokens {
   return {
     type: 'RHS',
-    condition: condition,
+    condition: condition ? condition[0] : null,
     tokens: tokens
   };
 }
@@ -550,15 +550,15 @@ indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
   return defs;
 }
 
-listItemRHS = LINE listBullet _ condition:condition? _ tokens:token+ {
+listItemRHS = LINE listBullet _ condition:(condition __)? tokens:tokens {
   return {
     type: 'RHS',
-    condition: condition,
+    condition: condition ? condition[0] : null,
     tokens: tokens
   };
 }
 
-condition = '[' condition:$('+' / '~' / 'if' (_ 'not')?) _ param:paramName ']' {
+condition = '[' condition:$('+' / '~' / 'if' WB (__ 'not' WB)?) __ param:paramName ']' {
   return {
     type: 'Condition',
     param: param,
@@ -566,7 +566,11 @@ condition = '[' condition:$('+' / '~' / 'if' (_ 'not')?) _ param:paramName ']' {
   };
 }
 
-token = token:unconstrainedToken quantifier:('+' / '?' / '*')? _ constraint:constraint? _ {
+tokens = first:token rest:(__ token:token)* {
+  return [first].concat(rest.map(nodes => nodes[1]));
+}
+
+token = token:unconstrainedToken quantifier:('+' / '?' / '*')? constraint:(__ constraint)? {
   if (quantifier) {
     token = {
       type: 'Quantified',
@@ -579,7 +583,7 @@ token = token:unconstrainedToken quantifier:('+' / '?' / '*')? _ constraint:cons
     token = {
       type: 'Constrained',
       token: token,
-      constraint: constraint
+      constraint: constraint[1]
     }
   }
   return token;
@@ -603,8 +607,8 @@ emptyToken = '[' _ 'empty' _ ']' {
   };
 }
 
-lookahead = '[' _ 'lookahead' _ not:('!=' / '!')? _ set:(lookaheadSet/lookaheadItem)? _ closer:']' {
-  if (set === null) {
+lookahead = '[' __ 'lookahead' WB not:(__ ('!=' / '!'))? __ set:(lookaheadSet/lookaheadItem)? __ closer:']'? {
+  if (set === null || closer === null) {
     error('Malformed lookahead. Did you forget tokens?');
   }
   return {
@@ -615,14 +619,14 @@ lookahead = '[' _ 'lookahead' _ not:('!=' / '!')? _ set:(lookaheadSet/lookaheadI
   };
 }
 
-lookaheadSet = '{' set:((_ !'}' token _ ','?)+)? _ closer:'}'? {
+lookaheadSet = '{' set:((__ !'}' token _ ','?)+)? __ closer:'}'? {
   if (set === null || closer === null) {
     error('Malformed lookahead set. Did you forget tokens?');
   }
-  return set.map(function (nodes) { return nodes[2]; });
+  return set.map(nodes => nodes[2]);
 }
 
-lookaheadItem = !']' token:token {
+lookaheadItem = !(']' / '}') token:token {
   return [token];
 }
 
@@ -634,7 +638,7 @@ nonTerminal = name:globalName params:nonTerminalParams? {
   };
 }
 
-nonTerminalParams = '[' _ params:(nonTerminalParam _ ',' _)* param:nonTerminalParam? _ closer:']'? {
+nonTerminalParams = '[' __ params:(nonTerminalParam _ ',' __)* param:nonTerminalParam? __ closer:']'? {
   if (param === null || closer === null) {
     error('Malformed terminal params.');
   }
@@ -652,12 +656,10 @@ nonTerminalParam = conditional:[?!]? name:paramName {
 
 constraint = butNot
 
-butNot = 'but not ' _ 'one of '? _ first:token rest:(_ ('or '/',') _ token)* {
+butNot = 'but' WB __ 'not' WB __ ('one' WB __ 'of' WB __)? first:token rest:(__ ('or' WB / ',') __ token)* !(__ ('or' WB / ',')) {
   return {
     type: 'ButNot',
-    tokens: [first].concat(rest.map(function (nodes) {
-      return nodes[3];
-    }))
+    tokens: [first].concat(rest.map(nodes => nodes[3]))
   };
 }
 
@@ -715,11 +717,16 @@ DEDENT = &lineStart !{ indentStack.length === 0 } {
 
 NL = '\n' / '\r' / '\r\n'
 NOT_NL = [^\n\r]
+SINGLE_NL = NL !(NL / _ listBullet)
 _ = ' '*
+// Skips over whitespace including a single newline. Do not use more than once
+// in a row, otherwise multiple NL will be skipped.
+__ = _ SINGLE_NL? _
+WB = ![a-zA-Z0-9]
 EOF = NL* !.
 
 lineStart = NL+ / & { return offset() === 0 }
 
 blockStart = (NL NL+) / & { return offset() === 0 }
 
-indentDepth = sp:$' '* { return sp.length; }
+indentDepth = sp:$_ { return sp.length; }

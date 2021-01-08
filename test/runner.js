@@ -11,6 +11,7 @@ runTests([
   ['simple-header/input.md', 'simple-header/ast.json', 'simple-header/output.html'],
   ['tables/input.md', 'tables/ast.json', 'tables/output.html'],
   ['duplicated-notes/input.md', 'duplicated-notes/ast.json', 'duplicated-notes/output.html'],
+  ['productions/input.md', 'productions/ast.json', 'productions/output.html'],
 ]);
 
 async function runTests(tests) {

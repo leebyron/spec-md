@@ -1,0 +1,671 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Productions"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Grammar",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A production can be on one line"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "RHS",
+            "condition": null,
+            "tokens": [
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              },
+              {
+                "type": "NonTerminal",
+                "name": "PeanutButter",
+                "params": null
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Jelly",
+                "params": null
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A production can wrap across lines"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "RHS",
+            "condition": null,
+            "tokens": [
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              },
+              {
+                "type": "NonTerminal",
+                "name": "PeanutButter",
+                "params": null
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Jelly",
+                "params": null
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A production can have multiple definitions"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "PeanutButter",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Jelly",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              },
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "PeanutButter",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Jelly",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Which can break lines"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "PeanutButter",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Jelly",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              },
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "PeanutButter",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Jelly",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "And conditions"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": {
+                  "type": "Condition",
+                  "param": "Hungry",
+                  "not": false
+                },
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Peanuts",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "And params"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "Sandwich",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "PBJ",
+                    "params": [
+                      {
+                        "type": "NonTerminalParam",
+                        "conditional": false,
+                        "negated": false,
+                        "name": "Hungry"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A lookahead can break on lines"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "RHS",
+            "condition": null,
+            "tokens": [
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              },
+              {
+                "type": "Lookahead",
+                "not": true,
+                "nt": true,
+                "set": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Ketchup",
+                    "params": null
+                  }
+                ]
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A lookahead can break on lines with a set"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "RHS",
+            "condition": null,
+            "tokens": [
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              },
+              {
+                "type": "Lookahead",
+                "not": true,
+                "nt": false,
+                "set": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Ketchup",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Mustard",
+                    "params": null
+                  }
+                ]
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Constraints breaking lines"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "RHS",
+            "condition": null,
+            "tokens": [
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              },
+              {
+                "type": "Constrained",
+                "token": {
+                  "type": "NonTerminal",
+                  "name": "Condiment",
+                  "params": null
+                },
+                "constraint": {
+                  "type": "ButNot",
+                  "tokens": [
+                    {
+                      "type": "NonTerminal",
+                      "name": "Ketchup",
+                      "params": null
+                    },
+                    {
+                      "type": "NonTerminal",
+                      "name": "Mustard",
+                      "params": null
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "NonTerminal",
+                "name": "Bread",
+                "params": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Algorithms",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "An algoritm can have no args"
+            }
+          ]
+        },
+        {
+          "type": "Algorithm",
+          "call": {
+            "type": "Call",
+            "name": "Algo",
+            "args": []
+          },
+          "steps": {
+            "type": "List",
+            "ordered": true,
+            "items": [
+              {
+                "type": "ListItem",
+                "contents": [
+                  {
+                    "type": "Text",
+                    "value": "Step"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "An algorithm can have multiple args"
+            }
+          ]
+        },
+        {
+          "type": "Algorithm",
+          "call": {
+            "type": "Call",
+            "name": "Algo",
+            "args": [
+              {
+                "type": "Variable",
+                "name": "arg1"
+              },
+              {
+                "type": "Variable",
+                "name": "arg2"
+              },
+              {
+                "type": "Variable",
+                "name": "arg3"
+              }
+            ]
+          },
+          "steps": {
+            "type": "List",
+            "ordered": true,
+            "items": [
+              {
+                "type": "ListItem",
+                "contents": [
+                  {
+                    "type": "Text",
+                    "value": "Step"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "And can spread across multiple lines"
+            }
+          ]
+        },
+        {
+          "type": "Algorithm",
+          "call": {
+            "type": "Call",
+            "name": "Algo",
+            "args": [
+              {
+                "type": "Variable",
+                "name": "arg1"
+              },
+              {
+                "type": "Variable",
+                "name": "arg2"
+              },
+              {
+                "type": "Variable",
+                "name": "arg3"
+              }
+            ]
+          },
+          "steps": {
+            "type": "List",
+            "ordered": true,
+            "items": [
+              {
+                "type": "ListItem",
+                "contents": [
+                  {
+                    "type": "Text",
+                    "value": "Step"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "And omit commas"
+            }
+          ]
+        },
+        {
+          "type": "Algorithm",
+          "call": {
+            "type": "Call",
+            "name": "Algo",
+            "args": [
+              {
+                "type": "Variable",
+                "name": "arg1"
+              },
+              {
+                "type": "Variable",
+                "name": "arg2"
+              },
+              {
+                "type": "Variable",
+                "name": "arg3"
+              }
+            ]
+          },
+          "steps": {
+            "type": "List",
+            "ordered": true,
+            "items": [
+              {
+                "type": "ListItem",
+                "contents": [
+                  {
+                    "type": "Text",
+                    "value": "Step\n"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
