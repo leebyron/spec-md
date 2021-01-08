@@ -7,6 +7,7 @@ const shouldRecord = Boolean(process.env.RECORD);
 
 runTests([
   ['../README.md', 'readme/ast.json', 'readme/output.html'],
+  ['graphql-spec/GraphQL.md', 'graphql-spec/ast.json', 'graphql-spec/output.html'],
   ['simple-header/input.md', 'simple-header/ast.json', 'simple-header/output.html'],
   ['tables/input.md', 'tables/ast.json', 'tables/output.html'],
   ['duplicated-notes/input.md', 'duplicated-notes/ast.json', 'duplicated-notes/output.html'],
