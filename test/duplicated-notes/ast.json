@@ -1,0 +1,675 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Duplicated Notes"
+  },
+  "contents": [
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note"
+        }
+      ]
+    },
+    {
+      "type": "Note",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Note\n"
+        }
+      ]
+    }
+  ]
+}

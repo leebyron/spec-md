@@ -2049,6 +2049,15 @@
               ]
             },
             {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Notes automatically have short links generated for them. If the contents of the\nnote changes, so will the link URL. However if a note moves around, or content\naround the note changes the existing links will still point to the right place,\nvery useful for consistently evolving specifications!"
+                }
+              ]
+            },
+            {
               "type": "Code",
               "lang": null,
               "example": false,
