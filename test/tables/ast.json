@@ -1,0 +1,260 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Tables"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Tables",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Naked table"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "headers": [
+            [
+              {
+                "type": "Text",
+                "value": "Alpha "
+              }
+            ],
+            [
+              {
+                "type": "Text",
+                "value": "Beta"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "Text",
+                  "value": "a     "
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "b"
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Wrapped table"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "headers": [
+            [
+              {
+                "type": "Text",
+                "value": "Alpha "
+              }
+            ],
+            [
+              {
+                "type": "Text",
+                "value": "Beta "
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "Text",
+                  "value": "a     "
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "b    "
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Right wrapped"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "headers": [
+            [
+              {
+                "type": "Text",
+                "value": "Alpha "
+              }
+            ],
+            [
+              {
+                "type": "Text",
+                "value": "Beta "
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "Text",
+                  "value": "a     "
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "b    "
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Left wrapped"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "headers": [
+            [
+              {
+                "type": "Text",
+                "value": "Alpha "
+              }
+            ],
+            [
+              {
+                "type": "Text",
+                "value": "Beta"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "Text",
+                  "value": "a     "
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "b"
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Wrapped solo"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "headers": [
+            [
+              {
+                "type": "Text",
+                "value": "Alpha "
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "Text",
+                  "value": "a     "
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Left wrapped solo"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "headers": [
+            [
+              {
+                "type": "Text",
+                "value": "Alpha"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "Text",
+                  "value": "a"
+                }
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Not tables",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Alpha\n-----\na\n"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

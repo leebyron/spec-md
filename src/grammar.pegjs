@@ -395,7 +395,7 @@ orderedBullet = $(([1-9]+ '.') ' ')
 
 // Table
 
-table = BLOCK !'#' ('|' _)? headers:tableCells _ '|'? LINE [ -|]+ rows:tableRow+ {
+table = BLOCK !'#' headers:(tableCells / tableOneColCells) LINE [ -|]+ rows:tableRow+ {
   return {
     type: 'Table',
     headers: headers,
@@ -403,14 +403,18 @@ table = BLOCK !'#' ('|' _)? headers:tableCells _ '|'? LINE [ -|]+ rows:tableRow+
   };
 }
 
-tableRow = LINE !'#' ('|' _)? cells:tableCells _ '|'? {
+tableRow = LINE !'#' cells:(tableCells / tableOneColCells) {
   return cells;
 }
 
-tableCells = first:tableCell rest:(_ '|' _ tableCell)+ {
+tableCells = ('|' _)? first:tableCell rest:(_ '|' _ tableCell)+ _ '|'? {
   return [first].concat(rest.map(function (nodes) {
     return nodes[3];
   }));
+}
+
+tableOneColCells = '|' _ first:tableCell _ '|'? {
+  return [first];
 }
 
 tableCell = contents:tableCellContent+ {
