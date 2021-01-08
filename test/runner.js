@@ -8,6 +8,7 @@ const shouldRecord = Boolean(process.env.RECORD);
 runTests([
   ['../README.md', 'readme/ast.json', 'readme/output.html'],
   ['simple-header/input.md', 'simple-header/ast.json', 'simple-header/output.html'],
+  ['tables/input.md', 'tables/ast.json', 'tables/output.html'],
 ]);
 
 async function runTests(tests) {
