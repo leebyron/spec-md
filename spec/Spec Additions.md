@@ -24,21 +24,22 @@ referencing specific parts of your document easy. Try it here!
 
 ## Title and Introduction
 
-A Spec Markdown document should start with one Setext style header which will be
-used as the title of the document. Any content before the first atx (`#`) style
-header will become the introduction to the document.
+A Spec Markdown document must start with a header which will be used as the
+title of the document. Any content between this and the next header will become
+the introduction to the document.
 
 A Spec Markdown document starts in this form:
 
 ```
-Spec Markdown
--------------
+# Spec Markdown
 
 Introductory paragraph.
 
 # First Section Header
 ```
 
+Note: For backwards-compatibility, a setext style header can be used for a
+document title.
 
 ## Sections
 

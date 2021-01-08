@@ -1625,15 +1625,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "A Spec Markdown document should start with one Setext style header which will be\nused as the title of the document. Any content before the first atx ("
-                },
-                {
-                  "type": "InlineCode",
-                  "code": "#"
-                },
-                {
-                  "type": "Text",
-                  "value": ") style\nheader will become the introduction to the document."
+                  "value": "A Spec Markdown document must start with a header which will be used as the\ntitle of the document. Any content between this and the next header will become\nthe introduction to the document."
                 }
               ]
             },
@@ -1652,7 +1644,16 @@
               "lang": null,
               "example": false,
               "counter": false,
-              "code": "Spec Markdown\n-------------\n\nIntroductory paragraph.\n\n# First Section Header\n"
+              "code": "# Spec Markdown\n\nIntroductory paragraph.\n\n# First Section Header\n"
+            },
+            {
+              "type": "Note",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "For backwards-compatibility, a setext style header can be used for a\ndocument title."
+                }
+              ]
             }
           ]
         },

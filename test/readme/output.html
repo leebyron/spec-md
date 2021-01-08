@@ -1330,15 +1330,17 @@ const code = sample();
 </section>
 <section id="sec-Title-and-Introduction" secid="3.2">
 <h3><span class="spec-secid" title="link to this section"><a href="#sec-Title-and-Introduction">3.2</a></span>Title and Introduction</h3>
-<p>A Spec Markdown document should start with one Setext style header which will be used as the title of the document. Any content before the first atx (<code>#</code>) style header will become the introduction to the document.</p>
+<p>A Spec Markdown document must start with a header which will be used as the title of the document. Any content between this and the next header will become the introduction to the document.</p>
 <p>A Spec Markdown document starts in this form:</p>
-<pre><code>Spec Markdown
--------------
+<pre><code># Spec Markdown
 
 Introductory paragraph.
 
 # First Section Header
 </code></pre>
+<div id="note-f5587" class="spec-note">
+<a href="#note-f5587">Note</a>
+For backwards&#8208;compatibility, a setext style header can be used for a document title.</div>
 </section>
 <section id="sec-Sections" secid="3.3">
 <h3><span class="spec-secid" title="link to this section"><a href="#sec-Sections">3.3</a></span>Sections</h3>
