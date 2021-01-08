@@ -12,6 +12,7 @@ runTests([
   ['sections/input.md', 'sections/ast.json', 'sections/output.html'],
   ['tables/input.md', 'tables/ast.json', 'tables/output.html'],
   ['task-lists/input.md', 'task-lists/ast.json', 'task-lists/output.html'],
+  ['escape-sequence/input.md', 'escape-sequence/ast.json', 'escape-sequence/output.html'],
   ['duplicated-notes/input.md', 'duplicated-notes/ast.json', 'duplicated-notes/output.html'],
   ['productions/input.md', 'productions/ast.json', 'productions/output.html'],
 ]);

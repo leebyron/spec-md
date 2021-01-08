@@ -292,7 +292,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "You can type \\*literal asterisks\\* instead of emphasis by typing\n"
+                      "value": "You can type *literal asterisks* instead of emphasis by typing\n"
                     },
                     {
                       "type": "InlineCode",
@@ -572,7 +572,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "(\\*)"
+                          "value": "(*)"
                         }
                       ]
                     },
@@ -664,7 +664,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "(\\_)"
+                          "value": "(_)"
                         }
                       ]
                     },
@@ -768,7 +768,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "(\\`)"
+                          "value": "(`)"
                         }
                       ]
                     },
@@ -1115,7 +1115,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " and that each section\ncontained within is only one level deeper. An \\<h1> section may only contain\n\\<h2> sections."
+                      "value": " and that each section\ncontained within is only one level deeper. An <h1> section may only contain\n<h2> sections."
                     }
                   ]
                 }
@@ -1131,7 +1131,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Paragraphs are the most simple Markdown blocks. Lines are appended together to\nform a single \\<p> tag. Any inline syntax is allowed within a paragraph."
+                      "value": "Paragraphs are the most simple Markdown blocks. Lines are appended together to\nform a single <p> tag. Any inline syntax is allowed within a paragraph."
                     }
                   ]
                 }
@@ -1395,7 +1395,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\\`\\`\\`"
+                      "value": "```"
                     },
                     {
                       "type": "HTMLTag",
@@ -1472,7 +1472,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " style \\<hr>."
+                      "value": " style <hr>."
                     }
                   ]
                 }
@@ -2122,7 +2122,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec Markdown allows escaping \\< \\> and \\| character with "
+                      "value": "Spec Markdown allows escaping < > and | character with "
                     },
                     {
                       "type": "InlineCode",
@@ -2492,7 +2492,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\\`\\`\\`"
+                      "value": "```"
                     },
                     {
                       "type": "HTMLTag",
@@ -2604,7 +2604,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\\`\\`\\`"
+                      "value": "```"
                     },
                     {
                       "type": "HTMLTag",
@@ -4034,7 +4034,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\\`"
+                      "value": "`"
                     },
                     {
                       "type": "HTMLTag",
@@ -6812,7 +6812,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " to produce a variable (represented by a \\<var> tag) like "
+                      "value": " to produce a variable (represented by a <var> tag) like "
                     },
                     {
                       "type": "Variable",
@@ -6938,7 +6938,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\\{\\`terminal\\`\\}"
+                      "value": "{`terminal`}"
                     },
                     {
                       "type": "HTMLTag",

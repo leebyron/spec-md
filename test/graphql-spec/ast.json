@@ -38711,7 +38711,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\"\nis shorthand for two symbol definitions, one appended with that parameter name,\nthe other without. The same subscript suffix on a symbol is shorthand for that\nvariant of the definition. If the parameter starts with \"?\", that\nform of the symbol is used if in a symbol definition with the same parameter.\nSome possible sequences can be included or excluded conditionally when\nrespectively prefixed with \"\\[+Param]\" and \"\\[~Param]\"."
+                      "value": "\"\nis shorthand for two symbol definitions, one appended with that parameter name,\nthe other without. The same subscript suffix on a symbol is shorthand for that\nvariant of the definition. If the parameter starts with \"?\", that\nform of the symbol is used if in a symbol definition with the same parameter.\nSome possible sequences can be included or excluded conditionally when\nrespectively prefixed with \"[+Param]\" and \"[~Param]\"."
                     }
                   ]
                 },

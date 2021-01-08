@@ -1,20 +1,24 @@
 {
-  var indentStack = [];
-  var indent = 0;
+  let indentStack = [];
+  let indent = 0;
 
   function orderify(list) {
     list.ordered = true;
-    list.items.forEach(function (item) {
+    for (const item of list.items) {
       if (item.contents[item.contents.length - 1].type === 'List') {
         orderify(item.contents[item.contents.length - 1]);
       }
-    });
+    }
     return list;
   }
 
-  var htmlBlockName;
+  function unescape(text) {
+    return text.replace(/\\([\\`*_{}[\]()#+\-.!<>|])/g, '$1');
+  }
 
-  var BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
+  let htmlBlockName;
+
+  const BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
 }
 
 // Document
@@ -39,7 +43,7 @@ title = setextTitle / markdownTitle
 setextTitle = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
   return {
     type: 'DocumentTitle',
-    value: value
+    value: unescape(value)
   };
 }
 
@@ -57,7 +61,9 @@ H4 = '####' !'#' _
 H5 = '#####' !'#' _
 H6 = '######' !'#' _
 H_END = _ '#'* &NL
-headerText = $headerChar+
+headerText = text:$headerChar+ {
+  return unescape(text);
+}
 headerChar = [^\n\r# ] / [# ] headerChar
 
 sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
@@ -123,7 +129,7 @@ section6 = BLOCK H6 secID:sectionID? _ title:headerText H_END contents:section6C
 }
 
 subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
-  return title
+  return unescape(title);
 }
 
 subsection = BLOCK title:subsectionHeader contents:sectionContent* {
@@ -253,7 +259,7 @@ textChar = escaped
 text = value:$textChar+ {
   return {
     type: 'Text',
-    value: value
+    value: unescape(value)
   };
 }
 
@@ -386,15 +392,15 @@ linkTextChar = escaped
 linkText = value:$linkTextChar+ {
   return {
     type: 'Text',
-    value: value
+    value: unescape(value)
   };
 }
 
 image = '![' alt:$[^\]]+ '](' _ url:$[^)]+ _ ')' {
   return {
     type: 'Image',
-    alt: alt,
-    url: url
+    alt: unescape(alt),
+    url: unescape(url)
   };
 }
 
@@ -490,16 +496,21 @@ tableCellTextChar = escaped
 tableCellText = value:$tableCellTextChar+ {
   return {
     type: 'Text',
-    value: value
+    value: unescape(value)
   };
 }
 
 
 // Names
 
-localName = $([_a-z][_a-zA-Z0-9]*)
-globalName = $([A-Z][_a-zA-Z]*)
-paramName = $([_a-zA-Z][_a-zA-Z0-9]*)
+name = localName / globalName
+localName = name:$(('\\_' / [_a-z]) nameRest) {
+  return unescape(name);
+}
+globalName = name:$([A-Z] nameRest) {
+  return unescape(name);
+}
+nameRest = $('\\_' / [_a-zA-Z0-9])*
 
 
 // Algorithm
@@ -512,7 +523,7 @@ algorithm = BLOCK call:call _ ':' ':'? steps:list {
   };
 }
 
-call = name:(globalName / localName) '(' args:(noCallArgs / callArgs) ')' {
+call = name:name '(' args:(noCallArgs / callArgs) ')' {
   return {
     type: 'Call',
     name: name,
@@ -536,7 +547,7 @@ stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
   }
   return {
     type: 'StringLiteral',
-    value: '"' + value + '"'
+    value: '"' + unescape(value) + '"'
   };
 }
 
@@ -612,7 +623,7 @@ listItemRHS = LINE listBullet _ condition:(condition __)? tokens:tokens {
   };
 }
 
-condition = '[' condition:$('+' / '~' / 'if' WB (__ 'not' WB)?) __ param:paramName ']' {
+condition = '[' condition:$('+' / '~' / 'if' WB (__ 'not' WB)?) __ param:name ']' {
   return {
     type: 'Condition',
     param: param,
@@ -651,7 +662,7 @@ prose = '"' text:$([^"\n\r]/'\\"')* closer:'"'? {
   }
   return {
     type: 'Prose',
-    text: text
+    text: unescape(text)
   };
 }
 
@@ -699,7 +710,7 @@ nonTerminalParams = '[' __ params:(nonTerminalParam _ ',' __)* param:nonTerminal
   return params.map(param => param[0]).concat(param);
 }
 
-nonTerminalParam = conditional:[?!]? name:paramName {
+nonTerminalParam = conditional:[?!]? name:name {
   return {
     type: 'NonTerminalParam',
     conditional: conditional === '?',
@@ -723,7 +734,7 @@ regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
   }
   return {
     type: 'RegExp',
-    value: '/' + value + '/'
+    value: '/' + unescape(value) + '/'
   };
 }
 
@@ -733,14 +744,14 @@ quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
   }
   return {
     type: 'Terminal',
-    value: value
+    value: unescape(value)
   };
 }
 
 terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
   return {
     type: 'Terminal',
-    value: value
+    value: unescape(value)
   };
 }
 
