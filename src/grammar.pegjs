@@ -541,7 +541,7 @@ callArgs = __ first:value rest:(_ ','? __ token:value)* __ {
 
 value = stringLiteral / keyword / variable
 
-stringLiteral = '"' value:$([^"\n\r]/'\\"')* closer:'"'? {
+stringLiteral = '"' value:$('\\"'/[^"\n\r])* closer:'"'? {
   if (closer === null) {
     error('Unclosed string literal.');
   }

@@ -10,4 +10,4 @@ Grammar: \< rules \> "and \_ prose"
 
 Algorithm\_Names(and\_param, \_names):
   * And \* steps
-  * And {Call\_with("string \_ literal")}
+  * And {Call\_with("string \_ \" literal")}

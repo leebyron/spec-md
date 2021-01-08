@@ -106,7 +106,7 @@
                     "args": [
                       {
                         "type": "StringLiteral",
-                        "value": "\"string _ literal\""
+                        "value": "\"string _ \\\" literal\""
                       }
                     ]
                   },
