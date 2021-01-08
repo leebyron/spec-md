@@ -315,13 +315,13 @@ A block of code is formed by either indenting by 4 spaces, or wrapping with
 <code>\`\`\`</code> on their own lines.
 
     ```
-    var code = sample();
+    const code = sample();
     ```
 
 Produces the following:
 
 ```
-var code = sample();
+const code = sample();
 ```
 
 

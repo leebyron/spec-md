@@ -221,13 +221,13 @@ You may provide a `highlight` function as an option to customize this behavior.
 To render this highlighted javascript:
 
     ```js
-    var baz = foo("bar");
+    const baz = foo("bar");
     ```
 
 Produces the following:
 
 ```js
-var baz = foo("bar");
+const baz = foo("bar");
 ```
 
 ### Examples
@@ -237,26 +237,26 @@ from normative code blocks, and generating permalinks to those examples. Just
 write `example` after the <code>\`\`\`</code>.
 
     ```example
-    var great = useOf.example("code");
+    const great = useOf.example("code");
     ```
 
 Produces the following:
 
 ```example
-var great = useOf.example("code");
+const great = useOf.example("code");
 ```
 
 Examples can also be syntax highlighted, by placing the language directly before
 writing `example`:
 
     ```js example
-    var great = useOf.example("code");
+    const great = useOf.example("code");
     ```
 
 Produces the following:
 
 ```js example
-var great = useOf.example("code");
+const great = useOf.example("code");
 ```
 
 ### Counter Examples
@@ -267,13 +267,13 @@ different from normative code blocks and other examples. Just write
 `counter-example` after the <code>\`\`\`</code> (and optional language).
 
     ```js counter-example
-    var shit = dontSwear();
+    const shit = dontSwear();
     ```
 
 Produces the following:
 
 ```js counter-example
-var shit = dontSwear();
+const shit = dontSwear();
 ```
 
 
