@@ -403,7 +403,7 @@ function printAll(list, options) {
     leave: function (node) {
       switch (node.type) {
         case 'Section': {
-          const level = node.secID.length + 1;
+          const level = Math.min(node.secID.length, 6);
           const secID = join(node.secID, '.');
           return (
             '<section id="' + node.id + '" secid="' + secID + '">\n' +
