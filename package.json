@@ -15,8 +15,8 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "pegjs src/grammar.pegjs && mkdir -p out && echo 'spec-md.com' > out/CNAME && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
-    "test": "yarn build && node ./test/runner.js",
-    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'yarn test'"
+    "test": "node ./test/runner.js",
+    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'npm run build && npm test'"
   },
   "dependencies": {
     "prismjs": ">=1.16.0",
