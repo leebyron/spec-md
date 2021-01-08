@@ -1,0 +1,207 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Task lists"
+  },
+  "contents": [
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Unordered"
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "ordered": false,
+      "items": [
+        {
+          "type": "TaskListItem",
+          "done": false,
+          "contents": [
+            {
+              "type": "Text",
+              "value": " This"
+            }
+          ]
+        },
+        {
+          "type": "TaskListItem",
+          "done": true,
+          "contents": [
+            {
+              "type": "Text",
+              "value": " task"
+            }
+          ]
+        },
+        {
+          "type": "TaskListItem",
+          "done": true,
+          "contents": [
+            {
+              "type": "Text",
+              "value": " list"
+            }
+          ]
+        },
+        {
+          "type": "ListItem",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "can have regular bullets"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Ordered"
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "ordered": true,
+      "items": [
+        {
+          "type": "ListItem",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "numbers"
+            }
+          ]
+        },
+        {
+          "type": "TaskListItem",
+          "done": true,
+          "contents": [
+            {
+              "type": "Text",
+              "value": " can have"
+            }
+          ]
+        },
+        {
+          "type": "ListItem",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "bullets"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Nested"
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "ordered": false,
+      "items": [
+        {
+          "type": "TaskListItem",
+          "done": false,
+          "contents": [
+            {
+              "type": "Text",
+              "value": " tasks"
+            },
+            {
+              "type": "List",
+              "ordered": false,
+              "items": [
+                {
+                  "type": "TaskListItem",
+                  "done": false,
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": " can be nested"
+                    },
+                    {
+                      "type": "List",
+                      "ordered": false,
+                      "items": [
+                        {
+                          "type": "TaskListItem",
+                          "done": true,
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": " deeply"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Conflict with links"
+        }
+      ]
+    },
+    {
+      "type": "List",
+      "ordered": false,
+      "items": [
+        {
+          "type": "TaskListItem",
+          "done": true,
+          "contents": [
+            {
+              "type": "Text",
+              "value": " \\(this is a task)"
+            }
+          ]
+        },
+        {
+          "type": "ListItem",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "x"
+                }
+              ],
+              "url": "this is a link"
+            },
+            {
+              "type": "Text",
+              "value": "\n"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

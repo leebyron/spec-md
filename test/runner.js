@@ -10,6 +10,7 @@ runTests([
   ['graphql-spec/GraphQL.md', 'graphql-spec/ast.json', 'graphql-spec/output.html'],
   ['simple-header/input.md', 'simple-header/ast.json', 'simple-header/output.html'],
   ['tables/input.md', 'tables/ast.json', 'tables/output.html'],
+  ['task-lists/input.md', 'task-lists/ast.json', 'task-lists/output.html'],
   ['duplicated-notes/input.md', 'duplicated-notes/ast.json', 'duplicated-notes/output.html'],
   ['productions/input.md', 'productions/ast.json', 'productions/output.html'],
 ]);

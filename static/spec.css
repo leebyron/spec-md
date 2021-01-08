@@ -159,11 +159,14 @@ footer {
 .spec-toc ol {
   list-style: none;
   padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .spec-toc ol ol {
   list-style: none;
   padding-left: 2ex;
+  margin-bottom: 0.25em;
 }
 
 .spec-toc li {
@@ -224,6 +227,7 @@ footer {
 .spec-toc .toggle:not(:checked) ~ ol {
   max-height: 0;
   overflow: hidden;
+  margin: 0;
 }
 
 
@@ -419,6 +423,29 @@ td, th {
   border: 1px solid #D0D0D0;
   padding: 0.4em;
   vertical-align: baseline;
+}
+
+
+/* Lists */
+
+li > ol, li > ul {
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+li.task {
+  list-style-type: none;
+  position: relative;
+}
+
+li.task > input:first-child {
+  margin-left: 0;
+  position: absolute;
+  transform: translateX(calc(-100% - 1ch));
 }
 
 

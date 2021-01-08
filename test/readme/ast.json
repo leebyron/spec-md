@@ -1265,6 +1265,115 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "type": "Section",
+                  "secID": null,
+                  "title": "Task Lists",
+                  "contents": [
+                    {
+                      "type": "Paragraph",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "Spec Markdown also supports task lists. Start a list item with "
+                        },
+                        {
+                          "type": "InlineCode",
+                          "code": "[ ]"
+                        },
+                        {
+                          "type": "Text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "InlineCode",
+                          "code": "[x]"
+                        },
+                        {
+                          "type": "Text",
+                          "value": " to\nrender a checkbox. This can be useful for keeping your tasks inline with\nin-progress draft specifications."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Code",
+                      "raw": false,
+                      "lang": null,
+                      "example": true,
+                      "counter": false,
+                      "code": "  1. this\n  2. [ ] is\n  3. [x] a\n    - [X] nested\n  4. todo list\n"
+                    },
+                    {
+                      "type": "Paragraph",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "Produces the following:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "List",
+                      "ordered": true,
+                      "items": [
+                        {
+                          "type": "ListItem",
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": "this"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "TaskListItem",
+                          "done": false,
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": " is"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "TaskListItem",
+                          "done": true,
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": " a"
+                            },
+                            {
+                              "type": "List",
+                              "ordered": false,
+                              "items": [
+                                {
+                                  "type": "TaskListItem",
+                                  "done": true,
+                                  "contents": [
+                                    {
+                                      "type": "Text",
+                                      "value": " nested"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "ListItem",
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": "todo list"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },

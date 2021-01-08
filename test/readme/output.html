@@ -164,11 +164,14 @@ footer {
 .spec-toc ol {
   list-style: none;
   padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .spec-toc ol ol {
   list-style: none;
   padding-left: 2ex;
+  margin-bottom: 0.25em;
 }
 
 .spec-toc li {
@@ -229,6 +232,7 @@ footer {
 .spec-toc .toggle:not(:checked) ~ ol {
   max-height: 0;
   overflow: hidden;
+  margin: 0;
 }
 
 
@@ -424,6 +428,29 @@ td, th {
   border: 1px solid #D0D0D0;
   padding: 0.4em;
   vertical-align: baseline;
+}
+
+
+/* Lists */
+
+li > ol, li > ul {
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+li.task {
+  list-style-type: none;
+  position: relative;
+}
+
+li.task > input:first-child {
+  margin-left: 0;
+  position: absolute;
+  transform: translateX(calc(-100% - 1ch));
 }
 
 
@@ -912,7 +939,12 @@ This is not a normative spec for Spec Markdown, but just documentation of this t
 <li><a href="#sec-Block-HTML"><span class="spec-secid">2.3.1</span>Block HTML</a></li>
 <li><a href="#sec-Blocks.Section-Headers"><span class="spec-secid">2.3.2</span>Section Headers</a></li>
 <li><a href="#sec-Paragraphs"><span class="spec-secid">2.3.3</span>Paragraphs</a></li>
-<li><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a></li>
+<li><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_2.3.4" /><label for="_toggle_2.3.4"></label>
+<ol>
+<li><a href="#sec-Task-Lists"><span class="spec-secid">2.3.4.1</span>Task Lists</a></li>
+</ol>
+</li>
 <li><a href="#sec-Code-Block"><span class="spec-secid">2.3.5</span>Code Block</a></li>
 <li><a href="#sec-Block-Quotes"><span class="spec-secid">2.3.6</span>Block Quotes</a></li>
 <li><a href="#sec-Horizontal-Rules"><span class="spec-secid">2.3.7</span>Horizontal Rules</a></li>
@@ -1236,6 +1268,32 @@ Spec Markdown requires that documents start with <code>#</code> and that each se
 </li>
 <li>list</li>
 </ol>
+<section id="sec-Task-Lists" secid="2.3.4.1">
+<h5><span class="spec-secid" title="link to this section"><a href="#sec-Task-Lists">2.3.4.1</a></span>Task Lists</h5>
+<p>Spec Markdown also supports task lists. Start a list item with <code>[ ]</code> or <code>[x]</code> to render a checkbox. This can be useful for keeping your tasks inline with in&#8208;progress draft specifications.</p>
+<pre id="example-f34a9" class="spec-example"><a href="#example-f34a9">Example № 4</a><code>  1. this
+  2. [ ] is
+  3. [x] a
+    - [X] nested
+  4. todo list
+</code></pre>
+<p>Produces the following:</p>
+<ol>
+<li>this</li>
+<li class="task">
+<input type="checkbox" disabled>
+ is</li>
+<li class="task">
+<input type="checkbox" disabled checked>
+ a<ul>
+<li class="task">
+<input type="checkbox" disabled checked>
+ nested</li>
+</ul>
+</li>
+<li>todo list</li>
+</ol>
+</section>
 </section>
 <section id="sec-Code-Block" secid="2.3.5">
 <h4><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h4>
@@ -1291,7 +1349,7 @@ Introductory paragraph.
 <pre><code># Header
 </code></pre>
 <p>Only use Setext style headers for the title of the document.</p>
-<pre id="example-f87c5" class="spec-counter-example"><a href="#example-f87c5">Counter Example № 4</a><code>Header
+<pre id="example-f87c5" class="spec-counter-example"><a href="#example-f87c5">Counter Example № 5</a><code>Header
 ------
 </code></pre>
 <p>Spec Markdown also requires that only single <code>#</code> headers appear at the top of a document, and that only a <code>##</code> header (and not a <code>###</code> header) can be contained with the section started by a <code>#</code> header.</p>
@@ -1425,14 +1483,14 @@ const baz = foo(&quot;bar&quot;);
 const great = useOf.example(&quot;code&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-33270" class="spec-example"><a href="#example-33270">Example № 5</a><code>const great = useOf.example(&quot;code&quot;);
+<pre id="example-33270" class="spec-example"><a href="#example-33270">Example № 6</a><code>const great = useOf.example(&quot;code&quot;);
 </code></pre>
 <p>Examples can also be syntax highlighted, by placing the language directly before writing <code>example</code>:</p>
 <pre><code>```js example
 const great = useOf.example(&quot;code&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-d7c75" class="spec-example"><a href="#example-d7c75">Example № 6</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre id="example-d7c75" class="spec-example"><a href="#example-d7c75">Example № 7</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 <section id="sec-Counter-Examples" secid="3.7.2">
@@ -1442,7 +1500,7 @@ const great = useOf.example(&quot;code&quot;);
 const shit = dontSwear();
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-4c929" class="spec-counter-example"><a href="#example-4c929">Counter Example № 7</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre id="example-4c929" class="spec-counter-example"><a href="#example-4c929">Counter Example № 8</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 </section>
@@ -1749,7 +1807,7 @@ TypeThree ::: `type` `three`
 <div class="spec-rhs"><span class="spec-quantified"><span class="spec-t">|</span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 </div>
 <p>However, unquoted non&#8208;terminals may use the <code>*</code>, <code>?</code> and <code>+</code> characters, so always quote the terminal if the intent is to apply a quantifer.</p>
-<pre id="example-10052" class="spec-counter-example"><a href="#example-10052">Counter Example № 8</a><code>UnionMembers :
+<pre id="example-10052" class="spec-counter-example"><a href="#example-10052">Counter Example № 9</a><code>UnionMembers :
   <span class="token list punctuation">-</span> UnionMembers | NamedType
   <span class="token list punctuation">-</span> |? NamedType
 </code></pre>
@@ -2129,7 +2187,12 @@ Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</foo
 <li id="_sidebar_2.3.1"><a href="#sec-Block-HTML"><span class="spec-secid">2.3.1</span>Block HTML</a></li>
 <li id="_sidebar_2.3.2"><a href="#sec-Blocks.Section-Headers"><span class="spec-secid">2.3.2</span>Section Headers</a></li>
 <li id="_sidebar_2.3.3"><a href="#sec-Paragraphs"><span class="spec-secid">2.3.3</span>Paragraphs</a></li>
-<li id="_sidebar_2.3.4"><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a></li>
+<li id="_sidebar_2.3.4"><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_2.3.4" /><label for="_sidebar_toggle_2.3.4"></label>
+<ol>
+<li id="_sidebar_2.3.4.1"><a href="#sec-Task-Lists"><span class="spec-secid">2.3.4.1</span>Task Lists</a></li>
+</ol>
+</li>
 <li id="_sidebar_2.3.5"><a href="#sec-Code-Block"><span class="spec-secid">2.3.5</span>Code Block</a></li>
 <li id="_sidebar_2.3.6"><a href="#sec-Block-Quotes"><span class="spec-secid">2.3.6</span>Block Quotes</a></li>
 <li id="_sidebar_2.3.7"><a href="#sec-Horizontal-Rules"><span class="spec-secid">2.3.7</span>Horizontal Rules</a></li>

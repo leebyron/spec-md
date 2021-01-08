@@ -504,6 +504,14 @@ function printAll(list, options) {
         case 'ListItem':
           return '<li>' + join(node.contents) + '</li>\n';
 
+        case 'TaskListItem':
+          return (
+            '<li class="task">\n' +
+              '<input type="checkbox" disabled' + (node.done ? ' checked' : '') +  '>\n' +
+              join(node.contents) +
+            '</li>\n'
+          );
+
         case 'Table':
           return (
             '<table>\n' +
