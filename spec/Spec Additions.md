@@ -235,6 +235,19 @@ Produces the following:
 const baz = foo("bar");
 ```
 
+You may also prefix your highlight function with "raw" if you want to avoid
+other tools, such as Prettier, from interpreting a code block.
+
+    ```raw js
+    const baz = foo("bar");
+    ```
+
+Produces the following:
+
+```raw js
+const baz = foo("bar");
+```
+
 ### Examples
 
 Spec Markdown helps you write examples, visually indicaticating the difference
