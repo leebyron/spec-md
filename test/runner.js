@@ -14,23 +14,24 @@ runTests([
 ]);
 
 async function runTests(tests) {
-  try {
-    for (let [input, ast, html] of tests) {
+  for (const [input, ast, html] of tests) {
+    try {
       await runTest(input, ast, html);
-    }
-  } catch (error) {
-    if (error.code === 'ERR_ASSERTION') {
-      process.stderr.write('\n' + error.message + '\n\n');
-      if (!error.expected) {
-        process.stderr.write('\nNo recorded output found to compare to.\n\n');
+    } catch (error) {
+      process.exitCode = 1
+      if (error.code === 'ERR_ASSERTION') {
+        process.stderr.write('\n' + error.message + '\n\n');
+        if (!error.expected) {
+          process.stderr.write('\nNo recorded output found to compare to.\n\n');
+        } else {
+          const jestDiff = require('jest-diff').default;
+          process.stderr.write(
+            jestDiff(error.actual, error.expected, { expand: false }) + '\n\n'
+          );
+        }
       } else {
-        const jestDiff = require('jest-diff').default;
-        process.stderr.write(
-          jestDiff(error.actual, error.expected, { expand: false }) + '\n\n'
-        );
+        process.stderr.write('\n\n' + String(error && error.stack || error) + '\n\n');
       }
-    } else {
-      process.stderr.write('\n\n' + String(error && error.stack || error) + '\n\n');
     }
   }
 }
