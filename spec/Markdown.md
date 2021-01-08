@@ -86,8 +86,7 @@ Todo: Links do not yet support a title attribute.
 
 ### Emphasis
 
-Wrapping asterisks *(\*)* indicate emphasis. Like Github-flavored
-Markdown, Spec Markdown does not treat underscore *(_)* as emphasis.
+Wrapping asterisks *(\*)* indicate emphasis.
 
 ```
 Example of **bold** and *italic* and ***bold italic***.
@@ -97,6 +96,15 @@ Produces the following:
 
 Example of **bold** and *italic* and ***bold italic***.
 
+Alternatively, use underscore *(\_)* for italic emphasis.
+
+```
+Example of _italic_ and **_bold italic_** or _**bold italic**_.
+```
+
+Produces the following:
+
+Example of _italic_ and **_bold italic_** or _**bold italic**_.
 
 
 ### Inline Code
