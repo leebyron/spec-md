@@ -332,7 +332,7 @@ indentCodeLine = depth:LINE code:$NOT_NL+ {
 
 // Link & Image
 
-link = '[' contents:linkContent* '](' _ url:$[^)]+ _ ')' {
+link = '[' contents:linkContent* ']' _ '(' _ url:$[^)]+ _ ')' {
   return {
     type: 'Link',
     contents: contents,
@@ -391,10 +391,20 @@ orderedList = &(LINE orderedBullet) items:listItem+ {
   };
 }
 
-listItem = LINE bullet:listBullet _ contents:content* sublist:indentedList? {
+listItem = LINE bullet:listBullet _ taskBox:taskBox? contents:content* sublist:indentedList? {
+  if (sublist) {
+    contents = contents.concat([sublist])
+  }
+  if (taskBox) {
+    return {
+      type: 'TaskListItem',
+      done: taskBox.done,
+      contents: contents
+    };
+  }
   return {
     type: 'ListItem',
-    contents: sublist ? contents.concat([sublist]) : contents
+    contents: contents
   };
 }
 
@@ -402,6 +412,9 @@ listBullet = unorderedBullet / orderedBullet
 unorderedBullet = $(('-' / '+' / '*') ' ')
 orderedBullet = $(([1-9]+ '.') ' ')
 
+taskBox = '[' done:(' ' / 'x' / 'X') ']' !(_ '(') {
+  return { done: done !== ' ' }
+}
 
 // Table
 

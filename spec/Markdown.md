@@ -316,6 +316,28 @@ Produces the following:
     - nested
   4. list
 
+#### Task Lists
+
+Spec Markdown also supports task lists. Start a list item with `[ ]` or `[x]` to
+render a checkbox. This can be useful for keeping your tasks inline with
+in-progress draft specifications.
+
+```example
+  1. this
+  2. [ ] is
+  3. [x] a
+    - [X] nested
+  4. todo list
+```
+
+Produces the following:
+
+  1. this
+  2. [ ] is
+  3. [x] a
+    - [X] nested
+  4. todo list
+
 
 ### Code Block
 
