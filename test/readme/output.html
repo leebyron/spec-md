@@ -1406,6 +1406,13 @@ const baz = foo(&quot;bar&quot;);
 <p>Produces the following:</p>
 <pre><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<p>You may also prefix your highlight function with &ldquo;raw&rdquo; if you want to avoid other tools, such as Prettier, from interpreting a code block.</p>
+<pre><code>```raw js
+const baz = foo(&quot;bar&quot;);
+```</code></pre>
+<p>Produces the following:</p>
+<pre><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <section id="sec-Examples" secid="3.7.1">
 <h4><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.7.1</a></span>Examples</h4>
 <p>Spec Markdown helps you write examples, visually indicaticating the difference from normative code blocks, and generating permalinks to those examples. Just write <code>example</code> after the <code>```</code>.</p>
