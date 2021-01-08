@@ -9,8 +9,7 @@ const visit = require('./visit');
 module.exports = parse;
 
 async function parse(filepath) {
-  const ast = await importAST(grammar, filepath);
-  return validate(filepath, ast);
+  return await importAST(filepath, 'initialDocument');
 }
 
 function readFile(filepath) {
@@ -21,10 +20,10 @@ function readFile(filepath) {
   });
 }
 
-async function importAST(parser, filepath) {
+async function importAST(filepath, startRule) {
   const source = await readFile(filepath)
   try {
-    const ast = parser.parse(source);
+    const ast = grammar.parse(source, { startRule });
     const importASTs = [];
     visit(ast, function (node) {
       if (node.type === 'Import') {
@@ -32,7 +31,7 @@ async function importAST(parser, filepath) {
           path.dirname(filepath),
           decodeURI(node.path)
         );
-        importASTs.push(importAST(parser, subfilepath));
+        importASTs.push(importAST(subfilepath, 'importedDocument'));
       }
     });
     const asts = await Promise.all(importASTs);
@@ -80,36 +79,4 @@ function flattener(array, item) {
   }
   array.push(item);
   return array;
-}
-
-/**
- * Throw useful error message if a complete AST contains any errors.
- */
-function validate(filepath, ast) {
-  return visit(ast, {
-    enter(node) {
-      if (node.type === 'Document') {
-        validateDocument(filepath, node);
-      }
-    }
-  });
-}
-
-function validateDocument(filepath, ast) {
-  if (!ast.title) {
-    const message =
-      'Primary document ' + filepath + ' is missing a title. ' +
-      'It must begin with a Setext-style header. Example:\n\n' +
-      'Title of Spec\n' +
-      '=============\n';
-
-    const firstItem = ast.contents && ast.contents[0];
-    if (firstItem && firstItem.type === 'Section') {
-      message +=
-        '\nDid you mean to use Setext-style for the first title?\n\n' +
-        '# ' + firstItem.title + '\n';
-    }
-
-    throw new Error(message);
-  }
 }

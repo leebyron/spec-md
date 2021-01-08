@@ -19,7 +19,7 @@
 
 // Document
 
-document = title:title? contents:documentContent* EOF {
+initialDocument = title:title contents:documentContent* EOF {
   return {
     type: 'Document',
     title: title,
@@ -27,17 +27,37 @@ document = title:title? contents:documentContent* EOF {
   };
 }
 
-title = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
+importedDocument = contents:documentContent* EOF {
+  return {
+    type: 'Document',
+    contents: contents
+  };
+}
+
+title = setextTitle / markdownTitle
+
+setextTitle = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
   return {
     type: 'DocumentTitle',
     value: value
   };
 }
 
-SEC_CLOSE = _ '#'* &NL
+markdownTitle = BLOCK H1 value:headerText H_END {
+  return {
+    type: 'DocumentTitle',
+    value: value
+  };
+}
 
-sectionTitle = $titleChar+
-titleChar = [^\n\r# ] / [# ] titleChar
+H1 = '#' !'#' _
+H2 = '##' !'#' _
+H3 = '###' !'#' _
+H4 = '####' !'#' _
+H5 = '#####' !'#' _
+H_END = _ '#'* &NL
+headerText = $headerChar+
+headerChar = [^\n\r# ] / [# ] headerChar
 
 sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
   return [start].concat(rest.map(function (nodes) {
@@ -47,7 +67,7 @@ sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
 sectionIDStart = [0-9]+ / [A-Z]+ / '*'
 sectionIDPart = [0-9]+ / '*'
 
-section1 = BLOCK '#' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section1Content* {
+section1 = BLOCK H1 secID:sectionID? _ title:headerText H_END contents:section1Content* {
   return {
     type: 'Section',
     secID: secID,
@@ -56,7 +76,7 @@ section1 = BLOCK '#' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE cont
   };
 }
 
-section2 = BLOCK '##' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section2Content* {
+section2 = BLOCK H2 secID:sectionID? _ title:headerText H_END contents:section2Content* {
   return {
     type: 'Section',
     secID: secID,
@@ -65,7 +85,7 @@ section2 = BLOCK '##' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE con
   };
 }
 
-section3 = BLOCK '###' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section3Content* {
+section3 = BLOCK H3 secID:sectionID? _ title:headerText H_END contents:section3Content* {
   return {
     type: 'Section',
     secID: secID,
@@ -74,7 +94,7 @@ section3 = BLOCK '###' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE co
   };
 }
 
-section4 = BLOCK '####' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section4Content* {
+section4 = BLOCK H4 secID:sectionID? _ title:headerText H_END contents:section4Content* {
   return {
     type: 'Section',
     secID: secID,
@@ -83,7 +103,7 @@ section4 = BLOCK '####' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE c
   };
 }
 
-section5 = BLOCK '#####' !'#' _ secID:sectionID? _ title:sectionTitle SEC_CLOSE contents:section5Content* {
+section5 = BLOCK H5 secID:sectionID? _ title:headerText H_END contents:section5Content* {
   return {
     type: 'Section',
     secID: secID,
@@ -137,11 +157,11 @@ importLink = link:link &( BLOCK / EOF ) &{
 }
 
 importRel = BLOCK importLink:importLink &NL { return importLink; }
-import1 = BLOCK '#' _ importLink:importLink SEC_CLOSE { return importLink; }
-import2 = BLOCK '##' _ importLink:importLink SEC_CLOSE { return importLink; }
-import3 = BLOCK '###' _ importLink:importLink SEC_CLOSE { return importLink; }
-import4 = BLOCK '####' _ importLink:importLink SEC_CLOSE { return importLink; }
-import5 = BLOCK '#####' _ importLink:importLink SEC_CLOSE { return importLink; }
+import1 = BLOCK H1 importLink:importLink H_END { return importLink; }
+import2 = BLOCK H2 importLink:importLink H_END { return importLink; }
+import3 = BLOCK H3 importLink:importLink H_END { return importLink; }
+import4 = BLOCK H4 importLink:importLink H_END { return importLink; }
+import5 = BLOCK H5 importLink:importLink H_END { return importLink; }
 
 
 // Block Edit

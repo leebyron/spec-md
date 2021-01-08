@@ -14,7 +14,7 @@
   "bin": "./bin/spec-md",
   "main": "./src/index.js",
   "scripts": {
-    "build": "pegjs src/grammar.pegjs && mkdir -p out && echo 'spec-md.com' > out/CNAME && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
+    "build": "pegjs --allowed-start-rules initialDocument,importedDocument src/grammar.pegjs && mkdir -p out && echo 'spec-md.com' > out/CNAME && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "test": "node ./test/runner.js",
     "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'npm run build && npm test'"
   },
