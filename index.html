@@ -96,27 +96,27 @@ a:hover {
 
 /* Section headers */
 
-h1, h2, h3, h4, h5, h6, h7, h8 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   margin: 3em 0 1em;
   position: relative;
 }
 
-h1 {
+header > h1 {
   font-size: 1.5em;
   margin: 6em 0 3em;
 }
 
-h2 {
+h1 {
   font-size: 1.5em;
   margin-top: 5em;
 }
 
-h3, h4 {
+h2, h3 {
   font-size: 1.25em;
 }
 
-h5, h6 {
+h4, h5, h6 {
   font-size: 1em;
 }
 
@@ -164,11 +164,14 @@ footer {
 .spec-toc ol {
   list-style: none;
   padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .spec-toc ol ol {
   list-style: none;
   padding-left: 2ex;
+  margin-bottom: 0.25em;
 }
 
 .spec-toc li {
@@ -229,6 +232,7 @@ footer {
 .spec-toc .toggle:not(:checked) ~ ol {
   max-height: 0;
   overflow: hidden;
+  margin: 0;
 }
 
 
@@ -424,6 +428,29 @@ td, th {
   border: 1px solid #D0D0D0;
   padding: 0.4em;
   vertical-align: baseline;
+}
+
+
+/* Lists */
+
+li > ol, li > ul {
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+li.task {
+  list-style-type: none;
+  position: relative;
+}
+
+li.task > input:first-child {
+  margin-left: 0;
+  position: absolute;
+  transform: translateX(calc(-100% - 1ch));
 }
 
 
@@ -865,8 +892,8 @@ pre[class*="language-"] {
 	cursor: help;
 }
 </style>
-<script>(function(){var e,t=document.getElementsByTagName("style")[0].sheet;function n(){e&&(t.deleteRule(e),e=void 0)}document.documentElement.addEventListener("mouseover",function(a){var u,d=a.target.attributes["data-name"];d&&(u=d.value,n(),e=t.insertRule('*[data-name="'+u+'"] { background: #FBF8D0; }',t.cssRules.length))}),document.documentElement.addEventListener("mouseout",n);})()</script>
-<script>(function(){var e,n,t,o,r="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";function a(e){c(new URL(e.target.href))}function i(){c(window.location)}function c(e){var n=e.hash.match(/^#sel-([A-Za-z0-9-_]+)$/);if(n){o=n[1];var a=(t=function(e){for(var n=new Array(64),t=0;t<64;t++)n[r.charCodeAt(t)]=t;var o=0,a=m(),i=m(),c=m(),d=w(),l=i.pop(),f=u(a.concat(i)),h=c.pop(),g=u(a.concat(c)),v=document.createRange();return v.setStart(f,l),v.setEnd(g,h),v.isOutdated=void 0!==d&&d!==s(v.toString()),v;function w(){for(var t=0,r=0;o<e.length;){var a=n[e.charCodeAt(o++)];if(t|=(31&a)<<r,r+=5,a<32)return t}}function m(){var e=w();if(null!=e){for(var n=new Array(e),t=0;t<e;t++)n[t]=w();return n}}}(o)).getBoundingClientRect(),i=Math.max(20,Math.floor(.4*(window.innerHeight-a.height)));window.scrollTo(0,window.scrollY+a.y-i);var c=document.getSelection();c.empty(),c.addRange(t),d()}}function d(){n||(n=document.getElementsByTagName("article")[0]),e||(e=document.createElement("a"),document.body.appendChild(e)),e.href="#sel-"+o,e.onclick=a,e.className=t.isOutdated?"outdated-selection-link":"selection-link",e.innerText=t.isOutdated?"!":"‟";var r=n.getBoundingClientRect().x,i=t.getBoundingClientRect().y;e.style.left=Math.floor(r+window.scrollX-37)+"px",e.style.top=Math.floor(i+window.scrollY-3)+"px"}function l(e){for(var n=[];e!=document.body;){var t=e.parentNode;n.push(Array.prototype.indexOf.call(t.childNodes,e)),e=t}return n.reverse()}function u(e){for(var n=document.body,t=0;t<e.length&&n;t++)n=n.childNodes[e[t]];return n}function s(e){for(var n=2166136261,t=0;t<e.length;++t)n^=e.charCodeAt(t),n+=(n<<1)+(n<<4)+(n<<7)+(n<<8)+(n<<24);return 32767&(n>>15^n)}document.addEventListener("selectionchange",function(n){var a=document.getSelection();if(a.isCollapsed)e&&(e.parentNode.removeChild(e),e=null);else{var i=a.getRangeAt(0);t&&0===i.compareBoundaryPoints(Range.START_TO_START,t)&&0===i.compareBoundaryPoints(Range.END_TO_END,t)||(o=function(e){var n="",t=l(e.startContainer),o=l(e.endContainer),a=function(e,n){var t=0;for(;t<e.length&&t<n.length&&e[t]===n[t];)t++;return e.slice(0,t)}(t,o);return c(a),c(t.slice(a.length).concat(e.startOffset)),c(o.slice(a.length).concat(e.endOffset)),i(s(e.toString())),n;function i(e){do{n+=r[31&e|(e>31?32:0)],e>>=5}while(e>0)}function c(e){i(e.length);for(var n=0;n<e.length;n++)i(e[n])}}(t=i),d())}}),window.addEventListener("resize",d),window.addEventListener("hashchange",i),window.addEventListener("load",i);})()</script>
+<script>(function(){var e,t=document.getElementsByTagName("style")[0].sheet;function n(){e&&(t.deleteRule(e),e=void 0)}document.documentElement.addEventListener("mouseover",(function(a){var u,d=a.target.attributes["data-name"];d&&(u=d.value,n(),e=t.insertRule('*[data-name="'+u+'"] { background: #FBF8D0; }',t.cssRules.length))})),document.documentElement.addEventListener("mouseout",n);})()</script>
+<script>(function(){var e,n,t,o,r="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";function a(e){c(new URL(e.target.href))}function i(){c(window.location)}function c(e){var n=e.hash.match(/^#sel-([A-Za-z0-9-_]+)$/);if(n){o=n[1];var a=(t=function(e){for(var n=new Array(64),t=0;t<64;t++)n[r.charCodeAt(t)]=t;var o=0,a=m(),i=m(),c=m(),d=w(),l=i.pop(),f=u(a.concat(i)),h=c.pop(),g=u(a.concat(c)),v=document.createRange();return v.setStart(f,l),v.setEnd(g,h),v.isOutdated=void 0!==d&&d!==s(v.toString()),v;function w(){for(var t=0,r=0;o<e.length;){var a=n[e.charCodeAt(o++)];if(t|=(31&a)<<r,r+=5,a<32)return t}}function m(){var e=w();if(null!=e){for(var n=new Array(e),t=0;t<e;t++)n[t]=w();return n}}}(o)).getBoundingClientRect(),i=Math.max(20,Math.floor(.4*(window.innerHeight-a.height)));window.scrollTo(0,window.scrollY+a.y-i);var c=document.getSelection();c.empty(),c.addRange(t),d()}}function d(){n||(n=document.getElementsByTagName("article")[0]),e||(e=document.createElement("a"),document.body.appendChild(e)),e.href="#sel-"+o,e.onclick=a,e.className=t.isOutdated?"outdated-selection-link":"selection-link",e.innerText=t.isOutdated?"!":"‟";var r=n.getBoundingClientRect().x,i=t.getBoundingClientRect().y;e.style.left=Math.floor(r+window.scrollX-37)+"px",e.style.top=Math.floor(i+window.scrollY-3)+"px"}function l(e){for(var n=[];e!=document.body;){var t=e.parentNode;n.push(Array.prototype.indexOf.call(t.childNodes,e)),e=t}return n.reverse()}function u(e){for(var n=document.body,t=0;t<e.length&&n;t++)n=n.childNodes[e[t]];return n}function s(e){for(var n=2166136261,t=0;t<e.length;++t)n^=e.charCodeAt(t),n+=(n<<1)+(n<<4)+(n<<7)+(n<<8)+(n<<24);return 32767&(n>>15^n)}document.addEventListener("selectionchange",(function(n){var a=document.getSelection();if(a.isCollapsed)e&&(e.parentNode.removeChild(e),e=null);else{var i=a.getRangeAt(0);t&&0===i.compareBoundaryPoints(Range.START_TO_START,t)&&0===i.compareBoundaryPoints(Range.END_TO_END,t)||(o=function(e){var n="",t=l(e.startContainer),o=l(e.endContainer),a=function(e,n){var t=0;for(;t<e.length&&t<n.length&&e[t]===n[t];)t++;return e.slice(0,t)}(t,o);return c(a),c(t.slice(a.length).concat(e.startOffset)),c(o.slice(a.length).concat(e.endOffset)),i(s(e.toString())),n;function i(e){do{n+=r[31&e|(e>31?32:0)],e>>=5}while(e>0)}function c(e){i(e.length);for(var n=0;n<e.length;n++)i(e[n])}}(t=i),d())}})),window.addEventListener("resize",d),window.addEventListener("hashchange",i),window.addEventListener("load",i);})()</script>
 <meta property="og:title" content="Spec Markdown" /></head>
 <body><article>
 <header>
@@ -912,7 +939,12 @@ This is not a normative spec for Spec Markdown, but just documentation of this t
 <li><a href="#sec-Block-HTML"><span class="spec-secid">2.3.1</span>Block HTML</a></li>
 <li><a href="#sec-Blocks.Section-Headers"><span class="spec-secid">2.3.2</span>Section Headers</a></li>
 <li><a href="#sec-Paragraphs"><span class="spec-secid">2.3.3</span>Paragraphs</a></li>
-<li><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a></li>
+<li><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a>
+<input hidden class="toggle" type="checkbox" checked id="_toggle_2.3.4" /><label for="_toggle_2.3.4"></label>
+<ol>
+<li><a href="#sec-Task-Lists"><span class="spec-secid">2.3.4.1</span>Task Lists</a></li>
+</ol>
+</li>
 <li><a href="#sec-Code-Block"><span class="spec-secid">2.3.5</span>Code Block</a></li>
 <li><a href="#sec-Block-Quotes"><span class="spec-secid">2.3.6</span>Block Quotes</a></li>
 <li><a href="#sec-Horizontal-Rules"><span class="spec-secid">2.3.7</span>Horizontal Rules</a></li>
@@ -1007,7 +1039,7 @@ This is not a normative spec for Spec Markdown, but just documentation of this t
 </nav>
 </header>
 <section id="sec-Getting-Started" secid="1">
-<h2><span class="spec-secid" title="link to this section"><a href="#sec-Getting-Started">1</a></span>Getting Started</h2>
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Getting-Started">1</a></span>Getting Started</h1>
 <p>To use Spec Markdown, just write Markdown files. There are some conventions used by Spec Markdown which you can read about in <a href="#sec-Spec-Additions">Spec additions</a>.</p>
 <p>To convert your Markdown files into an HTML spec document, use the <code>spec-md</code> utility.</p>
 <pre><code>npm install -g spec-md
@@ -1016,24 +1048,24 @@ spec-md ./path/to/markdown.md &gt; ./path/to/output.html
 <p>You can also require <code>spec-md</code> as a node module.</p>
 <pre><code>npm install --save-dev spec-md
 </code></pre>
-<pre><code><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> specMarkdown <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'spec-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-specMarkdown<span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span><span class="token string">'./path/to/markdown.md'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">html</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> specMarkdown <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'spec-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+specMarkdown<span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span><span class="token string">'./path/to/markdown.md'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">html</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span><span class="token string">'./path/to/output.html'</span><span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Spec Markdown also provides utilities for generating and operating on an intermediate representation of the markdown, which you can explore in <a href="#sec-Using-Spec-Markdown">Using Spec Markdown</a>.</p>
 </section>
 <section id="sec-Markdown" secid="2">
-<h2><span class="spec-secid" title="link to this section"><a href="#sec-Markdown">2</a></span>Markdown</h2>
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Markdown">2</a></span>Markdown</h1>
 <p>Spec Markdown is first and foremost <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>. More specifically, it&rsquo;s based on <a href="https://help.github.com/articles/github-flavored-markdown/">Github&#8208;flavored Markdown</a>.</p>
 <p>This section explains the syntax and capabilities of Markdown that Spec Markdown supports and augments.</p>
 <section id="sec-Character-Encoding" secid="2.1">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Character-Encoding">2.1</a></span>Character Encoding</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Character-Encoding">2.1</a></span>Character Encoding</h2>
 <p>Markdown allows you to write text which uses &amp;, &lt;, and &gt;. The output HTML will automatically use the <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> entities.</p>
 <p>Well formed HTML entities can be written inline directly. If you write <code>&amp;copy;</code>, it will appear in the HTML output as &copy;.</p>
 <section id="sec-Escape-sequence" secid="2.1.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Escape-sequence">2.1.1</a></span>Escape sequence</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Escape-sequence">2.1.1</a></span>Escape sequence</h3>
 <p>Markdown makes use of certain characters to format text, in order to render one explicitly, place a backslash before it.</p>
 <p>You can type *literal asterisks* instead of emphasis by typing <code>\*literal asterisks\*</code>.</p>
 <p>Escaping does not apply within code.</p>
@@ -1057,16 +1089,16 @@ _   underscore
 </section>
 </section>
 <section id="sec-Inline-formatting" secid="2.2">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Inline-formatting">2.2</a></span>Inline formatting</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Inline-formatting">2.2</a></span>Inline formatting</h2>
 <p>Markdown allows for inline stylistic and structual formatting. Inline formatting is allowed in paragraphs, list items, and table cells.</p>
 <section id="sec-Inline-HTML" secid="2.2.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Inline-HTML">2.2.1</a></span>Inline HTML</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Inline-HTML">2.2.1</a></span>Inline HTML</h3>
 <p>Markdown is not a replacement for HTML and instead leverages HTML by allowing its use inline within paragraphs, links, etc.</p>
 <p>This code has <blink>blinking</blink> and <em>emphasized</em> formatting.</p>
 <p>Markdown syntax can continue to be <u>used <em>within</em> inline HTML</u>.</p>
 </section>
 <section id="sec-Links" secid="2.2.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Links">2.2.2</a></span>Links</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Links">2.2.2</a></span>Links</h3>
 <p>Use <code>[ ]</code> square brackets to indicate linked text followed immediately by <code>( )</code> parenthesis to describe the URL the text will link to.</p>
 <p>The linked text can contain any other inline formatting.</p>
 <pre><code>This is an [--&gt;*example*&lt;--](https://www.facebook.com) of a link.
@@ -1079,15 +1111,20 @@ Links do not yet support a reference style short&#8208;form.</div>
 Links do not yet support a title attribute.</div>
 </section>
 <section id="sec-Emphasis" secid="2.2.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Emphasis">2.2.3</a></span>Emphasis</h4>
-<p>Wrapping asterisks <em>(*)</em> indicate emphasis. Like Github&#8208;flavored Markdown, Spec Markdown does not treat underscore <em>(_)</em> as emphasis.</p>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Emphasis">2.2.3</a></span>Emphasis</h3>
+<p>Wrapping asterisks <em>(*)</em> indicate emphasis.</p>
 <pre><code>Example of **bold** and *italic* and ***bold italic***.
 </code></pre>
 <p>Produces the following:</p>
 <p>Example of <strong>bold</strong> and <em>italic</em> and <strong><em>bold italic</em></strong>.</p>
+<p>Alternatively, use underscore <em>(_)</em> for italic emphasis.</p>
+<pre><code>Example of _italic_ and **_bold italic_** or _**bold italic**_.
+</code></pre>
+<p>Produces the following:</p>
+<p>Example of <em>italic</em> and <strong><em>bold italic</em></strong> or <em><strong>bold italic</strong></em>.</p>
 </section>
 <section id="sec-Inline-Code" secid="2.2.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Inline-Code">2.2.4</a></span>Inline Code</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Inline-Code">2.2.4</a></span>Inline Code</h3>
 <p>Wrapping back&#8208;ticks <em>(`)</em> indicate inline code, text inside back&#8208;ticks is not formatted, allowing for special characters to be used in inline code without escapes.</p>
 <pre><code>This is an `example` of some inline code.
 </code></pre>
@@ -1097,7 +1134,7 @@ Links do not yet support a title attribute.</div>
 Markdown&rsquo;s double&#8208;back&#8208;tick syntax is not yet supported.</div>
 </section>
 <section id="sec-Images" secid="2.2.5">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Images">2.2.5</a></span>Images</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Images">2.2.5</a></span>Images</h3>
 <pre><code>![Specs](http://i.imgur.com/aV8o3rE.png)
 </code></pre>
 <p>Produces the following:</p>
@@ -1123,10 +1160,10 @@ the title attribute is not yet supported</div>
 </section>
 </section>
 <section id="sec-Blocks" secid="2.3">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Blocks">2.3</a></span>Blocks</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Blocks">2.3</a></span>Blocks</h2>
 <p>Markdown allows for block&#8208;level structual formatting. Every block is seperated by at least two new lines. Spec Markdown makes use of Markdown&rsquo;s blocks to produce more specific structural formatting.</p>
 <section id="sec-Block-HTML" secid="2.3.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Block-HTML">2.3.1</a></span>Block HTML</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Block-HTML">2.3.1</a></span>Block HTML</h3>
 <p>Markdown is not a replacement for HTML and instead leverages HTML by allowing its use as complete blocks when separated from surrounding content by blank lines.</p>
 <div id="note-eb0b0" class="spec-note">
 <a href="#note-eb0b0">Note</a>
@@ -1194,7 +1231,7 @@ how do you like your blueeyed boy
 Mister Death
 </pre></section>
 <section id="sec-Blocks.Section-Headers" secid="2.3.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Blocks.Section-Headers">2.3.2</a></span>Section Headers</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Blocks.Section-Headers">2.3.2</a></span>Section Headers</h3>
 <p>Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown generally only supports atx style headers.</p>
 <pre id="example-d82de" class="spec-example"><a href="#example-d82de">Example № 1</a><code># Header
 </code></pre>
@@ -1208,11 +1245,11 @@ Mister Death
 Spec Markdown requires that documents start with <code>#</code> and that each section contained within is only one level deeper. An &lt;h1&gt; section may only contain &lt;h2&gt; sections.</div>
 </section>
 <section id="sec-Paragraphs" secid="2.3.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Paragraphs">2.3.3</a></span>Paragraphs</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Paragraphs">2.3.3</a></span>Paragraphs</h3>
 <p>Paragraphs are the most simple Markdown blocks. Lines are appended together to form a single &lt;p&gt; tag. Any inline syntax is allowed within a paragraph.</p>
 </section>
 <section id="sec-Lists" secid="2.3.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Lists">2.3.4</a></span>Lists</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Lists">2.3.4</a></span>Lists</h3>
 <p>Markdown lists are lines which each start with either a ordered bullet <code>1.</code> or unordered bullet, <code>*</code>, <code>-</code>, or <code>+</code>. Lists are optionally indented by two spaces.</p>
 <p>Lists can be nested within other lists by indenting by at least two spaces.</p>
 <pre id="example-4d8ec" class="spec-example"><a href="#example-4d8ec">Example № 3</a><code>  1. this
@@ -1231,68 +1268,96 @@ Spec Markdown requires that documents start with <code>#</code> and that each se
 </li>
 <li>list</li>
 </ol>
+<section id="sec-Task-Lists" secid="2.3.4.1">
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Task-Lists">2.3.4.1</a></span>Task Lists</h4>
+<p>Spec Markdown also supports task lists. Start a list item with <code>[ ]</code> or <code>[x]</code> to render a checkbox. This can be useful for keeping your tasks inline with in&#8208;progress draft specifications.</p>
+<pre id="example-f34a9" class="spec-example"><a href="#example-f34a9">Example № 4</a><code>  1. this
+  2. [ ] is
+  3. [x] a
+    - [X] nested
+  4. todo list
+</code></pre>
+<p>Produces the following:</p>
+<ol>
+<li>this</li>
+<li class="task">
+<input type="checkbox" disabled>
+ is</li>
+<li class="task">
+<input type="checkbox" disabled checked>
+ a<ul>
+<li class="task">
+<input type="checkbox" disabled checked>
+ nested</li>
+</ul>
+</li>
+<li>todo list</li>
+</ol>
+</section>
 </section>
 <section id="sec-Code-Block" secid="2.3.5">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h3>
 <p>A block of code is formed by either indenting by 4 spaces, or wrapping with <code>```</code> on their own lines.</p>
 <pre><code>```
-var code = sample();
+const code = sample();
 ```</code></pre>
 <p>Produces the following:</p>
-<pre><code>var code = sample();
+<pre><code>const code = sample();
 </code></pre>
 </section>
 <section id="sec-Block-Quotes" secid="2.3.6">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Block-Quotes">2.3.6</a></span>Block Quotes</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Block-Quotes">2.3.6</a></span>Block Quotes</h3>
 <p>Spec markdown does not yet support Markdown&rsquo;s <code>&gt;</code> style block quotes.</p>
 </section>
 <section id="sec-Horizontal-Rules" secid="2.3.7">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Horizontal-Rules">2.3.7</a></span>Horizontal Rules</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Horizontal-Rules">2.3.7</a></span>Horizontal Rules</h3>
 <p>Spec Markdown does not yet support Markdown&rsquo;s <code>---</code> style &lt;hr&gt;.</p>
 </section>
 <section id="sec-Automatic-Links" secid="2.3.8">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Automatic-Links">2.3.8</a></span>Automatic Links</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Automatic-Links">2.3.8</a></span>Automatic Links</h3>
 <p>Spec Markdown does not yet automatically link urls. </p>
 </section>
 </section>
 </section>
 <section id="sec-Spec-Additions" secid="3">
-<h2><span class="spec-secid" title="link to this section"><a href="#sec-Spec-Additions">3</a></span>Spec Additions</h2>
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Spec-Additions">3</a></span>Spec Additions</h1>
 <p>Spec Markdown makes some additions to Markdown to support cases relevant to writing technical specs and documentation. It attempts to be as minimally invasive as possible, leveraging existing Markdown formatting features whenever possible so Spec Markdown documents may render adequately as regular Markdown.</p>
 <p>Spec Markdown also makes restrictions to the overall format of the Markdown document in order to derive a structure to the entire document.</p>
 <section id="sec-Link-Anything" secid="3.1">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Link-Anything">3.1</a></span>Link Anything</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Link-Anything">3.1</a></span>Link Anything</h2>
 <p>Everything unique in a Spec Markdown file has a link created for it. Sections each have a link, as do named <a href="#sec-Algorithms">Algorithms</a> and <a href="#sec-Grammar">Grammar</a>. You&rsquo;ll find that <a href="#sec-Note">Notes</a> and <a href="#sec-Examples">Examples</a> are also given stable links based on their contents, just in case things move around.</p>
 <p>However, you can also link <em>anything</em> in a Spec Markdown file. Just highlight any bit of text and a link will be created just for that selection, making referencing specific parts of your document easy. Try it here!</p>
 </section>
 <section id="sec-Title-and-Introduction" secid="3.2">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Title-and-Introduction">3.2</a></span>Title and Introduction</h3>
-<p>A Spec Markdown document should start with one Setext style header which will be used as the title of the document. Any content before the first atx (<code>#</code>) style header will become the introduction to the document.</p>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Title-and-Introduction">3.2</a></span>Title and Introduction</h2>
+<p>A Spec Markdown document must start with a header which will be used as the title of the document. Any content between this and the next header will become the introduction to the document.</p>
 <p>A Spec Markdown document starts in this form:</p>
-<pre><code>Spec Markdown
--------------
+<pre><code># Spec Markdown
 
 Introductory paragraph.
 
 # First Section Header
 </code></pre>
+<div id="note-f5587" class="spec-note">
+<a href="#note-f5587">Note</a>
+For backwards&#8208;compatibility, a setext style header can be used for a document title.</div>
 </section>
 <section id="sec-Sections" secid="3.3">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Sections">3.3</a></span>Sections</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Sections">3.3</a></span>Sections</h2>
 <p>A Spec Markdown document is separated into a sequence and hierarchy of sections. Those sections can then be used as navigation points and can be used to create a table of contents. A section is started by a header and ends at either the next header of similar or greater precedence or the end of the document. A section can contain other sections if their headers are of lower precedence.</p>
 <section id="sec-Sections.Section-Headers" secid="3.3.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Sections.Section-Headers">3.3.1</a></span>Section Headers</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Sections.Section-Headers">3.3.1</a></span>Section Headers</h3>
 <p>Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown only supports atx style headers as section headers.</p>
 <pre><code># Header
 </code></pre>
 <p>Only use Setext style headers for the title of the document.</p>
-<pre id="example-7c9175" class="spec-counter-example"><a href="#example-7c9175">Counter Example № 4</a><code>Header
+<pre id="example-f87c5" class="spec-counter-example"><a href="#example-f87c5">Counter Example № 5</a><code>Header
 ------
 </code></pre>
 <p>Spec Markdown also requires that only single <code>#</code> headers appear at the top of a document, and that only a <code>##</code> header (and not a <code>###</code> header) can be contained with the section started by a <code>#</code> header.</p>
 </section>
 <section id="sec-Subsection-Headers" secid="3.3.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Subsection-Headers">3.3.2</a></span>Subsection Headers</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Subsection-Headers">3.3.2</a></span>Subsection Headers</h3>
 <p>While sections are numbered and appear in the table of contents, a subsection is similar but not numbered or in the table of contents.</p>
 <section id="sec-Subsection-Headers.This-is-a-subsection" class="subsec">
 <h6><a href="#sec-Subsection-Headers.This-is-a-subsection" title="link to this subsection">This is a subsection</a></h6>
@@ -1304,22 +1369,22 @@ Introductory paragraph.
 </section>
 </section>
 <section id="sec-Table-of-Contents" secid="3.3.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Table-of-Contents">3.3.3</a></span>Table of Contents</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Table-of-Contents">3.3.3</a></span>Table of Contents</h3>
 <p>A table of contents is automatically generated from the hierarchy of sections in the Spec Markdown document.</p>
 </section>
 <section id="sec-Section-Numbers" secid="3.3.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Section-Numbers">3.3.4</a></span>Section Numbers</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Section-Numbers">3.3.4</a></span>Section Numbers</h3>
 <p>A number is associated with each section, starting with 1. In a hierarchy of sections, the parent sections are joined with dots. This provides an unambiguous location identifier for a given section in a document.</p>
 <p>You can specify these section numbers directly in your Markdown documents if you wish by writing them directly after the <code>#</code> and before the text of the header.</p>
 <section id="sec-Custom-Numbers" secid="3.3.4.8">
-<h5><span class="spec-secid" title="link to this section"><a href="#sec-Custom-Numbers">3.3.4.8</a></span>Custom Numbers</h5>
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Custom-Numbers">3.3.4.8</a></span>Custom Numbers</h4>
 <p>If the section number is written in the document, the last number will be used as the number for that section. This is useful when writing a proposal against an existing spec and wish to reference a particular section.</p>
 <p>The header for this section was written as</p>
 <pre><code>#### 3.2.3.8. Custom Numbers
 </code></pre>
 </section>
 <section id="sec-Appendix-Annex-Sections" secid="3.3.4.9">
-<h5><span class="spec-secid" title="link to this section"><a href="#sec-Appendix-Annex-Sections">3.3.4.9</a></span>Appendix / Annex Sections</h5>
+<h4><span class="spec-secid" title="link to this section"><a href="#sec-Appendix-Annex-Sections">3.3.4.9</a></span>Appendix / Annex Sections</h4>
 <p>If a top level section is written with a letter, such as <code>A</code> instead of a number, that will begin an Appendix section.</p>
 <pre><code># A. Appendix: Grammar
 </code></pre>
@@ -1327,10 +1392,10 @@ Introductory paragraph.
 </section>
 </section>
 <section id="sec-Smart-Characters" secid="3.4">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Smart-Characters">3.4</a></span>Smart Characters</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Smart-Characters">3.4</a></span>Smart Characters</h2>
 <p>The Spec Markdown renderer will replace easy to type characters like quotes and dashes with their appropriate typographic entities. These replacements will not occur within blocks of code.</p>
 <section id="sec-Quotes-and-Dashes" secid="3.4.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Quotes-and-Dashes">3.4.1</a></span>Quotes and Dashes</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Quotes-and-Dashes">3.4.1</a></span>Quotes and Dashes</h3>
 <p>Prose text has &ldquo;smart quotes&rdquo;, hyphens, en&#8208;dashes and em&#8208;dashes&mdash;you shouldn&rsquo;t have to think about it, they&rsquo;ll just work.</p>
 <p>For example, a quote of a quote (with an inner apostrophe and emphasis for flair):</p>
 <p><code>&quot;She told me that &#x27;he isn&#x27;t here right *now*&#x27; - so I left.&quot;</code></p>
@@ -1338,20 +1403,20 @@ Introductory paragraph.
 <p>&ldquo;She told me that&lsquo;he isn&rsquo;t here right <em>now</em>&rsquo; &ndash; so I left.&rdquo;</p>
 </section>
 <section id="sec-Math" secid="3.4.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Math">3.4.2</a></span>Math</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Math">3.4.2</a></span>Math</h3>
 <p>Math operators like &ge;, &le;, and &cong; can be written as <code>&gt;=</code>, <code>&lt;=</code>, and <code>~=</code>.</p>
 </section>
 <section id="sec-Arrows" secid="3.4.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">3.4.3</a></span>Arrows</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">3.4.3</a></span>Arrows</h3>
 <p>Smart arrows &rarr; and &larr; and &harr; can be written as <code>-&gt;</code>, <code>&lt;-</code> and <code>&lt;-&gt;</code>.</p>
 <p>Fat smart arrows &rArr; and &lArr; and &hArr; can be written as <code>=&gt;</code>, <code>&lt;==</code> and <code>&lt;=&gt;</code>.</p>
 </section>
 <section id="sec-Additional-escape-sequence" secid="3.4.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Additional-escape-sequence">3.4.4</a></span>Additional escape sequence</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Additional-escape-sequence">3.4.4</a></span>Additional escape sequence</h3>
 <p>Spec Markdown allows escaping &lt; &gt; and | character with <code>\&gt;</code>, <code>\&lt;</code>, and <code>\|</code>.</p>
 </section>
 <section id="sec-Tables" secid="3.4.5">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Tables">3.4.5</a></span>Tables</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Tables">3.4.5</a></span>Tables</h3>
 <p>Similar to Github flavored Markdown</p>
 <pre><code>| This | is a | table |
 | ---- | ---- | ----- |
@@ -1373,8 +1438,9 @@ Introductory paragraph.
 </section>
 </section>
 <section id="sec-Note" secid="3.5">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Note">3.5</a></span>Note</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Note">3.5</a></span>Note</h2>
 <p>Notes can be written inline with a spec document, and are often helpful to supply non&#8208;normative explanatory text or caveats in a differently formatted style. Case insensitive, the <code>:</code> is optional.</p>
+<p>Notes automatically have short links generated for them. If the contents of the note changes, so will the link URL. However if a note moves around, or content around the note changes the existing links will still point to the right place, very useful for consistently evolving specifications!</p>
 <pre><code>Note: Notes are awesome.
 </code></pre>
 <p>Produces the following:</p>
@@ -1383,7 +1449,7 @@ Introductory paragraph.
 Notes are awesome.</div>
 </section>
 <section id="sec-Todo" secid="3.6">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Todo">3.6</a></span>Todo</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Todo">3.6</a></span>Todo</h2>
 <p>It&rsquo;s often helpful to write a draft of a document and leave &ldquo;to&#8208;do&rdquo; comments in not&#8208;yet&#8208;completed sections. Case insensitive, the <code>:</code> is optional.</p>
 <pre><code>TODO: finish this section
 </code></pre>
@@ -1395,58 +1461,65 @@ finish this section</div>
 You can also write <code>TK</code> in place of <code>TODO</code>, nerds.</div>
 </section>
 <section id="sec-Syntax-Highlighting" secid="3.7">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Syntax-Highlighting">3.7</a></span>Syntax Highlighting</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Syntax-Highlighting">3.7</a></span>Syntax Highlighting</h2>
 <p>Spec Markdown will apply syntax highlighting to blocks of code if a github&#8208;flavored&#8208;markdown style language is supplied.</p>
 <p>You may provide a <code>highlight</code> function as an option to customize this behavior.</p>
 <p>To render this highlighted javascript:</p>
 <pre><code>```js
-var baz = foo(&quot;bar&quot;);
+const baz = foo(&quot;bar&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre><code><span class="token keyword">var</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>You may also prefix your highlight function with &ldquo;raw&rdquo; if you want to avoid other tools, such as Prettier, from interpreting a code block.</p>
+<pre><code>```raw js
+const baz = foo(&quot;bar&quot;);
+```</code></pre>
+<p>Produces the following:</p>
+<pre><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <section id="sec-Examples" secid="3.7.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.7.1</a></span>Examples</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.7.1</a></span>Examples</h3>
 <p>Spec Markdown helps you write examples, visually indicaticating the difference from normative code blocks, and generating permalinks to those examples. Just write <code>example</code> after the <code>```</code>.</p>
 <pre><code>```example
-var great = useOf.example(&quot;code&quot;);
+const great = useOf.example(&quot;code&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-d0380" class="spec-example"><a href="#example-d0380">Example № 5</a><code>var great = useOf.example(&quot;code&quot;);
+<pre id="example-33270" class="spec-example"><a href="#example-33270">Example № 6</a><code>const great = useOf.example(&quot;code&quot;);
 </code></pre>
 <p>Examples can also be syntax highlighted, by placing the language directly before writing <code>example</code>:</p>
 <pre><code>```js example
-var great = useOf.example(&quot;code&quot;);
+const great = useOf.example(&quot;code&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-d0380e" class="spec-example"><a href="#example-d0380e">Example № 6</a><code><span class="token keyword">var</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre id="example-d7c75" class="spec-example"><a href="#example-d7c75">Example № 7</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 <section id="sec-Counter-Examples" secid="3.7.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Counter-Examples">3.7.2</a></span>Counter Examples</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Counter-Examples">3.7.2</a></span>Counter Examples</h3>
 <p>In addition to examples, Spec Markdown helps you write <em>counter&#8208;examples</em>, which are examples of things you should not do. These are visually indicated as different from normative code blocks and other examples. Just write <code>counter-example</code> after the <code>```</code> (and optional language).</p>
 <pre><code>```js counter-example
-var shit = dontSwear();
+const shit = dontSwear();
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-0f997" class="spec-counter-example"><a href="#example-0f997">Counter Example № 7</a><code><span class="token keyword">var</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre id="example-4c929" class="spec-counter-example"><a href="#example-4c929">Counter Example № 8</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 </section>
 <section id="sec-Imports" secid="3.8">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Imports">3.8</a></span>Imports</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Imports">3.8</a></span>Imports</h2>
 <p>When compiled, an import reference will be inlined into the same document. An import reference looks like a link to a &ldquo;.md&rdquo; file as a single paragraph.</p>
 <pre><code>[AnythingGoesHere](SomeName.md)
 </code></pre>
 <p>You can optionally prefix the import reference with <code>#</code> characters to describe at what section level the import should apply. By default an import reference will be imported as a child of the current section.</p>
 </section>
 <section id="sec-Inline-editing" secid="3.9">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Inline-editing">3.9</a></span>Inline editing</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Inline-editing">3.9</a></span>Inline editing</h2>
 <p>A portion of the <a href="http://criticmarkup.com/">CriticMarkup</a> spec is supported.</p>
 <p>For example, we can <ins>add</ins> or <del>remove</del> text with the <code>{++add++}</code> or <code>{--remove--}</code> syntax.</p>
 </section>
 <section id="sec-Block-editing" secid="3.10">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Block-editing">3.10</a></span>Block editing</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Block-editing">3.10</a></span>Block editing</h2>
 <p>We can also add and remove entire blocks of content, by using <code>{++</code> or <code>{--</code> on their own line with empty lines on either side:</p>
 <div class="spec-added"><p>These paragraphs</p>
 <p>have been <em>added</em>.</p>
@@ -1479,7 +1552,7 @@ have been *removed*.
 imports and section headers cannot be included in a added or removed section to preserve the ability to render a table of contents.</div>
 </section>
 <section id="sec-Algorithms" secid="3.11">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">3.11</a></span>Algorithms</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">3.11</a></span>Algorithms</h2>
 <p>Specifications for procedures or algorithms can be defined in terms of nested markdown lists. These lists can be of any kind, but will always have ordered formatting. The bullet labeling for algorithms is specific will cycle between decimal, lower&#8208;alpha, and lower&#8208;roman.</p>
 <p>An algorithm definition also describes its arguments in terms of variables.</p>
 <pre><code>Algorithm(arg) :
@@ -1509,11 +1582,11 @@ imports and section headers cannot be included in a added or removed section to 
 </div>
 </section>
 <section id="sec-Grammar" secid="3.12">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar">3.12</a></span>Grammar</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Grammar">3.12</a></span>Grammar</h2>
 <p>Spec Markdown makes it easier to describe context&#8208;free grammatical productions.</p>
 <p>Grammars are defined by a sequence of <em>terminal</em> characters or sequence of characters, which are then referenced by <em>non&#8208;terminal</em> rules. The definition of a non&#8208;terminal is referred to as a <em>production</em>.</p>
 <section id="sec-Grammar-Production" secid="3.12.1">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Production">3.12.1</a></span>Grammar Production</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Production">3.12.1</a></span>Grammar Production</h3>
 <p>The <code>:</code> token indicates an &ldquo;is defined as&rdquo; production for a non&#8208;terminal, where a single definition can be written directly after the <code>:</code>.</p>
 <pre><code>PBJ : Bread PeanutButter Jelly Bread
 </code></pre>
@@ -1545,7 +1618,7 @@ imports and section headers cannot be included in a added or removed section to 
 </div>
 </section>
 <section id="sec-Production-types" secid="3.12.2">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Production-types">3.12.2</a></span>Production types</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Production-types">3.12.2</a></span>Production types</h3>
 <p>Often languages wish to specify different types of grammar productions, such as lexical or syntactical, or if certain characters line whitespace or newlines are permitted between symbols in the right&#8208;hand&#8208;side. Spec&#8208;md allows this this distinction based on the number of colons:</p>
 <pre><code>TypeOne : `type` `one`
 
@@ -1565,7 +1638,7 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-One-of" secid="3.12.3">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-One-of">3.12.3</a></span>One of</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-One-of">3.12.3</a></span>One of</h3>
 <p>If each definition option is a single token, it can be expressed as a &ldquo;one of&rdquo; expression instead of a markdown list.</p>
 <pre><code>AssignmentOperator : one of *= `/=` %= += -= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &amp;= ^= |=
 </code></pre>
@@ -1613,11 +1686,11 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Non-Terminal-Token" secid="3.12.4">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Non-Terminal-Token">3.12.4</a></span>Non Terminal Token</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Non-Terminal-Token">3.12.4</a></span>Non Terminal Token</h3>
 <p>Non&#8208;terminal tokens with a defined as a grammar production can be referred to in other grammar productions. Non&#8208;terminals must match the regular expression <span class="spec-rx">/[A-Z][_a-zA-Z]*/</span>. That is, they must start with an uppercase letter, followed by any number of letters or underscores.</p>
 </section>
 <section id="sec-Prose" secid="3.12.5">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Prose">3.12.5</a></span>Prose</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Prose">3.12.5</a></span>Prose</h3>
 <p>Grammars can describe arbitrary rules by using prose within a grammar definition by using <code>&quot;quotes&quot;</code>.</p>
 <pre><code>Sandwich : Bread &quot;Any kind of topping&quot; Bread
 </code></pre>
@@ -1627,7 +1700,7 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Terminal-Token" secid="3.12.6">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Terminal-Token">3.12.6</a></span>Terminal Token</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Terminal-Token">3.12.6</a></span>Terminal Token</h3>
 <p>Terminal tokens refer to a character or sequence of characters. They can be written unadorned in the grammar definition.</p>
 <pre><code>BalancedParens : ( BalancedParens )
 </code></pre>
@@ -1651,7 +1724,7 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Regular-Expression" secid="3.12.7">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Regular-Expression">3.12.7</a></span>Regular Expression</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Regular-Expression">3.12.7</a></span>Regular Expression</h3>
 <p>When a grammar is intended to be interpretted as a single token and can be clearly written as a regular expression, you can do so directly.</p>
 <pre><code>UppercaseWord : /[A-Z][a-z]*/
 </code></pre>
@@ -1661,7 +1734,7 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Quantifiers" secid="3.12.8">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Quantifiers">3.12.8</a></span>Quantifiers</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Quantifiers">3.12.8</a></span>Quantifiers</h3>
 <p>Tokens can be followed by quantifiers to alter their meaning and as a short&#8208;hand for common patterns of optionality and repetition.</p>
 <section id="sec-Quantifiers.Optional-Tokens" class="subsec">
 <h6><a href="#sec-Quantifiers.Optional-Tokens" title="link to this subsection">Optional Tokens</a></h6>
@@ -1736,7 +1809,7 @@ TypeThree ::: `type` `three`
 <div class="spec-rhs"><span class="spec-quantified"><span class="spec-t">|</span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 </div>
 <p>However, unquoted non&#8208;terminals may use the <code>*</code>, <code>?</code> and <code>+</code> characters, so always quote the terminal if the intent is to apply a quantifer.</p>
-<pre id="example-10052" class="spec-counter-example"><a href="#example-10052">Counter Example № 8</a><code>UnionMembers :
+<pre id="example-10052" class="spec-counter-example"><a href="#example-10052">Counter Example № 9</a><code>UnionMembers :
   <span class="token list punctuation">-</span> UnionMembers | NamedType
   <span class="token list punctuation">-</span> |? NamedType
 </code></pre>
@@ -1748,7 +1821,7 @@ TypeThree ::: `type` `three`
 </section>
 </section>
 <section id="sec-Conditional-Parameters" secid="3.12.9">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Conditional-Parameters">3.12.9</a></span>Conditional Parameters</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Conditional-Parameters">3.12.9</a></span>Conditional Parameters</h3>
 <p>It can be a useful short&#8208;hand to provide conditional parameters when defining a non&#8208;terminal token rather than defining two very similar non&#8208;terminals.</p>
 <p>A conditional parameter is written in braces <code>Token[Param]</code> and renders as <span class="spec-nt"><span data-name="Token">Token</span><span class="spec-params"><span class="spec-param">Param</span></span></span>. When used in definitions is shorthand for two symbol definitions: one appended with that parameter name, the other without.</p>
 <pre><code>Example[WithCondition] : &quot;Definition TBD&quot;
@@ -1855,7 +1928,7 @@ TypeThree ::: `type` `three`
 <p><span class="spec-quantified"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">P</span><span class="spec-param conditional">Q</span></span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span></p>
 </section>
 <section id="sec-Constraints" secid="3.12.10">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Constraints">3.12.10</a></span>Constraints</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Constraints">3.12.10</a></span>Constraints</h3>
 <p>Any token can be followed by &ldquo;but not&rdquo; or &ldquo;but not one of&rdquo; to place a further constraint on the previous token:</p>
 <pre><code>Example : A B but not foo or bar
 </code></pre>
@@ -1872,7 +1945,7 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Meta-Tokens" secid="3.12.11">
-<h4><span class="spec-secid" title="link to this section"><a href="#sec-Meta-Tokens">3.12.11</a></span>Meta Tokens</h4>
+<h3><span class="spec-secid" title="link to this section"><a href="#sec-Meta-Tokens">3.12.11</a></span>Meta Tokens</h3>
 <p>Spec Markdown can specify some tokens which do not consume any characters.</p>
 <p>The empty set, written <code>[empty]</code> appears as <span class="spec-empty">[empty]</span> can be used to define a non&#8208;terminal as matching no terminal or non&#8208;terminal tokens.</p>
 <pre><code>Example : [empty]
@@ -1908,7 +1981,7 @@ TypeThree ::: `type` `three`
 </section>
 </section>
 <section id="sec-Grammar-Semantics" secid="3.13">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Semantics">3.13</a></span>Grammar Semantics</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Semantics">3.13</a></span>Grammar Semantics</h2>
 <p>Once grammar is defined, it can be useful to define the semantics of the grammar in terms of algorithm steps. A single grammar definition followed by a list is interpretted as a grammar semantic:</p>
 <pre><code>PBJ : Bread PeanutButter Jelly Bread
 
@@ -1937,7 +2010,7 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Value-Literals" secid="3.14">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Value-Literals">3.14</a></span>Value Literals</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Value-Literals">3.14</a></span>Value Literals</h2>
 <p>Value literals allow any text to refer to a value which has semantic meaning in the specification by wrapping it in <code>{ }</code> curly brace characters.</p>
 <pre><code>I can reference {foo}, {&quot;foo&quot;}, {null}, {true}.
 </code></pre>
@@ -1969,7 +2042,7 @@ TypeThree ::: `type` `three`
 </section>
 </section>
 <section id="sec-Biblio" secid="3.15">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Biblio">3.15</a></span>Biblio</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Biblio">3.15</a></span>Biblio</h2>
 <p>By supplying a <code>&quot;biblio&quot;</code> key in a metadata file, you can have Algorithm calls and Non&#8208;terminal tokens which are not defined in this spec to link to where they are defined.</p>
 <pre><code>spec-md -m metadata.json myspec.md
 </code></pre>
@@ -2008,7 +2081,7 @@ TypeThree ::: `type` `three`
 </section>
 </section>
 <section id="sec-Using-Spec-Markdown" secid="A">
-<h2><span class="spec-secid" title="link to this section"><a href="#sec-Using-Spec-Markdown">A</a></span>Using Spec Markdown</h2>
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Using-Spec-Markdown">A</a></span>Using Spec Markdown</h1>
 <p>If installed globally, using <code>spec-md</code> as a shell executable is the easiest way to use Spec Markdown. The <code>spec-md</code> executable expects a filepath to a Markdown document as input and outputs HTML on stdout. Use <code>&gt;</code> to write stdout to a file.</p>
 <pre><code>npm install -g spec-md
 spec-md ./path/to/markdown.md &gt; ./path/to/output.html
@@ -2016,9 +2089,9 @@ spec-md ./path/to/markdown.md &gt; ./path/to/output.html
 <p>You can also require <code>spec-md</code> as a node module, after which you might add the <code>spec-md</code> command as a <a href="https://docs.npmjs.com/cli/run-script">node script</a>.</p>
 <pre><code>npm install --save-dev spec-md
 </code></pre>
-<pre><code><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> specMarkdown <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'spec-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-specMarkdown<span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span><span class="token string">'./path/to/markdown.md'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">html</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> specMarkdown <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'spec-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+specMarkdown<span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span><span class="token string">'./path/to/markdown.md'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">html</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span><span class="token string">'./path/to/output.html'</span><span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -2026,11 +2099,11 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 <ul>
 <li><span class="spec-call"><span data-name="html">html</span>(<var data-name="filePath">filePath</var>, <var data-name="options">options</var>)</span> takes a <var data-name="filepath">filepath</var> to a Markdown file and returns a Promise which will resolve to a beautified HTML string. This function is the primary usage of the <code>spec-md</code> module.</li>
 <li><span class="spec-call"><span data-name="parse">parse</span>(<var data-name="filePath">filePath</var>)</span> takes a filepath and returns a Promise which will resolve to an AST <em>(Abstract Syntax Tree)</em> representing the contents of the Spec Markdown file, with all imports already inlined.</li>
-<li><span class="spec-call"><span data-name="print">print</span>(<var data-name="ast">ast</var>, <var data-name="options">options</var>)</span> takes an <var data-name="ast">ast</var> produced by parse() and returns an HTML string.</li>
+<li><span class="spec-call"><span data-name="print">print</span>(<var data-name="ast">ast</var>, <var data-name="options">options</var>)</span> takes an <var data-name="ast">ast</var> produced by parse() and returns a Promise which will resolve to a beautified HTML string.</li>
 <li><span class="spec-call"><span data-name="visit">visit</span>(<var data-name="ast">ast</var>, <var data-name="visitor">visitor</var>)</span> takes an <var data-name="ast">ast</var> and a <var data-name="visitor">visitor</var>. It walks over the <var data-name="ast">ast</var> in a depth&#8208;first&#8208;traversal calling the <var data-name="visitor">visitor</var> along the way.</li>
 </ul>
 <section id="sec-Print-Options" secid="A.1">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Print-Options">A.1</a></span>Print Options</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Print-Options">A.1</a></span>Print Options</h2>
 <p>The <span class="spec-call"><span data-name="html">html</span>(<var data-name="filePath">filePath</var>, <var data-name="options">options</var>)</span> and <span class="spec-call"><span data-name="print">print</span>(<var data-name="filePath">filePath</var>)</span> functions both take <var data-name="options">options</var> as an optional second argument. These options allow for customization control over the returned HTML, more options may be added in the future.</p>
 <ul>
 <li><strong>highlight</strong> - a function which is called when blocks of code are encountered, with the first argument as the string of code, the second argument being the language specified. This function should return well formed HTML, complete with escaped special characters.</li>
@@ -2038,7 +2111,7 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 </ul>
 </section>
 <section id="sec-Hot-rebuilding-with-nodemon" secid="A.2">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Hot-rebuilding-with-nodemon">A.2</a></span>Hot rebuilding with nodemon</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Hot-rebuilding-with-nodemon">A.2</a></span>Hot rebuilding with nodemon</h2>
 <p>The <code>spec-md</code> shell executable follows the <a href="http://www.faqs.org/docs/artu/ch01s06.html">Unix Philosophy</a> of doing one thing and doing it well. Try out <code>nodemon</code> to continuously rebuild the HTML output as you edit the markdown specification:</p>
 <pre><code>npm install -g nodemon
 nodemon --exec &quot;spec-md &gt; ./path/to/output.html&quot; ./path/to/markdown.md
@@ -2046,10 +2119,10 @@ nodemon --exec &quot;spec-md &gt; ./path/to/output.html&quot; ./path/to/markdown
 </section>
 </section>
 <section id="sec-Contributing-to-Spec-Markdown" secid="B">
-<h2><span class="spec-secid" title="link to this section"><a href="#sec-Contributing-to-Spec-Markdown">B</a></span>Contributing to Spec Markdown</h2>
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Contributing-to-Spec-Markdown">B</a></span>Contributing to Spec Markdown</h1>
 <p>We want to make contributing to this project as easy and transparent as possible. Hopefully this document makes the process for contributing clear and answers any questions you may have. If not, feel free to open an <a href="https://github.com/leebyron/spec-md/issues">Issue</a>.</p>
 <section id="sec-Pull-Requests" secid="B.1">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Pull-Requests">B.1</a></span>Pull Requests</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Pull-Requests">B.1</a></span>Pull Requests</h2>
 <p>All active development of Spec Markdown happens on GitHub. We actively welcome your <a href="https://help.github.com/articles/creating-a-pull-request">pull requests</a>.</p>
 <ol>
 <li><a href="https://github.com/leebyron/spec-md/">Fork the repo</a> and create your branch from <code>master</code>.</li>
@@ -2060,15 +2133,15 @@ nodemon --exec &quot;spec-md &gt; ./path/to/output.html&quot; ./path/to/markdown
 </ol>
 </section>
 <section id="sec--master-is-unsafe" secid="B.2">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec--master-is-unsafe">B.2</a></span>`master` is unsafe</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec--master-is-unsafe">B.2</a></span>`master` is unsafe</h2>
 <p>We will do our best to keep <code>master</code> in good shape, with tests passing at all times. But in order to move fast, we might make API changes that your application might not be compatible with. We will do our best to communicate these changes and always <a href="http://semver.org/">version</a> appropriately so you can lock into a specific version if need be. If any of this is worrysome to you, just use <a href="https://www.npmjs.org/package/spec-md">npm</a>.</p>
 </section>
 <section id="sec-Issues" secid="B.3">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Issues">B.3</a></span>Issues</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Issues">B.3</a></span>Issues</h2>
 <p>We use GitHub issues to track public bugs and requests. Please ensure your bug description is clear and has sufficient instructions to be able to reproduce the issue. The best way is to provide a reduced test case on jsFiddle or jsBin.</p>
 </section>
 <section id="sec-Coding-Style" secid="B.4">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-Coding-Style">B.4</a></span>Coding Style</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Coding-Style">B.4</a></span>Coding Style</h2>
 <ul>
 <li>2 spaces for indentation (no tabs)</li>
 <li>80 character line length strongly preferred.</li>
@@ -2079,7 +2152,7 @@ nodemon --exec &quot;spec-md &gt; ./path/to/output.html&quot; ./path/to/markdown
 </ul>
 </section>
 <section id="sec-License" secid="B.5">
-<h3><span class="spec-secid" title="link to this section"><a href="#sec-License">B.5</a></span>License</h3>
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-License">B.5</a></span>License</h2>
 <p>By contributing to Spec Markdown, you agree that your contributions will be licensed under its MIT license. </p>
 </section>
 </section>
@@ -2116,7 +2189,12 @@ Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</foo
 <li id="_sidebar_2.3.1"><a href="#sec-Block-HTML"><span class="spec-secid">2.3.1</span>Block HTML</a></li>
 <li id="_sidebar_2.3.2"><a href="#sec-Blocks.Section-Headers"><span class="spec-secid">2.3.2</span>Section Headers</a></li>
 <li id="_sidebar_2.3.3"><a href="#sec-Paragraphs"><span class="spec-secid">2.3.3</span>Paragraphs</a></li>
-<li id="_sidebar_2.3.4"><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a></li>
+<li id="_sidebar_2.3.4"><a href="#sec-Lists"><span class="spec-secid">2.3.4</span>Lists</a>
+<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_2.3.4" /><label for="_sidebar_toggle_2.3.4"></label>
+<ol>
+<li id="_sidebar_2.3.4.1"><a href="#sec-Task-Lists"><span class="spec-secid">2.3.4.1</span>Task Lists</a></li>
+</ol>
+</li>
 <li id="_sidebar_2.3.5"><a href="#sec-Code-Block"><span class="spec-secid">2.3.5</span>Code Block</a></li>
 <li id="_sidebar_2.3.6"><a href="#sec-Block-Quotes"><span class="spec-secid">2.3.6</span>Block Quotes</a></li>
 <li id="_sidebar_2.3.7"><a href="#sec-Horizontal-Rules"><span class="spec-secid">2.3.7</span>Horizontal Rules</a></li>
@@ -2209,7 +2287,7 @@ Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</foo
 <li id="_sidebar_index"><a href="#index"><span class="spec-secid">§</span>Index</a></li>
 </ol>
 </div>
-<script>(function(){for(var e,t=[],n=document.getElementsByTagName("section"),o=0;o<n.length;o++)n[o].getAttribute("secid")&&t.push(n[o]);var i=window.scrollY,r=!1;function c(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&d(e,!1),c&&d(c,!0),e=c)}function d(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_sidebar_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",function(e){i=window.scrollY,r||(r=!0,window.requestAnimationFrame(function(){c(i),r=!1}))}),c(window.scrollY);})()</script>
+<script>(function(){for(var e,t=[],n=document.getElementsByTagName("section"),o=0;o<n.length;o++)n[o].getAttribute("secid")&&t.push(n[o]);var i=window.scrollY,r=!1;function c(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&d(e,!1),c&&d(c,!0),e=c)}function d(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_sidebar_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",(function(e){i=window.scrollY,r||(r=!0,window.requestAnimationFrame((function(){c(i),r=!1})))})),c(window.scrollY);})()</script>
 </div>
 </body>
 </html>
