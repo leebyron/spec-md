@@ -578,20 +578,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " indicate emphasis. Like Github-flavored\nMarkdown, Spec Markdown does not treat underscore "
-                    },
-                    {
-                      "type": "Italic",
-                      "contents": [
-                        {
-                          "type": "Text",
-                          "value": "(_)"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "Text",
-                      "value": " as emphasis."
+                      "value": " indicate emphasis."
                     }
                   ]
                 },
@@ -650,6 +637,103 @@
                       "contents": [
                         {
                           "type": "Italic",
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": "bold italic"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": "."
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Alternatively, use underscore "
+                    },
+                    {
+                      "type": "Italic",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "(\\_)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": " for italic emphasis."
+                    }
+                  ]
+                },
+                {
+                  "type": "Code",
+                  "raw": false,
+                  "lang": null,
+                  "example": false,
+                  "counter": false,
+                  "code": "Example of _italic_ and **_bold italic_** or _**bold italic**_.\n"
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Produces the following:"
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Example of "
+                    },
+                    {
+                      "type": "Italic",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": " and "
+                    },
+                    {
+                      "type": "Bold",
+                      "contents": [
+                        {
+                          "type": "Italic",
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": "bold italic"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": " or "
+                    },
+                    {
+                      "type": "Italic",
+                      "contents": [
+                        {
+                          "type": "Bold",
                           "contents": [
                             {
                               "type": "Text",

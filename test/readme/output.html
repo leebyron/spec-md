@@ -1080,11 +1080,16 @@ Links do not yet support a title attribute.</div>
 </section>
 <section id="sec-Emphasis" secid="2.2.3">
 <h4><span class="spec-secid" title="link to this section"><a href="#sec-Emphasis">2.2.3</a></span>Emphasis</h4>
-<p>Wrapping asterisks <em>(*)</em> indicate emphasis. Like Github&#8208;flavored Markdown, Spec Markdown does not treat underscore <em>(_)</em> as emphasis.</p>
+<p>Wrapping asterisks <em>(*)</em> indicate emphasis.</p>
 <pre><code>Example of **bold** and *italic* and ***bold italic***.
 </code></pre>
 <p>Produces the following:</p>
 <p>Example of <strong>bold</strong> and <em>italic</em> and <strong><em>bold italic</em></strong>.</p>
+<p>Alternatively, use underscore <em>(_)</em> for italic emphasis.</p>
+<pre><code>Example of _italic_ and **_bold italic_** or _**bold italic**_.
+</code></pre>
+<p>Produces the following:</p>
+<p>Example of <em>italic</em> and <strong><em>bold italic</em></strong> or <em><strong>bold italic</strong></em>.</p>
 </section>
 <section id="sec-Inline-Code" secid="2.2.4">
 <h4><span class="spec-secid" title="link to this section"><a href="#sec-Inline-Code">2.2.4</a></span>Inline Code</h4>
