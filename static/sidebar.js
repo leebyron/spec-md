@@ -1,6 +1,13 @@
 var currentSection;
 var numberedSections = [];
 
+var sidebarButton = document.querySelector('label[for="spec-sidebar-toggle"]');
+sidebarButton.addEventListener('scroll', prevent);
+sidebarButton.addEventListener('touchmove', prevent);
+function prevent(event) {
+  event.preventDefault();
+}
+
 var sections = document.getElementsByTagName('section');
 for (var i = 0; i < sections.length; i++) {
   if (sections[i].getAttribute('secid')) {

@@ -87,6 +87,7 @@ function loadAllLanguages() {
 async function printHead(ast, options) {
   return (
     '<meta charset="utf-8">\n' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
     '<style>' + readStatic('spec.css') + '</style>\n' +
     '<style>' + readStatic('prism.css') + '</style>\n' +
@@ -314,10 +315,7 @@ function printTOC(ast, options) {
               '<span class="spec-secid">' + secID + '</span>' +
               escape(node.title) +
             '</a>' +
-            (subSections &&
-              '\n<input hidden class="toggle" type="checkbox" checked id="_toggle_' + secID + '" />' +
-              '<label for="_toggle_' + secID + '"></label>\n' +
-              '<ol>\n' + subSections + '</ol>\n') +
+            (subSections && '<ol>\n' + subSections + '</ol>\n') +
           '</li>\n'
         );
       }
@@ -355,8 +353,8 @@ async function printSidebar(ast, options) {
               escape(node.title) +
             '</a>' +
             (subSections &&
-              '\n<input hidden class="toggle" type="checkbox" id="_sidebar_toggle_' + secID + '" />' +
-              '<label for="_sidebar_toggle_' + secID + '"></label>\n' +
+              '\n<input hidden class="toggle" type="checkbox" id="_toggle_' + secID + '" />' +
+              '<label for="_toggle_' + secID + '"></label>\n' +
               '<ol>\n' + subSections + '</ol>\n') +
           '</li>\n'
         );
@@ -371,7 +369,7 @@ async function printSidebar(ast, options) {
 
   return (
     '<input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden />' +
-    '<label for="spec-sidebar-toggle" aria-hidden>&#x2630;</label>\n' +
+    '<label for="spec-sidebar-toggle" aria-hidden><div class="spec-sidebar-button">&#x2630;</div></label>\n' +
     '<div class="spec-sidebar" aria-hidden>\n' +
       '<div class="spec-toc">\n' +
         '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>\n' +
@@ -579,13 +577,15 @@ function printAll(list, options) {
         case 'OneOfRHS':
           return (
             '<div class="spec-oneof">' +
-              '<table>\n' +
-                join(node.rows.map(row =>
-                  '<tr>\n' +
-                    join(row.map(def => '<td class="spec-rhs">' + def + '</td>')) +
-                  '</tr>\n'
-                )) +
-              '</table>' +
+              '<div class="spec-oneof-grid">' +
+                '<table>\n' +
+                  join(node.rows.map(row =>
+                    '<tr>\n' +
+                      join(row.map(def => '<td class="spec-rhs">' + def + '</td>')) +
+                    '</tr>\n'
+                  )) +
+                '</table>' +
+              '</div>' +
             '</div>\n'
           );
 

@@ -62,6 +62,9 @@ function handleSelectionChange(event) {
 }
 
 function renderCurrentRange() {
+  if (!currentRange) {
+    return
+  }
   if (!article) {
     article = document.getElementsByTagName("article")[0];
   }
@@ -75,10 +78,16 @@ function renderCurrentRange() {
     ? "outdated-selection-link"
     : "selection-link";
   selectionLink.innerText = currentRange.isOutdated ? "!" : "\u201F";
-  var left = article.getBoundingClientRect().x;
-  var top = currentRange.getBoundingClientRect().y;
-  selectionLink.style.left = Math.floor(left + window.scrollX - 37) + "px";
-  selectionLink.style.top = Math.floor(top + window.scrollY - 3) + "px";
+  var smallScreen = window.innerWidth < 720;
+  var rect = currentRange.getBoundingClientRect();
+  if (smallScreen) {
+    selectionLink.style.left = Math.floor(rect.x + rect.width / 2 + window.scrollX - 13) + "px";
+    selectionLink.style.top = Math.floor(rect.bottom + window.scrollY + 10) + "px";
+  } else {
+    var left = article.getBoundingClientRect().x;
+    selectionLink.style.left = Math.floor(left + window.scrollX - 37) + "px";
+    selectionLink.style.top = Math.floor(rect.y + window.scrollY - 3) + "px";
+  }
 }
 
 // Encodes the range of a selection on the page as a string. The string is a
