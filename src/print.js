@@ -486,8 +486,10 @@ function printAll(list, options) {
         case 'InlineCode':
           return '<code>' + escapeCode(node.code) + '</code>';
 
-        case 'Link':
-          return '<a href="' + encodeURI(node.url) + '">' + join(node.contents) + '</a>';
+        case 'Link': {
+          const url = resolveLinkUrl(node.url, options);
+          return '<a href="' + encodeURI(url) + '">' + join(node.contents) + '</a>';
+        }
 
         case 'Image':
           return (
@@ -772,6 +774,23 @@ function link(node, id, options, doHighlight) {
 
 function anchorize(title) {
   return title.replace(/[^A-Za-z0-9\-_]+/g, '-');
+}
+
+function resolveLinkUrl(url, options) {
+  if (url.startsWith('./') || url.startsWith('#')) {
+    const hashIdx = url.indexOf('#')
+    if (hashIdx !== -1) {
+      // Try to resolve GFM references to spec-md references.
+      const hashId = url.slice(hashIdx + 1)
+      const ref = options.biblio[hashId]
+      if (ref) return ref
+      const sectionRef = options.biblio['sec-' + hashId]
+      if (sectionRef) return sectionRef
+      const callRef = options.biblio[hashId + '()']
+      if (callRef) return callRef
+    }
+  }
+  return url
 }
 
 const ESCAPE_CODE_REGEX = /[><"'&]/g;

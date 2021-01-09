@@ -29,6 +29,31 @@
               "secID": null,
               "title": "Level #3",
               "contents": [
+                [
+                  {
+                    "type": "Section",
+                    "secID": null,
+                    "title": "Imported level 1",
+                    "contents": [
+                      {
+                        "type": "Section",
+                        "secID": null,
+                        "title": "Imported level 2",
+                        "contents": [
+                          {
+                            "type": "Paragraph",
+                            "contents": [
+                              {
+                                "type": "Text",
+                                "value": "This has been imported\n"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
                 {
                   "type": "Section",
                   "secID": null,
@@ -62,7 +87,53 @@
                                   "contents": [
                                     {
                                       "type": "Text",
-                                      "value": "This is a subsection\n"
+                                      "value": "This is a subsection"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Paragraph",
+                                  "contents": [
+                                    {
+                                      "type": "Text",
+                                      "value": "This links to "
+                                    },
+                                    {
+                                      "type": "Link",
+                                      "contents": [
+                                        {
+                                          "type": "Text",
+                                          "value": "Level 2"
+                                        }
+                                      ],
+                                      "url": "#Level-2"
+                                    },
+                                    {
+                                      "type": "Text",
+                                      "value": "."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Paragraph",
+                                  "contents": [
+                                    {
+                                      "type": "Text",
+                                      "value": "This links to "
+                                    },
+                                    {
+                                      "type": "Link",
+                                      "contents": [
+                                        {
+                                          "type": "Text",
+                                          "value": "Imported level 2"
+                                        }
+                                      ],
+                                      "url": "./imported.md#Imported-level-2"
+                                    },
+                                    {
+                                      "type": "Text",
+                                      "value": ".\n"
                                     }
                                   ]
                                 }
