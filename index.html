@@ -3,7 +3,8 @@
 <html>
 <head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>Spec Markdown</title>
-<style>:root {
+<style>
+:root {
   color: #333333;
   font-family: Cambria, "Palatino Linotype", Palatino, "Liberation Serif", serif;
   font-size: 15px;
@@ -450,7 +451,7 @@ footer {
 /* Code */
 
 pre, code {
-  font-family: Consolas, Monaco, monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: var(--mono-font-size);
   font-weight: inherit;
 }
@@ -877,7 +878,7 @@ var {
   content: '}]';
 }
 </style>
-<style>/* Copied from node_modules/prismjs/themes/prism.css */
+<style>
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -890,6 +891,7 @@ pre[class*="language-"] {
 	background: none;
 	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -956,7 +958,7 @@ pre[class*="language-"] {
 	color: #999;
 }
 
-.namespace {
+.token.namespace {
 	opacity: .7;
 }
 
@@ -984,7 +986,8 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-	color: #a67f59;
+	color: #9a6e3a;
+	/* This background color was intended by the author of this theme. */
 	background: hsla(0, 0%, 100%, .5);
 }
 
@@ -994,7 +997,8 @@ pre[class*="language-"] {
 	color: #07a;
 }
 
-.token.function {
+.token.function,
+.token.class-name {
 	color: #DD4A68;
 }
 
@@ -1140,13 +1144,13 @@ This is not a normative spec for Spec Markdown, but just documentation of this t
 <h1><span class="spec-secid" title="link to this section"><a href="#sec-Getting-Started">1</a></span>Getting Started</h1>
 <p>To use Spec Markdown, just write Markdown files. There are some conventions used by Spec Markdown which you can read about in <a href="#sec-Spec-Additions">Spec additions</a>.</p>
 <p>To convert your Markdown files into an HTML spec document, use the <code>spec-md</code> utility.</p>
-<pre><code>npm install -g spec-md
+<pre data-language="sh"><code>npm install -g spec-md
 spec-md ./path/to/markdown.md &gt; ./path/to/output.html
 </code></pre>
 <p>You can also require <code>spec-md</code> as a node module.</p>
-<pre><code>npm install --save-dev spec-md
+<pre data-language="sh"><code>npm install --save-dev spec-md
 </code></pre>
-<pre><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre data-language="js"><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> specMarkdown <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'spec-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 specMarkdown<span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span><span class="token string">'./path/to/markdown.md'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">html</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span><span class="token string">'./path/to/output.html'</span><span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1567,14 +1571,14 @@ You can also write <code>TK</code> in place of <code>TODO</code>, nerds.</div>
 const baz = foo(&quot;bar&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre data-language="js"><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You may also prefix your highlight function with &ldquo;raw&rdquo; if you want to avoid other tools, such as Prettier, from interpreting a code block.</p>
 <pre><code>```raw js
 const baz = foo(&quot;bar&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre data-language="js"><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <section id="sec-Examples" secid="3.7.1">
 <h3><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.7.1</a></span>Examples</h3>
@@ -1590,7 +1594,7 @@ const great = useOf.example(&quot;code&quot;);
 const great = useOf.example(&quot;code&quot;);
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-d7c75" class="spec-example"><a href="#example-d7c75">Example № 7</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre id="example-d7c75" class="spec-example" data-language="js"><a href="#example-d7c75">Example № 7</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 <section id="sec-Counter-Examples" secid="3.7.2">
@@ -1600,7 +1604,7 @@ const great = useOf.example(&quot;code&quot;);
 const shit = dontSwear();
 ```</code></pre>
 <p>Produces the following:</p>
-<pre id="example-4c929" class="spec-counter-example"><a href="#example-4c929">Counter Example № 8</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre id="example-4c929" class="spec-counter-example" data-language="js"><a href="#example-4c929">Counter Example № 8</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 </section>
@@ -1897,7 +1901,7 @@ TypeThree ::: `type` `three`
 <section id="sec-Quantifiers.Use-with-Non-Terminals" class="subsec">
 <h6><a href="#sec-Quantifiers.Use-with-Non-Terminals" title="link to this subsection">Use with Non-Terminals</a></h6>
 <p>Quantifiers also apply to non&#8208;terminal tokens with the same rules. For example:</p>
-<pre><code>UnionMembers :
+<pre data-language="markdown"><code>UnionMembers :
   <span class="token list punctuation">-</span> UnionMembers | NamedType
   - <span class="token code keyword">`|`</span>? NamedType
 </code></pre>
@@ -1907,7 +1911,7 @@ TypeThree ::: `type` `three`
 <div class="spec-rhs"><span class="spec-quantified"><span class="spec-t">|</span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 </div>
 <p>However, unquoted non&#8208;terminals may use the <code>*</code>, <code>?</code> and <code>+</code> characters, so always quote the terminal if the intent is to apply a quantifer.</p>
-<pre id="example-10052" class="spec-counter-example"><a href="#example-10052">Counter Example № 9</a><code>UnionMembers :
+<pre id="example-10052" class="spec-counter-example" data-language="markdown"><a href="#example-10052">Counter Example № 9</a><code>UnionMembers :
   <span class="token list punctuation">-</span> UnionMembers | NamedType
   <span class="token list punctuation">-</span> |? NamedType
 </code></pre>
@@ -2181,13 +2185,13 @@ TypeThree ::: `type` `three`
 <section id="sec-Using-Spec-Markdown" secid="A">
 <h1><span class="spec-secid" title="link to this section"><a href="#sec-Using-Spec-Markdown">A</a></span>Using Spec Markdown</h1>
 <p>If installed globally, using <code>spec-md</code> as a shell executable is the easiest way to use Spec Markdown. The <code>spec-md</code> executable expects a filepath to a Markdown document as input and outputs HTML on stdout. Use <code>&gt;</code> to write stdout to a file.</p>
-<pre><code>npm install -g spec-md
+<pre data-language="sh"><code>npm install -g spec-md
 spec-md ./path/to/markdown.md &gt; ./path/to/output.html
 </code></pre>
 <p>You can also require <code>spec-md</code> as a node module, after which you might add the <code>spec-md</code> command as a <a href="https://docs.npmjs.com/cli/run-script">node script</a>.</p>
-<pre><code>npm install --save-dev spec-md
+<pre data-language="sh"><code>npm install --save-dev spec-md
 </code></pre>
-<pre><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre data-language="js"><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> specMarkdown <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'spec-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 specMarkdown<span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span><span class="token string">'./path/to/markdown.md'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">html</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span><span class="token string">'./path/to/output.html'</span><span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2195,9 +2199,9 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 </code></pre>
 <p>The <code>spec-md</code> node module provides a few functions:</p>
 <ul>
-<li><span class="spec-call"><span data-name="html">html</span>(<var data-name="filePath">filePath</var>, <var data-name="options">options</var>)</span> takes a <var data-name="filepath">filepath</var> to a Markdown file and returns a Promise which will resolve to a beautified HTML string. This function is the primary usage of the <code>spec-md</code> module.</li>
+<li><span class="spec-call"><span data-name="html">html</span>(<var data-name="filePath">filePath</var>, <var data-name="options">options</var>)</span> takes a <var data-name="filepath">filepath</var> to a Markdown file and returns a Promise which will resolve to an HTML string. This function is the primary usage of the <code>spec-md</code> module.</li>
 <li><span class="spec-call"><span data-name="parse">parse</span>(<var data-name="filePath">filePath</var>)</span> takes a filepath and returns a Promise which will resolve to an AST <em>(Abstract Syntax Tree)</em> representing the contents of the Spec Markdown file, with all imports already inlined.</li>
-<li><span class="spec-call"><span data-name="print">print</span>(<var data-name="ast">ast</var>, <var data-name="options">options</var>)</span> takes an <var data-name="ast">ast</var> produced by parse() and returns a Promise which will resolve to a beautified HTML string.</li>
+<li><span class="spec-call"><span data-name="print">print</span>(<var data-name="ast">ast</var>, <var data-name="options">options</var>)</span> takes an <var data-name="ast">ast</var> produced by parse() and returns an HTML string.</li>
 <li><span class="spec-call"><span data-name="visit">visit</span>(<var data-name="ast">ast</var>, <var data-name="visitor">visitor</var>)</span> takes an <var data-name="ast">ast</var> and a <var data-name="visitor">visitor</var>. It walks over the <var data-name="ast">ast</var> in a depth&#8208;first&#8208;traversal calling the <var data-name="visitor">visitor</var> along the way.</li>
 </ul>
 <section id="sec-Print-Options" secid="A.1">
@@ -2211,7 +2215,7 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 <section id="sec-Hot-rebuilding-with-nodemon" secid="A.2">
 <h2><span class="spec-secid" title="link to this section"><a href="#sec-Hot-rebuilding-with-nodemon">A.2</a></span>Hot rebuilding with nodemon</h2>
 <p>The <code>spec-md</code> shell executable follows the <a href="http://www.faqs.org/docs/artu/ch01s06.html">Unix Philosophy</a> of doing one thing and doing it well. Try out <code>nodemon</code> to continuously rebuild the HTML output as you edit the markdown specification:</p>
-<pre><code>npm install -g nodemon
+<pre data-language="sh"><code>npm install -g nodemon
 nodemon --exec &quot;spec-md &gt; ./path/to/output.html&quot; ./path/to/markdown.md
 </code></pre>
 </section>
