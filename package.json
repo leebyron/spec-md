@@ -14,19 +14,21 @@
   "bin": "./bin/spec-md",
   "main": "./src/index.js",
   "scripts": {
-    "build": "pegjs --allowed-start-rules initialDocument,importedDocument src/grammar.pegjs",
+    "build": "mkdir -p src/generated && npm run build-peg && npm run build-js",
+    "build-peg": "pegjs --allowed-start-rules initialDocument,importedDocument src/grammar.pegjs src/generated/grammar.js",
+    "build-js": "cd src/client; for file in *.js; do terser -cm --toplevel \"$file\" > \"../generated/$file\"; done",
     "generate": "mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "test": "node ./test/runner.js",
-    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/grammar.js --exec 'npm run build && npm test'"
+    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/generated --exec 'npm run build && npm test'"
   },
   "dependencies": {
-    "prismjs": ">=1.23.0",
-    "terser": "^5.5.0"
+    "prismjs": "^1.23.0"
   },
   "devDependencies": {
     "jest-diff": "26.6.2",
     "nodemon": "2.0.7",
-    "pegjs": "~0.8.0"
+    "pegjs": "~0.8.0",
+    "terser": "5.5.1"
   },
   "engines": {
     "node": ">=10.14.2"

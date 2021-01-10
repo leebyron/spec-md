@@ -7444,7 +7444,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " to a Markdown file and returns a\n    Promise which will resolve to a beautified HTML string. This function is the\n    primary usage of the "
+                  "value": " to a Markdown file and returns\n    a Promise which will resolve to an HTML string. This function is the primary\n    usage of the "
                 },
                 {
                   "type": "InlineCode",
@@ -7515,7 +7515,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " produced by parse() and returns a\n    Promise which will resolve to a beautified HTML string."
+                  "value": " produced by parse() and returns an HTML\n    string."
                 }
               ]
             },

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const grammar = require('./grammar');
+const grammar = require('./generated/grammar');
 const visit = require('./visit');
 
 

@@ -26,14 +26,14 @@ specMarkdown.html('./path/to/markdown.md').then(html => {
 
 The `spec-md` node module provides a few functions:
 
-  * {html(filePath, options)} takes a {filepath} to a Markdown file and returns a
-    Promise which will resolve to a beautified HTML string. This function is the
-    primary usage of the `spec-md` module.
+  * {html(filePath, options)} takes a {filepath} to a Markdown file and returns
+    a Promise which will resolve to an HTML string. This function is the primary
+    usage of the `spec-md` module.
   * {parse(filePath)} takes a filepath and returns a Promise which will resolve
     to an AST *(Abstract Syntax Tree)* representing the contents of the Spec
     Markdown file, with all imports already inlined.
-  * {print(ast, options)} takes an {ast} produced by parse() and returns a
-    Promise which will resolve to a beautified HTML string.
+  * {print(ast, options)} takes an {ast} produced by parse() and returns an HTML
+    string.
   * {visit(ast, visitor)} takes an {ast} and a {visitor}. It walks over the {ast}
     in a depth-first-traversal calling the {visitor} along the way.
 
