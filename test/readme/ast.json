@@ -3610,7 +3610,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "\"one of\" can also be followed by a line break and multiple lines of tokens"
+                      "value": "\"one of\" can also be followed by a line break and multiple lines of tokens.\nTo improve legibility in other tools, each line may optionally begin with\na bullet."
                     }
                   ]
                 },
@@ -3620,7 +3620,7 @@
                   "lang": null,
                   "example": false,
                   "counter": false,
-                  "code": "Keyword : one of\n  break     do        in          typeof\n  case      else      instanceof  var\n  catch     export    new         void\n  class     extends   return      while\n  const     finally   super       with\n  continue  for       switch      yield\n  debugger  function  this\n  default   if        throw\n  delete    import    try\n"
+                  "code": "Keyword : one of\n  - break     do        in          typeof\n  - case      else      instanceof  var\n  - catch     export    new         void\n  - class     extends   return      while\n  - const     finally   super       with\n  - continue  for       switch      yield\n  - debugger  function  this\n  - default   if        throw\n  - delete    import    try\n"
                 },
                 {
                   "type": "Paragraph",

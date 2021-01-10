@@ -568,7 +568,7 @@ variable = name:localName {
 
 // Grammar productions
 
-semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ tokens:tokens steps:list {
+semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ !'one of' tokens:tokens steps:list {
   return {
     type: 'Semantic',
     name: name,
@@ -592,14 +592,14 @@ production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRH
 
 productionRHS = oneOfRHS / singleRHS / listRHS
 
-oneOfRHS = !(LINE listBullet) __ 'one of' rows:(_ NL? (_ token)+)+ {
+oneOfRHS = !(LINE listBullet) __ 'one of' WB rows:(_ (NL _ listBullet?)? (_ token)+)+ {
   return {
     type: 'OneOfRHS',
     rows: rows.map(row => row[2].map(tokens => tokens[1]))
   };
 }
 
-singleRHS = !(LINE listBullet) __ condition:(condition __)? tokens:tokens {
+singleRHS = !(LINE listBullet / 'one of') __ condition:(condition __)? tokens:tokens {
   return {
     type: 'RHS',
     condition: condition ? condition[0] : null,
