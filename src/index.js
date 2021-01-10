@@ -3,7 +3,7 @@ const parse = require('./parse');
 const visit = require('./visit');
 
 async function html(filepath, options) {
-  return await print(parse(filepath), options);
+  return print(await parse(filepath), options);
 }
 
 exports.html = html;
