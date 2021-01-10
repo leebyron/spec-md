@@ -2,7 +2,6 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const prism = require('prismjs');
-const terser = require('terser');
 const visit = require('./visit');
 
 function print(ast, _options) {
