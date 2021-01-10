@@ -76,7 +76,7 @@
                   "value": "Spec additions"
                 }
               ],
-              "url": "./spec/Spec%20Additions#Spec-Additions"
+              "url": "./spec/Spec%20Additions.md#Spec-Additions"
             },
             {
               "type": "Text",
@@ -157,7 +157,7 @@
                   "value": "Using Spec Markdown"
                 }
               ],
-              "url": "./spec/Usage/#Using-Spec-Markdown"
+              "url": "./spec/Usage.md#Using-Spec-Markdown"
             },
             {
               "type": "Text",
