@@ -1,6 +1,6 @@
 {
   "name": "spec-md",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "author": "Lee Byron <lee@leebyron.com> (http://leebyron.com/)",
   "license": "MIT",
   "homepage": "https://spec-md.com",
@@ -11,7 +11,9 @@
     "type": "git",
     "url": "git@github.com:leebyron/spec-md.git"
   },
-  "bin": "./bin/spec-md",
+  "bin": {
+    "spec-md": "bin/spec-md"
+  },
   "main": "./src/index.js",
   "scripts": {
     "build": "mkdir -p src/generated && npm run build-peg && npm run build-js",
