@@ -496,33 +496,35 @@ Produces the following:
 AssignmentOperator : one of *= `/=` %= += -= <<= >>= >>>= &= ^= |=
 
 
-"one of" can also be followed by a line break and multiple lines of tokens
+"one of" can also be followed by a line break and multiple lines of tokens.
+To improve legibility in other tools, each line may optionally begin with
+a bullet.
 
 ```
 Keyword : one of
-  break     do        in          typeof
-  case      else      instanceof  var
-  catch     export    new         void
-  class     extends   return      while
-  const     finally   super       with
-  continue  for       switch      yield
-  debugger  function  this
-  default   if        throw
-  delete    import    try
+  - break     do        in          typeof
+  - case      else      instanceof  var
+  - catch     export    new         void
+  - class     extends   return      while
+  - const     finally   super       with
+  - continue  for       switch      yield
+  - debugger  function  this
+  - default   if        throw
+  - delete    import    try
 ```
 
 Produces the following:
 
 Keyword : one of
-  break     do        in          typeof
-  case      else      instanceof  var
-  catch     export    new         void
-  class     extends   return      while
-  const     finally   super       with
-  continue  for       switch      yield
-  debugger  function  this
-  default   if        throw
-  delete    import    try
+  - break     do        in          typeof
+  - case      else      instanceof  var
+  - catch     export    new         void
+  - class     extends   return      while
+  - const     finally   super       with
+  - continue  for       switch      yield
+  - debugger  function  this
+  - default   if        throw
+  - delete    import    try
 
 
 ### Non Terminal Token
