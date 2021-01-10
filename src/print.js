@@ -474,6 +474,7 @@ function printAll(list, options) {
             '<pre' +
               (node.id ? ' id="' + node.id + '"' : '') +
               (node.counter ? ' class="spec-counter-example"' : node.example ? ' class="spec-example"' : '') +
+              (node.lang ? ' data-language="' + node.lang + '"' : '') +
             '>' +
             (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
             '<code>' +
