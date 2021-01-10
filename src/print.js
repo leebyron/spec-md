@@ -5,7 +5,7 @@ const prism = require('prismjs');
 const terser = require('terser');
 const visit = require('./visit');
 
-async function print(ast, _options) {
+function print(ast, _options) {
   const options = {
     highlight: _options && _options.highlight || highlight,
     biblio: _options && _options.biblio && buildBiblio(_options.biblio) || {},
@@ -18,8 +18,8 @@ async function print(ast, _options) {
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md https://spec-md.com -->\n' +
     '<html>\n' +
-      '<head>' + await printHead(ast, options) + '</head>\n' +
-      '<body>' + await printBody(ast, options) + '</body>\n' +
+      '<head>' + printHead(ast, options) + '</head>\n' +
+      '<body>' + printBody(ast, options) + '</body>\n' +
     '</html>\n'
   );
 };
@@ -84,20 +84,20 @@ function loadAllLanguages() {
   }
 }
 
-async function printHead(ast, options) {
+function printHead(ast, options) {
   return (
     '<meta charset="utf-8">\n' +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
-    '<style>' + readStatic('spec.css') + '</style>\n' +
-    '<style>' + readStatic('prism.css') + '</style>\n' +
-    await execStaticJS('highlightName.js') +
-    await execStaticJS('linkSelections.js') +
+    '<style>\n' + readStatic('client/spec.css') + '</style>\n' +
+    '<style>\n' + readPrismCSS() + '</style>\n' +
+    execStaticJS('generated/highlightName.js') +
+    execStaticJS('generated/linkSelections.js') +
     options.head
   );
 }
 
-async function printBody(ast, options) {
+function printBody(ast, options) {
   return (
     '<article>\n' +
       '<header>\n' +
@@ -111,7 +111,7 @@ async function printBody(ast, options) {
     '<footer>\n' +
       'Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.' +
     '</footer>\n' +
-    await printSidebar(ast, options)
+    printSidebar(ast, options)
   );
 }
 
@@ -338,7 +338,7 @@ function printTOC(ast, options) {
 
 // Sidebar
 
-async function printSidebar(ast, options) {
+function printSidebar(ast, options) {
   const sections = ast.contents.filter(content => content.type === 'Section');
 
   const items = visit(sections, {
@@ -375,7 +375,7 @@ async function printSidebar(ast, options) {
         '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>\n' +
         '<ol>' + join(items) + '</ol>\n' +
       '</div>\n' +
-      await execStaticJS('sidebar.js') +
+      execStaticJS('generated/sidebar.js') +
     '</div>\n'
   );
 }
@@ -857,13 +857,21 @@ function formatText(text) {
   );
 }
 
-async function execStaticJS(filename) {
-  const minified = await terser.minify(readStatic(filename), { toplevel: true })
-  return '<script>(function(){' + minified.code + '})()</script>\n';
+function execStaticJS(filename) {
+  const contents = readStatic(filename);
+  return '<script>(function(){' + contents.trim() + '})()</script>\n';
 }
 
 function readStatic(filename) {
-  return fs.readFileSync(path.join(__dirname, '../static/', filename), 'utf8');
+  return fs.readFileSync(path.join(__dirname, filename), 'utf8');
+}
+
+function readPrismCSS() {
+  const filename = path.join(
+    path.dirname(require.resolve('prismjs')),
+    'themes/prism.css'
+  );
+  return fs.readFileSync(filename, 'utf8');
 }
 
 function stableCodeHash(code) {

@@ -445,7 +445,7 @@ footer {
 /* Code */
 
 pre, code {
-  font-family: Consolas, Monaco, monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: var(--mono-font-size);
   font-weight: inherit;
 }
