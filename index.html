@@ -1171,23 +1171,11 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 <p>Markdown makes use of certain characters to format text, in order to render one explicitly, place a backslash before it.</p>
 <p>You can type *literal asterisks* instead of emphasis by typing <code>\*literal asterisks\*</code>.</p>
 <p>Escaping does not apply within code.</p>
-<p>Spec Markdown provides backslash escapes for the following characters:</p>
-<pre><code>\   backslash
-`   backtick
-*   asterisk
-_   underscore
-{}  curly braces
-[]  square brackets
-()  parentheses
-#   hash mark
-+   plus sign
--   minus sign (hyphen)
-.   dot
-!   exclamation mark
-&lt;   less-than    &lt;-- added in Spec Markdown
-&gt;   greater-than &lt;-- added in Spec Markdown
-|   pipe         &lt;-- added in Spec Markdown
+<p>Spec Markdown allows backslash escapes for any ASCII punctuation character.</p>
+<pre><code>\!\&quot;\#\$\%\&amp;\&#x27;\(\)\*\+\,\-\.\/\:\;\&lt;\=\&gt;\?\@\[\\\]\^\_\`\{\|\}\~
 </code></pre>
+<p>Produces the following:</p>
+<p>!&rdquo;#$%&&rsquo;()*+,-./:;&hArr;?@[\]^_`{|}~</p>
 </section>
 </section>
 <section id="sec-Inline-formatting" secid="2.2">
