@@ -20,8 +20,9 @@
     "build-peg": "pegjs --allowed-start-rules initialDocument,importedDocument src/grammar.pegjs src/generated/grammar.js",
     "build-js": "cd src/client; for file in *.js; do terser -cm --toplevel \"$file\" > \"../generated/$file\"; done",
     "generate": "mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
-    "test": "node ./test/runner.js",
-    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/generated --exec 'npm run build && npm test'"
+    "test": "npm run build && node ./test/runner.js",
+    "record-test": "RECORD=1 npm test",
+    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/generated --exec 'npm test'"
   },
   "dependencies": {
     "prismjs": "^1.23.0"

@@ -26,26 +26,15 @@ You can type \*literal asterisks\* instead of emphasis by typing
 
 Escaping does not apply within code.
 
-Spec Markdown provides backslash escapes for the following characters:
+Spec Markdown allows backslash escapes for any ASCII punctuation character.
 
 ```
-\   backslash
-`   backtick
-*   asterisk
-_   underscore
-{}  curly braces
-[]  square brackets
-()  parentheses
-#   hash mark
-+   plus sign
--   minus sign (hyphen)
-.   dot
-!   exclamation mark
-<   less-than    <-- added in Spec Markdown
->   greater-than <-- added in Spec Markdown
-|   pipe         <-- added in Spec Markdown
+\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~
 ```
 
+Produces the following:
+
+\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~
 
 ## Inline formatting
 
