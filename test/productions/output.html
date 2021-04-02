@@ -1075,6 +1075,22 @@ pre[class*="language-"] {
 <div class="spec-production" id="PBJ">
 <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-constrained"><span class="spec-nt"><span data-name="Condiment">Condiment</span></span><span class="spec-butnot"><span class="spec-nt"><span data-name="Ketchup">Ketchup</span></span><span class="spec-nt"><span data-name="Mustard">Mustard</span></span></span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
+<p>Multiple definitions can have a newline after it</p>
+<div class="spec-production" id="PBJ">
+<span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
+<div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
+</div>
+<p>One of can have a newline after it</p>
+<div class="spec-production" id="Punc">
+<span class="spec-nt"><a href="#Punc" data-name="Punc">Punc</a></span><div class="spec-oneof"><div class="spec-oneof-grid"><table>
+<tr>
+<td class="spec-rhs"><span class="spec-t">.</span></td></tr>
+<tr>
+<td class="spec-rhs"><span class="spec-t">!</span></td></tr>
+<tr>
+<td class="spec-rhs"><span class="spec-t">?</span></td></tr>
+</table></div></div>
+</div>
 </section>
 <section id="sec-Algorithms" secid="2">
 <h1><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">2</a></span>Algorithms</h1>
@@ -1103,7 +1119,7 @@ pre[class*="language-"] {
 </ol>
 </div>
 </section>
-<section id="index" secid="index" class="spec-index"><h1><span class="spec-secid" title="link to the index"><a href="#index">§</a></span>Index</h1><ol><li><a href="#Algo()">Algo</a></li><li><a href="#PBJ">PBJ</a></li><li><a href="#Sandwich">Sandwich</a></li></ol></section></article>
+<section id="index" secid="index" class="spec-index"><h1><span class="spec-secid" title="link to the index"><a href="#index">§</a></span>Index</h1><ol><li><a href="#Algo()">Algo</a></li><li><a href="#PBJ">PBJ</a></li><li><a href="#Punc">Punc</a></li><li><a href="#Sandwich">Sandwich</a></li></ol></section></article>
 <footer>
 Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</footer>
 <input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden /><label for="spec-sidebar-toggle" aria-hidden><div class="spec-sidebar-button">&#x2630;</div></label>

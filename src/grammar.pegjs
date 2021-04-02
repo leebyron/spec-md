@@ -616,10 +616,10 @@ production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRH
 
 productionRHS = oneOfRHS / singleRHS / listRHS
 
-oneOfRHS = !(LINE listBullet) __ 'one of' WB rows:(_ (NL _ listBullet?)? (_ token)+)+ {
+oneOfRHS = !(LINE listBullet) __ 'one of' WB rows:((LINE listBullet / __)? (_ token)+)+ {
   return {
     type: 'OneOfRHS',
-    rows: rows.map(row => row[2].map(tokens => tokens[1]))
+    rows: rows.map(row => row[1].map(tokens => tokens[1]))
   };
 }
 

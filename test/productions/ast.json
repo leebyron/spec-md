@@ -490,6 +490,122 @@
               }
             ]
           }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Multiple definitions can have a newline after it"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "PBJ",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "PeanutButter",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Jelly",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              },
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "PeanutButter",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Jelly",
+                    "params": null
+                  },
+                  {
+                    "type": "NonTerminal",
+                    "name": "Bread",
+                    "params": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "One of can have a newline after it"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "Punc",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "OneOfRHS",
+            "rows": [
+              [
+                {
+                  "type": "Terminal",
+                  "value": "."
+                }
+              ],
+              [
+                {
+                  "type": "Terminal",
+                  "value": "!"
+                }
+              ],
+              [
+                {
+                  "type": "Terminal",
+                  "value": "?"
+                }
+              ]
+            ]
+          }
         }
       ]
     },
