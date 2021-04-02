@@ -516,12 +516,12 @@ function printAll(list, options) {
           return (
             '<table>\n' +
               '<thead><tr>\n' +
-                join(node.headers.map(cell => '<th>' + join(cell).trim() + '</th>\n')) +
+                join(node.headers.map(cell => '<th>' + join(cell) + '</th>\n')) +
               '</tr></thead>\n' +
               '<tbody>\n' +
                 join(node.rows.map(row =>
                   '<tr>\n' +
-                    join(row.map(cell => '<td>' + join(cell).trim() + '</td>')) +
+                    join(row.map(cell => '<td>' + join(cell) + '</td>')) +
                   '</tr>\n'
                 )) +
               '</tbody>\n' +

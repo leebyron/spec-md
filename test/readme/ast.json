@@ -2207,19 +2207,19 @@
                     [
                       {
                         "type": "Text",
-                        "value": "This "
+                        "value": "This"
                       }
                     ],
                     [
                       {
                         "type": "Text",
-                        "value": "is a "
+                        "value": "is a"
                       }
                     ],
                     [
                       {
                         "type": "Text",
-                        "value": "table "
+                        "value": "table"
                       }
                     ]
                   ],
@@ -2228,19 +2228,19 @@
                       [
                         {
                           "type": "Text",
-                          "value": "key  "
+                          "value": "key"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "val  "
+                          "value": "val"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "etc   "
+                          "value": "etc"
                         }
                       ]
                     ]
