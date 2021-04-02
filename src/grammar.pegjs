@@ -659,13 +659,13 @@ tokens = first:token rest:(__ token:token)* {
   return [first].concat(rest.map(nodes => nodes[1]));
 }
 
-token = token:unconstrainedToken quantifier:('+' / '?' / '*')? constraint:(__ constraint)? {
+token = token:unconstrainedToken quantifier:('\\'? ('+' / '?' / '*'))? constraint:(__ constraint)? {
   if (quantifier) {
     token = {
       type: 'Quantified',
       token: token,
-      isList: quantifier === '+' || quantifier === '*',
-      isOptional: quantifier === '?' || quantifier === '*'
+      isList: quantifier[1] === '+' || quantifier[1] === '*',
+      isOptional: quantifier[1] === '?' || quantifier[1] === '*'
     };
   }
   if (constraint) {
