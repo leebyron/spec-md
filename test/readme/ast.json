@@ -318,7 +318,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec Markdown provides backslash escapes for the following characters:"
+                      "value": "Spec Markdown allows backslash escapes for any ASCII punctuation character."
                     }
                   ]
                 },
@@ -328,7 +328,25 @@
                   "lang": null,
                   "example": false,
                   "counter": false,
-                  "code": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n+   plus sign\n-   minus sign (hyphen)\n.   dot\n!   exclamation mark\n<   less-than    <-- added in Spec Markdown\n>   greater-than <-- added in Spec Markdown\n|   pipe         <-- added in Spec Markdown\n"
+                  "code": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n"
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Produces the following:"
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+                    }
+                  ]
                 }
               ]
             }

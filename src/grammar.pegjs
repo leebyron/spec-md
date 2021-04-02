@@ -13,7 +13,8 @@
   }
 
   function unescape(text) {
-    return text.replace(/\\([\\`*_{}[\]()#+\-.!<>|$])/g, '$1');
+    // Any ASCII punctuation character may be backslash-escaped
+    return text.replace(/\\([\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E])/g, '$1');
   }
 
   let htmlBlockName;
@@ -241,7 +242,8 @@ paragraph = BLOCK !'#' !subsectionHeader contents:content+ {
   };
 }
 
-escaped  = '\\' [\\`*_{}[\]()#+\-.!<>|]
+// Any ASCII punctuation character may be backslash-escaped
+escaped  = '\\' [\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]
 inlineEntity = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag
 
 content = inlineEntity / text
@@ -330,11 +332,32 @@ reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
   return ref;
 }
 
-inlineCode = '`' code:$[^`\n\r]+ '`' {
+inlineCode = code:(inlineCode1 / inlineCode2 / inlineCode3) {
+  // https://spec.commonmark.org/0.29/#code-spans
+  code = code.replace(/\r\n|\r|\n/g, ' ')
+  if (code.startsWith(' ') && code.endsWith(' ') && !code.match(/^\s+$/)) {
+    code = code.slice(1, -1)
+  }
   return {
     type: 'InlineCode',
     code: code
   };
+}
+
+backTick1 = '`' !'`'
+backTick2 = '``' !'`'
+backTick3 = '```' !'`'
+
+inlineCode1 = backTick1 code:$(!backTick1 ('`'+ / .))+ backTick1 {
+  return code
+}
+
+inlineCode2 = backTick2 code:$(!backTick2 ('`'+ / .))+ backTick2 {
+  return code
+}
+
+inlineCode3 = backTick3 code:$(!backTick3 ('`'+ / .))+ backTick3 {
+  return code
 }
 
 blockCode = BLOCK '```' raw:('raw' WB _)? deprecatedCounterExample:'!'? lang:codeLang? _ example:('example'/'counter-example')? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' {
@@ -381,7 +404,7 @@ link = '[' contents:linkContent* ']' _ '(' _ url:$[^)]+ _ ')' {
 linkContent = inlineEntity / linkText
 
 linkTextChar = escaped
-             / [^\]\n\r+\-{`*!<]
+             / [^\]\n\r+\-{\x60*!<] // \x60 = "`"
              / '++' !'}'
              / '+' !'+}'
              / '--' !'}'
@@ -485,7 +508,7 @@ tableCell = contents:tableCellContent+ {
 tableCellContent = inlineEntity / tableCellText
 
 tableCellTextChar = escaped
-                  / [^|\n\r+\-{`*[!<]
+                  / [^|\n\r+\-{\x60*[!<] // \x60 = "`"
                   / '++' !'}'
                   / '+' !'+}'
                   / '--' !'}'
@@ -547,7 +570,8 @@ stringLiteral = '"' value:$('\\"'/[^"\n\r])* closer:'"'? {
   }
   return {
     type: 'StringLiteral',
-    value: '"' + unescape(value) + '"'
+    // Unescape all but quote characters within a string literal.
+    value: '"' + unescape(value).replace(/"/g, '\\"') + '"'
   };
 }
 
@@ -738,17 +762,17 @@ regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
   };
 }
 
-quotedTerminal = '`' value:$(([^`\n] / ('\\`'))+)? closer:'`' {
-  if (value === null || closer === null) {
+quotedTerminal = inlineCode:inlineCode {
+  if (inlineCode.code.length === 0) {
     error('Malformed quoted terminal');
   }
   return {
     type: 'Terminal',
-    value: unescape(value)
+    value: inlineCode.code
   };
 }
 
-terminal = value:$(([^ \n"/`] [^ \n"\`,\]\}]*)) {
+terminal = value:$([^ \n"/`] [^ \n"\`,\]\}]*) {
   return {
     type: 'Terminal',
     value: unescape(value)

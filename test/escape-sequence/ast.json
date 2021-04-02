@@ -109,10 +109,63 @@
                         "value": "\"string _ \\\" literal\""
                       }
                     ]
-                  },
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Plain "
+            },
+            {
+              "type": "InlineCode",
+              "code": "code literals don't allow \\\" escapes\\"
+            }
+          ]
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "LiteralBackticks",
+            "params": null
+          },
+          "defType": 1,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
                   {
-                    "type": "Text",
-                    "value": "\n"
+                    "type": "Terminal",
+                    "value": "`"
+                  }
+                ]
+              },
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "Terminal",
+                    "value": "``"
+                  }
+                ]
+              },
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "Terminal",
+                    "value": "```"
                   }
                 ]
               }
