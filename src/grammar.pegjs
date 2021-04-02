@@ -13,7 +13,7 @@
   }
 
   function unescape(text) {
-    return text.replace(/\\([\\`*_{}[\]()#+\-.!<>|])/g, '$1');
+    return text.replace(/\\([\\`*_{}[\]()#+\-.!<>|$])/g, '$1');
   }
 
   let htmlBlockName;
