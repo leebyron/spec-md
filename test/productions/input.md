@@ -73,6 +73,21 @@ PBJ: Bread
   Mustard
   Bread
 
+Multiple definitions can have a newline after it
+
+PBJ:
+
+  - Bread PeanutButter Jelly Bread
+  - Bread PeanutButter Jelly Bread
+
+One of can have a newline after it
+
+Punc: one of
+
+  - `.`
+  - `!`
+  - `?`
+
 # Algorithms
 
 An algoritm can have no args

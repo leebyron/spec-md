@@ -616,10 +616,10 @@ production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRH
 
 productionRHS = oneOfRHS / singleRHS / listRHS
 
-oneOfRHS = !(LINE listBullet) __ 'one of' WB NL_NO_BULLET? rows:(__ (NL _ listBullet?)? (_ token)+)+ {
+oneOfRHS = !(LINE listBullet) __ 'one of' WB rows:((LINE listBullet / __)? (_ token)+)+ {
   return {
     type: 'OneOfRHS',
-    rows: rows.map(row => row[2].map(tokens => tokens[1]))
+    rows: rows.map(row => row[1].map(tokens => tokens[1]))
   };
 }
 
@@ -807,7 +807,6 @@ DEDENT = &lineStart !{ indentStack.length === 0 } {
 NL = '\n' / '\r' / '\r\n'
 NOT_NL = [^\n\r]
 SINGLE_NL = NL !(NL / _ listBullet)
-NL_NO_BULLET = NL !(_ listBullet)
 _ = ' '*
 // Skips over whitespace including a single newline. Do not use more than once
 // in a row, otherwise multiple NL will be skipped.
