@@ -5671,19 +5671,19 @@
                         [
                           {
                             "type": "Text",
-                            "value": "Escaped Character "
+                            "value": "Escaped Character"
                           }
                         ],
                         [
                           {
                             "type": "Text",
-                            "value": "Code Unit Value "
+                            "value": "Code Unit Value"
                           }
                         ],
                         [
                           {
                             "type": "Text",
-                            "value": "Character Name               "
+                            "value": "Character Name"
                           }
                         ]
                       ],
@@ -5693,22 +5693,18 @@
                             {
                               "type": "InlineCode",
                               "code": "\""
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+0022          "
+                              "value": "U+0022"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "double quote                 "
+                              "value": "double quote"
                             }
                           ]
                         ],
@@ -5717,22 +5713,18 @@
                             {
                               "type": "InlineCode",
                               "code": "\\"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+005C          "
+                              "value": "U+005C"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "reverse solidus (back slash) "
+                              "value": "reverse solidus (back slash)"
                             }
                           ]
                         ],
@@ -5741,22 +5733,18 @@
                             {
                               "type": "InlineCode",
                               "code": "/"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+002F          "
+                              "value": "U+002F"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "solidus (forward slash)      "
+                              "value": "solidus (forward slash)"
                             }
                           ]
                         ],
@@ -5765,22 +5753,18 @@
                             {
                               "type": "InlineCode",
                               "code": "b"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+0008          "
+                              "value": "U+0008"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "backspace                    "
+                              "value": "backspace"
                             }
                           ]
                         ],
@@ -5789,22 +5773,18 @@
                             {
                               "type": "InlineCode",
                               "code": "f"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+000C          "
+                              "value": "U+000C"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "form feed                    "
+                              "value": "form feed"
                             }
                           ]
                         ],
@@ -5813,22 +5793,18 @@
                             {
                               "type": "InlineCode",
                               "code": "n"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+000A          "
+                              "value": "U+000A"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "line feed (new line)         "
+                              "value": "line feed (new line)"
                             }
                           ]
                         ],
@@ -5837,22 +5813,18 @@
                             {
                               "type": "InlineCode",
                               "code": "r"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+000D          "
+                              "value": "U+000D"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "carriage return              "
+                              "value": "carriage return"
                             }
                           ]
                         ],
@@ -5861,22 +5833,18 @@
                             {
                               "type": "InlineCode",
                               "code": "t"
-                            },
-                            {
-                              "type": "Text",
-                              "value": "               "
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "U+0009          "
+                              "value": "U+0009"
                             }
                           ],
                           [
                             {
                               "type": "Text",
-                              "value": "horizontal tab               "
+                              "value": "horizontal tab"
                             }
                           ]
                         ]
@@ -15780,13 +15748,13 @@
                     [
                       {
                         "type": "Text",
-                        "value": "Literal Value            "
+                        "value": "Literal Value"
                       }
                     ],
                     [
                       {
                         "type": "Text",
-                        "value": "Variables               "
+                        "value": "Variables"
                       }
                     ],
                     [
@@ -15802,20 +15770,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: \"abc\", b: 123 }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -15830,20 +15790,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: null, b: 123 }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "    "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -15858,20 +15810,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ b: 123 }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "             "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -15886,20 +15830,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: $var, b: 123 }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "    "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{ var: null }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "         "
                         }
                       ],
                       [
@@ -15914,20 +15850,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: $var, b: 123 }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "    "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -15942,20 +15870,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ b: $var }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "            "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{ var: 123 }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "          "
                         }
                       ],
                       [
@@ -15970,20 +15890,12 @@
                         {
                           "type": "InlineCode",
                           "code": "$var"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                   "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{ var: { b: 123 } }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
@@ -15998,20 +15910,12 @@
                         {
                           "type": "InlineCode",
                           "code": "\"abc123\""
-                        },
-                        {
-                          "type": "Text",
-                          "value": "               "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -16026,20 +15930,12 @@
                         {
                           "type": "InlineCode",
                           "code": "$var"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                   "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{ var: \"abc123\" }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
@@ -16054,20 +15950,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: \"abc\", b: \"123\" }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -16086,20 +15974,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: \"abc\" }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -16118,20 +15998,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ b: $var }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "            "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -16154,20 +16026,12 @@
                         {
                           "type": "InlineCode",
                           "code": "$var"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                   "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{ var: { a: \"abc\" } }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " "
                         }
                       ],
                       [
@@ -16186,20 +16050,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ a: \"abc\", b: null }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "  "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -16222,20 +16078,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ b: $var }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "            "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{ var: null }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "         "
                         }
                       ],
                       [
@@ -16258,20 +16106,12 @@
                         {
                           "type": "InlineCode",
                           "code": "{ b: 123, c: \"xyz\" }"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "{}"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "                    "
                         }
                       ],
                       [
@@ -16703,13 +16543,13 @@
                     [
                       {
                         "type": "Text",
-                        "value": "Expected Type "
+                        "value": "Expected Type"
                       }
                     ],
                     [
                       {
                         "type": "Text",
-                        "value": "Provided Value   "
+                        "value": "Provided Value"
                       }
                     ],
                     [
@@ -16725,20 +16565,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, 3]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
@@ -16753,20 +16585,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, \"b\", true]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " "
                         }
                       ],
                       [
@@ -16781,20 +16605,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "1"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "              "
                         }
                       ],
                       [
@@ -16809,20 +16625,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
@@ -16837,20 +16645,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[[Int]]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[[1], [2, 3]]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "  "
                         }
                       ],
                       [
@@ -16865,20 +16665,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[[Int]]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, 3]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
@@ -16893,20 +16685,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[[Int]]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "1"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "              "
                         }
                       ],
                       [
@@ -16921,20 +16705,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[[Int]]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
@@ -17296,13 +17072,13 @@
                     [
                       {
                         "type": "Text",
-                        "value": "Expected Type "
+                        "value": "Expected Type"
                       }
                     ],
                     [
                       {
                         "type": "Text",
-                        "value": "Internal Value   "
+                        "value": "Internal Value"
                       }
                     ],
                     [
@@ -17318,20 +17094,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, 3]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
@@ -17346,20 +17114,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
@@ -17374,20 +17134,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, null]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
@@ -17402,20 +17154,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "       "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, Error]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "  "
                         }
                       ],
                       [
@@ -17434,20 +17178,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, 3]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
@@ -17462,20 +17198,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
@@ -17490,20 +17218,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, null]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
@@ -17518,20 +17238,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, Error]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "  "
                         }
                       ],
                       [
@@ -17550,20 +17262,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, 3]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
@@ -17578,20 +17282,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
@@ -17606,20 +17302,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, null]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
@@ -17638,20 +17326,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, Error]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "  "
                         }
                       ],
                       [
@@ -17670,20 +17350,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, 3]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "      "
                         }
                       ],
                       [
@@ -17698,20 +17370,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "           "
                         }
                       ],
                       [
@@ -17726,20 +17390,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, null]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "   "
                         }
                       ],
                       [
@@ -17754,20 +17410,12 @@
                         {
                           "type": "InlineCode",
                           "code": "[Int!]!"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "     "
                         }
                       ],
                       [
                         {
                           "type": "InlineCode",
                           "code": "[1, 2, Error]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "  "
                         }
                       ],
                       [
@@ -37522,13 +37170,13 @@
                     [
                       {
                         "type": "Text",
-                        "value": "GraphQL Value "
+                        "value": "GraphQL Value"
                       }
                     ],
                     [
                       {
                         "type": "Text",
-                        "value": "JSON Value        "
+                        "value": "JSON Value"
                       }
                     ]
                   ],
@@ -37537,13 +37185,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "Map           "
+                          "value": "Map"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "Object            "
+                          "value": "Object"
                         }
                       ]
                     ],
@@ -37551,13 +37199,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "List          "
+                          "value": "List"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "Array             "
+                          "value": "Array"
                         }
                       ]
                     ],
@@ -37565,17 +37213,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "Null          "
+                          "value": "Null"
                         }
                       ],
                       [
                         {
                           "type": "Keyword",
                           "value": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "            "
                         }
                       ]
                     ],
@@ -37583,13 +37227,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "String        "
+                          "value": "String"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "String            "
+                          "value": "String"
                         }
                       ]
                     ],
@@ -37597,7 +37241,7 @@
                       [
                         {
                           "type": "Text",
-                          "value": "Boolean       "
+                          "value": "Boolean"
                         }
                       ],
                       [
@@ -37612,10 +37256,6 @@
                         {
                           "type": "Keyword",
                           "value": "false"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " "
                         }
                       ]
                     ],
@@ -37623,13 +37263,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "Int           "
+                          "value": "Int"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "Number            "
+                          "value": "Number"
                         }
                       ]
                     ],
@@ -37637,13 +37277,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "Float         "
+                          "value": "Float"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "Number            "
+                          "value": "Number"
                         }
                       ]
                     ],
@@ -37651,13 +37291,13 @@
                       [
                         {
                           "type": "Text",
-                          "value": "Enum Value    "
+                          "value": "Enum Value"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "String            "
+                          "value": "String"
                         }
                       ]
                     ]

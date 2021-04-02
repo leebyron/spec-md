@@ -508,7 +508,8 @@ tableCell = contents:tableCellContent+ {
 tableCellContent = inlineEntity / tableCellText
 
 tableCellTextChar = escaped
-                  / [^|\n\r+\-{\x60*[!<] // \x60 = "`"
+                  / [^ |\n\r+\-{\x60*[!<] // \x60 = "`"
+                  / ' '+ ![ |\n\r] // Do not capture trailing space in a cell
                   / '++' !'}'
                   / '+' !'+}'
                   / '--' !'}'
