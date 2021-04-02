@@ -18,3 +18,7 @@ LiteralBackticks:
   - `` ` ``
   - ``` `` ```
   - ` ``` `
+
+EscapesInQuantifiers ::
+
+- OneOrMore\+ ZeroOrMore\* Optional\?

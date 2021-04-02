@@ -171,6 +171,56 @@
               }
             ]
           }
+        },
+        {
+          "type": "Production",
+          "token": {
+            "type": "NonTerminal",
+            "name": "EscapesInQuantifiers",
+            "params": null
+          },
+          "defType": 2,
+          "rhs": {
+            "type": "ListRHS",
+            "defs": [
+              {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "Quantified",
+                    "token": {
+                      "type": "NonTerminal",
+                      "name": "OneOrMore",
+                      "params": null
+                    },
+                    "isList": true,
+                    "isOptional": false
+                  },
+                  {
+                    "type": "Quantified",
+                    "token": {
+                      "type": "NonTerminal",
+                      "name": "ZeroOrMore",
+                      "params": null
+                    },
+                    "isList": true,
+                    "isOptional": true
+                  },
+                  {
+                    "type": "Quantified",
+                    "token": {
+                      "type": "NonTerminal",
+                      "name": "Optional",
+                      "params": null
+                    },
+                    "isList": false,
+                    "isOptional": true
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     }
