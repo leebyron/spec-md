@@ -15,7 +15,8 @@ async function parse(filepath) {
 function readFile(filepath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filepath, { encoding: 'utf8' }, (err, result) =>
-      err ? reject(err) : resolve(result)
+      // Normalize line endings
+      err ? reject(err) : resolve(result.replace(/\r\n|\n|\r/g, '\n'))
     );
   });
 }
@@ -44,7 +45,7 @@ function parseSpecMD(filepath, source, startRule) {
     if (error && error.location) {
       error.filepath = filepath;
       error.source = source;
-      const lines = source.split(/\r\n|\n|\r/g);
+      const lines = source.split('\n');
       const start = error.location.start;
       let location = filepath + ':' + start.line + ':' + start.column + '\n';
       let lineChars = String(start.line + 1).length

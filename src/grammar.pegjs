@@ -334,7 +334,7 @@ reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
 
 inlineCode = code:(inlineCode1 / inlineCode2 / inlineCode3) {
   // https://spec.commonmark.org/0.29/#code-spans
-  code = code.replace(/\r\n|\r|\n/g, ' ')
+  code = code.replace(/\r\n|\n|\r/g, ' ')
   if (code.startsWith(' ') && code.endsWith(' ') && !code.match(/^\s+$/)) {
     code = code.slice(1, -1)
   }
@@ -759,7 +759,7 @@ butNot = 'but' WB __ 'not' WB __ ('one' WB __ 'of' WB __)? first:token rest:(__ 
   };
 }
 
-regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
+regexp = '/' value:$(([^/\n\r] / '\\/')+)? closer:'/'? {
   if (value === null || closer === null) {
     error('Malformed regular expression.');
   }
@@ -776,7 +776,7 @@ quotedTerminal = inlineCode:inlineCode {
   };
 }
 
-terminal = value:$([^ \n"/`] [^ \n"\`,\]\}]*) {
+terminal = value:$([^ \n\r"/`] [^ \n\r"\`,\]\}]*) {
   return {
     type: 'Terminal',
     value: unescape(value)
@@ -808,8 +808,8 @@ DEDENT = &lineStart !{ indentStack.length === 0 } {
   indent = indentStack.pop();
 }
 
-NL = '\n' / '\r' / '\r\n'
-NOT_NL = [^\n\r]
+NL = '\r\n' / '\n' / '\r'
+NOT_NL = !NL .
 SINGLE_NL = NL !(NL / _ listBullet)
 _ = ' '*
 // Skips over whitespace including a single newline. Do not use more than once
