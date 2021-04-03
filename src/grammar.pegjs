@@ -379,7 +379,10 @@ codeLang = !('example'/'counter-example') lang:$([a-z][-a-z0-9]*) {
   return lang;
 }
 
-indentCode = DEEP_INDENT code:(indentCodeLine+)? DEDENT &{ return code !== null } {
+indentCode =
+  // To safely maintain indent state, must parse ahead first
+  &(DEEP_INDENT code:(indentCodeLine+)? DEDENT &{ return code !== null })
+    DEEP_INDENT code:indentCodeLine+ DEDENT {
   return {
     type: 'Code',
     code: code.join('\n')
@@ -432,7 +435,10 @@ image = '![' alt:$[^\]]+ '](' _ url:$[^)]+ _ ')' {
 
 list = indentedList / unorderedList / orderedList
 
-indentedList = INDENT list:(unorderedList / orderedList)? DEDENT &{ return list !== null; } {
+indentedList =
+  // To safely maintain indent state, must parse ahead first
+  &(INDENT list:(unorderedList / orderedList)? DEDENT &{ return list !== null; })
+  INDENT list:(unorderedList / orderedList) DEDENT {
   return list;
 }
 
@@ -764,9 +770,6 @@ regexp = '/' value:$(([^/\n] / '\\/')+)? closer:'/'? {
 }
 
 quotedTerminal = inlineCode:inlineCode {
-  if (inlineCode.code.length === 0) {
-    error('Malformed quoted terminal');
-  }
   return {
     type: 'Terminal',
     value: inlineCode.code
@@ -813,10 +816,11 @@ _ = ' '*
 // in a row, otherwise multiple NL will be skipped.
 __ = _ SINGLE_NL? _
 WB = ![a-zA-Z0-9]
+SOF = & { return location().start.offset === 0 }
 EOF = NL* !.
 
-lineStart = NL+ / & { return offset() === 0 }
+lineStart = NL+ / SOF
 
-blockStart = (NL NL+) / & { return offset() === 0 }
+blockStart = (NL NL+) / SOF
 
 indentDepth = sp:$_ { return sp.length; }

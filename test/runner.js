@@ -34,7 +34,11 @@ async function runTests(tests) {
           );
         }
       } else {
-        process.stderr.write('\n\n' + String(error && error.stack || error) + '\n\n');
+        process.stderr.write(
+          '\n\n' +
+          String(error.location ? error.message : (error.stack || error)) +
+          '\n\n'
+        );
       }
     }
   }

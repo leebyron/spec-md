@@ -22,27 +22,44 @@ function readFile(filepath) {
 
 async function importAST(filepath, startRule) {
   const source = await readFile(filepath)
+  const ast = parseSpecMD(filepath, source, startRule);
+  const importASTs = [];
+  visit(ast, function (node) {
+    if (node.type === 'Import') {
+      const subfilepath = path.resolve(
+        path.dirname(filepath),
+        decodeURI(node.path)
+      );
+      importASTs.push(importAST(subfilepath, 'importedDocument'));
+    }
+  });
+  const asts = await Promise.all(importASTs);
+  return flattenDocuments(ast, asts);
+}
+
+function parseSpecMD(filepath, source, startRule) {
   try {
-    const ast = grammar.parse(source, { startRule });
-    const importASTs = [];
-    visit(ast, function (node) {
-      if (node.type === 'Import') {
-        const subfilepath = path.resolve(
-          path.dirname(filepath),
-          decodeURI(node.path)
-        );
-        importASTs.push(importAST(subfilepath, 'importedDocument'));
-      }
-    });
-    const asts = await Promise.all(importASTs);
-    return flattenDocuments(ast, asts);
+    return grammar.parse(source, { startRule });
   } catch (error) {
-    if (error && error.line) {
-      error.message =
-        filepath + ':' + error.line + ':' + error.column + '\n' +
-        source.split(/\r\n|\n|\r/g)[error.line - 1] + '\n' +
-        Array(error.column).join(' ') + '^\n' +
-        error.message;
+    if (error && error.location) {
+      error.filepath = filepath;
+      error.source = source;
+      const lines = source.split(/\r\n|\n|\r/g);
+      const start = error.location.start;
+      let location = filepath + ':' + start.line + ':' + start.column + '\n';
+      let lineChars = String(start.line + 1).length
+      if (start.line > 1) {
+        location +=
+          String(start.line - 1).padStart(lineChars) + ' | ' +
+          lines[start.line - 2] + '\n';
+      }
+      if (start.line > 1) {
+        location +=
+          String(start.line).padStart(lineChars) + ' | ' +
+          lines[start.line - 1] + '\n';
+      }
+      location += Array(start.column + lineChars + 3).join(' ') + '^\n';
+      error.message += '\n\n' + location;
     }
     throw error;
   }
