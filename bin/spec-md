@@ -32,7 +32,7 @@ var absPath = path.resolve(process.cwd(), filepath);
 specmd.html(absPath, options).then(function (html) {
   process.stdout.write(html);
 }).catch(function (error) {
-  errorExit(error.line ? error.message : (error.stack || error));
+  errorExit(error.location ? error.message : (error.stack || error));
 });
 
 function errorExit(msg) {

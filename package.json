@@ -17,7 +17,7 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "mkdir -p src/generated && npm run build-peg && npm run build-js",
-    "build-peg": "pegjs --allowed-start-rules initialDocument,importedDocument src/grammar.pegjs src/generated/grammar.js",
+    "build-peg": "pegjs --allowed-start-rules initialDocument,importedDocument --output src/generated/grammar.js src/grammar.pegjs",
     "build-js": "cd src/client; for file in *.js; do terser -cm --toplevel \"$file\" > \"../generated/$file\"; done",
     "generate": "mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "test": "npm run build && node ./test/runner.js",
@@ -30,8 +30,8 @@
   "devDependencies": {
     "jest-diff": "26.6.2",
     "nodemon": "2.0.7",
-    "pegjs": "~0.8.0",
-    "terser": "5.5.1"
+    "pegjs": "0.10.0",
+    "terser": "5.6.1"
   },
   "engines": {
     "node": ">=10.14.2"
