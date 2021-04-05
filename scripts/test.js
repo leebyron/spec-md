@@ -1,20 +1,20 @@
 const assert = require('assert');
 const fs = require('fs');
-const path = require('path');
+
 const specMarkdown = require('../');
 
 const shouldRecord = Boolean(process.env.RECORD);
 
 runTests([
-  ['../README.md', 'readme/ast.json', 'readme/output.html'],
-  ['graphql-spec/GraphQL.md', 'graphql-spec/ast.json', 'graphql-spec/output.html'],
-  ['simple-header/input.md', 'simple-header/ast.json', 'simple-header/output.html'],
-  ['sections/input.md', 'sections/ast.json', 'sections/output.html'],
-  ['tables/input.md', 'tables/ast.json', 'tables/output.html'],
-  ['task-lists/input.md', 'task-lists/ast.json', 'task-lists/output.html'],
-  ['escape-sequence/input.md', 'escape-sequence/ast.json', 'escape-sequence/output.html'],
-  ['duplicated-notes/input.md', 'duplicated-notes/ast.json', 'duplicated-notes/output.html'],
-  ['productions/input.md', 'productions/ast.json', 'productions/output.html'],
+  ['README.md', 'test/readme/ast.json', 'test/readme/output.html'],
+  ['test/graphql-spec/GraphQL.md', 'test/graphql-spec/ast.json', 'test/graphql-spec/output.html'],
+  ['test/simple-header/input.md', 'test/simple-header/ast.json', 'test/simple-header/output.html'],
+  ['test/sections/input.md', 'test/sections/ast.json', 'test/sections/output.html'],
+  ['test/tables/input.md', 'test/tables/ast.json', 'test/tables/output.html'],
+  ['test/task-lists/input.md', 'test/task-lists/ast.json', 'test/task-lists/output.html'],
+  ['test/escape-sequence/input.md', 'test/escape-sequence/ast.json', 'test/escape-sequence/output.html'],
+  ['test/duplicated-notes/input.md', 'test/duplicated-notes/ast.json', 'test/duplicated-notes/output.html'],
+  ['test/productions/input.md', 'test/productions/ast.json', 'test/productions/output.html'],
 ]);
 
 async function runTests(tests) {
@@ -30,7 +30,7 @@ async function runTests(tests) {
         } else {
           const jestDiff = require('jest-diff').default;
           process.stderr.write(
-            jestDiff(error.actual, error.expected, { expand: false }) + '\n\n'
+            jestDiff(error.expected, error.actual, { expand: false }) + '\n\n'
           );
         }
       } else {
@@ -47,12 +47,10 @@ async function runTests(tests) {
 async function runTest(input, ast, html) {
   const start = Date.now();
   process.stdout.write(`testing: ${input} ... `);
-  const actualAST = await specMarkdown.parse(path.resolve(__dirname, input))
+  const actualAST = await specMarkdown.parse(input)
 
   try {
-    const expectedAST = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, ast), 'utf8')
-    );
+    const expectedAST = JSON.parse(fs.readFileSync(ast, 'utf8'));
     assert.deepEqual(
       actualAST,
       expectedAST,
@@ -62,10 +60,7 @@ async function runTest(input, ast, html) {
     );
   } catch (error) {
     if (error.code === 'ERR_ASSERTION' && shouldRecord) {
-      fs.writeFileSync(
-        path.resolve(__dirname, ast),
-        JSON.stringify(actualAST, null, 2)
-      );
+      fs.writeFileSync(ast, JSON.stringify(actualAST, null, 2));
     } else {
       throw error;
     }
@@ -73,18 +68,20 @@ async function runTest(input, ast, html) {
 
   // Print HTML after testing AST since it memoizes values in the AST.
   const actualHTML = await specMarkdown.print(actualAST);
+
   try {
-    const expectedHTML = fs.readFileSync(path.resolve(__dirname, html), 'utf8');
-    assert.equal(
+    // Normalize line endings
+    const expectedHTML = fs.readFileSync(html, 'utf8').replace(/\r\n|\n|\r/g, '\n');
+    assert.strictEqual(
       actualHTML,
       expectedHTML,
       'Did not print expected HTML.\n\n' +
         'If confident the changes are correct, rerun with RECORD set:\n' +
-        '  $ RECORD=1 yarn test'
+        '  $ RECORD=1 npm test'
     );
   } catch (error) {
     if (error.code === 'ERR_ASSERTION' && shouldRecord) {
-      fs.writeFileSync(path.resolve(__dirname, html), actualHTML);
+      fs.writeFileSync(html, actualHTML);
     } else {
       throw error;
     }

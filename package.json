@@ -16,11 +16,9 @@
   },
   "main": "./src/index.js",
   "scripts": {
-    "build": "mkdir -p src/generated && npm run build-peg && npm run build-js",
-    "build-peg": "pegjs --allowed-start-rules initialDocument,importedDocument --output src/generated/grammar.js src/grammar.pegjs",
-    "build-js": "cd src/client; for file in *.js; do terser -cm --toplevel \"$file\" > \"../generated/$file\"; done",
+    "build": "node scripts/build.js",
     "generate": "mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
-    "test": "npm run build && node ./test/runner.js",
+    "test": "npm run build && node ./scripts/test.js",
     "record-test": "RECORD=1 npm test",
     "watch": "nodemon -e css,js,json,pegjs,md --ignore src/generated --exec 'npm test'"
   },

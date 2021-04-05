@@ -863,15 +863,21 @@ function execStaticJS(filename) {
 }
 
 function readStatic(filename) {
-  return fs.readFileSync(path.join(__dirname, filename), 'utf8');
+  return readFile(path.join(__dirname, filename));
 }
 
 function readPrismCSS() {
-  const filename = path.join(
-    path.dirname(require.resolve('prismjs')),
-    'themes/prism.css'
+  return readFile(
+    path.join(
+      path.dirname(require.resolve('prismjs')),
+      'themes/prism.css'
+    )
   );
-  return fs.readFileSync(filename, 'utf8');
+}
+
+function readFile(filename) {
+  // Normalize line endings
+  return fs.readFileSync(filename, 'utf8').replace(/\r\n|\n|\r/g, '\n');
 }
 
 function stableCodeHash(code) {
