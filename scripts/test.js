@@ -5,16 +5,21 @@ const specMarkdown = require('../');
 
 const shouldRecord = Boolean(process.env.RECORD);
 
+function testSource(dir, input) {
+  return [input || `test/${dir}/input.md`, `test/${dir}/ast.json`, `test/${dir}/output.html`];
+}
+
 runTests([
-  ['README.md', 'test/readme/ast.json', 'test/readme/output.html'],
-  ['test/graphql-spec/GraphQL.md', 'test/graphql-spec/ast.json', 'test/graphql-spec/output.html'],
-  ['test/simple-header/input.md', 'test/simple-header/ast.json', 'test/simple-header/output.html'],
-  ['test/sections/input.md', 'test/sections/ast.json', 'test/sections/output.html'],
-  ['test/tables/input.md', 'test/tables/ast.json', 'test/tables/output.html'],
-  ['test/task-lists/input.md', 'test/task-lists/ast.json', 'test/task-lists/output.html'],
-  ['test/escape-sequence/input.md', 'test/escape-sequence/ast.json', 'test/escape-sequence/output.html'],
-  ['test/duplicated-notes/input.md', 'test/duplicated-notes/ast.json', 'test/duplicated-notes/output.html'],
-  ['test/productions/input.md', 'test/productions/ast.json', 'test/productions/output.html'],
+  testSource('duplicated-notes'),
+  testSource('escape-sequence'),
+  testSource('graphql-spec', 'test/graphql-spec/GraphQL.md'),
+  testSource('productions'),
+  testSource('readme', 'README.md'),
+  testSource('sections'),
+  testSource('simple-header'),
+  testSource('smart-quotes'),
+  testSource('tables'),
+  testSource('task-lists'),
 ]);
 
 async function runTests(tests) {

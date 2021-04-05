@@ -45,7 +45,7 @@
                             "contents": [
                               {
                                 "type": "Text",
-                                "value": "This has been imported\n"
+                                "value": "This has been imported "
                               }
                             ]
                           }
@@ -133,7 +133,7 @@
                                     },
                                     {
                                       "type": "Text",
-                                      "value": ".\n"
+                                      "value": ". "
                                     }
                                   ]
                                 }

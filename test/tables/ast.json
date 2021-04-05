@@ -250,7 +250,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "Alpha\n-----\na\n"
+              "value": "Alpha ----- a "
             }
           ]
         }
