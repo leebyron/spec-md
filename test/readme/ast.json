@@ -7863,7 +7863,7 @@
                     },
                     {
                       "type": "InlineCode",
-                      "code": "master"
+                      "code": "main"
                     },
                     {
                       "type": "Text",
@@ -7930,7 +7930,7 @@
         {
           "type": "Section",
           "secID": null,
-          "title": "`master` is unsafe",
+          "title": "`main` is unsafe",
           "contents": [
             {
               "type": "Paragraph",
@@ -7941,7 +7941,7 @@
                 },
                 {
                   "type": "InlineCode",
-                  "code": "master"
+                  "code": "main"
                 },
                 {
                   "type": "Text",
