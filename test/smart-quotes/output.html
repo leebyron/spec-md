@@ -2,7 +2,7 @@
 <!-- Built with spec-md https://spec-md.com -->
 <html>
 <head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Escape _ Sequences</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Smart typography</title>
 <style>
 :root {
   color: #333333;
@@ -1025,47 +1025,48 @@ pre[class*="language-"] {
 </head>
 <body><article>
 <header>
-<h1>Escape _ Sequences</h1>
+<h1>Smart typography</h1>
 <nav class="spec-toc">
 <div class="title">Contents</div>
 <ol>
-<li><a href="#sec-Can-be-in-titles-"><span class="spec-secid">1</span>Can be &lt; in titles &gt;</a></li>
-<li><a href="#index"><span class="spec-secid">§</span>Index</a></li>
+<li><a href="#sec-Smart-quotes-and-dashes"><span class="spec-secid">1</span>Smart quotes and dashes</a></li>
+<li><a href="#sec-Arrows"><span class="spec-secid">2</span>Arrows</a></li>
+<li><a href="#sec-Math"><span class="spec-secid">3</span>Math</a></li>
 </ol>
 </nav>
 </header>
-<section id="sec-Can-be-in-titles-" secid="1">
-<h1><span class="spec-secid" title="link to this section"><a href="#sec-Can-be-in-titles-">1</a></span>Can be &lt; in titles &gt;</h1>
-<p>And in _ text.</p>
-<p><strong>And * sub-sections</strong></p>
-<div class="spec-production" id="Grammar">
-<span class="spec-nt"><a href="#Grammar" data-name="Grammar">Grammar</a></span><div class="spec-rhs"><span class="spec-t">&lt;</span><span class="spec-t">rules</span><span class="spec-t">&gt;</span><span class="spec-prose">and _ prose</span></div>
-</div>
-<div class="spec-algo" id="Algorithm_Names()">
-<span class="spec-call"><a href="#Algorithm_Names()" data-name="Algorithm_Names">Algorithm_Names</a>(<var data-name="and_param">and_param</var>, <var data-name="_names">_names</var>)</span><ol>
-<li>And * steps</li>
-<li>And <span class="spec-call"><span data-name="Call_with">Call_with</span>(<span class="spec-string">"string _ \" literal"</span>)</span></li>
-</ol>
-</div>
-<p>Plain <code>code literals don't allow \" escapes\</code></p>
-<div class="spec-production" id="LiteralBackticks">
-<span class="spec-nt"><a href="#LiteralBackticks" data-name="LiteralBackticks">LiteralBackticks</a></span><div class="spec-rhs"><span class="spec-t">`</span></div>
-<div class="spec-rhs"><span class="spec-t">``</span></div>
-<div class="spec-rhs"><span class="spec-t">```</span></div>
-</div>
-<div class="spec-production d2" id="EscapesInQuantifiers">
-<span class="spec-nt"><a href="#EscapesInQuantifiers" data-name="EscapesInQuantifiers">EscapesInQuantifiers</a></span><div class="spec-rhs"><span class="spec-quantified"><span class="spec-nt"><span data-name="OneOrMore">OneOrMore</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span></span></span><span class="spec-quantified"><span class="spec-nt"><span data-name="ZeroOrMore">ZeroOrMore</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span><span class="spec-quantified"><span class="spec-nt"><span data-name="Optional">Optional</span></span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span></div>
-</div>
+<section id="sec-Smart-quotes-and-dashes" secid="1">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Smart-quotes-and-dashes">1</a></span>Smart quotes and dashes</h1>
+<p>Smart &ldquo;quote&rsquo;s quotes.&rdquo;.</p>
+<p>Smart single &lsquo;quotes&rsquo;.</p>
+<p>A-hyphen and dash &ndash; and an inline&mdash;em-dash and spaced &mdash; em-dash. --- nice.</p>
+<p>Quoted &ldquo;<a href="https://spec-md.com">link</a>&rdquo; and &ldquo;<em>things</em>&rdquo; and <em>&ldquo;things&rdquo;</em></p>
+<p>&ldquo;Quoted line&rdquo;</p>
 </section>
-<section id="index" secid="index" class="spec-index"><h1><span class="spec-secid" title="link to the index"><a href="#index">§</a></span>Index</h1><ol><li><a href="#Algorithm_Names()">Algorithm_Names</a></li><li><a href="#EscapesInQuantifiers">EscapesInQuantifiers</a></li><li><a href="#Grammar">Grammar</a></li><li><a href="#LiteralBackticks">LiteralBackticks</a></li></ol></section></article>
+<section id="sec-Arrows" secid="2">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">2</a></span>Arrows</h1>
+<p>&larr; &larr; &larr; &lt;---- &lt;-</p>
+<p>&rarr; &rarr; &rarr; ----&gt; -&gt;</p>
+<p>&harr; &harr; &harr; &lt;----&gt; &lt;-&gt;</p>
+<p>&le; &lArr; &lArr; &lt;==== &lt;==</p>
+<p>&rArr; &rArr; &rArr; ====&gt; =&gt;</p>
+<p>&hArr; &hArr; &hArr; &lt;====&gt; &lt;=&gt;</p>
+</section>
+<section id="sec-Math" secid="3">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Math">3</a></span>Math</h1>
+<p>&asymp; &ge; &le;</p>
+<p>~= &gt;= &lt;= </p>
+</section>
+</article>
 <footer>
 Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</footer>
 <input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden /><label for="spec-sidebar-toggle" aria-hidden><div class="spec-sidebar-button">&#x2630;</div></label>
 <div class="spec-sidebar" aria-hidden>
 <div class="spec-toc">
-<div class="title"><a href="#">Escape _ Sequences</a></div>
-<ol><li id="_sidebar_1"><a href="#sec-Can-be-in-titles-"><span class="spec-secid">1</span>Can be &lt; in titles &gt;</a></li>
-<li id="_sidebar_index"><a href="#index"><span class="spec-secid">§</span>Index</a></li>
+<div class="title"><a href="#">Smart typography</a></div>
+<ol><li id="_sidebar_1"><a href="#sec-Smart-quotes-and-dashes"><span class="spec-secid">1</span>Smart quotes and dashes</a></li>
+<li id="_sidebar_2"><a href="#sec-Arrows"><span class="spec-secid">2</span>Arrows</a></li>
+<li id="_sidebar_3"><a href="#sec-Math"><span class="spec-secid">3</span>Math</a></li>
 </ol>
 </div>
 <script>(function(){var e,t=[],n=document.querySelector('label[for="spec-sidebar-toggle"]');function o(e){e.preventDefault()}n.addEventListener("scroll",o),n.addEventListener("touchmove",o);for(var i=document.getElementsByTagName("section"),r=0;r<i.length;r++)i[r].getAttribute("secid")&&t.push(i[r]);var c=window.scrollY,l=!1;function d(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&a(e,!1),c&&a(c,!0),e=c)}function a(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_sidebar_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",(function(e){c=window.scrollY,l||(l=!0,window.requestAnimationFrame((function(){d(c),l=!1})))})),d(window.scrollY);})()</script>

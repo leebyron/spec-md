@@ -143,17 +143,21 @@ Will render as:
 
 "She told me that 'he isn't here right *now*' - so I left."
 
+Escaped `\"quotes \'and single\-quotes\'\"` becomes: \"quotes \'and single\-quotes\'\".
 
 ### Math
 
 Math operators like >=, <=, and ~= can be written as `>=`, `<=`, and `~=`.
 
+Escaped `\>= \<= \~=` becomes: \>= \<= \~=.
 
 ### Arrows
 
 Smart arrows -> and <- and <-> can be written as `->`, `<-` and `<->`.
 
 Fat smart arrows => and <== and <=> can be written as `=>`, `<==` and `<=>`.
+
+Escaped `\-> \<- \<-> \=> \<== \<=>` becomes: \-> \<- \<-> \=> \<== \<=>.
 
 
 ### Tables

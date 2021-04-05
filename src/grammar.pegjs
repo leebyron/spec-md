@@ -17,6 +17,36 @@
     return text.replace(/\\([\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E])/g, '$1');
   }
 
+  function format(text, followsEntity) {
+    return unescape(
+      text
+        // Collapse spaces
+        .replace(/[ \n\r]+/g, ' ')
+        // Smart arrows
+        .replace(/(^|[^\\])<-{1,3}>/g, '$1\u2194')
+        .replace(/(^|[^\\])<-{1,3}(?=$|[^->])/g, '$1\u2190')
+        .replace(/(^|[^\\<-])-{1,3}>/g, '$1\u2192')
+        .replace(/(^|[^\\])<={1,3}>/g, '$1\u21D4')
+        .replace(/(^|[^\\])<=={1,2}(?=$|[^=>])/g, '$1\u21D0')
+        .replace(/(^|[^\\<=])={1,3}>/g, '$1\u21D2')
+        // Math operators
+        .replace(/(^|[^\\])~=/g, '$1\u2248')
+        .replace(/(^|[^\\])<=(?=$|[^=>])/g, '$1\u2264')
+        .replace(/(^|[^\\])>=/g, '$1\u2265')
+        // Dashes and hyphens
+        .replace(/(^|[^\\<-])--(?=$|[^->])/g, '$1\u2014')
+        .replace(/(^|\S\s)-(?=$|\s[^\d])/g, '$1\u2013')
+        // Smart quotes
+        .replace(/(\s)"/g, '$1\u201C')
+        .replace(RegExp(`(${followsEntity ? '' : '^'}|[^\\\\])"(?=\\w)`,'g'), '$1\u201C')
+        .replace(/(^|[^\\])"/g, '$1\u201D')
+        .replace(/(\w)'(?=\w)/g, '$1\u2019')
+        .replace(/(\s)'/g, '$1\u2018')
+        .replace(RegExp(`(${followsEntity ? '' : '^'}|[^\\\\])'(?=\\w)`,'g'), '$1\u2018')
+        .replace(/(^|[^\\])'/g, '$1\u2019')
+    );
+  }
+
   let htmlBlockName;
 
   const BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
@@ -44,7 +74,7 @@ title = setextTitle / markdownTitle
 setextTitle = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
   return {
     type: 'DocumentTitle',
-    value: unescape(value)
+    value: format(value)
   };
 }
 
@@ -63,7 +93,7 @@ H5 = '#####' !'#' _
 H6 = '######' !'#' _
 H_END = _ '#'* &NL
 headerText = text:$headerChar+ {
-  return unescape(text);
+  return format(text);
 }
 headerChar = [^\n\r# ] / [# ] headerChar
 
@@ -130,7 +160,7 @@ section6 = BLOCK H6 secID:sectionID? _ title:headerText H_END contents:section6C
 }
 
 subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
-  return unescape(title);
+  return format(title);
 }
 
 subsection = BLOCK title:subsectionHeader contents:sectionContent* {
@@ -259,9 +289,15 @@ textChar = escaped
          / SINGLE_NL
 
 text = value:$textChar+ {
+  let prevChar;
+  let prevOffset = location().start.offset
+  do {
+    prevChar = input[--prevOffset]
+  } while (/[*~_+\-{}[\]]/.test(prevChar));
+  const followsEntity = !/\s/.test(prevChar);
   return {
     type: 'Text',
-    value: unescape(value)
+    value: format(value, followsEntity)
   };
 }
 
@@ -418,14 +454,14 @@ linkTextChar = escaped
 linkText = value:$linkTextChar+ {
   return {
     type: 'Text',
-    value: unescape(value)
+    value: format(value)
   };
 }
 
 image = '![' alt:$[^\]]+ '](' _ url:$[^)]+ _ ')' {
   return {
     type: 'Image',
-    alt: unescape(alt),
+    alt: format(alt),
     url: unescape(url)
   };
 }
@@ -526,7 +562,7 @@ tableCellTextChar = escaped
 tableCellText = value:$tableCellTextChar+ {
   return {
     type: 'Text',
-    value: unescape(value)
+    value: format(value)
   };
 }
 
@@ -693,7 +729,7 @@ prose = '"' text:$([^"\n\r]/'\\"')* closer:'"'? {
   }
   return {
     type: 'Prose',
-    text: unescape(text)
+    text: format(text)
   };
 }
 

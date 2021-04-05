@@ -310,7 +310,7 @@ function printTOC(ast, options) {
         const secID = join(node.secID, '.');
         return (
           '<li>' +
-            '<a href="' + options.biblio[node.id] + '">' +
+            '<a href="' + encodeURI(options.biblio[node.id]) + '">' +
               '<span class="spec-secid">' + secID + '</span>' +
               escape(node.title) +
             '</a>' +
@@ -346,14 +346,14 @@ function printSidebar(ast, options) {
         const subSections = join(node.contents);
         const secID = join(node.secID, '.');
         return (
-          '<li id="_sidebar_' + secID + '">' +
-            '<a href="' + options.biblio[node.id] + '">' +
-              '<span class="spec-secid">' + join(node.secID, '.') + '</span>' +
+          '<li id="' + escapeAttr('_sidebar_' + secID) + '">' +
+            '<a href="' + encodeURI(options.biblio[node.id]) + '">' +
+              '<span class="spec-secid">' + escape(join(node.secID, '.')) + '</span>' +
               escape(node.title) +
             '</a>' +
             (subSections &&
-              '\n<input hidden class="toggle" type="checkbox" id="_toggle_' + secID + '" />' +
-              '<label for="_toggle_' + secID + '"></label>\n' +
+              '\n<input hidden class="toggle" type="checkbox" id="' + escapeAttr('_toggle_' + secID) + '" />' +
+              '<label for="' + escapeAttr('_toggle_' + secID) + '"></label>\n' +
               '<ol>\n' + subSections + '</ol>\n') +
           '</li>\n'
         );
@@ -403,10 +403,10 @@ function printAll(list, options) {
           const level = Math.min(node.secID.length, 6);
           const secID = join(node.secID, '.');
           return (
-            '<section id="' + node.id + '" secid="' + secID + '">\n' +
+            '<section id="' + escapeAttr(node.id) + '" secid="' + escapeAttr(secID) + '">\n' +
               '<h' + level + '>' +
               '<span class="spec-secid" title="link to this section">' +
-                '<a href="' + options.biblio[node.id] + '">' + secID + '</a>' +
+                '<a href="' + encodeURI(options.biblio[node.id]) + '">' + escape(secID) + '</a>' +
               '</span>' +
               escape(node.title) +
               '</h' + level + '>\n' +
@@ -417,9 +417,9 @@ function printAll(list, options) {
 
         case 'Subsection':
           return (
-            '<section id="' + node.id + '" class="subsec">\n' +
+            '<section id="' + escapeAttr(node.id) + '" class="subsec">\n' +
               '<h6>' +
-                '<a href="' + options.biblio[node.id] + '" title="link to this subsection">' +
+                '<a href="' + encodeURI(options.biblio[node.id]) + '" title="link to this subsection">' +
                   escape(node.title) +
                 '</a>' +
               '</h6>\n' +
@@ -437,7 +437,7 @@ function printAll(list, options) {
           return '<p>' + join(node.contents) + '</p>\n';
 
         case 'Text':
-          return formatText(node.value);
+          return escape(node.value);
 
         case 'Bold':
           return '<strong>' + join(node.contents) + '</strong>';
@@ -447,8 +447,8 @@ function printAll(list, options) {
 
         case 'Note':
           return (
-            '<div id="' + node.id + '" class="spec-note">\n' +
-              '<a href="#' + node.id + '">Note</a>\n' +
+            '<div id="' + escapeAttr(node.id) + '" class="spec-note">\n' +
+              '<a href="' + encodeURI('#' + node.id) + '">Note</a>\n' +
               join(node.contents) +
             '</div>\n'
           );
@@ -471,9 +471,9 @@ function printAll(list, options) {
         case 'Code':
           return (
             '<pre' +
-              (node.id ? ' id="' + node.id + '"' : '') +
+              (node.id ? ' id="' + escapeAttr(node.id) + '"' : '') +
               (node.counter ? ' class="spec-counter-example"' : node.example ? ' class="spec-example"' : '') +
-              (node.lang ? ' data-language="' + node.lang + '"' : '') +
+              (node.lang ? ' data-language="' + escapeAttr(node.lang) + '"' : '') +
             '>' +
             (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
             '<code>' +
@@ -492,7 +492,7 @@ function printAll(list, options) {
         case 'Image':
           return (
             '<img src="' + encodeURI(node.url) + '"' +
-              (node.alt ? ' alt="' + escape(node.alt) + '"' : '') +
+              (node.alt ? ' alt="' + escapeAttr(node.alt) + '"' : '') +
             '/>'
           );
 
@@ -530,7 +530,7 @@ function printAll(list, options) {
 
         case 'Algorithm':
           return (
-            '<div class="spec-algo" id="' + node.id + '">\n' +
+            '<div class="spec-algo" id="' + escapeAttr(node.id) + '">\n' +
               node.call +
               node.steps +
             '</div>\n'
@@ -764,7 +764,7 @@ function link(node, id, options, doHighlight) {
     return content;
   }
   return (
-    '<a href="' + href + '"' +
+    '<a href="' + encodeURI(href) + '"' +
       (doHighlight ? ' data-name="' + anchorize(node.name) + '"' : '') +
       (href[0] !== '#' ? ' target="_blank"' : '') + '>' +
       content +
@@ -793,16 +793,14 @@ function resolveLinkUrl(url, options) {
   return url
 }
 
-const ESCAPE_CODE_REGEX = /[><"'&]/g;
-const ESCAPE_REGEX = /\u2010|\u2013|\u2014|\u2018|\u2019|\u201C|\u201D|\u2190|\u2192|\u2194|\u21D0|\u21D2|\u21D4|\u2245|\u2264|\u2265|[><"']|(?:&(?!\S{1,10};))/g;
+const ESCAPE_CODE_REGEX = /[><&]/g;
+const ESCAPE_REGEX = /\u2013|\u2014|\u2018|\u2019|\u201C|\u201D|\u2190|\u2192|\u2194|\u21D0|\u21D2|\u21D4|\u2248|\u2264|\u2265|[><]|(?:&(?!#?[\w]{1,10};))/g;
 
 const ESCAPE_LOOKUP = {
   '&': '&amp;',
   '>': '&gt;',
   '<': '&lt;',
   '"': '&quot;',
-  '\'': '&#x27;',
-  '\u2010': '&#8208;',
   '\u2013': '&ndash;',
   '\u2014': '&mdash;',
   '\u2018': '&lsquo;',
@@ -815,7 +813,7 @@ const ESCAPE_LOOKUP = {
   '\u21D0': '&lArr;',
   '\u21D2': '&rArr;',
   '\u21D4': '&hArr;',
-  '\u2245': '&cong;',
+  '\u2248': '&asymp;',
   '\u2264': '&le;',
   '\u2265': '&ge;',
 };
@@ -828,33 +826,12 @@ function escapeCode(text) {
   return text.replace(ESCAPE_CODE_REGEX, escaper);
 }
 
-function escape(text) {
-  return text.replace(ESCAPE_REGEX, escaper);
+function escapeAttr(text) {
+  return escape(text).replace('"', '&quot;');
 }
 
-function formatText(text) {
-  return escape(text
-    .replace(/[ \n\r]+/g, ' ')
-    .replace(/<-+>/g, '\u2194')
-    .replace(/<-+/g, '\u2190')
-    .replace(/-+>/g, '\u2192')
-    .replace(/<=+>/g, '\u21D4')
-    .replace(/<==+/g, '\u21D0')
-    .replace(/=+>/g, '\u21D2')
-    .replace(/~=/g, '\u2245')
-    .replace(/<=/g, '\u2264')
-    .replace(/>=/g, '\u2265')
-    .replace(/(\w)--(?=\w)/g, '$1\u2014')
-    .replace(/(\w)-(?=\w)/g, '$1\u2010')
-    .replace(/(\S\s)-(?=\s\S)/g, '$1\u2013')
-    .replace(/(\s)"/g, '$1\u201C')
-    .replace(/"(?=\w)/g, '\u201C')
-    .replace(/"/g, '\u201D')
-    .replace(/(\w)'(?=\w)/g, '$1\u2019')
-    .replace(/(\s)'/g, '\u2018')
-    .replace(/'(?=\w)/g, '\u2018')
-    .replace(/'/g, '\u2019')
-  );
+function escape(text) {
+  return text.replace(ESCAPE_REGEX, escaper);
 }
 
 function execStaticJS(filename) {

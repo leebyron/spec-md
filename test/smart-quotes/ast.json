@@ -1,0 +1,183 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Smart typography"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Smart quotes and dashes",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Smart “quote’s quotes.”."
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Smart single ‘quotes’."
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A-hyphen and dash – and an inline—em-dash and spaced — em-dash. --- nice."
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Quoted “"
+            },
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "link"
+                }
+              ],
+              "url": "https://spec-md.com"
+            },
+            {
+              "type": "Text",
+              "value": "” and “"
+            },
+            {
+              "type": "Italic",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "things"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": "” and "
+            },
+            {
+              "type": "Italic",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "“things”"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "“Quoted line”"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Arrows",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "← ← ← <---- <-"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "→ → → ----> ->"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "↔ ↔ ↔ <----> <->"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "≤ ⇐ ⇐ <==== <=="
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "⇒ ⇒ ⇒ ====> =>"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "⇔ ⇔ ⇔ <====> <=>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "secID": null,
+      "title": "Math",
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "≈ ≥ ≤"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "~= >= <= "
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

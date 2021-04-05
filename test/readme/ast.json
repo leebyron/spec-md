@@ -10,7 +10,7 @@
       "contents": [
         {
           "type": "Text",
-          "value": "Renders Markdown with some additions into an HTML format commonly used for\nwriting technical specification documents. Markdown additions include code\nsyntax highlighting, edit annotations, and the definition of algorithms and\ngrammar productions."
+          "value": "Renders Markdown with some additions into an HTML format commonly used for writing technical specification documents. Markdown additions include code syntax highlighting, edit annotations, and the definition of algorithms and grammar productions."
         }
       ]
     },
@@ -23,7 +23,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "Spec Markdown is first and foremost Markdown. As such, it follows Markdown's\nphilosophy of intending to be as easy to read and easy to write as is feasible."
+              "value": "Spec Markdown is first and foremost Markdown. As such, it follows Markdown’s philosophy of intending to be as easy to read and easy to write as is feasible."
             }
           ]
         },
@@ -32,7 +32,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "In order to interoperate with other tools which use Markdown, Spec Markdown\ntries to add as little additional syntax as possible, instead preferring\nconventions. This means any documents written with Spec Markdown in mind should\nrender adequately by other Markdown renderers."
+              "value": "In order to interoperate with other tools which use Markdown, Spec Markdown tries to add as little additional syntax as possible, instead preferring conventions. This means any documents written with Spec Markdown in mind should render adequately by other Markdown renderers."
             }
           ]
         },
@@ -41,7 +41,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "To support the rendering additions of Spec Markdown, some features of Markdown\nmay be limited or removed. As an example, Spec Markdown is strict about the\norder and locations of headers in a document."
+              "value": "To support the rendering additions of Spec Markdown, some features of Markdown may be limited or removed. As an example, Spec Markdown is strict about the order and locations of headers in a document."
             }
           ]
         },
@@ -50,7 +50,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "This is not a normative spec for Spec Markdown, but just documentation of\nthis tool. Of course, written in Spec Markdown!"
+              "value": "This is not a normative spec for Spec Markdown, but just documentation of this tool. Of course, written in Spec Markdown!"
             }
           ]
         }
@@ -66,7 +66,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "To use Spec Markdown, just write Markdown files. There are some conventions used\nby Spec Markdown which you can read about in "
+              "value": "To use Spec Markdown, just write Markdown files. There are some conventions used by Spec Markdown which you can read about in "
             },
             {
               "type": "Link",
@@ -97,7 +97,7 @@
             },
             {
               "type": "Text",
-              "value": "\nutility."
+              "value": " utility."
             }
           ]
         },
@@ -147,7 +147,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "Spec Markdown also provides utilities for generating and operating on an\nintermediate representation of the markdown, which you can explore in\n"
+              "value": "Spec Markdown also provides utilities for generating and operating on an intermediate representation of the markdown, which you can explore in "
             },
             {
               "type": "Link",
@@ -191,7 +191,7 @@
             },
             {
               "type": "Text",
-              "value": ".\nMore specifically, it's based on "
+              "value": ". More specifically, it’s based on "
             },
             {
               "type": "Link",
@@ -214,7 +214,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "This section explains the syntax and capabilities of Markdown that Spec Markdown\nsupports and augments."
+              "value": "This section explains the syntax and capabilities of Markdown that Spec Markdown supports and augments."
             }
           ]
         },
@@ -228,7 +228,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Markdown allows you to write text which uses &, <, and >. The output HTML will\nautomatically use the "
+                  "value": "Markdown allows you to write text which uses &, <, and >. The output HTML will automatically use the "
                 },
                 {
                   "type": "InlineCode",
@@ -269,7 +269,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": ",\nit will appear in the HTML output as &copy;."
+                  "value": ", it will appear in the HTML output as &copy;."
                 }
               ]
             },
@@ -283,7 +283,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Markdown makes use of certain characters to format text, in order to render one\nexplicitly, place a backslash before it."
+                      "value": "Markdown makes use of certain characters to format text, in order to render one explicitly, place a backslash before it."
                     }
                   ]
                 },
@@ -292,7 +292,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "You can type *literal asterisks* instead of emphasis by typing\n"
+                      "value": "You can type *literal asterisks* instead of emphasis by typing "
                     },
                     {
                       "type": "InlineCode",
@@ -362,7 +362,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Markdown allows for inline stylistic and structual formatting. Inline\nformatting is allowed in paragraphs, list items, and table cells."
+                  "value": "Markdown allows for inline stylistic and structual formatting. Inline formatting is allowed in paragraphs, list items, and table cells."
                 }
               ]
             },
@@ -376,7 +376,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Markdown is not a replacement for HTML and instead leverages HTML by allowing\nits use inline within paragraphs, links, etc."
+                      "value": "Markdown is not a replacement for HTML and instead leverages HTML by allowing its use inline within paragraphs, links, etc."
                     }
                   ]
                 },
@@ -487,7 +487,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\nparenthesis to describe the URL the text will link to."
+                      "value": " parenthesis to describe the URL the text will link to."
                     }
                   ]
                 },
@@ -529,7 +529,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "-->"
+                          "value": "→"
                         },
                         {
                           "type": "Italic",
@@ -542,7 +542,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": "<--"
+                          "value": "←"
                         }
                       ],
                       "url": "https://www.facebook.com"
@@ -792,7 +792,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " indicate inline code, text inside back-ticks is not\nformatted, allowing for special characters to be used in inline code without\nescapes."
+                      "value": " indicate inline code, text inside back-ticks is not formatted, allowing for special characters to be used in inline code without escapes."
                     }
                   ]
                 },
@@ -895,7 +895,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Also, consider using images for support of more complex features like\ngraph diagrams. For example, with Graviso:"
+                      "value": "Also, consider using images for support of more complex features like graph diagrams. For example, with Graviso:"
                     }
                   ]
                 },
@@ -949,7 +949,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Markdown allows for block-level structual formatting. Every block is seperated\nby at least two new lines. Spec Markdown makes use of Markdown's blocks to\nproduce more specific structural formatting."
+                  "value": "Markdown allows for block-level structual formatting. Every block is seperated by at least two new lines. Spec Markdown makes use of Markdown’s blocks to produce more specific structural formatting."
                 }
               ]
             },
@@ -963,7 +963,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Markdown is not a replacement for HTML and instead leverages HTML by allowing\nits use as complete blocks when separated from surrounding content by blank\nlines."
+                      "value": "Markdown is not a replacement for HTML and instead leverages HTML by allowing its use as complete blocks when separated from surrounding content by blank lines."
                     }
                   ]
                 },
@@ -1067,7 +1067,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Regular Markdown supports two styles of headers, Setext and atx, however Spec\nMarkdown generally only supports atx style headers."
+                      "value": "Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown generally only supports atx style headers."
                     }
                   ]
                 },
@@ -1109,7 +1109,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " characters refers to the depth of the section. To produce an,\n"
+                      "value": " characters refers to the depth of the section. To produce an, "
                     },
                     {
                       "type": "InlineCode",
@@ -1125,7 +1125,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ". Optionally, a header may be \"closed\" by any number of "
+                      "value": ". Optionally, a header may be “closed” by any number of "
                     },
                     {
                       "type": "InlineCode",
@@ -1133,7 +1133,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\ncharacters."
+                      "value": " characters."
                     }
                   ]
                 },
@@ -1150,7 +1150,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " and that each section\ncontained within is only one level deeper. An <h1> section may only contain\n<h2> sections."
+                      "value": " and that each section contained within is only one level deeper. An <h1> section may only contain <h2> sections."
                     }
                   ]
                 }
@@ -1166,7 +1166,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Paragraphs are the most simple Markdown blocks. Lines are appended together to\nform a single <p> tag. Any inline syntax is allowed within a paragraph."
+                      "value": "Paragraphs are the most simple Markdown blocks. Lines are appended together to form a single <p> tag. Any inline syntax is allowed within a paragraph."
                     }
                   ]
                 }
@@ -1190,7 +1190,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " or\nunordered bullet, "
+                      "value": " or unordered bullet, "
                     },
                     {
                       "type": "InlineCode",
@@ -1327,7 +1327,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " to\nrender a checkbox. This can be useful for keeping your tasks inline with\nin-progress draft specifications."
+                          "value": " to render a checkbox. This can be useful for keeping your tasks inline with in-progress draft specifications."
                         }
                       ]
                     },
@@ -1422,7 +1422,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "A block of code is formed by either indenting by 4 spaces, or wrapping with\n"
+                      "value": "A block of code is formed by either indenting by 4 spaces, or wrapping with "
                     },
                     {
                       "type": "HTMLTag",
@@ -1475,7 +1475,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec markdown does not yet support Markdown's "
+                      "value": "Spec markdown does not yet support Markdown’s "
                     },
                     {
                       "type": "InlineCode",
@@ -1499,7 +1499,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec Markdown does not yet support Markdown's "
+                      "value": "Spec Markdown does not yet support Markdown’s "
                     },
                     {
                       "type": "InlineCode",
@@ -1523,7 +1523,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec Markdown does not yet automatically link urls.\n"
+                      "value": "Spec Markdown does not yet automatically link urls. "
                     }
                   ]
                 }
@@ -1543,7 +1543,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "Spec Markdown makes some additions to Markdown to support cases relevant to\nwriting technical specs and documentation. It attempts to be as minimally\ninvasive as possible, leveraging existing Markdown formatting features whenever\npossible so Spec Markdown documents may render adequately as regular Markdown."
+              "value": "Spec Markdown makes some additions to Markdown to support cases relevant to writing technical specs and documentation. It attempts to be as minimally invasive as possible, leveraging existing Markdown formatting features whenever possible so Spec Markdown documents may render adequately as regular Markdown."
             }
           ]
         },
@@ -1552,7 +1552,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "Spec Markdown also makes restrictions to the overall format of the Markdown\ndocument in order to derive a structure to the entire document."
+              "value": "Spec Markdown also makes restrictions to the overall format of the Markdown document in order to derive a structure to the entire document."
             }
           ]
         },
@@ -1566,7 +1566,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Everything unique in a Spec Markdown file has a link created for it. Sections\neach have a link, as do named "
+                  "value": "Everything unique in a Spec Markdown file has a link created for it. Sections each have a link, as do named "
                 },
                 {
                   "type": "Link",
@@ -1580,7 +1580,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " and\n"
+                  "value": " and "
                 },
                 {
                   "type": "Link",
@@ -1594,7 +1594,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": ". You'll find that "
+                  "value": ". You’ll find that "
                 },
                 {
                   "type": "Link",
@@ -1608,7 +1608,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " and\n"
+                  "value": " and "
                 },
                 {
                   "type": "Link",
@@ -1622,7 +1622,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " are also given stable links based on their contents,\njust in case things move around."
+                  "value": " are also given stable links based on their contents, just in case things move around."
                 }
               ]
             },
@@ -1644,7 +1644,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " in a Spec Markdown file. Just highlight\nany bit of text and a link will be created just for that selection, making\nreferencing specific parts of your document easy. Try it here!"
+                  "value": " in a Spec Markdown file. Just highlight any bit of text and a link will be created just for that selection, making referencing specific parts of your document easy. Try it here!"
                 }
               ]
             }
@@ -1660,7 +1660,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "A Spec Markdown document must start with a header which will be used as the\ntitle of the document. Any content between this and the next header will become\nthe introduction to the document."
+                  "value": "A Spec Markdown document must start with a header which will be used as the title of the document. Any content between this and the next header will become the introduction to the document."
                 }
               ]
             },
@@ -1686,7 +1686,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "For backwards-compatibility, a setext style header can be used for a\ndocument title."
+                  "value": "For backwards-compatibility, a setext style header can be used for a document title."
                 }
               ]
             }
@@ -1702,7 +1702,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "A Spec Markdown document is separated into a sequence and hierarchy of sections.\nThose sections can then be used as navigation points and can be used to create\na table of contents. A section is started by a header and ends at either the\nnext header of similar or greater precedence or the end of the document. A\nsection can contain other sections if their headers are of lower precedence."
+                  "value": "A Spec Markdown document is separated into a sequence and hierarchy of sections. Those sections can then be used as navigation points and can be used to create a table of contents. A section is started by a header and ends at either the next header of similar or greater precedence or the end of the document. A section can contain other sections if their headers are of lower precedence."
                 }
               ]
             },
@@ -1716,7 +1716,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Regular Markdown supports two styles of headers, Setext and atx, however Spec\nMarkdown only supports atx style headers as section headers."
+                      "value": "Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown only supports atx style headers as section headers."
                     }
                   ]
                 },
@@ -1758,7 +1758,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " headers appear at the top of a\ndocument, and that only a "
+                      "value": " headers appear at the top of a document, and that only a "
                     },
                     {
                       "type": "InlineCode",
@@ -1774,7 +1774,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " header) can be contained\nwith the section started by a "
+                      "value": " header) can be contained with the section started by a "
                     },
                     {
                       "type": "InlineCode",
@@ -1798,7 +1798,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "While sections are numbered and appear in the table of contents, a subsection\nis similar but not numbered or in the table of contents."
+                      "value": "While sections are numbered and appear in the table of contents, a subsection is similar but not numbered or in the table of contents."
                     }
                   ]
                 },
@@ -1811,7 +1811,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "The subsection's content appears below the subsection header."
+                          "value": "The subsection’s content appears below the subsection header."
                         }
                       ]
                     }
@@ -1826,7 +1826,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "Sections may contain multiple subsections, but subsections cannot contain\nsections or subsections."
+                          "value": "Sections may contain multiple subsections, but subsections cannot contain sections or subsections."
                         }
                       ]
                     }
@@ -1844,7 +1844,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "A table of contents is automatically generated from the hierarchy of sections in\nthe Spec Markdown document."
+                      "value": "A table of contents is automatically generated from the hierarchy of sections in the Spec Markdown document."
                     }
                   ]
                 }
@@ -1860,7 +1860,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "A number is associated with each section, starting with 1. In a hierarchy of\nsections, the parent sections are joined with dots. This provides an unambiguous\nlocation identifier for a given section in a document."
+                      "value": "A number is associated with each section, starting with 1. In a hierarchy of sections, the parent sections are joined with dots. This provides an unambiguous location identifier for a given section in a document."
                     }
                   ]
                 },
@@ -1869,7 +1869,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "You can specify these section numbers directly in your Markdown documents if you\nwish by writing them directly after the "
+                      "value": "You can specify these section numbers directly in your Markdown documents if you wish by writing them directly after the "
                     },
                     {
                       "type": "InlineCode",
@@ -1896,7 +1896,7 @@
                       "contents": [
                         {
                           "type": "Text",
-                          "value": "If the section number is written in the document, the last number will be used\nas the number for that section. This is useful when writing a proposal against\nan existing spec and wish to reference a particular section."
+                          "value": "If the section number is written in the document, the last number will be used as the number for that section. This is useful when writing a proposal against an existing spec and wish to reference a particular section."
                         }
                       ]
                     },
@@ -1937,7 +1937,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " instead of a\nnumber, that will begin an Appendix section."
+                          "value": " instead of a number, that will begin an Appendix section."
                         }
                       ]
                     },
@@ -1965,7 +1965,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "The Spec Markdown renderer will replace easy to type characters like quotes and\ndashes with their appropriate typographic entities. These replacements will not\noccur within blocks of code."
+                  "value": "The Spec Markdown renderer will replace easy to type characters like quotes and dashes with their appropriate typographic entities. These replacements will not occur within blocks of code."
                 }
               ]
             },
@@ -1979,7 +1979,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Prose text has \"smart quotes\", hyphens, en-dashes and em-dashes--you shouldn't\nhave to think about it, they'll just work."
+                      "value": "Prose text has “smart quotes”, hyphens, en-dashes and em-dashes—you shouldn’t have to think about it, they’ll just work."
                     }
                   ]
                 },
@@ -2015,7 +2015,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "\"She told me that 'he isn't here right "
+                      "value": "“She told me that ‘he isn’t here right "
                     },
                     {
                       "type": "Italic",
@@ -2028,7 +2028,24 @@
                     },
                     {
                       "type": "Text",
-                      "value": "' - so I left.\""
+                      "value": "’ – so I left.”"
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Escaped "
+                    },
+                    {
+                      "type": "InlineCode",
+                      "code": "\\\"quotes \\'and single\\-quotes\\'\\\""
+                    },
+                    {
+                      "type": "Text",
+                      "value": " becomes: \\“quotes \\‘and single-quotes'\"."
                     }
                   ]
                 }
@@ -2044,7 +2061,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Math operators like >=, <=, and ~= can be written as "
+                      "value": "Math operators like ≥, ≤, and ≈ can be written as "
                     },
                     {
                       "type": "InlineCode",
@@ -2071,6 +2088,23 @@
                       "value": "."
                     }
                   ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Escaped "
+                    },
+                    {
+                      "type": "InlineCode",
+                      "code": "\\>= \\<= \\~="
+                    },
+                    {
+                      "type": "Text",
+                      "value": " becomes: >= <= ~=."
+                    }
+                  ]
                 }
               ]
             },
@@ -2084,7 +2118,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Smart arrows -> and <- and <-> can be written as "
+                      "value": "Smart arrows → and ← and ↔ can be written as "
                     },
                     {
                       "type": "InlineCode",
@@ -2117,7 +2151,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Fat smart arrows => and <== and <=> can be written as "
+                      "value": "Fat smart arrows ⇒ and ⇐ and ⇔ can be written as "
                     },
                     {
                       "type": "InlineCode",
@@ -2142,6 +2176,23 @@
                     {
                       "type": "Text",
                       "value": "."
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Escaped "
+                    },
+                    {
+                      "type": "InlineCode",
+                      "code": "\\-> \\<- \\<-> \\=> \\<== \\<=>"
+                    },
+                    {
+                      "type": "Text",
+                      "value": " becomes: -> <- <-> => <== <=>."
                     }
                   ]
                 }
@@ -2246,7 +2297,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Notes can be written inline with a spec document, and are often helpful to\nsupply non-normative explanatory text or caveats in a differently formatted\nstyle. Case insensitive, the "
+                  "value": "Notes can be written inline with a spec document, and are often helpful to supply non-normative explanatory text or caveats in a differently formatted style. Case insensitive, the "
                 },
                 {
                   "type": "InlineCode",
@@ -2263,7 +2314,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Notes automatically have short links generated for them. If the contents of the\nnote changes, so will the link URL. However if a note moves around, or content\naround the note changes the existing links will still point to the right place,\nvery useful for consistently evolving specifications!"
+                  "value": "Notes automatically have short links generated for them. If the contents of the note changes, so will the link URL. However if a note moves around, or content around the note changes the existing links will still point to the right place, very useful for consistently evolving specifications!"
                 }
               ]
             },
@@ -2305,7 +2356,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "It's often helpful to write a draft of a document and leave \"to-do\" comments in\nnot-yet-completed sections. Case insensitive, the "
+                  "value": "It’s often helpful to write a draft of a document and leave “to-do” comments in not-yet-completed sections. Case insensitive, the "
                 },
                 {
                   "type": "InlineCode",
@@ -2380,7 +2431,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Spec Markdown will apply syntax highlighting to blocks of code if a\ngithub-flavored-markdown style language is supplied."
+                  "value": "Spec Markdown will apply syntax highlighting to blocks of code if a github-flavored-markdown style language is supplied."
                 }
               ]
             },
@@ -2436,7 +2487,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "You may also prefix your highlight function with \"raw\" if you want to avoid\nother tools, such as Prettier, from interpreting a code block."
+                  "value": "You may also prefix your highlight function with “raw” if you want to avoid other tools, such as Prettier, from interpreting a code block."
                 }
               ]
             },
@@ -2471,7 +2522,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec Markdown helps you write examples, visually indicaticating the difference\nfrom normative code blocks, and generating permalinks to those examples. Just\nwrite "
+                      "value": "Spec Markdown helps you write examples, visually indicaticating the difference from normative code blocks, and generating permalinks to those examples. Just write "
                     },
                     {
                       "type": "InlineCode",
@@ -2525,7 +2576,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Examples can also be syntax highlighted, by placing the language directly before\nwriting "
+                      "value": "Examples can also be syntax highlighted, by placing the language directly before writing "
                     },
                     {
                       "type": "InlineCode",
@@ -2583,7 +2634,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ", which\nare examples of things you should not do. These are visually indicated as\ndifferent from normative code blocks and other examples. Just write\n"
+                      "value": ", which are examples of things you should not do. These are visually indicated as different from normative code blocks and other examples. Just write "
                     },
                     {
                       "type": "InlineCode",
@@ -2646,7 +2697,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "When compiled, an import reference will be inlined into the same document. An\nimport reference looks like a link to a \".md\" file as a single paragraph."
+                  "value": "When compiled, an import reference will be inlined into the same document. An import reference looks like a link to a “.md” file as a single paragraph."
                 }
               ]
             },
@@ -2671,7 +2722,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " characters to describe at\nwhat section level the import should apply. By default an import reference will\nbe imported as a child of the current section."
+                  "value": " characters to describe at what section level the import should apply. By default an import reference will be imported as a child of the current section."
                 }
               ]
             }
@@ -2744,7 +2795,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " or\n"
+                  "value": " or "
                 },
                 {
                   "type": "InlineCode",
@@ -2784,7 +2835,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": "\non their own line with empty lines on either side:"
+                  "value": " on their own line with empty lines on either side:"
                 }
               ]
             },
@@ -2891,7 +2942,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "imports and section headers cannot be included in a added or removed\nsection to preserve the ability to render a table of contents."
+                  "value": "imports and section headers cannot be included in a added or removed section to preserve the ability to render a table of contents."
                 }
               ]
             }
@@ -2907,7 +2958,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Specifications for procedures or algorithms can be defined in terms of nested\nmarkdown lists. These lists can be of any kind, but will always have ordered\nformatting. The bullet labeling for algorithms is specific will cycle between\ndecimal, lower-alpha, and lower-roman."
+                  "value": "Specifications for procedures or algorithms can be defined in terms of nested markdown lists. These lists can be of any kind, but will always have ordered formatting. The bullet labeling for algorithms is specific will cycle between decimal, lower-alpha, and lower-roman."
                 }
               ]
             },
@@ -3065,7 +3116,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " characters or sequence of\ncharacters, which are then referenced by "
+                  "value": " characters or sequence of characters, which are then referenced by "
                 },
                 {
                   "type": "Italic",
@@ -3078,7 +3129,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " rules. The definition\nof a non-terminal is referred to as a "
+                  "value": " rules. The definition of a non-terminal is referred to as a "
                 },
                 {
                   "type": "Italic",
@@ -3113,7 +3164,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " token indicates an \"is defined as\" production for a non-terminal,\nwhere a single definition can be written directly after the "
+                      "value": " token indicates an “is defined as” production for a non-terminal, where a single definition can be written directly after the "
                     },
                     {
                       "type": "InlineCode",
@@ -3191,7 +3242,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " has definition options, they are written immediately after as a\nMarkdown list."
+                      "value": " has definition options, they are written immediately after as a Markdown list."
                     }
                   ]
                 },
@@ -3309,7 +3360,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": "\ntokens, and may also include conditionals and constraints."
+                      "value": " tokens, and may also include conditionals and constraints."
                     }
                   ]
                 },
@@ -3318,7 +3369,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Definition lists aren't required to be indented:"
+                      "value": "Definition lists aren’t required to be indented:"
                     }
                   ]
                 },
@@ -3417,7 +3468,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Often languages wish to specify different types of grammar productions, such as\nlexical or syntactical, or if certain characters line whitespace or newlines are\npermitted between symbols in the right-hand-side. Spec-md allows this this\ndistinction based on the number of colons:"
+                      "value": "Often languages wish to specify different types of grammar productions, such as lexical or syntactical, or if certain characters line whitespace or newlines are permitted between symbols in the right-hand-side. Spec-md allows this this distinction based on the number of colons:"
                     }
                   ]
                 },
@@ -3519,7 +3570,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "If each definition option is a single token, it can be expressed as a \"one of\"\nexpression instead of a markdown list."
+                      "value": "If each definition option is a single token, it can be expressed as a “one of” expression instead of a markdown list."
                     }
                   ]
                 },
@@ -3605,7 +3656,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "\"one of\" can also be followed by a line break and multiple lines of tokens.\nTo improve legibility in other tools, each line may optionally begin with\na bullet."
+                      "value": "“one of” can also be followed by a line break and multiple lines of tokens. To improve legibility in other tools, each line may optionally begin with a bullet."
                     }
                   ]
                 },
@@ -3802,7 +3853,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Non-terminal tokens with a defined as a grammar production can be referred to\nin other grammar productions. Non-terminals must match the regular expression\n"
+                      "value": "Non-terminal tokens with a defined as a grammar production can be referred to in other grammar productions. Non-terminals must match the regular expression "
                     },
                     {
                       "type": "RegExp",
@@ -3810,7 +3861,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ". That is, they must start with an uppercase letter, followed\nby any number of letters or underscores."
+                      "value": ". That is, they must start with an uppercase letter, followed by any number of letters or underscores."
                     }
                   ]
                 }
@@ -3826,7 +3877,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Grammars can describe arbitrary rules by using prose within a grammar\ndefinition by using "
+                      "value": "Grammars can describe arbitrary rules by using prose within a grammar definition by using "
                     },
                     {
                       "type": "InlineCode",
@@ -3896,7 +3947,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Terminal tokens refer to a character or sequence of characters. They can be\nwritten unadorned in the grammar definition."
+                      "value": "Terminal tokens refer to a character or sequence of characters. They can be written unadorned in the grammar definition."
                     }
                   ]
                 },
@@ -4037,7 +4088,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " to remove any\nambiguity from other meanings, for example to allow a terminal token to start\nwith an uppercase letter, or a slash "
+                      "value": " to remove any ambiguity from other meanings, for example to allow a terminal token to start with an uppercase letter, or a slash "
                     },
                     {
                       "type": "InlineCode",
@@ -4053,7 +4104,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ", or later\ncontain a "
+                      "value": ", or later contain a "
                     },
                     {
                       "type": "InlineCode",
@@ -4131,7 +4182,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "When a grammar is intended to be interpretted as a single token and can be\nclearly written as a regular expression, you can do so directly."
+                      "value": "When a grammar is intended to be interpretted as a single token and can be clearly written as a regular expression, you can do so directly."
                     }
                   ]
                 },
@@ -4183,7 +4234,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Tokens can be followed by quantifiers to alter their meaning and as a short-hand\nfor common patterns of optionality and repetition."
+                      "value": "Tokens can be followed by quantifiers to alter their meaning and as a short-hand for common patterns of optionality and repetition."
                     }
                   ]
                 },
@@ -4218,7 +4269,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " and is a shorthand for two\npossible definitions, one including that token and one excluding it."
+                          "value": " and is a shorthand for two possible definitions, one including that token and one excluding it."
                         }
                       ]
                     },
@@ -4367,7 +4418,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " and is shorthand for a list\nof one or more of that token."
+                          "value": " and is shorthand for a list of one or more of that token."
                         }
                       ]
                     },
@@ -4522,7 +4573,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " as a shorthand for a\ncomma-separated list, in which case the previous example would be shorthand for:"
+                          "value": " as a shorthand for a comma-separated list, in which case the previous example would be shorthand for:"
                         }
                       ]
                     },
@@ -4634,7 +4685,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " and is shorthand for an\noptional list, which describes zero or more of that token."
+                          "value": " and is shorthand for an optional list, which describes zero or more of that token."
                         }
                       ]
                     },
@@ -4906,7 +4957,7 @@
                         },
                         {
                           "type": "Text",
-                          "value": " characters, so\nalways quote the terminal if the intent is to apply a quantifer."
+                          "value": " characters, so always quote the terminal if the intent is to apply a quantifer."
                         }
                       ]
                     },
@@ -5006,7 +5057,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "It can be a useful short-hand to provide conditional parameters when defining a\nnon-terminal token rather than defining two very similar non-terminals."
+                      "value": "It can be a useful short-hand to provide conditional parameters when defining a non-terminal token rather than defining two very similar non-terminals."
                     }
                   ]
                 },
@@ -5023,7 +5074,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " and renders\nas "
+                      "value": " and renders as "
                     },
                     {
                       "type": "NonTerminal",
@@ -5039,7 +5090,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ". When used in definitions is shorthand for two symbol\ndefinitions: one appended with that parameter name, the other without."
+                      "value": ". When used in definitions is shorthand for two symbol definitions: one appended with that parameter name, the other without."
                     }
                   ]
                 },
@@ -5138,7 +5189,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "The conditions are applied at the beginning of a definition for the\nnon-terminal by prefixing with "
+                      "value": "The conditions are applied at the beginning of a definition for the non-terminal by prefixing with "
                     },
                     {
                       "type": "InlineCode",
@@ -5154,7 +5205,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ") or\n"
+                      "value": ") or "
                     },
                     {
                       "type": "InlineCode",
@@ -5170,7 +5221,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ") to only include the definition when\nthe variant with the conditional parameter is or is not used, respectively."
+                      "value": ") to only include the definition when the variant with the conditional parameter is or is not used, respectively."
                     }
                   ]
                 },
@@ -5391,7 +5442,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "The same bracket suffix on a non-terminal within a rule is shorthand for\nusing that variant of the rule. If the parameter starts with "
+                      "value": "The same bracket suffix on a non-terminal within a rule is shorthand for using that variant of the rule. If the parameter starts with "
                     },
                     {
                       "type": "InlineCode",
@@ -5399,7 +5450,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ",\nthat form of the symbol is conditionally used only in the derived production\nwith the same parameter. If the parameter starts with "
+                      "value": ", that form of the symbol is conditionally used only in the derived production with the same parameter. If the parameter starts with "
                     },
                     {
                       "type": "InlineCode",
@@ -5407,7 +5458,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": ", that form of the\nsymbol is only used when in the derived production "
+                      "value": ", that form of the symbol is only used when in the derived production "
                     },
                     {
                       "type": "Italic",
@@ -5657,7 +5708,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Multiple conditional parameters can be used on both the production definition\nand on non-terminals within a rule, in which case it is short form for the\npermutation of all conditions:"
+                      "value": "Multiple conditional parameters can be used on both the production definition and on non-terminals within a rule, in which case it is short form for the permutation of all conditions:"
                     }
                   ]
                 },
@@ -5972,7 +6023,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Any token can be followed by \"but not\" or \"but not one of\" to place a further\nconstraint on the previous token:"
+                      "value": "Any token can be followed by “but not” or “but not one of” to place a further constraint on the previous token:"
                     }
                   ]
                 },
@@ -6039,7 +6090,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Optionally can mention \"one of\", this will be omitted when rendered. Commas can\nbe used instead of \"or\"."
+                      "value": "Optionally can mention “one of”, this will be omitted when rendered. Commas can be used instead of “or”."
                     }
                   ]
                 },
@@ -6137,7 +6188,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " can be used to define\na non-terminal as matching no terminal or non-terminal tokens."
+                      "value": " can be used to define a non-terminal as matching no terminal or non-terminal tokens."
                     }
                   ]
                 },
@@ -6181,7 +6232,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Lookaheads can appear anywhere in a sequence of tokens, and describe additional\nconstraints on the following token."
+                      "value": "Lookaheads can appear anywhere in a sequence of tokens, and describe additional constraints on the following token."
                     }
                   ]
                 },
@@ -6443,7 +6494,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Once grammar is defined, it can be useful to define the semantics of the grammar\nin terms of algorithm steps. A single grammar definition followed by a list\nis interpretted as a grammar semantic:"
+                  "value": "Once grammar is defined, it can be useful to define the semantics of the grammar in terms of algorithm steps. A single grammar definition followed by a list is interpretted as a grammar semantic:"
                 }
               ]
             },
@@ -6720,7 +6771,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "Value literals allow any text to refer to a value which has semantic meaning\nin the specification by wrapping it in "
+                  "value": "Value literals allow any text to refer to a value which has semantic meaning in the specification by wrapping it in "
                 },
                 {
                   "type": "InlineCode",
@@ -6862,7 +6913,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " are rendered\nas constants instead of variables."
+                      "value": " are rendered as constants instead of variables."
                     }
                   ]
                 }
@@ -6916,7 +6967,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " to represent the\nnon-terminal token "
+                      "value": " to represent the non-terminal token "
                     },
                     {
                       "type": "NonTerminal",
@@ -6941,7 +6992,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " to represent the\nterminal token "
+                      "value": " to represent the terminal token "
                     },
                     {
                       "type": "Terminal",
@@ -6964,7 +7015,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " and\n"
+                      "value": " and "
                     },
                     {
                       "type": "InlineCode",
@@ -7072,7 +7123,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " key in a metadata file, you can have Algorithm calls\nand Non-terminal tokens which are not defined in this spec to link to where they\nare defined."
+                  "value": " key in a metadata file, you can have Algorithm calls and Non-terminal tokens which are not defined in this spec to link to where they are defined."
                 }
               ]
             },
@@ -7277,7 +7328,7 @@
                       },
                       {
                         "type": "Text",
-                        "value": ".\n"
+                        "value": ". "
                       }
                     ]
                   }
@@ -7308,7 +7359,7 @@
             },
             {
               "type": "Text",
-              "value": " as a shell executable is the easiest way\nto use Spec Markdown. The "
+              "value": " as a shell executable is the easiest way to use Spec Markdown. The "
             },
             {
               "type": "InlineCode",
@@ -7316,7 +7367,7 @@
             },
             {
               "type": "Text",
-              "value": " executable expects a filepath to a Markdown\ndocument as input and outputs HTML on stdout. Use "
+              "value": " executable expects a filepath to a Markdown document as input and outputs HTML on stdout. Use "
             },
             {
               "type": "InlineCode",
@@ -7349,7 +7400,7 @@
             },
             {
               "type": "Text",
-              "value": " as a node module, after which you might add the\n"
+              "value": " as a node module, after which you might add the "
             },
             {
               "type": "InlineCode",
@@ -7439,7 +7490,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " to a Markdown file and returns\n    a Promise which will resolve to an HTML string. This function is the primary\n    usage of the "
+                  "value": " to a Markdown file and returns a Promise which will resolve to an HTML string. This function is the primary usage of the "
                 },
                 {
                   "type": "InlineCode",
@@ -7466,7 +7517,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " takes a filepath and returns a Promise which will resolve\n    to an AST "
+                  "value": " takes a filepath and returns a Promise which will resolve to an AST "
                 },
                 {
                   "type": "Italic",
@@ -7479,7 +7530,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " representing the contents of the Spec\n    Markdown file, with all imports already inlined."
+                  "value": " representing the contents of the Spec Markdown file, with all imports already inlined."
                 }
               ]
             },
@@ -7510,7 +7561,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " produced by parse() and returns an HTML\n    string."
+                  "value": " produced by parse() and returns an HTML string."
                 }
               ]
             },
@@ -7557,7 +7608,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": "\n    in a depth-first-traversal calling the "
+                  "value": " in a depth-first-traversal calling the "
                 },
                 {
                   "type": "Variable",
@@ -7621,7 +7672,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": "\nas an optional second argument. These options allow for customization control\nover the returned HTML, more options may be added in the future."
+                  "value": " as an optional second argument. These options allow for customization control over the returned HTML, more options may be added in the future."
                 }
               ]
             },
@@ -7643,7 +7694,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " - a function which is called when blocks of code are\n    encountered, with the first argument as the string of code, the second\n    argument being the language specified. This function should return well\n    formed HTML, complete with escaped special characters."
+                      "value": " - a function which is called when blocks of code are encountered, with the first argument as the string of code, the second argument being the language specified. This function should return well formed HTML, complete with escaped special characters."
                     }
                   ]
                 },
@@ -7669,7 +7720,7 @@
                     },
                     {
                       "type": "Text",
-                      "value": " tag in the returned\n    HTML. Use this to introduce additional meta tags and scripts."
+                      "value": " tag in the returned HTML. Use this to introduce additional meta tags and scripts."
                     }
                   ]
                 }
@@ -7709,7 +7760,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": "\nof doing one thing and doing it well. Try out "
+                  "value": " of doing one thing and doing it well. Try out "
                 },
                 {
                   "type": "InlineCode",
@@ -7717,7 +7768,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " to continuously rebuild\nthe HTML output as you edit the markdown specification:"
+                  "value": " to continuously rebuild the HTML output as you edit the markdown specification:"
                 }
               ]
             },
@@ -7743,7 +7794,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": "We want to make contributing to this project as easy and transparent as\npossible. Hopefully this document makes the process for contributing clear and\nanswers any questions you may have. If not, feel free to open an\n"
+              "value": "We want to make contributing to this project as easy and transparent as possible. Hopefully this document makes the process for contributing clear and answers any questions you may have. If not, feel free to open an "
             },
             {
               "type": "Link",
@@ -7771,7 +7822,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "All active development of Spec Markdown happens on GitHub. We actively welcome\nyour "
+                  "value": "All active development of Spec Markdown happens on GitHub. We actively welcome your "
                 },
                 {
                   "type": "Link",
@@ -7842,7 +7893,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "If you've added code, add tests."
+                      "value": "If you’ve added code, add tests."
                     }
                   ]
                 },
@@ -7851,7 +7902,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "If you've changed APIs, update the documentation."
+                      "value": "If you’ve changed APIs, update the documentation."
                     }
                   ]
                 },
@@ -7894,7 +7945,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " in good shape, with tests passing at all\ntimes. But in order to move fast, we might make API changes that your\napplication might not be compatible with. We will do our best to communicate\nthese changes and always "
+                  "value": " in good shape, with tests passing at all times. But in order to move fast, we might make API changes that your application might not be compatible with. We will do our best to communicate these changes and always "
                 },
                 {
                   "type": "Link",
@@ -7908,7 +7959,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " appropriately so you can\nlock into a specific version if need be. If any of this is worrysome to you,\njust use "
+                  "value": " appropriately so you can lock into a specific version if need be. If any of this is worrysome to you, just use "
                 },
                 {
                   "type": "Link",
@@ -7938,7 +7989,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "We use GitHub issues to track public bugs and requests. Please ensure your bug\ndescription is clear and has sufficient instructions to be able to reproduce the\nissue. The best way is to provide a reduced test case on jsFiddle or jsBin."
+                  "value": "We use GitHub issues to track public bugs and requests. Please ensure your bug description is clear and has sufficient instructions to be able to reproduce the issue. The best way is to provide a reduced test case on jsFiddle or jsBin."
                 }
               ]
             }
@@ -8033,7 +8084,7 @@
               "contents": [
                 {
                   "type": "Text",
-                  "value": "By contributing to Spec Markdown, you agree that your contributions will be\nlicensed under its MIT license.\n"
+                  "value": "By contributing to Spec Markdown, you agree that your contributions will be licensed under its MIT license. "
                 }
               ]
             }
