@@ -831,11 +831,28 @@
                   ]
                 },
                 {
-                  "type": "Todo",
+                  "type": "Paragraph",
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Markdown's double-back-tick syntax is not yet supported."
+                      "value": "Inline code can also use double- or triple-backticks. Wrapping spaces are removed."
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "InlineCode",
+                      "code": "`` ` ``"
+                    },
+                    {
+                      "type": "Text",
+                      "value": " Produces "
+                    },
+                    {
+                      "type": "InlineCode",
+                      "code": "`"
                     }
                   ]
                 }
@@ -2121,46 +2138,6 @@
                     {
                       "type": "InlineCode",
                       "code": "<=>"
-                    },
-                    {
-                      "type": "Text",
-                      "value": "."
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Section",
-              "secID": null,
-              "title": "Additional escape sequence",
-              "contents": [
-                {
-                  "type": "Paragraph",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "Spec Markdown allows escaping < > and | character with "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "\\>"
-                    },
-                    {
-                      "type": "Text",
-                      "value": ", "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "\\<"
-                    },
-                    {
-                      "type": "Text",
-                      "value": ",\nand "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "\\|"
                     },
                     {
                       "type": "Text",

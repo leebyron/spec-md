@@ -156,12 +156,6 @@ Smart arrows -> and <- and <-> can be written as `->`, `<-` and `<->`.
 Fat smart arrows => and <== and <=> can be written as `=>`, `<==` and `<=>`.
 
 
-### Additional escape sequence
-
-Spec Markdown allows escaping \< \> and \| character with `\>`, `\<`,
-and `\|`.
-
-
 ### Tables
 
 Similar to Github flavored Markdown

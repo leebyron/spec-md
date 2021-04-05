@@ -111,7 +111,9 @@ Produces
 This is an `example` of some inline code.
 
 
-Todo: Markdown's double-back-tick syntax is not yet supported.
+Inline code can also use double- or triple-backticks. Wrapping spaces are removed.
+
+``` `` ` `` ``` Produces `` ` ``
 
 
 ### Images
