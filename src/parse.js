@@ -40,7 +40,7 @@ async function importAST(filepath, startRule) {
 
 function parseSpecMD(filepath, source, startRule) {
   try {
-    return grammar.parse(source, { startRule });
+    return grammar.parse(source, { startRule, filepath });
   } catch (error) {
     if (error && error.location) {
       error.filepath = filepath;

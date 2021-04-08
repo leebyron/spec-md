@@ -50,39 +50,50 @@
   let htmlBlockName;
 
   const BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
+
+  function located(node) {
+    const currentLocation = location();
+    return Object.defineProperty(node, 'loc', {
+      value: {
+        source: options.filepath,
+        start: currentLocation.start,
+        end: currentLocation.end,
+      }
+    });
+  }
 }
 
 // Document
 
 initialDocument = title:title contents:documentContent* EOF {
-  return {
+  return located({
     type: 'Document',
     title: title,
     contents: contents
-  };
+  });
 }
 
 importedDocument = contents:documentContent* EOF {
-  return {
+  return located({
     type: 'Document',
     contents: contents
-  };
+  });
 }
 
 title = setextTitle / markdownTitle
 
 setextTitle = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
-  return {
+  return located({
     type: 'DocumentTitle',
     value: format(value)
-  };
+  });
 }
 
 markdownTitle = BLOCK H1 value:headerText H_END {
-  return {
+  return located({
     type: 'DocumentTitle',
     value: value
-  };
+  });
 }
 
 H1 = '#' !'#' _
@@ -106,57 +117,57 @@ sectionIDStart = [0-9]+ / [A-Z]+ / '*'
 sectionIDPart = [0-9]+ / '*'
 
 section1 = BLOCK H1 secID:sectionID? _ title:headerText H_END contents:section1Content* {
-  return {
+  return located({
     type: 'Section',
     secID: secID,
     title: title,
     contents: contents
-  };
+  });
 }
 
 section2 = BLOCK H2 secID:sectionID? _ title:headerText H_END contents:section2Content* {
-  return {
+  return located({
     type: 'Section',
     secID: secID,
     title: title,
     contents: contents
-  };
+  });
 }
 
 section3 = BLOCK H3 secID:sectionID? _ title:headerText H_END contents:section3Content* {
-  return {
+  return located({
     type: 'Section',
     secID: secID,
     title: title,
     contents: contents
-  };
+  });
 }
 
 section4 = BLOCK H4 secID:sectionID? _ title:headerText H_END contents:section4Content* {
-  return {
+  return located({
     type: 'Section',
     secID: secID,
     title: title,
     contents: contents
-  };
+  });
 }
 
 section5 = BLOCK H5 secID:sectionID? _ title:headerText H_END contents:section5Content* {
-  return {
+  return located({
     type: 'Section',
     secID: secID,
     title: title,
     contents: contents
-  };
+  });
 }
 
 section6 = BLOCK H6 secID:sectionID? _ title:headerText H_END contents:section6Content* {
-  return {
+  return located({
     type: 'Section',
     secID: secID,
     title: title,
     contents: contents
-  };
+  });
 }
 
 subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
@@ -164,11 +175,11 @@ subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
 }
 
 subsection = BLOCK title:subsectionHeader contents:sectionContent* {
-  return {
+  return located({
     type: 'Subsection',
     title: title,
     contents: contents,
-  }
+  });
 }
 
 documentContent = import1 / section1 / subsection / importRel / sectionContent
@@ -198,10 +209,10 @@ sectionContent = note
 importLink = link:link &( BLOCK / EOF ) &{
   return link.url.slice(-3) === '.md' && !/^\/([a-z]*:\/\/)/.test(link.url);
 } {
-  return {
+  return located({
     type: 'Import',
     path: link.url
-  };
+  });
 }
 
 importRel = BLOCK importLink:importLink &NL { return importLink; }
@@ -218,17 +229,17 @@ import6 = BLOCK H6 importLink:importLink H_END { return importLink; }
 blockEdit = blockIns / blockDel
 
 blockIns = BLOCK '{++' &BLOCK contents:sectionContent* BLOCK '++}' &(BLOCK / EOF) {
-  return {
+  return located({
     type: 'BlockIns',
     contents: contents
-  };
+  });
 }
 
 blockDel = BLOCK '{--' &BLOCK contents:sectionContent* BLOCK '--}' &(BLOCK / EOF) {
-  return {
+  return located({
     type: 'BlockDel',
     contents: contents
-  };
+  });
 }
 
 
@@ -244,11 +255,11 @@ htmlBlock = BLOCK html:$(
   htmlContent*
   close:tagClose &{ return htmlBlockName === close; }
 ) {
-  return {
+  return located({
     type: 'HTMLBlock',
     name: htmlBlockName,
     html: html
-  };
+  });
 }
 
 htmlContent = [^<]+
@@ -266,10 +277,10 @@ tagClose = '</' name:$[a-z]+ '>' { return name; }
 // Paragraph
 
 paragraph = BLOCK !'#' !subsectionHeader contents:content+ {
-  return {
+  return located({
     type: 'Paragraph',
     contents: contents
-  };
+  });
 }
 
 // Any ASCII punctuation character may be backslash-escaped
@@ -295,70 +306,70 @@ text = value:$textChar+ {
     prevChar = input[--prevOffset]
   } while (/[*~_+\-{}[\]]/.test(prevChar));
   const followsEntity = !/\s/.test(prevChar);
-  return {
+  return located({
     type: 'Text',
     value: format(value, followsEntity)
-  };
+  });
 }
 
 note = BLOCK 'NOTE'i (':' / WB) _ contents:content* {
-  return {
+  return located({
     type: 'Note',
     contents: contents
-  };
+  });
 }
 
 todo = BLOCK ('TODO'i / 'TK'i) (':' / WB) _ contents:content* {
-  return {
+  return located({
     type: 'Todo',
     contents: contents
-  };
+  });
 }
 
 bold = '**' contents:(inlineCode / link / italic / text)+ '**' {
-  return {
+  return located({
     type: 'Bold',
     contents: contents
-  };
+  });
 }
 
 italic = asteriskItalic / underscoreItalic
 
 asteriskItalic = '*' contents:(inlineCode / link / text)+ '*' {
-  return {
+  return located({
     type: 'Italic',
     contents: contents
-  };
+  });
 }
 
 underscoreItalic = '_' contents:(inlineCode / link / bold / text)+ '_' {
-  return {
+  return located({
     type: 'Italic',
     contents: contents
-  };
+  });
 }
 
 inlineEdit = ins / del
 
 ins = '{++' contents:content* '++}' {
-  return {
+  return located({
     type: 'Ins',
     contents: contents
-  };
+  });
 }
 
 del = '{--' contents:content* '--}' {
-  return {
+  return located({
     type: 'Del',
     contents: contents
-  };
+  });
 }
 
 htmlTag = tag:$('<' '/'? [a-z]+ [^>]* '>') {
-  return {
+  return located({
     type: 'HTMLTag',
     tag: tag
-  };
+  });
 }
 
 reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
@@ -374,10 +385,10 @@ inlineCode = code:(inlineCode1 / inlineCode2 / inlineCode3) {
   if (code.startsWith(' ') && code.endsWith(' ') && !code.match(/^\s+$/)) {
     code = code.slice(1, -1)
   }
-  return {
+  return located({
     type: 'InlineCode',
     code: code
-  };
+  });
 }
 
 backTick1 = '`' !'`'
@@ -401,14 +412,14 @@ blockCode = BLOCK '```' raw:('raw' WB _)? deprecatedCounterExample:'!'? lang:cod
   if (deprecatedCounterExample) {
     console.warn(line() + ':' + column() + ': Use of `!` is deprecated, use `counter-example` instead.');
   }
-  return {
+  return located({
     type: 'Code',
     raw: raw !== null,
     lang: lang,
     example: example !== null,
     counter: example === 'counter-example' || deprecatedCounterExample !== null,
     code: code
-  };
+  });
 }
 
 codeLang = !('example'/'counter-example') lang:$([a-z][-a-z0-9]*) {
@@ -419,10 +430,10 @@ indentCode =
   // To safely maintain indent state, must parse ahead first
   &(DEEP_INDENT code:(indentCodeLine+)? DEDENT &{ return code !== null })
     DEEP_INDENT code:indentCodeLine+ DEDENT {
-  return {
+  return located({
     type: 'Code',
     code: code.join('\n')
-  };
+  });
 }
 
 indentCodeLine = depth:LINE code:$NOT_NL+ {
@@ -433,11 +444,11 @@ indentCodeLine = depth:LINE code:$NOT_NL+ {
 // Link & Image
 
 link = '[' contents:linkContent* ']' _ '(' _ url:$[^)]+ _ ')' {
-  return {
+  return located({
     type: 'Link',
     contents: contents,
     url: url
-  };
+  });
 }
 
 linkContent = inlineEntity / linkText
@@ -452,18 +463,18 @@ linkTextChar = escaped
              / !htmlTag '<'
 
 linkText = value:$linkTextChar+ {
-  return {
+  return located({
     type: 'Text',
     value: format(value)
-  };
+  });
 }
 
 image = '![' alt:$[^\]]+ '](' _ url:$[^)]+ _ ')' {
-  return {
+  return located({
     type: 'Image',
     alt: format(alt),
     url: unescape(url)
-  };
+  });
 }
 
 
@@ -479,19 +490,19 @@ indentedList =
 }
 
 unorderedList = &(LINE unorderedBullet) items:listItem+ {
-  return {
+  return located({
     type: 'List',
     ordered: false,
     items: items
-  };
+  });
 }
 
 orderedList = &(LINE orderedBullet) items:listItem+ {
-  return {
+  return located({
     type: 'List',
     ordered: true,
     items: items
-  };
+  });
 }
 
 listItem = LINE bullet:listBullet _ taskBox:taskBox? contents:content* sublist:indentedList? {
@@ -499,16 +510,16 @@ listItem = LINE bullet:listBullet _ taskBox:taskBox? contents:content* sublist:i
     contents = contents.concat([sublist])
   }
   if (taskBox) {
-    return {
+    return located({
       type: 'TaskListItem',
       done: taskBox.done,
       contents: contents
-    };
+    });
   }
-  return {
+  return located({
     type: 'ListItem',
     contents: contents
-  };
+  });
 }
 
 listBullet = unorderedBullet / orderedBullet
@@ -516,17 +527,19 @@ unorderedBullet = $(('-' / '+' / '*') ' ')
 orderedBullet = $(([1-9]+ '.') ' ')
 
 taskBox = '[' done:(' ' / 'x' / 'X') ']' !(_ '(') {
-  return { done: done !== ' ' }
+  return located({
+    done: done !== ' '
+  });
 }
 
 // Table
 
 table = BLOCK !'#' headers:(tableCells / tableOneColCells) LINE [ -|]+ rows:tableRow+ {
-  return {
+  return located({
     type: 'Table',
     headers: headers,
     rows: rows
-  };
+  });
 }
 
 tableRow = LINE !'#' cells:(tableCells / tableOneColCells) {
@@ -560,10 +573,10 @@ tableCellTextChar = escaped
                   / !htmlTag '<'
 
 tableCellText = value:$tableCellTextChar+ {
-  return {
+  return located({
     type: 'Text',
     value: format(value)
-  };
+  });
 }
 
 
@@ -582,19 +595,19 @@ nameRest = $('\\_' / [_a-zA-Z0-9])*
 // Algorithm
 
 algorithm = BLOCK call:call _ ':' ':'? steps:list {
-  return {
+  return located({
     type: 'Algorithm',
     call: call,
     steps: orderify(steps)
-  };
+  });
 }
 
 call = name:name '(' args:(noCallArgs / callArgs) ')' {
-  return {
+  return located({
     type: 'Call',
     name: name,
     args: args
-  };
+  });
 }
 
 noCallArgs = &')' {
@@ -611,32 +624,32 @@ stringLiteral = '"' value:$('\\"'/[^"\n\r])* closer:'"'? {
   if (closer === null) {
     error('Unclosed string literal.');
   }
-  return {
+  return located({
     type: 'StringLiteral',
     // Unescape all but quote characters within a string literal.
     value: '"' + unescape(value).replace(/"/g, '\\"') + '"'
-  };
+  });
 }
 
 keyword = value:$('null' / 'true' / 'false' / 'undefined') WB {
-  return {
+  return located({
     type: 'Keyword',
     value: value
-  };
+  });
 }
 
 variable = name:localName {
-  return {
+  return located({
     type: 'Variable',
     name: name
-  };
+  });
 }
 
 
 // Grammar productions
 
 semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ !'one of' tokens:tokens steps:list {
-  return {
+  return located({
     type: 'Semantic',
     name: name,
     defType: defType.length,
@@ -645,37 +658,40 @@ semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ !'one of' tokens
       tokens: tokens
     },
     steps: orderify(steps)
-  };
+  });
 }
 
 production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRHS {
-  return {
+  return located({
     type: 'Production',
     token: token,
     defType: defType.length,
     rhs: rhs
-  };
+  });
 }
 
 productionRHS = oneOfRHS / singleRHS / listRHS
 
 oneOfRHS = !(LINE listBullet) __ 'one of' WB rows:((LINE listBullet / __)? (_ token)+)+ {
-  return {
+  return located({
     type: 'OneOfRHS',
     rows: rows.map(row => row[1].map(tokens => tokens[1]))
-  };
+  });
 }
 
 singleRHS = !(LINE listBullet / 'one of') __ condition:(condition __)? tokens:tokens {
-  return {
+  return located({
     type: 'RHS',
     condition: condition ? condition[0] : null,
     tokens: tokens
-  };
+  });
 }
 
 listRHS = defs:(indentedRHS / listItemRHS+) {
-  return { type: 'ListRHS', defs: defs };
+  return located({
+    type: 'ListRHS',
+    defs: defs
+  });
 }
 
 indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
@@ -683,19 +699,19 @@ indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
 }
 
 listItemRHS = LINE listBullet _ condition:(condition __)? tokens:tokens {
-  return {
+  return located({
     type: 'RHS',
     condition: condition ? condition[0] : null,
     tokens: tokens
-  };
+  });
 }
 
 condition = '[' condition:$('+' / '~' / 'if' WB (__ 'not' WB)?) __ param:name ']' {
-  return {
+  return located({
     type: 'Condition',
     param: param,
     not: condition === '~' || condition.indexOf('not') !== -1
-  };
+  });
 }
 
 tokens = first:token rest:(__ token:token)* {
@@ -704,19 +720,19 @@ tokens = first:token rest:(__ token:token)* {
 
 token = token:unconstrainedToken quantifier:('\\'? ('+' / '?' / '*'))? constraint:(__ constraint)? {
   if (quantifier) {
-    token = {
+    token = located({
       type: 'Quantified',
       token: token,
       isList: quantifier[1] === '+' || quantifier[1] === '*',
       isOptional: quantifier[1] === '?' || quantifier[1] === '*'
-    };
+    });
   }
   if (constraint) {
-    token = {
+    token = located({
       type: 'Constrained',
       token: token,
       constraint: constraint[1]
-    }
+    });
   }
   return token;
 }
@@ -727,28 +743,28 @@ prose = '"' text:$([^"\n\r]/'\\"')* closer:'"'? {
   if (closer === null) {
     error('Unclosed quoted prose.');
   }
-  return {
+  return located({
     type: 'Prose',
     text: format(text)
-  };
+  });
 }
 
 emptyToken = '[' _ 'empty' _ ']' {
-  return {
+  return located({
     type: 'Empty'
-  };
+  });
 }
 
 lookahead = '[' __ 'lookahead' WB not:(__ ('!=' / '!'))? __ set:(lookaheadSet/lookaheadItem)? __ closer:']'? {
   if (set === null || closer === null) {
     error('Malformed lookahead. Did you forget tokens?');
   }
-  return {
+  return located({
     type: 'Lookahead',
     not: not !== null,
     nt: set.length === 1 && set[0].type === 'NonTerminal',
     set: set
-  };
+  });
 }
 
 lookaheadSet = '{' set:((__ !'}' token _ ','?)+)? __ closer:'}'? {
@@ -763,11 +779,11 @@ lookaheadItem = !(']' / '}') token:token {
 }
 
 nonTerminal = name:globalName params:nonTerminalParams? {
-  return {
+  return located({
     type: 'NonTerminal',
     name: name,
     params: params,
-  };
+  });
 }
 
 nonTerminalParams = '[' __ params:(nonTerminalParam _ ',' __)* param:nonTerminalParam? __ closer:']'? {
@@ -778,45 +794,45 @@ nonTerminalParams = '[' __ params:(nonTerminalParam _ ',' __)* param:nonTerminal
 }
 
 nonTerminalParam = conditional:[?!]? name:name {
-  return {
+  return located({
     type: 'NonTerminalParam',
     conditional: conditional === '?',
     negated: conditional === '!',
     name: name
-  };
+  });
 }
 
 constraint = butNot
 
 butNot = 'but' WB __ 'not' WB __ ('one' WB __ 'of' WB __)? first:token rest:(__ ('or' WB / ',') __ token)* !(__ ('or' WB / ',')) {
-  return {
+  return located({
     type: 'ButNot',
     tokens: [first].concat(rest.map(nodes => nodes[3]))
-  };
+  });
 }
 
 regexp = '/' value:$(([^/\n\r] / '\\/')+)? closer:'/'? {
   if (value === null || closer === null) {
     error('Malformed regular expression.');
   }
-  return {
+  return located({
     type: 'RegExp',
     value: '/' + unescape(value) + '/'
-  };
+  });
 }
 
 quotedTerminal = inlineCode:inlineCode {
-  return {
+  return located({
     type: 'Terminal',
     value: inlineCode.code
-  };
+  });
 }
 
 terminal = value:$([^ \n\r"/`] [^ \n\r"\`,\]\}]*) {
-  return {
+  return located({
     type: 'Terminal',
     value: unescape(value)
-  };
+  });
 }
 
 

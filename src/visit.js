@@ -71,7 +71,7 @@ function visit(root, visitor) {
     } else {
       key = parent ? inArray ? index : keys[index] : undefined;
       node = parent ? parent[key] : root;
-      if (node === null || node === undefined || typeof node !== 'object') {
+      if (!canVisit(node)) {
         continue;
       }
       if (parent) {
@@ -97,7 +97,7 @@ function visit(root, visitor) {
         if (result !== undefined) {
           edits.push([key, result]);
           if (!isLeaving) {
-            if (typeof result === 'object') {
+            if (canVisit(result)) {
               node = result;
             } else {
               path.pop();
@@ -142,6 +142,14 @@ function visit(root, visitor) {
 
   return root;
 };
+
+function canVisit(value) {
+  return (
+    value != null &&
+    typeof value === 'object' &&
+    ('type' in value || Array.isArray(value))
+  );
+}
 
 const BREAK = visit.BREAK = {};
 
