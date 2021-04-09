@@ -7,8 +7,12 @@
   "contents": [
     {
       "type": "Section",
-      "secID": null,
-      "title": "Grammar",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Grammar"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -611,8 +615,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Algorithms",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Algorithms"
+      },
       "contents": [
         {
           "type": "Paragraph",

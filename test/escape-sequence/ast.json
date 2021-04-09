@@ -7,8 +7,12 @@
   "contents": [
     {
       "type": "Section",
-      "secID": null,
-      "title": "Can be < in titles >",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Can be < in titles >"
+      },
       "contents": [
         {
           "type": "Paragraph",

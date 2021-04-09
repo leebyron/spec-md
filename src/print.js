@@ -137,8 +137,9 @@ function validateSecIDs(ast, options) {
   const items = visit(ast, {
     enter: function (node) {
       if (node.type === 'Section') {
-        if (node.secID) {
-          let nextIDPart = node.secID[node.secID.length - 1];
+        const secID = node.header.secID
+        if (secID) {
+          let nextIDPart = secID[secID.length - 1];
           const nextIsLetter = IS_LETTER_RX.test(nextIDPart);
           if (nextIDPart === '*') {
             throw new Error('Not yet supported');
@@ -163,7 +164,7 @@ function validateSecIDs(ast, options) {
         sectionIDStack.push(sectionIDPart);
         sectionIDPart = 0;
         // Copy the validatd secID stack at this point.
-        node.secID = sectionIDStack.slice();
+        node.header.secID = sectionIDStack.slice();
       }
     },
     leave: function (node) {
@@ -192,7 +193,7 @@ function assignBiblioIDs(ast, options) {
   const secnameStack = [];
   visit(ast, function (node) {
     if (node.type === 'Section') {
-      const secname = anchorize(node.title);
+      const secname = anchorize(node.header.title);
       if (secnames.hasOwnProperty(secname)) {
         conflicts[secname] = true;
       } else {
@@ -205,7 +206,7 @@ function assignBiblioIDs(ast, options) {
   visit(ast, {
     enter: function (node) {
       if (node.type === 'Section') {
-        let secname = anchorize(node.title);
+        let secname = anchorize(node.header.title);
         if (conflicts.hasOwnProperty(secname)) {
           secname = secnameStack[secnameStack.length - 1] + '.' + secname;
         }
@@ -214,10 +215,11 @@ function assignBiblioIDs(ast, options) {
           options.biblio[id] = '#' + id;
         }
         node.id = id;
+        node.secid = join(node.header.secID, '.');
         secnameStack.push(secname);
       }
       if (node.type === 'Subsection') {
-        let subsecname = anchorize(node.title);
+        let subsecname = anchorize(node.header.title);
         let secname = secnameStack.length > 0
           ? secnameStack[secnameStack.length - 1] + '.' + subsecname
           : subsecname;
@@ -307,16 +309,18 @@ function printTOC(ast, options) {
     leave: function (node) {
       if (node.type === 'Section') {
         const subSections = join(node.contents);
-        const secID = join(node.secID, '.');
         return (
           '<li>' +
             '<a href="' + encodeURI(options.biblio[node.id]) + '">' +
-              '<span class="spec-secid">' + secID + '</span>' +
-              escape(node.title) +
+              '<span class="spec-secid">' + node.secid + '</span>' +
+              escape(node.header) +
             '</a>' +
             (subSections && '<ol>\n' + subSections + '</ol>\n') +
           '</li>\n'
         );
+      }
+      if (node.type === 'Header') {
+        return node.title;
       }
       return '';
     }
@@ -344,19 +348,21 @@ function printSidebar(ast, options) {
     leave: function (node) {
       if (node.type === 'Section') {
         const subSections = join(node.contents);
-        const secID = join(node.secID, '.');
         return (
-          '<li id="' + escapeAttr('_sidebar_' + secID) + '">' +
+          '<li id="' + escapeAttr('_sidebar_' + node.secid) + '">' +
             '<a href="' + encodeURI(options.biblio[node.id]) + '">' +
-              '<span class="spec-secid">' + escape(join(node.secID, '.')) + '</span>' +
-              escape(node.title) +
+              '<span class="spec-secid">' + escape(node.secid) + '</span>' +
+              escape(node.header) +
             '</a>' +
             (subSections &&
-              '\n<input hidden class="toggle" type="checkbox" id="' + escapeAttr('_toggle_' + secID) + '" />' +
-              '<label for="' + escapeAttr('_toggle_' + secID) + '"></label>\n' +
+              '\n<input hidden class="toggle" type="checkbox" id="' + escapeAttr('_toggle_' + node.secid) + '" />' +
+              '<label for="' + escapeAttr('_toggle_' + node.secid) + '"></label>\n' +
               '<ol>\n' + subSections + '</ol>\n') +
           '</li>\n'
         );
+      }
+      if (node.type === 'Header') {
+        return node.title;
       }
       return '';
     }
@@ -397,34 +403,43 @@ function printContent(doc, options) {
 
 function printAll(list, options) {
   return join(visit(list, {
-    leave: function (node) {
+    leave: function (node, key, parent) {
       switch (node.type) {
         case 'Section': {
-          const level = Math.min(node.secID.length, 6);
-          const secID = join(node.secID, '.');
           return (
-            '<section id="' + escapeAttr(node.id) + '" secid="' + escapeAttr(secID) + '">\n' +
-              '<h' + level + '>' +
-              '<span class="spec-secid" title="link to this section">' +
-                '<a href="' + encodeURI(options.biblio[node.id]) + '">' + escape(secID) + '</a>' +
-              '</span>' +
-              escape(node.title) +
-              '</h' + level + '>\n' +
+            '<section id="' + escapeAttr(node.id) + '" secid="' + escapeAttr(node.secid) + '">\n' +
+              node.header +
               join(node.contents) +
             '</section>\n'
           );
         }
 
+        case 'Header':
+          const level = node.secID.length;
+          return (
+            '<h' + level + '>' +
+              '<span class="spec-secid" title="link to this section">' +
+                '<a href="' + encodeURI(options.biblio[parent.id]) + '">' + escape(parent.secid) + '</a>' +
+              '</span>' +
+              escape(node.title) +
+            '</h' + level + '>\n'
+          );
+
         case 'Subsection':
           return (
             '<section id="' + escapeAttr(node.id) + '" class="subsec">\n' +
-              '<h6>' +
-                '<a href="' + encodeURI(options.biblio[node.id]) + '" title="link to this subsection">' +
-                  escape(node.title) +
-                '</a>' +
-              '</h6>\n' +
+              node.header +
               join(node.contents) +
             '</section>\n'
+          );
+
+        case 'Subheader':
+          return (
+            '<h6>' +
+              '<a href="' + encodeURI(options.biblio[parent.id]) + '" title="link to this subsection">' +
+                escape(node.title) +
+              '</a>' +
+            '</h6>\n'
           );
 
         case 'BlockIns':
@@ -682,15 +697,11 @@ function printAll(list, options) {
 
 function getTerms(ast) {
   const terms = {};
-  const sectionIDs = [];
   visit(ast, {
     enter(node) {
-      if (node.type === 'Section') {
-        sectionIDs.push(node.secID);
-      }
       // Do not include terms defined in an appendix.
-      if (IS_LETTER_RX.test(sectionIDs[0])) {
-        return;
+      if (node.type === 'Section' && IS_LETTER_RX.test(node.header.secID[0])) {
+        return false;
       }
       if (node.type === 'Algorithm') {
         const algorithmName = node.call.name;
@@ -702,11 +713,6 @@ function getTerms(ast) {
         if (!terms[productionName]) {
           terms[productionName] = node;
         }
-      }
-    },
-    leave(node) {
-      if (node.type === 'Section') {
-        sectionIDs.pop();
       }
     }
   });

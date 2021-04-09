@@ -16,7 +16,10 @@
     },
     {
       "type": "Subsection",
-      "title": "Philosophy",
+      "header": {
+        "type": "Subheader",
+        "title": "Philosophy"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -58,8 +61,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Getting Started",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Getting Started"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -169,8 +176,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Markdown",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Markdown"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -220,8 +231,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Character Encoding",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Character Encoding"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -275,8 +290,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Escape sequence",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Escape sequence"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -354,8 +373,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Inline formatting",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Inline formatting"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -368,8 +391,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Inline HTML",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Inline HTML"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -463,8 +490,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Links",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Links"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -575,8 +606,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Emphasis",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Emphasis"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -771,8 +806,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Inline Code",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Inline Code"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -860,8 +899,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Images",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Images"
+              },
               "contents": [
                 {
                   "type": "Code",
@@ -941,8 +984,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Blocks",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Blocks"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -955,8 +1002,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Block HTML",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Block HTML"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1059,8 +1110,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Section Headers",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Section Headers"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1158,8 +1213,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Paragraphs",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Paragraphs"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1174,8 +1233,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Lists",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Lists"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1303,8 +1366,12 @@
                 },
                 {
                   "type": "Section",
-                  "secID": null,
-                  "title": "Task Lists",
+                  "header": {
+                    "type": "Header",
+                    "level": 4,
+                    "secID": null,
+                    "title": "Task Lists"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -1414,8 +1481,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Code Block",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Code Block"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1467,8 +1538,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Block Quotes",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Block Quotes"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1491,8 +1566,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Horizontal Rules",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Horizontal Rules"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1515,8 +1594,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Automatic Links",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Automatic Links"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1535,8 +1618,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Spec Additions",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Spec Additions"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -1558,8 +1645,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Link Anything",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Link Anything"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -1652,8 +1743,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Title and Introduction",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Title and Introduction"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -1694,8 +1789,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Sections",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Sections"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -1708,8 +1807,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Section Headers",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Section Headers"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1790,8 +1893,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Subsection Headers",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Subsection Headers"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1804,7 +1911,10 @@
                 },
                 {
                   "type": "Subsection",
-                  "title": "This is a subsection",
+                  "header": {
+                    "type": "Subheader",
+                    "title": "This is a subsection"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -1819,7 +1929,10 @@
                 },
                 {
                   "type": "Subsection",
-                  "title": "Another subsection",
+                  "header": {
+                    "type": "Subheader",
+                    "title": "Another subsection"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -1836,8 +1949,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Table of Contents",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Table of Contents"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1852,8 +1969,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Section Numbers",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Section Numbers"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -1883,13 +2004,17 @@
                 },
                 {
                   "type": "Section",
-                  "secID": [
-                    "3",
-                    "2",
-                    "3",
-                    "8"
-                  ],
-                  "title": "Custom Numbers",
+                  "header": {
+                    "type": "Header",
+                    "level": 4,
+                    "secID": [
+                      "3",
+                      "2",
+                      "3",
+                      "8"
+                    ],
+                    "title": "Custom Numbers"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -1921,8 +2046,12 @@
                 },
                 {
                   "type": "Section",
-                  "secID": null,
-                  "title": "Appendix / Annex Sections",
+                  "header": {
+                    "type": "Header",
+                    "level": 4,
+                    "secID": null,
+                    "title": "Appendix / Annex Sections"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -1957,8 +2086,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Smart Characters",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Smart Characters"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -1971,8 +2104,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Quotes and Dashes",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Quotes and Dashes"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -2053,8 +2190,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Math",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Math"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -2110,8 +2251,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Arrows",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Arrows"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -2200,8 +2345,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Tables",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Tables"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -2289,8 +2438,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Note",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Note"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -2348,8 +2501,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Todo",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Todo"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -2423,8 +2580,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Syntax Highlighting",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Syntax Highlighting"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -2514,8 +2675,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Examples",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Examples"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -2613,8 +2778,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Counter Examples",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Counter Examples"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -2689,8 +2858,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Imports",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Imports"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -2730,8 +2903,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Inline editing",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Inline editing"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -2811,8 +2988,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Block editing",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Block editing"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -2950,8 +3131,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Algorithms",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Algorithms"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -3086,8 +3271,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Grammar",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Grammar"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -3148,8 +3337,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Grammar Production",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Grammar Production"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -3460,8 +3653,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Production types",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Production types"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -3562,8 +3759,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "One of",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "One of"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -3845,8 +4046,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Non Terminal Token",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Non Terminal Token"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -3869,8 +4074,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Prose",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Prose"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -3939,8 +4148,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Terminal Token",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Terminal Token"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -4174,8 +4387,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Regular Expression",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Regular Expression"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -4226,8 +4443,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Quantifiers",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Quantifiers"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -4240,7 +4461,10 @@
                 },
                 {
                   "type": "Subsection",
-                  "title": "Optional Tokens",
+                  "header": {
+                    "type": "Subheader",
+                    "title": "Optional Tokens"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -4389,7 +4613,10 @@
                 },
                 {
                   "type": "Subsection",
-                  "title": "Token Lists",
+                  "header": {
+                    "type": "Subheader",
+                    "title": "Token Lists"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -4656,7 +4883,10 @@
                 },
                 {
                   "type": "Subsection",
-                  "title": "Optional Lists",
+                  "header": {
+                    "type": "Subheader",
+                    "title": "Optional Lists"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -4846,7 +5076,10 @@
                 },
                 {
                   "type": "Subsection",
-                  "title": "Use with Non-Terminals",
+                  "header": {
+                    "type": "Subheader",
+                    "title": "Use with Non-Terminals"
+                  },
                   "contents": [
                     {
                       "type": "Paragraph",
@@ -5049,8 +5282,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Conditional Parameters",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Conditional Parameters"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -6015,8 +6252,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Constraints",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Constraints"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -6156,8 +6397,12 @@
             },
             {
               "type": "Section",
-              "secID": null,
-              "title": "Meta Tokens",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Meta Tokens"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -6486,8 +6731,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Grammar Semantics",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Grammar Semantics"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -6763,8 +7012,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Value Literals",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Value Literals"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -6843,7 +7096,10 @@
             },
             {
               "type": "Subsection",
-              "title": "Variables",
+              "header": {
+                "type": "Subheader",
+                "title": "Variables"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -6874,7 +7130,10 @@
             },
             {
               "type": "Subsection",
-              "title": "Keywords",
+              "header": {
+                "type": "Subheader",
+                "title": "Keywords"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -6921,7 +7180,10 @@
             },
             {
               "type": "Subsection",
-              "title": "String literal",
+              "header": {
+                "type": "Subheader",
+                "title": "String literal"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -6952,7 +7214,10 @@
             },
             {
               "type": "Subsection",
-              "title": "Grammar tokens",
+              "header": {
+                "type": "Subheader",
+                "title": "Grammar tokens"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -7050,7 +7315,10 @@
             },
             {
               "type": "Subsection",
-              "title": "Algorithm calls",
+              "header": {
+                "type": "Subheader",
+                "title": "Algorithm calls"
+              },
               "contents": [
                 {
                   "type": "Paragraph",
@@ -7107,8 +7375,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Biblio",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Biblio"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -7341,10 +7613,14 @@
     },
     {
       "type": "Section",
-      "secID": [
-        "A"
-      ],
-      "title": "Using Spec Markdown",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": [
+          "A"
+        ],
+        "title": "Using Spec Markdown"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -7624,8 +7900,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Print Options",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Print Options"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -7730,8 +8010,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Hot rebuilding with nodemon",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Hot rebuilding with nodemon"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -7786,8 +8070,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Contributing to Spec Markdown",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Contributing to Spec Markdown"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -7814,8 +8102,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Pull Requests",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Pull Requests"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -7929,8 +8221,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "`main` is unsafe",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "`main` is unsafe"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -7981,8 +8277,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Issues",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Issues"
+          },
           "contents": [
             {
               "type": "Paragraph",
@@ -7997,8 +8297,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "Coding Style",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Coding Style"
+          },
           "contents": [
             {
               "type": "List",
@@ -8076,8 +8380,12 @@
         },
         {
           "type": "Section",
-          "secID": null,
-          "title": "License",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "License"
+          },
           "contents": [
             {
               "type": "Paragraph",
