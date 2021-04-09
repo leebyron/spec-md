@@ -15,6 +15,7 @@ runTests([
   testSource('graphql-spec', 'test/graphql-spec/GraphQL.md'),
   testSource('productions'),
   testSource('readme', 'README.md'),
+  testSource('readme-gh', 'README.md', { githubSource: 'https://github.com/leebyron/spec-md/blame/main' }),
   testSource('sections'),
   testSource('simple-header'),
   testSource('smart-quotes'),

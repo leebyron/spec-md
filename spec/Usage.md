@@ -41,6 +41,10 @@ The {html(filePath, options)} and {print(filePath)} functions both take {options
 as an optional second argument. These options allow for customization control
 over the returned HTML, more options may be added in the future.
 
+  * **githubSource** - a base URL, that if provided will be used to construct
+    Github source links to the original Markdown files throughout the returned
+    HTML. (example: "https://github.com/leebyron/spec-md/blame/main/")
+
   * **highlight** - a function which is called when blocks of code are
     encountered, with the first argument as the string of code, the second
     argument being the language specified. This function should return well
@@ -48,6 +52,10 @@ over the returned HTML, more options may be added in the future.
 
   * **head** - a string which is inserted in the `<head>` tag in the returned
     HTML. Use this to introduce additional meta tags and scripts.
+
+Note: When using **githubSource** take note that normal Github view (eg. "blob"
+instead of "blame") show rendered instead of source markdown and cannot link to
+specific lines.
 
 ## Hot rebuilding with nodemon
 
