@@ -7,8 +7,12 @@
   "contents": [
     {
       "type": "Section",
-      "secID": null,
-      "title": "Tables",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Tables"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -242,8 +246,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Not tables",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Not tables"
+      },
       "contents": [
         {
           "type": "Paragraph",

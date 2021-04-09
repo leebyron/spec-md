@@ -116,68 +116,119 @@ sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
 sectionIDStart = [0-9]+ / [A-Z]+ / '*'
 sectionIDPart = [0-9]+ / '*'
 
-section1 = BLOCK H1 secID:sectionID? _ title:headerText H_END contents:section1Content* {
+header1 = BLOCK H1 secID:sectionID? _ title:headerText H_END {
+  return located({
+    type: 'Header',
+    level: 1,
+    secID: secID,
+    title: title
+  });
+}
+
+header2 = BLOCK H2 secID:sectionID? _ title:headerText H_END {
+  return located({
+    type: 'Header',
+    level: 2,
+    secID: secID,
+    title: title
+  });
+}
+
+header3 = BLOCK H3 secID:sectionID? _ title:headerText H_END {
+  return located({
+    type: 'Header',
+    level: 3,
+    secID: secID,
+    title: title
+  });
+}
+
+header4 = BLOCK H4 secID:sectionID? _ title:headerText H_END {
+  return located({
+    type: 'Header',
+    level: 4,
+    secID: secID,
+    title: title
+  });
+}
+
+header5 = BLOCK H5 secID:sectionID? _ title:headerText H_END {
+  return located({
+    type: 'Header',
+    level: 5,
+    secID: secID,
+    title: title
+  });
+}
+
+header6 = BLOCK H6 secID:sectionID? _ title:headerText H_END {
+  return located({
+    type: 'Header',
+    level: 6,
+    secID: secID,
+    title: title
+  });
+}
+
+section1 = header:header1 contents:section1Content* {
   return located({
     type: 'Section',
-    secID: secID,
-    title: title,
+    header: header,
     contents: contents
   });
 }
 
-section2 = BLOCK H2 secID:sectionID? _ title:headerText H_END contents:section2Content* {
+section2 = header:header2 contents:section2Content* {
   return located({
     type: 'Section',
-    secID: secID,
-    title: title,
+    header: header,
     contents: contents
   });
 }
 
-section3 = BLOCK H3 secID:sectionID? _ title:headerText H_END contents:section3Content* {
+section3 = header:header3 contents:section3Content* {
   return located({
     type: 'Section',
-    secID: secID,
-    title: title,
+    header: header,
     contents: contents
   });
 }
 
-section4 = BLOCK H4 secID:sectionID? _ title:headerText H_END contents:section4Content* {
+section4 = header:header4 contents:section4Content* {
   return located({
     type: 'Section',
-    secID: secID,
-    title: title,
+    header: header,
     contents: contents
   });
 }
 
-section5 = BLOCK H5 secID:sectionID? _ title:headerText H_END contents:section5Content* {
+section5 = header:header5 contents:section5Content* {
   return located({
     type: 'Section',
-    secID: secID,
-    title: title,
+    header: header,
     contents: contents
   });
 }
 
-section6 = BLOCK H6 secID:sectionID? _ title:headerText H_END contents:section6Content* {
+section6 = header:header6 contents:section6Content* {
   return located({
     type: 'Section',
-    secID: secID,
-    title: title,
+    header: header,
     contents: contents
   });
 }
 
-subsectionHeader = '**' title:$[^\n\r*]+ '**' &BLOCK {
-  return format(title);
+subsectionHeader = BLOCK '**' title:$[^\n\r*]+ '**' &BLOCK {
+  return located({
+    type: 'Subheader',
+    title: format(title)
+  });
 }
 
-subsection = BLOCK title:subsectionHeader contents:sectionContent* {
+subsection = header:subsectionHeader contents:sectionContent* {
   return located({
     type: 'Subsection',
-    title: title,
+    header: header,
     contents: contents,
   });
 }
@@ -276,7 +327,7 @@ tagClose = '</' name:$[a-z]+ '>' { return name; }
 
 // Paragraph
 
-paragraph = BLOCK !'#' !subsectionHeader contents:content+ {
+paragraph = !subsectionHeader BLOCK !'#' contents:content+ {
   return located({
     type: 'Paragraph',
     contents: contents

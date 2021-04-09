@@ -16,29 +16,49 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Level 1",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Level 1"
+      },
       "contents": [
         {
           "type": "Section",
-          "secID": null,
-          "title": "Level 2",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Level 2"
+          },
           "contents": [
             {
               "type": "Section",
-              "secID": null,
-              "title": "Level #3",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Level #3"
+              },
               "contents": [
                 [
                   {
                     "type": "Section",
-                    "secID": null,
-                    "title": "Imported level 1",
+                    "header": {
+                      "type": "Header",
+                      "level": 1,
+                      "secID": null,
+                      "title": "Imported level 1"
+                    },
                     "contents": [
                       {
                         "type": "Section",
-                        "secID": null,
-                        "title": "Imported level 2",
+                        "header": {
+                          "type": "Header",
+                          "level": 2,
+                          "secID": null,
+                          "title": "Imported level 2"
+                        },
                         "contents": [
                           {
                             "type": "Paragraph",
@@ -56,18 +76,30 @@
                 ],
                 {
                   "type": "Section",
-                  "secID": null,
-                  "title": "Level 4",
+                  "header": {
+                    "type": "Header",
+                    "level": 4,
+                    "secID": null,
+                    "title": "Level 4"
+                  },
                   "contents": [
                     {
                       "type": "Section",
-                      "secID": null,
-                      "title": "Level 5",
+                      "header": {
+                        "type": "Header",
+                        "level": 5,
+                        "secID": null,
+                        "title": "Level 5"
+                      },
                       "contents": [
                         {
                           "type": "Section",
-                          "secID": null,
-                          "title": "Level 6",
+                          "header": {
+                            "type": "Header",
+                            "level": 6,
+                            "secID": null,
+                            "title": "Level 6"
+                          },
                           "contents": [
                             {
                               "type": "Paragraph",
@@ -80,7 +112,10 @@
                             },
                             {
                               "type": "Subsection",
-                              "title": "Sub section",
+                              "header": {
+                                "type": "Subheader",
+                                "title": "Sub section"
+                              },
                               "contents": [
                                 {
                                   "type": "Paragraph",

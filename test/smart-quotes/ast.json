@@ -7,8 +7,12 @@
   "contents": [
     {
       "type": "Section",
-      "secID": null,
-      "title": "Smart quotes and dashes",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Smart quotes and dashes"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -95,8 +99,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Arrows",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Arrows"
+      },
       "contents": [
         {
           "type": "Paragraph",
@@ -156,8 +164,12 @@
     },
     {
       "type": "Section",
-      "secID": null,
-      "title": "Math",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Math"
+      },
       "contents": [
         {
           "type": "Paragraph",
