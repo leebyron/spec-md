@@ -65,7 +65,15 @@
 
 // Document
 
-initialDocument = title:title contents:documentContent* EOF {
+initialDocument = ___ document:titledDocument EOF {
+  return document;
+}
+
+importedDocument = ___ document:untitledDocument EOF {
+  return document;
+}
+
+titledDocument = title:title ___ contents:documentBlocks {
   return located({
     type: 'Document',
     title: title,
@@ -73,7 +81,7 @@ initialDocument = title:title contents:documentContent* EOF {
   });
 }
 
-importedDocument = contents:documentContent* EOF {
+untitledDocument = contents:documentBlocks {
   return located({
     type: 'Document',
     contents: contents
@@ -82,14 +90,14 @@ importedDocument = contents:documentContent* EOF {
 
 title = setextTitle / markdownTitle
 
-setextTitle = BLOCK !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &NL {
+setextTitle = SAMEDENT !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &EOL {
   return located({
     type: 'DocumentTitle',
     value: format(value)
   });
 }
 
-markdownTitle = BLOCK H1 value:headerText H_END {
+markdownTitle = SAMEDENT H1 value:headerText H_END &EOL {
   return located({
     type: 'DocumentTitle',
     value: value
@@ -102,7 +110,7 @@ H3 = '###' !'#' _
 H4 = '####' !'#' _
 H5 = '#####' !'#' _
 H6 = '######' !'#' _
-H_END = _ '#'* &NL
+H_END = _ '#'*
 headerText = text:$headerChar+ {
   return format(text);
 }
@@ -116,7 +124,7 @@ sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
 sectionIDStart = [0-9]+ / [A-Z]+ / '*'
 sectionIDPart = [0-9]+ / '*'
 
-header1 = BLOCK H1 secID:sectionID? _ title:headerText H_END {
+header1 = SAMEDENT H1 secID:sectionID? _ title:headerText H_END &EOL {
   return located({
     type: 'Header',
     level: 1,
@@ -125,7 +133,7 @@ header1 = BLOCK H1 secID:sectionID? _ title:headerText H_END {
   });
 }
 
-header2 = BLOCK H2 secID:sectionID? _ title:headerText H_END {
+header2 = SAMEDENT H2 secID:sectionID? _ title:headerText H_END &EOL {
   return located({
     type: 'Header',
     level: 2,
@@ -134,7 +142,7 @@ header2 = BLOCK H2 secID:sectionID? _ title:headerText H_END {
   });
 }
 
-header3 = BLOCK H3 secID:sectionID? _ title:headerText H_END {
+header3 = SAMEDENT H3 secID:sectionID? _ title:headerText H_END &EOL {
   return located({
     type: 'Header',
     level: 3,
@@ -143,7 +151,7 @@ header3 = BLOCK H3 secID:sectionID? _ title:headerText H_END {
   });
 }
 
-header4 = BLOCK H4 secID:sectionID? _ title:headerText H_END {
+header4 = SAMEDENT H4 secID:sectionID? _ title:headerText H_END &EOL {
   return located({
     type: 'Header',
     level: 4,
@@ -152,7 +160,7 @@ header4 = BLOCK H4 secID:sectionID? _ title:headerText H_END {
   });
 }
 
-header5 = BLOCK H5 secID:sectionID? _ title:headerText H_END {
+header5 = SAMEDENT H5 secID:sectionID? _ title:headerText H_END &EOL {
   return located({
     type: 'Header',
     level: 5,
@@ -161,7 +169,7 @@ header5 = BLOCK H5 secID:sectionID? _ title:headerText H_END {
   });
 }
 
-header6 = BLOCK H6 secID:sectionID? _ title:headerText H_END {
+header6 = SAMEDENT H6 secID:sectionID? _ title:headerText H_END &EOL {
   return located({
     type: 'Header',
     level: 6,
@@ -170,7 +178,7 @@ header6 = BLOCK H6 secID:sectionID? _ title:headerText H_END {
   });
 }
 
-section1 = header:header1 contents:section1Content* {
+section1 = header:header1 ___ contents:section1Blocks {
   return located({
     type: 'Section',
     header: header,
@@ -178,7 +186,7 @@ section1 = header:header1 contents:section1Content* {
   });
 }
 
-section2 = header:header2 contents:section2Content* {
+section2 = header:header2 ___ contents:section2Blocks {
   return located({
     type: 'Section',
     header: header,
@@ -186,7 +194,7 @@ section2 = header:header2 contents:section2Content* {
   });
 }
 
-section3 = header:header3 contents:section3Content* {
+section3 = header:header3 ___ contents:section3Blocks {
   return located({
     type: 'Section',
     header: header,
@@ -194,7 +202,7 @@ section3 = header:header3 contents:section3Content* {
   });
 }
 
-section4 = header:header4 contents:section4Content* {
+section4 = header:header4 ___ contents:section4Blocks {
   return located({
     type: 'Section',
     header: header,
@@ -202,7 +210,7 @@ section4 = header:header4 contents:section4Content* {
   });
 }
 
-section5 = header:header5 contents:section5Content* {
+section5 = header:header5 ___ contents:section5Blocks {
   return located({
     type: 'Section',
     header: header,
@@ -210,7 +218,7 @@ section5 = header:header5 contents:section5Content* {
   });
 }
 
-section6 = header:header6 contents:section6Content* {
+section6 = header:header6 ___ contents:section6Blocks {
   return located({
     type: 'Section',
     header: header,
@@ -218,20 +226,29 @@ section6 = header:header6 contents:section6Content* {
   });
 }
 
-subsectionHeader = BLOCK '**' title:$[^\n\r*]+ '**' &BLOCK {
+subsectionHeader = SAMEDENT '**' title:$[^\n\r*]+ '**' &EOB {
   return located({
     type: 'Subheader',
     title: format(title)
   });
 }
 
-subsection = header:subsectionHeader contents:sectionContent* {
+subsection = header:subsectionHeader ___ contents:sectionBlocks {
   return located({
     type: 'Subsection',
     header: header,
     contents: contents,
   });
 }
+
+documentBlocks = blocks:(documentContent ___)* { return blocks.map(block => block[0]); }
+section1Blocks = blocks:(section1Content ___)* { return blocks.map(block => block[0]); }
+section2Blocks = blocks:(section2Content ___)* { return blocks.map(block => block[0]); }
+section3Blocks = blocks:(section3Content ___)* { return blocks.map(block => block[0]); }
+section4Blocks = blocks:(section4Content ___)* { return blocks.map(block => block[0]); }
+section5Blocks = blocks:(section5Content ___)* { return blocks.map(block => block[0]); }
+section6Blocks = blocks:(section6Content ___)* { return blocks.map(block => block[0]); }
+sectionBlocks = blocks:(sectionContent ___)* { return blocks.map(block => block[0]); }
 
 documentContent = import1 / section1 / subsection / importRel / sectionContent
 section1Content = import2 / section2 / subsection / importRel / sectionContent
@@ -257,7 +274,7 @@ sectionContent = note
 
 // Import
 
-importLink = link:link &( BLOCK / EOF ) &{
+importLink = link:link &{
   return link.url.slice(-3) === '.md' && !/^\/([a-z]*:\/\/)/.test(link.url);
 } {
   return located({
@@ -266,27 +283,27 @@ importLink = link:link &( BLOCK / EOF ) &{
   });
 }
 
-importRel = BLOCK importLink:importLink &NL { return importLink; }
-import1 = BLOCK H1 importLink:importLink H_END { return importLink; }
-import2 = BLOCK H2 importLink:importLink H_END { return importLink; }
-import3 = BLOCK H3 importLink:importLink H_END { return importLink; }
-import4 = BLOCK H4 importLink:importLink H_END { return importLink; }
-import5 = BLOCK H5 importLink:importLink H_END { return importLink; }
-import6 = BLOCK H6 importLink:importLink H_END { return importLink; }
+importRel = SAMEDENT importLink:importLink &EOB { return importLink; }
+import1 = SAMEDENT H1 importLink:importLink H_END &EOL { return importLink; }
+import2 = SAMEDENT H2 importLink:importLink H_END &EOL { return importLink; }
+import3 = SAMEDENT H3 importLink:importLink H_END &EOL { return importLink; }
+import4 = SAMEDENT H4 importLink:importLink H_END &EOL { return importLink; }
+import5 = SAMEDENT H5 importLink:importLink H_END &EOL { return importLink; }
+import6 = SAMEDENT H6 importLink:importLink H_END &EOL { return importLink; }
 
 
 // Block Edit
 
 blockEdit = blockIns / blockDel
 
-blockIns = BLOCK '{++' &BLOCK contents:sectionContent* BLOCK '++}' &(BLOCK / EOF) {
+blockIns = SAMEDENT '{++' EOB contents:sectionBlocks '++}' &EOB {
   return located({
     type: 'BlockIns',
     contents: contents
   });
 }
 
-blockDel = BLOCK '{--' &BLOCK contents:sectionContent* BLOCK '--}' &(BLOCK / EOF) {
+blockDel = SAMEDENT '{--' EOB contents:sectionBlocks '--}' &EOB {
   return located({
     type: 'BlockDel',
     contents: contents
@@ -296,7 +313,7 @@ blockDel = BLOCK '{--' &BLOCK contents:sectionContent* BLOCK '--}' &(BLOCK / EOF
 
 // HTML Block
 
-htmlBlock = BLOCK html:$(
+htmlBlock = SAMEDENT html:$(
   name:tagOpen &{
     if (BLOCK_TAGS_RX.test(name)) {
       htmlBlockName = name;
@@ -305,7 +322,7 @@ htmlBlock = BLOCK html:$(
   }
   htmlContent*
   close:tagClose &{ return htmlBlockName === close; }
-) {
+) &EOB {
   return located({
     type: 'HTMLBlock',
     name: htmlBlockName,
@@ -327,7 +344,7 @@ tagClose = '</' name:$[a-z]+ '>' { return name; }
 
 // Paragraph
 
-paragraph = !subsectionHeader BLOCK !'#' contents:content+ {
+paragraph = SAMEDENT !'#' !subsectionHeader contents:content+ &EOB {
   return located({
     type: 'Paragraph',
     contents: contents
@@ -359,14 +376,14 @@ text = value:$textChar+ {
   });
 }
 
-note = BLOCK 'NOTE'i (':' / WB) _ contents:content* {
+note = SAMEDENT 'NOTE'i (':' / WB) _ contents:content* &EOB {
   return located({
     type: 'Note',
     contents: contents
   });
 }
 
-todo = BLOCK ('TODO'i / 'TK'i) (':' / WB) _ contents:content* {
+todo = SAMEDENT ('TODO'i / 'TK'i) (':' / WB) _ contents:content* &EOB {
   return located({
     type: 'Todo',
     contents: contents
@@ -456,7 +473,7 @@ inlineCode3 = backTick3 code:$(!backTick3 ('`'+ / .))+ backTick3 {
   return code
 }
 
-blockCode = BLOCK '```' raw:('raw' WB _)? deprecatedCounterExample:'!'? lang:codeLang? _ example:('example'/'counter-example')? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' {
+blockCode = SAMEDENT '```' raw:('raw' WB _)? deprecatedCounterExample:'!'? lang:codeLang? _ example:('example'/'counter-example')? NL code:$([^`] / '`' [^`] / '``' [^`])+ '```' &EOL {
   // dedent codeblock by current indent level?
   if (deprecatedCounterExample) {
     console.warn(line() + ':' + column() + ': Use of `!` is deprecated, use `counter-example` instead.');
@@ -477,15 +494,15 @@ codeLang = !('example'/'counter-example') lang:$([a-z][-a-z0-9]*) {
 
 indentCode =
   // To safely maintain indent state, must parse ahead first
-  &(DEEP_INDENT code:(indentCodeLine+)? DEDENT &{ return code !== null })
-    DEEP_INDENT code:indentCodeLine+ DEDENT {
+  &(&CODE_INDENT first:indentCodeLine? rest:(NL indentCodeLine)* DEDENT &{ return first !== null })
+    &CODE_INDENT first:indentCodeLine rest:(NL indentCodeLine)* DEDENT {
   return located({
     type: 'Code',
-    code: code.join('\n')
+    code: [first].concat(rest.map(pair => pair[1])).join('\n')
   });
 }
 
-indentCodeLine = depth:LINE code:$NOT_NL+ {
+indentCodeLine = depth:indentDepth &{ return depth >= indent; } code:$NOT_NL+ {
   return Array(depth - indent + 1).join(' ') + code;
 }
 
@@ -531,30 +548,30 @@ list = indentedList / unorderedList / orderedList
 
 indentedList =
   // To safely maintain indent state, must parse ahead first
-  &(INDENT list:(unorderedList / orderedList)? DEDENT &{ return list !== null; })
-  INDENT list:(unorderedList / orderedList) DEDENT {
+  &(&LIST_INDENT list:(unorderedList / orderedList)? DEDENT &{ return list !== null; })
+  &LIST_INDENT list:(unorderedList / orderedList) DEDENT {
   return list;
 }
 
-unorderedList = &(LINE unorderedBullet) items:listItem+ {
+unorderedList = &(SAMEDENT unorderedBullet) first:listItem rest:(___ listItem)* {
   return located({
     type: 'List',
     ordered: false,
-    items: items
+    items: [first].concat(rest.map(pair => pair[1]))
   });
 }
 
-orderedList = &(LINE orderedBullet) items:listItem+ {
+orderedList = &(SAMEDENT orderedBullet) first:listItem rest:(___ listItem)* {
   return located({
     type: 'List',
     ordered: true,
-    items: items
+    items: [first].concat(rest.map(pair => pair[1]))
   });
 }
 
-listItem = LINE bullet:listBullet _ taskBox:taskBox? contents:content* sublist:indentedList? {
+listItem = SAMEDENT bullet:listBullet _ taskBox:taskBox? contents:content* &EOL sublist:(___ indentedList)? {
   if (sublist) {
-    contents = contents.concat([sublist])
+    contents = contents.concat([sublist[1]])
   }
   if (taskBox) {
     return located({
@@ -581,25 +598,23 @@ taskBox = '[' done:(' ' / 'x' / 'X') ']' !(_ '(') {
 
 // Table
 
-table = BLOCK !'#' headers:(tableCells / tableOneColCells) LINE [ -|]+ rows:tableRow+ {
+table = headers:tableRow NL [ -|]+ rows:(NL tableRow)+ &EOB {
   return located({
     type: 'Table',
     headers: headers,
-    rows: rows
+    rows: rows.map(pair => pair[1])
   });
 }
 
-tableRow = LINE !'#' cells:(tableCells / tableOneColCells) {
-  return cells;
-}
+tableRow = tableCells / tableOneColCells
 
-tableCells = ('|' _)? first:tableCell rest:(_ '|' _ tableCell)+ _ '|'? {
+tableCells = SAMEDENT !'#' ('|' _)? first:tableCell rest:(_ '|' _ tableCell)+ _ '|'? &EOL {
   return [first].concat(rest.map(function (nodes) {
     return nodes[3];
   }));
 }
 
-tableOneColCells = '|' _ first:tableCell _ '|'? {
+tableOneColCells = SAMEDENT '|' _ first:tableCell _ '|'? &EOL {
   return [first];
 }
 
@@ -639,7 +654,7 @@ nameRest = $('\\_' / [_a-zA-Z0-9])*
 
 // Algorithm
 
-algorithm = BLOCK call:call _ ':' ':'? steps:list {
+algorithm = SAMEDENT call:call _ ':' ':'? ___ steps:list {
   return located({
     type: 'Algorithm',
     call: call,
@@ -693,7 +708,7 @@ variable = name:localName {
 
 // Grammar productions
 
-semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ !'one of' tokens:tokens steps:list {
+semantic = SAMEDENT name:nonTerminal _ defType:(':::'/'::'/':') __ !'one of' tokens:tokens ___ steps:list {
   return located({
     type: 'Semantic',
     name: name,
@@ -706,7 +721,7 @@ semantic = BLOCK name:nonTerminal _ defType:(':::'/'::'/':') __ !'one of' tokens
   });
 }
 
-production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRHS {
+production = SAMEDENT token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRHS {
   return located({
     type: 'Production',
     token: token,
@@ -715,16 +730,18 @@ production = BLOCK token:nonTerminal _ defType:(':::'/'::'/':') rhs:productionRH
   });
 }
 
-productionRHS = oneOfRHS / singleRHS / listRHS
+productionRHS = !(EOL _ listBullet) __ rhs:oneOfRHS { return rhs; }
+              / !(EOL _ listBullet) __ rhs:singleRHS { return rhs; }
+              / EOL rhs:listRHS { return rhs; }
 
-oneOfRHS = !(LINE listBullet) __ 'one of' WB rows:((LINE listBullet / __)? (_ token)+)+ {
+oneOfRHS = 'one of' WB rows:((EOL SAMEDENT listBullet / __)? (_ token)+)+ &EOB {
   return located({
     type: 'OneOfRHS',
     rows: rows.map(row => row[1].map(tokens => tokens[1]))
   });
 }
 
-singleRHS = !(LINE listBullet / 'one of') __ condition:(condition __)? tokens:tokens {
+singleRHS = !'one of' condition:(condition __)? tokens:tokens &EOB {
   return located({
     type: 'RHS',
     condition: condition ? condition[0] : null,
@@ -732,18 +749,14 @@ singleRHS = !(LINE listBullet / 'one of') __ condition:(condition __)? tokens:to
   });
 }
 
-listRHS = defs:(indentedRHS / listItemRHS+) {
+listRHS = first:listItemRHS rest:(___ listItemRHS)* {
   return located({
     type: 'ListRHS',
-    defs: defs
+    defs: [first].concat(rest.map(pair => pair[1]))
   });
 }
 
-indentedRHS = INDENT defs:(listItemRHS+)? DEDENT &{ return defs !== null; } {
-  return defs;
-}
-
-listItemRHS = LINE listBullet _ condition:(condition __)? tokens:tokens {
+listItemRHS = _ listBullet _ condition:(condition __)? tokens:tokens &EOL {
   return located({
     type: 'RHS',
     condition: condition ? condition[0] : null,
@@ -883,41 +896,43 @@ terminal = value:$([^ \n\r"/`] [^ \n\r"\`,\]\}]*) {
 
 // Lines and Indentation
 
-INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 2; } {
-  indentStack.push(indent);
-  indent = depth;
-})
-
-DEEP_INDENT = &( lineStart depth:indentDepth &{ return depth >= indent + 4; } {
-  indentStack.push(indent);
-  indent = depth;
-})
-
-BLOCK = blockStart depth:indentDepth &{ return depth === indent || depth === indent + 1; } {
-  return depth;
+SAMEDENT = depth:indentDepth &{
+  return depth >= indent && depth < indent + 4;
 }
 
-LINE = lineStart depth:indentDepth &{ return depth >= indent; } {
-  return depth;
+LIST_INDENT = depth:indentDepth &{ return depth >= indent + 2; } {
+  indentStack.push(indent);
+  indent = depth;
 }
 
-DEDENT = &lineStart !{ indentStack.length === 0 } {
+CODE_INDENT = depth:indentDepth &{ return depth >= indent + 4; } {
+  indentStack.push(indent);
+  indent = indent + 4;
+}
+
+DEDENT = !{ indentStack.length === 0 } {
   indent = indentStack.pop();
 }
 
+indentDepth = sp:$_ { return sp.replace(/\t/g, '    ').length; }
+
 NL = '\r\n' / '\n' / '\r'
 NOT_NL = !NL .
-SINGLE_NL = NL !(NL / _ listBullet)
+SINGLE_NL = NL !(_ NL / _ listBullet)
 _ = ' '*
 // Skips over whitespace including a single newline. Do not use more than once
 // in a row, otherwise multiple NL will be skipped.
-__ = _ SINGLE_NL? _
+__ = _ (SINGLE_NL _)?
+// Skips over all new lines and empty lines, but not the white space at the
+// beginning of the next non-empty line.
+___ = (_ NL)*
+
+// Word boundary
 WB = ![a-zA-Z0-9]
-SOF = & { return location().start.offset === 0 }
-EOF = NL* !.
 
-lineStart = NL+ / SOF
-
-blockStart = (NL NL+) / SOF
-
-indentDepth = sp:$_ { return sp.length; }
+// End of line (require at least one new line given remaining source)
+EOL = (_ NL)+ / EOF
+// End of block (require at least two new line given remaining source)
+EOB = (_ NL) (_ NL)+ / EOF
+// End of file (allows trailing whitespace and empty lines)
+EOF = ___ !.
