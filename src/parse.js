@@ -20,8 +20,9 @@ function readFile(filepath) {
 }
 
 function importAST(filepath, startRule) {
-  const source = readFile(filepath)
-  const ast = parseSpecMD(filepath, source, startRule);
+  const contents = readFile(filepath)
+  const source = path.relative(process.cwd(), filepath);
+  const ast = parseSpecMD(contents, source, startRule);
   const importASTs = [];
   visit(ast, function (node) {
     if (node.type === 'Import') {
@@ -35,16 +36,15 @@ function importAST(filepath, startRule) {
   return flattenDocuments(ast, importASTs);
 }
 
-function parseSpecMD(filepath, source, startRule) {
+function parseSpecMD(contents, source, startRule) {
   try {
-    return grammar.parse(source, { startRule, filepath });
+    return grammar.parse(contents, { startRule, source });
   } catch (error) {
     if (error && error.location) {
-      error.filepath = filepath;
       error.source = source;
-      const lines = source.split('\n');
+      const lines = contents.split('\n');
       const start = error.location.start;
-      let location = filepath + ':' + start.line + ':' + start.column + '\n';
+      let location = source + ':' + start.line + ':' + start.column + '\n';
       let lineChars = String(start.line + 1).length
       if (start.line > 1) {
         location +=

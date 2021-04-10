@@ -55,7 +55,7 @@
     const currentLocation = location();
     return Object.defineProperty(node, 'loc', {
       value: {
-        source: options.filepath,
+        source: options.source,
         start: currentLocation.start,
         end: currentLocation.end,
       }
