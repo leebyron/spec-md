@@ -106,7 +106,7 @@ H_END = _ '#'* &NL
 headerText = text:$headerChar+ {
   return format(text);
 }
-headerChar = [^\n\r# ] / [# ] headerChar
+headerChar = [^\n\r# ]+ / [# ] headerChar
 
 sectionID = start:$sectionIDStart rest:('.' $sectionIDPart)* '.' {
   return [start].concat(rest.map(function (nodes) {
@@ -334,20 +334,16 @@ paragraph = !subsectionHeader BLOCK !'#' contents:content+ {
   });
 }
 
-// Any ASCII punctuation character may be backslash-escaped
-escaped  = '\\' [\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]
 inlineEntity = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag
 
-content = inlineEntity / text
+content = text / inlineEntity
 
-textChar = escaped
-         / [^\n\r+\-{`*_[!<]
-         / '++' !'}'
+textChar = [^\n\r+\-{`*_[!<\\]+
+         / '\\' .?
          / '+' !'+}'
-         / '--' !'}'
          / '-' !'-}'
-         / !image '!'
-         / !htmlTag '<'
+         / '!' !'['
+         / '<' !htmlTagContents
          / SINGLE_NL
 
 text = value:$textChar+ {
@@ -377,7 +373,7 @@ todo = BLOCK ('TODO'i / 'TK'i) (':' / WB) _ contents:content* {
   });
 }
 
-bold = '**' contents:(inlineCode / link / italic / text)+ '**' {
+bold = '**' contents:(text / italic / link / inlineCode)+ '**' {
   return located({
     type: 'Bold',
     contents: contents
@@ -386,14 +382,14 @@ bold = '**' contents:(inlineCode / link / italic / text)+ '**' {
 
 italic = asteriskItalic / underscoreItalic
 
-asteriskItalic = '*' contents:(inlineCode / link / text)+ '*' {
+asteriskItalic = '*' contents:(text / link / inlineCode)+ '*' {
   return located({
     type: 'Italic',
     contents: contents
   });
 }
 
-underscoreItalic = '_' contents:(inlineCode / link / bold / text)+ '_' {
+underscoreItalic = '_' contents:(text / bold / link / inlineCode)+ '_' {
   return located({
     type: 'Italic',
     contents: contents
@@ -416,12 +412,14 @@ del = '{--' contents:content* '--}' {
   });
 }
 
-htmlTag = tag:$('<' '/'? [a-z]+ [^>]* '>') {
+htmlTag = tag:$('<' htmlTagContents) {
   return located({
     type: 'HTMLTag',
     tag: tag
   });
 }
+
+htmlTagContents = $('/'? [a-z]+ [^>]* '>')
 
 reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
   if (ref === null || close === null) {
@@ -430,7 +428,7 @@ reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
   return ref;
 }
 
-inlineCode = code:(inlineCode1 / inlineCode2 / inlineCode3) {
+inlineCode = &'`' code:(inlineCode1 / inlineCode2 / inlineCode3) {
   // https://spec.commonmark.org/0.29/#code-spans
   code = code.replace(/\r\n|\n|\r/g, ' ')
   if (code.startsWith(' ') && code.endsWith(' ') && !code.match(/^\s+$/)) {
@@ -502,16 +500,14 @@ link = '[' contents:linkContent* ']' _ '(' _ url:$[^)]+ _ ')' {
   });
 }
 
-linkContent = inlineEntity / linkText
+linkContent = linkText / inlineEntity
 
-linkTextChar = escaped
-             / [^\]\n\r+\-{\x60*!<] // \x60 = "`"
-             / '++' !'}'
+linkTextChar = [^\x5D\n\r+\-{`*!<\\]+ // \x5D := "]"
+             / '\\' .?
              / '+' !'+}'
-             / '--' !'}'
              / '-' !'-}'
-             / !image '!'
-             / !htmlTag '<'
+             / '!' !'['
+             / '<' !htmlTagContents
 
 linkText = value:$linkTextChar+ {
   return located({
@@ -520,7 +516,7 @@ linkText = value:$linkTextChar+ {
   });
 }
 
-image = '![' alt:$[^\]]+ '](' _ url:$[^)]+ _ ')' {
+image = '![' alt:$[^\x5D]+ '](' _ url:$[^)]+ _ ')' {
   return located({
     type: 'Image',
     alt: format(alt),
@@ -611,17 +607,15 @@ tableCell = contents:tableCellContent+ {
   return contents;
 }
 
-tableCellContent = inlineEntity / tableCellText
+tableCellContent = tableCellText / inlineEntity
 
-tableCellTextChar = escaped
-                  / [^ |\n\r+\-{\x60*[!<] // \x60 = "`"
+tableCellTextChar = [^ |\n\r+\-{`*[!<]+
                   / ' '+ ![ |\n\r] // Do not capture trailing space in a cell
-                  / '++' !'}'
+                  / '\\' .?
                   / '+' !'+}'
-                  / '--' !'}'
                   / '-' !'-}'
-                  / !image '!'
-                  / !htmlTag '<'
+                  / '!' !'['
+                  / '<' !htmlTagContents
 
 tableCellText = value:$tableCellTextChar+ {
   return located({
