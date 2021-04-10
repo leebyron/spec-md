@@ -8,21 +8,19 @@ const visit = require('./visit');
 
 module.exports = parse;
 
-async function parse(filepath) {
-  return await importAST(filepath, 'initialDocument');
+function parse(filepath) {
+  return importAST(filepath, 'initialDocument');
 }
 
 function readFile(filepath) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(filepath, { encoding: 'utf8' }, (err, result) =>
-      // Normalize line endings
-      err ? reject(err) : resolve(result.replace(/\r\n|\n|\r/g, '\n'))
-    );
-  });
+  return fs
+    .readFileSync(filepath, { encoding: "utf8" })
+    // Normalize line endings
+    .replace(/\r\n|\n|\r/g, '\n');
 }
 
-async function importAST(filepath, startRule) {
-  const source = await readFile(filepath)
+function importAST(filepath, startRule) {
+  const source = readFile(filepath)
   const ast = parseSpecMD(filepath, source, startRule);
   const importASTs = [];
   visit(ast, function (node) {
@@ -34,8 +32,7 @@ async function importAST(filepath, startRule) {
       importASTs.push(importAST(subfilepath, 'importedDocument'));
     }
   });
-  const asts = await Promise.all(importASTs);
-  return flattenDocuments(ast, asts);
+  return flattenDocuments(ast, importASTs);
 }
 
 function parseSpecMD(filepath, source, startRule) {

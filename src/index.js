@@ -2,8 +2,8 @@ const print = require('./print');
 const parse = require('./parse');
 const visit = require('./visit');
 
-async function html(filepath, options) {
-  return print(await parse(filepath), options);
+function html(filepath, options) {
+  return print(parse(filepath), options);
 }
 
 exports.html = html;

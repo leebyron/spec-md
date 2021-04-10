@@ -7716,7 +7716,7 @@
           "lang": "js",
           "example": false,
           "counter": false,
-          "code": "const fs = require('fs');\nconst specMarkdown = require('spec-md');\nspecMarkdown.html('./path/to/markdown.md').then(html => {\n  fs.writeFile('./path/to/output.html', html);\n});\n"
+          "code": "const fs = require('fs');\nconst specMarkdown = require('spec-md');\nconst html = specMarkdown.html('./path/to/markdown.md');\nfs.writeFileSync('./path/to/output.html', html);\n"
         },
         {
           "type": "Paragraph",
@@ -7766,7 +7766,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " to a Markdown file and returns a Promise which will resolve to an HTML string. This function is the primary usage of the "
+                  "value": " to a Markdown file and returns an HTML string. This function is the primary usage of the "
                 },
                 {
                   "type": "InlineCode",
@@ -7793,7 +7793,7 @@
                 },
                 {
                   "type": "Text",
-                  "value": " takes a filepath and returns a Promise which will resolve to an AST "
+                  "value": " takes a filepath and returns an AST "
                 },
                 {
                   "type": "Italic",

@@ -19,19 +19,17 @@ npm install --save-dev spec-md
 ```js
 const fs = require('fs');
 const specMarkdown = require('spec-md');
-specMarkdown.html('./path/to/markdown.md').then(html => {
-  fs.writeFile('./path/to/output.html', html);
-});
+const html = specMarkdown.html('./path/to/markdown.md');
+fs.writeFileSync('./path/to/output.html', html);
 ```
 
 The `spec-md` node module provides a few functions:
 
   * {html(filePath, options)} takes a {filepath} to a Markdown file and returns
-    a Promise which will resolve to an HTML string. This function is the primary
-    usage of the `spec-md` module.
-  * {parse(filePath)} takes a filepath and returns a Promise which will resolve
-    to an AST *(Abstract Syntax Tree)* representing the contents of the Spec
-    Markdown file, with all imports already inlined.
+    an HTML string. This function is the primary usage of the `spec-md` module.
+  * {parse(filePath)} takes a filepath and returns an AST
+    *(Abstract Syntax Tree)* representing the contents of the Spec Markdown
+    file, with all imports already inlined.
   * {print(ast, options)} takes an {ast} produced by parse() and returns an HTML
     string.
   * {visit(ast, visitor)} takes an {ast} and a {visitor}. It walks over the {ast}
