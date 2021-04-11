@@ -5,8 +5,8 @@ const specMarkdown = require('../');
 
 const shouldRecord = Boolean(process.env.RECORD);
 
-function testSource(dir, input) {
-  return [input || `test/${dir}/input.md`, `test/${dir}/ast.json`, `test/${dir}/output.html`];
+function testSource(dir, input, options) {
+  return [input || `test/${dir}/input.md`, `test/${dir}/ast.json`, `test/${dir}/output.html`, options];
 }
 
 runTests([
@@ -22,10 +22,10 @@ runTests([
   testSource('task-lists'),
 ]);
 
-async function runTests(tests) {
-  for (const [input, ast, html] of tests) {
+function runTests(tests) {
+  for (const [input, ast, html, options] of tests) {
     try {
-      await runTest(input, ast, html);
+      runTest(input, ast, html, options);
     } catch (error) {
       process.exitCode = 1
       if (error.code === 'ERR_ASSERTION') {
@@ -49,13 +49,19 @@ async function runTests(tests) {
   }
 }
 
-async function runTest(input, ast, html) {
+function runTest(input, ast, html, options) {
   const start = Date.now();
   process.stdout.write(`testing: ${input} ... `);
-  const actualAST = await specMarkdown.parse(input)
+
+  const actualAST = specMarkdown.parse(input)
+  let expectedAST
+  try {
+    expectedAST = JSON.parse(fs.readFileSync(ast, 'utf8'));
+  } catch (_) {
+    // Ignore FS or parse error
+  }
 
   try {
-    const expectedAST = JSON.parse(fs.readFileSync(ast, 'utf8'));
     assert.deepEqual(
       actualAST,
       expectedAST,
@@ -72,11 +78,16 @@ async function runTest(input, ast, html) {
   }
 
   // Print HTML after testing AST since it memoizes values in the AST.
-  const actualHTML = await specMarkdown.print(actualAST);
-
+  const actualHTML = specMarkdown.print(actualAST, options);
+  let expectedHTML
   try {
     // Normalize line endings
-    const expectedHTML = fs.readFileSync(html, 'utf8').replace(/\r\n|\n|\r/g, '\n');
+    expectedHTML = fs.readFileSync(html, 'utf8').replace(/\r\n|\n|\r/g, '\n');
+  } catch (_) {
+    // Ignore FS error
+  }
+
+  try {
     assert.strictEqual(
       actualHTML,
       expectedHTML,
