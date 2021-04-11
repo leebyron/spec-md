@@ -2380,47 +2380,63 @@
                 },
                 {
                   "type": "Table",
-                  "headers": [
-                    [
-                      {
-                        "type": "Text",
-                        "value": "This"
-                      }
-                    ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "is a"
-                      }
-                    ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "table"
-                      }
-                    ]
-                  ],
-                  "rows": [
-                    [
+                  "header": {
+                    "type": "TableHeader",
+                    "cells": [
                       [
                         {
                           "type": "Text",
-                          "value": "key"
+                          "value": "This"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "val"
+                          "value": "is a"
                         }
                       ],
                       [
                         {
                           "type": "Text",
-                          "value": "etc"
+                          "value": "table"
                         }
                       ]
+                    ],
+                    "alignments": [
+                      null,
+                      null,
+                      null
                     ]
+                  },
+                  "rows": [
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "key"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "val"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "etc"
+                          }
+                        ]
+                      ],
+                      "alignments": [
+                        null,
+                        null,
+                        null
+                      ]
+                    }
                   ]
                 },
                 {
