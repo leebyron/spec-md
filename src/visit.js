@@ -19,7 +19,7 @@
  *   }
  * })
  */
-function visit(root, visitor) {
+ function visit(root, visitor) {
   if (typeof visitor === 'function') {
     visitor = { enter: visitor };
   }
@@ -48,11 +48,7 @@ function visit(root, visitor) {
       node = parent;
       parent = ancestors.pop();
       if (isEdited) {
-        node = inArray ? node.slice() :
-          Object.keys(node).reduce((o, k) => {
-            o[k] = node[k];
-            return o;
-          }, {});
+        node = inArray ? node.slice() : Object.defineProperties({}, Object.getOwnPropertyDescriptors(node));
         for (let ii = 0; ii < edits.length; ii++) {
           const editKey = edits[ii][0];
           const editValue = edits[ii][1];
