@@ -25,7 +25,7 @@ if (!filepath) {
   errorExit(
     'Usage: spec-md initial-file.md\n\n' +
     'Options:\n' +
-    '  -m, --metadata  filepath to json metadata'
+    '  -m, --metadata  filepath to json metadata' +
     '  --githubSource  URL basepath for Github source'
   );
 }

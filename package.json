@@ -20,7 +20,7 @@
     "generate": "mkdir -p out && ./bin/spec-md -m spec/metadata.json README.md > out/index.html",
     "test": "npm run build && node ./scripts/test.js",
     "record-test": "RECORD=1 npm test",
-    "watch": "nodemon -e css,js,json,pegjs,md --ignore src/generated --exec 'npm test'"
+    "watch": "nodemon -w bin/spec-md -w . -e css,js,json,pegjs,md --ignore src/generated --exec 'npm test'"
   },
   "dependencies": {
     "prismjs": "^1.23.0"
