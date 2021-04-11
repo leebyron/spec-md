@@ -273,9 +273,7 @@ The number of `#` characters refers to the depth of the section. To produce an,
 `<h3>`, type `###`. Optionally, a header may be "closed" by any number of `#`
 characters.
 
-Note: Spec Markdown requires that documents start with `#` and that each section
-contained within is only one level deeper. An \<h1> section may only contain
-\<h2> sections.
+Note: Spec Markdown requires that documents start with a header.
 
 
 ### Paragraphs

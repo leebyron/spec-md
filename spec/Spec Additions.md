@@ -66,10 +66,6 @@ Header
 ------
 ```
 
-Spec Markdown also requires that only single `#` headers appear at the top of a
-document, and that only a `##` header (and not a `###` header) can be contained
-with the section started by a `#` header.
-
 
 ### Subsection Headers
 

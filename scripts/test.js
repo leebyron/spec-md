@@ -18,6 +18,7 @@ runTests([
   testSource('readme-gh', 'README.md', { githubSource: 'https://github.com/leebyron/spec-md/blame/main' }),
   testSource('sections'),
   testSource('simple-header'),
+  testSource('headers'),
   testSource('smart-quotes'),
   testSource('tables'),
   testSource('task-lists'),

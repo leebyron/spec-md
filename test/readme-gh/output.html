@@ -1349,82 +1349,82 @@ Mister Death
 ------
 </code></pre>
 <p data-source="spec/Markdown.md#L272-L274">The number of <code>#</code> characters refers to the depth of the section. To produce an, <code>&lt;h3&gt;</code>, type <code>###</code>. Optionally, a header may be &ldquo;closed&rdquo; by any number of <code>#</code> characters.</p>
-<div id="note-dad53" class="spec-note" data-source="spec/Markdown.md#L276-L278">
-<a href="#note-dad53">Note</a>
-Spec Markdown requires that documents start with <code>#</code> and that each section contained within is only one level deeper. An &lt;h1&gt; section may only contain &lt;h2&gt; sections.</div>
+<div id="note-e6510" class="spec-note" data-source="spec/Markdown.md#L276">
+<a href="#note-e6510">Note</a>
+Spec Markdown requires that documents start with a header.</div>
 </section>
 <section id="sec-Paragraphs" secid="2.3.3">
-<h3 data-source="spec/Markdown.md#L281"><span class="spec-secid" title="link to this section"><a href="#sec-Paragraphs">2.3.3</a></span>Paragraphs</h3>
-<p data-source="spec/Markdown.md#L283-L284">Paragraphs are the most simple Markdown blocks. Lines are appended together to form a single &lt;p&gt; tag. Any inline syntax is allowed within a paragraph.</p>
+<h3 data-source="spec/Markdown.md#L279"><span class="spec-secid" title="link to this section"><a href="#sec-Paragraphs">2.3.3</a></span>Paragraphs</h3>
+<p data-source="spec/Markdown.md#L281-L282">Paragraphs are the most simple Markdown blocks. Lines are appended together to form a single &lt;p&gt; tag. Any inline syntax is allowed within a paragraph.</p>
 </section>
 <section id="sec-Lists" secid="2.3.4">
-<h3 data-source="spec/Markdown.md#L287"><span class="spec-secid" title="link to this section"><a href="#sec-Lists">2.3.4</a></span>Lists</h3>
-<p data-source="spec/Markdown.md#L289-L290">Markdown lists are lines which each start with either a ordered bullet <code>1.</code> or unordered bullet, <code>*</code>, <code>-</code>, or <code>+</code>. Lists are optionally indented by two spaces.</p>
-<p data-source="spec/Markdown.md#L292">Lists can be nested within other lists by indenting by at least two spaces.</p>
-<pre id="example-4d8ec" class="spec-example" data-source="spec/Markdown.md#L294-L300"><a href="#example-4d8ec">Example № 3</a><code>  1. this
+<h3 data-source="spec/Markdown.md#L285"><span class="spec-secid" title="link to this section"><a href="#sec-Lists">2.3.4</a></span>Lists</h3>
+<p data-source="spec/Markdown.md#L287-L288">Markdown lists are lines which each start with either a ordered bullet <code>1.</code> or unordered bullet, <code>*</code>, <code>-</code>, or <code>+</code>. Lists are optionally indented by two spaces.</p>
+<p data-source="spec/Markdown.md#L290">Lists can be nested within other lists by indenting by at least two spaces.</p>
+<pre id="example-4d8ec" class="spec-example" data-source="spec/Markdown.md#L292-L298"><a href="#example-4d8ec">Example № 3</a><code>  1. this
   2. is
   3. a
     - nested
   4. list
 </code></pre>
-<p data-source="spec/Markdown.md#L302">Produces the following:</p>
+<p data-source="spec/Markdown.md#L300">Produces the following:</p>
 <ol>
-<li data-source="spec/Markdown.md#L304">this</li>
-<li data-source="spec/Markdown.md#L305">is</li>
-<li data-source="spec/Markdown.md#L306-L307">a<ul>
-<li data-source="spec/Markdown.md#L307">nested</li>
+<li data-source="spec/Markdown.md#L302">this</li>
+<li data-source="spec/Markdown.md#L303">is</li>
+<li data-source="spec/Markdown.md#L304-L305">a<ul>
+<li data-source="spec/Markdown.md#L305">nested</li>
 </ul>
 </li>
-<li data-source="spec/Markdown.md#L308">list</li>
+<li data-source="spec/Markdown.md#L306">list</li>
 </ol>
 <section id="sec-Task-Lists" secid="2.3.4.1">
-<h4 data-source="spec/Markdown.md#L310"><span class="spec-secid" title="link to this section"><a href="#sec-Task-Lists">2.3.4.1</a></span>Task Lists</h4>
-<p data-source="spec/Markdown.md#L312-L314">Spec Markdown also supports task lists. Start a list item with <code>[ ]</code> or <code>[x]</code> to render a checkbox. This can be useful for keeping your tasks inline with in-progress draft specifications.</p>
-<pre id="example-f34a9" class="spec-example" data-source="spec/Markdown.md#L316-L322"><a href="#example-f34a9">Example № 4</a><code>  1. this
+<h4 data-source="spec/Markdown.md#L308"><span class="spec-secid" title="link to this section"><a href="#sec-Task-Lists">2.3.4.1</a></span>Task Lists</h4>
+<p data-source="spec/Markdown.md#L310-L312">Spec Markdown also supports task lists. Start a list item with <code>[ ]</code> or <code>[x]</code> to render a checkbox. This can be useful for keeping your tasks inline with in-progress draft specifications.</p>
+<pre id="example-f34a9" class="spec-example" data-source="spec/Markdown.md#L314-L320"><a href="#example-f34a9">Example № 4</a><code>  1. this
   2. [ ] is
   3. [x] a
     - [X] nested
   4. todo list
 </code></pre>
-<p data-source="spec/Markdown.md#L324">Produces the following:</p>
+<p data-source="spec/Markdown.md#L322">Produces the following:</p>
 <ol>
-<li data-source="spec/Markdown.md#L326">this</li>
-<li class="task" data-source="spec/Markdown.md#L327">
+<li data-source="spec/Markdown.md#L324">this</li>
+<li class="task" data-source="spec/Markdown.md#L325">
 <input type="checkbox" disabled>
  is</li>
-<li class="task" data-source="spec/Markdown.md#L328-L329">
+<li class="task" data-source="spec/Markdown.md#L326-L327">
 <input type="checkbox" disabled checked>
  a<ul>
-<li class="task" data-source="spec/Markdown.md#L329">
+<li class="task" data-source="spec/Markdown.md#L327">
 <input type="checkbox" disabled checked>
  nested</li>
 </ul>
 </li>
-<li data-source="spec/Markdown.md#L330">todo list</li>
+<li data-source="spec/Markdown.md#L328">todo list</li>
 </ol>
 </section>
 </section>
 <section id="sec-Code-Block" secid="2.3.5">
-<h3 data-source="spec/Markdown.md#L333"><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h3>
-<p data-source="spec/Markdown.md#L335-L336">A block of code is formed by either indenting by 4 spaces, or wrapping with <code>```</code> on their own lines.</p>
-<pre data-source="spec/Markdown.md#L338-L340"><code>```
+<h3 data-source="spec/Markdown.md#L331"><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h3>
+<p data-source="spec/Markdown.md#L333-L334">A block of code is formed by either indenting by 4 spaces, or wrapping with <code>```</code> on their own lines.</p>
+<pre data-source="spec/Markdown.md#L336-L338"><code>```
 const code = sample();
 ```</code></pre>
-<p data-source="spec/Markdown.md#L342">Produces the following:</p>
-<pre data-source="spec/Markdown.md#L344-L346"><code>const code = sample();
+<p data-source="spec/Markdown.md#L340">Produces the following:</p>
+<pre data-source="spec/Markdown.md#L342-L344"><code>const code = sample();
 </code></pre>
 </section>
 <section id="sec-Block-Quotes" secid="2.3.6">
-<h3 data-source="spec/Markdown.md#L349"><span class="spec-secid" title="link to this section"><a href="#sec-Block-Quotes">2.3.6</a></span>Block Quotes</h3>
-<p data-source="spec/Markdown.md#L351">Spec markdown does not yet support Markdown&rsquo;s <code>&gt;</code> style block quotes.</p>
+<h3 data-source="spec/Markdown.md#L347"><span class="spec-secid" title="link to this section"><a href="#sec-Block-Quotes">2.3.6</a></span>Block Quotes</h3>
+<p data-source="spec/Markdown.md#L349">Spec markdown does not yet support Markdown&rsquo;s <code>&gt;</code> style block quotes.</p>
 </section>
 <section id="sec-Horizontal-Rules" secid="2.3.7">
-<h3 data-source="spec/Markdown.md#L354"><span class="spec-secid" title="link to this section"><a href="#sec-Horizontal-Rules">2.3.7</a></span>Horizontal Rules</h3>
-<p data-source="spec/Markdown.md#L356">Spec Markdown does not yet support Markdown&rsquo;s <code>---</code> style &lt;hr&gt;.</p>
+<h3 data-source="spec/Markdown.md#L352"><span class="spec-secid" title="link to this section"><a href="#sec-Horizontal-Rules">2.3.7</a></span>Horizontal Rules</h3>
+<p data-source="spec/Markdown.md#L354">Spec Markdown does not yet support Markdown&rsquo;s <code>---</code> style &lt;hr&gt;.</p>
 </section>
 <section id="sec-Automatic-Links" secid="2.3.8">
-<h3 data-source="spec/Markdown.md#L359"><span class="spec-secid" title="link to this section"><a href="#sec-Automatic-Links">2.3.8</a></span>Automatic Links</h3>
-<p data-source="spec/Markdown.md#L361-L362">Spec Markdown does not yet automatically link urls. </p>
+<h3 data-source="spec/Markdown.md#L357"><span class="spec-secid" title="link to this section"><a href="#sec-Automatic-Links">2.3.8</a></span>Automatic Links</h3>
+<p data-source="spec/Markdown.md#L359-L360">Spec Markdown does not yet automatically link urls. </p>
 </section>
 </section>
 </section>
@@ -1463,186 +1463,185 @@ For backwards-compatibility, a setext style header can be used for a document ti
 <pre id="example-f87c5" class="spec-counter-example" data-source="spec/Spec%20Additions.md#L64-L67"><a href="#example-f87c5">Counter Example № 5</a><code>Header
 ------
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L69-L71">Spec Markdown also requires that only single <code>#</code> headers appear at the top of a document, and that only a <code>##</code> header (and not a <code>###</code> header) can be contained with the section started by a <code>#</code> header.</p>
 </section>
 <section id="sec-Subsection-Headers" secid="3.3.2">
-<h3 data-source="spec/Spec%20Additions.md#L74"><span class="spec-secid" title="link to this section"><a href="#sec-Subsection-Headers">3.3.2</a></span>Subsection Headers</h3>
-<p data-source="spec/Spec%20Additions.md#L76-L77">While sections are numbered and appear in the table of contents, a subsection is similar but not numbered or in the table of contents.</p>
+<h3 data-source="spec/Spec%20Additions.md#L70"><span class="spec-secid" title="link to this section"><a href="#sec-Subsection-Headers">3.3.2</a></span>Subsection Headers</h3>
+<p data-source="spec/Spec%20Additions.md#L72-L73">While sections are numbered and appear in the table of contents, a subsection is similar but not numbered or in the table of contents.</p>
 <section id="sec-Subsection-Headers.This-is-a-subsection" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L79"><a href="#sec-Subsection-Headers.This-is-a-subsection" title="link to this subsection">This is a subsection</a></h6>
-<p data-source="spec/Spec%20Additions.md#L81">The subsection&rsquo;s content appears below the subsection header.</p>
+<h6 data-source="spec/Spec%20Additions.md#L75"><a href="#sec-Subsection-Headers.This-is-a-subsection" title="link to this subsection">This is a subsection</a></h6>
+<p data-source="spec/Spec%20Additions.md#L77">The subsection&rsquo;s content appears below the subsection header.</p>
 </section>
 <section id="sec-Subsection-Headers.Another-subsection" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L83"><a href="#sec-Subsection-Headers.Another-subsection" title="link to this subsection">Another subsection</a></h6>
-<p data-source="spec/Spec%20Additions.md#L85-L86">Sections may contain multiple subsections, but subsections cannot contain sections or subsections.</p>
+<h6 data-source="spec/Spec%20Additions.md#L79"><a href="#sec-Subsection-Headers.Another-subsection" title="link to this subsection">Another subsection</a></h6>
+<p data-source="spec/Spec%20Additions.md#L81-L82">Sections may contain multiple subsections, but subsections cannot contain sections or subsections.</p>
 </section>
 </section>
 <section id="sec-Table-of-Contents" secid="3.3.3">
-<h3 data-source="spec/Spec%20Additions.md#L89"><span class="spec-secid" title="link to this section"><a href="#sec-Table-of-Contents">3.3.3</a></span>Table of Contents</h3>
-<p data-source="spec/Spec%20Additions.md#L91-L92">A table of contents is automatically generated from the hierarchy of sections in the Spec Markdown document.</p>
+<h3 data-source="spec/Spec%20Additions.md#L85"><span class="spec-secid" title="link to this section"><a href="#sec-Table-of-Contents">3.3.3</a></span>Table of Contents</h3>
+<p data-source="spec/Spec%20Additions.md#L87-L88">A table of contents is automatically generated from the hierarchy of sections in the Spec Markdown document.</p>
 </section>
 <section id="sec-Section-Numbers" secid="3.3.4">
-<h3 data-source="spec/Spec%20Additions.md#L95"><span class="spec-secid" title="link to this section"><a href="#sec-Section-Numbers">3.3.4</a></span>Section Numbers</h3>
-<p data-source="spec/Spec%20Additions.md#L97-L99">A number is associated with each section, starting with 1. In a hierarchy of sections, the parent sections are joined with dots. This provides an unambiguous location identifier for a given section in a document.</p>
-<p data-source="spec/Spec%20Additions.md#L101-L102">You can specify these section numbers directly in your Markdown documents if you wish by writing them directly after the <code>#</code> and before the text of the header.</p>
+<h3 data-source="spec/Spec%20Additions.md#L91"><span class="spec-secid" title="link to this section"><a href="#sec-Section-Numbers">3.3.4</a></span>Section Numbers</h3>
+<p data-source="spec/Spec%20Additions.md#L93-L95">A number is associated with each section, starting with 1. In a hierarchy of sections, the parent sections are joined with dots. This provides an unambiguous location identifier for a given section in a document.</p>
+<p data-source="spec/Spec%20Additions.md#L97-L98">You can specify these section numbers directly in your Markdown documents if you wish by writing them directly after the <code>#</code> and before the text of the header.</p>
 <section id="sec-Custom-Numbers" secid="3.3.4.8">
-<h4 data-source="spec/Spec%20Additions.md#L104"><span class="spec-secid" title="link to this section"><a href="#sec-Custom-Numbers">3.3.4.8</a></span>Custom Numbers</h4>
-<p data-source="spec/Spec%20Additions.md#L106-L108">If the section number is written in the document, the last number will be used as the number for that section. This is useful when writing a proposal against an existing spec and wish to reference a particular section.</p>
-<p data-source="spec/Spec%20Additions.md#L110">The header for this section was written as</p>
-<pre data-source="spec/Spec%20Additions.md#L112-L114"><code>#### 3.2.3.8. Custom Numbers
+<h4 data-source="spec/Spec%20Additions.md#L100"><span class="spec-secid" title="link to this section"><a href="#sec-Custom-Numbers">3.3.4.8</a></span>Custom Numbers</h4>
+<p data-source="spec/Spec%20Additions.md#L102-L104">If the section number is written in the document, the last number will be used as the number for that section. This is useful when writing a proposal against an existing spec and wish to reference a particular section.</p>
+<p data-source="spec/Spec%20Additions.md#L106">The header for this section was written as</p>
+<pre data-source="spec/Spec%20Additions.md#L108-L110"><code>#### 3.2.3.8. Custom Numbers
 </code></pre>
 </section>
 <section id="sec-Appendix-Annex-Sections" secid="3.3.4.9">
-<h4 data-source="spec/Spec%20Additions.md#L116"><span class="spec-secid" title="link to this section"><a href="#sec-Appendix-Annex-Sections">3.3.4.9</a></span>Appendix / Annex Sections</h4>
-<p data-source="spec/Spec%20Additions.md#L118-L119">If a top level section is written with a letter, such as <code>A</code> instead of a number, that will begin an Appendix section.</p>
-<pre data-source="spec/Spec%20Additions.md#L121-L123"><code># A. Appendix: Grammar
+<h4 data-source="spec/Spec%20Additions.md#L112"><span class="spec-secid" title="link to this section"><a href="#sec-Appendix-Annex-Sections">3.3.4.9</a></span>Appendix / Annex Sections</h4>
+<p data-source="spec/Spec%20Additions.md#L114-L115">If a top level section is written with a letter, such as <code>A</code> instead of a number, that will begin an Appendix section.</p>
+<pre data-source="spec/Spec%20Additions.md#L117-L119"><code># A. Appendix: Grammar
 </code></pre>
 </section>
 </section>
 </section>
 <section id="sec-Smart-Characters" secid="3.4">
-<h2 data-source="spec/Spec%20Additions.md#L126"><span class="spec-secid" title="link to this section"><a href="#sec-Smart-Characters">3.4</a></span>Smart Characters</h2>
-<p data-source="spec/Spec%20Additions.md#L128-L130">The Spec Markdown renderer will replace easy to type characters like quotes and dashes with their appropriate typographic entities. These replacements will not occur within blocks of code.</p>
+<h2 data-source="spec/Spec%20Additions.md#L122"><span class="spec-secid" title="link to this section"><a href="#sec-Smart-Characters">3.4</a></span>Smart Characters</h2>
+<p data-source="spec/Spec%20Additions.md#L124-L126">The Spec Markdown renderer will replace easy to type characters like quotes and dashes with their appropriate typographic entities. These replacements will not occur within blocks of code.</p>
 <section id="sec-Quotes-and-Dashes" secid="3.4.1">
-<h3 data-source="spec/Spec%20Additions.md#L133"><span class="spec-secid" title="link to this section"><a href="#sec-Quotes-and-Dashes">3.4.1</a></span>Quotes and Dashes</h3>
-<p data-source="spec/Spec%20Additions.md#L135-L136">Prose text has &ldquo;smart quotes&rdquo;, hyphens, en-dashes and em-dashes&mdash;you shouldn&rsquo;t have to think about it, they&rsquo;ll just work.</p>
-<p data-source="spec/Spec%20Additions.md#L138">For example, a quote of a quote (with an inner apostrophe and emphasis for flair):</p>
-<p data-source="spec/Spec%20Additions.md#L140"><code>"She told me that 'he isn't here right *now*' - so I left."</code></p>
-<p data-source="spec/Spec%20Additions.md#L142">Will render as:</p>
-<p data-source="spec/Spec%20Additions.md#L144">&ldquo;She told me that &lsquo;he isn&rsquo;t here right <em>now</em>&rsquo; &ndash; so I left.&rdquo;</p>
-<p data-source="spec/Spec%20Additions.md#L146">Escaped <code>\"quotes \'and single\-quotes\'\"</code> becomes: \&ldquo;quotes \&lsquo;and single-quotes'".</p>
+<h3 data-source="spec/Spec%20Additions.md#L129"><span class="spec-secid" title="link to this section"><a href="#sec-Quotes-and-Dashes">3.4.1</a></span>Quotes and Dashes</h3>
+<p data-source="spec/Spec%20Additions.md#L131-L132">Prose text has &ldquo;smart quotes&rdquo;, hyphens, en-dashes and em-dashes&mdash;you shouldn&rsquo;t have to think about it, they&rsquo;ll just work.</p>
+<p data-source="spec/Spec%20Additions.md#L134">For example, a quote of a quote (with an inner apostrophe and emphasis for flair):</p>
+<p data-source="spec/Spec%20Additions.md#L136"><code>"She told me that 'he isn't here right *now*' - so I left."</code></p>
+<p data-source="spec/Spec%20Additions.md#L138">Will render as:</p>
+<p data-source="spec/Spec%20Additions.md#L140">&ldquo;She told me that &lsquo;he isn&rsquo;t here right <em>now</em>&rsquo; &ndash; so I left.&rdquo;</p>
+<p data-source="spec/Spec%20Additions.md#L142">Escaped <code>\"quotes \'and single\-quotes\'\"</code> becomes: \&ldquo;quotes \&lsquo;and single-quotes'".</p>
 </section>
 <section id="sec-Math" secid="3.4.2">
-<h3 data-source="spec/Spec%20Additions.md#L148"><span class="spec-secid" title="link to this section"><a href="#sec-Math">3.4.2</a></span>Math</h3>
-<p data-source="spec/Spec%20Additions.md#L150">Math operators like &ge;, &le;, and &asymp; can be written as <code>&gt;=</code>, <code>&lt;=</code>, and <code>~=</code>.</p>
-<p data-source="spec/Spec%20Additions.md#L152">Escaped <code>\&gt;= \&lt;= \~=</code> becomes: &gt;= &lt;= ~=.</p>
+<h3 data-source="spec/Spec%20Additions.md#L144"><span class="spec-secid" title="link to this section"><a href="#sec-Math">3.4.2</a></span>Math</h3>
+<p data-source="spec/Spec%20Additions.md#L146">Math operators like &ge;, &le;, and &asymp; can be written as <code>&gt;=</code>, <code>&lt;=</code>, and <code>~=</code>.</p>
+<p data-source="spec/Spec%20Additions.md#L148">Escaped <code>\&gt;= \&lt;= \~=</code> becomes: &gt;= &lt;= ~=.</p>
 </section>
 <section id="sec-Arrows" secid="3.4.3">
-<h3 data-source="spec/Spec%20Additions.md#L154"><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">3.4.3</a></span>Arrows</h3>
-<p data-source="spec/Spec%20Additions.md#L156">Smart arrows &rarr; and &larr; and &harr; can be written as <code>-&gt;</code>, <code>&lt;-</code> and <code>&lt;-&gt;</code>.</p>
-<p data-source="spec/Spec%20Additions.md#L158">Fat smart arrows &rArr; and &lArr; and &hArr; can be written as <code>=&gt;</code>, <code>&lt;==</code> and <code>&lt;=&gt;</code>.</p>
-<p data-source="spec/Spec%20Additions.md#L160">Escaped <code>\-&gt; \&lt;- \&lt;-&gt; \=&gt; \&lt;== \&lt;=&gt;</code> becomes: -&gt; &lt;- &lt;-&gt; =&gt; &lt;== &lt;=&gt;.</p>
+<h3 data-source="spec/Spec%20Additions.md#L150"><span class="spec-secid" title="link to this section"><a href="#sec-Arrows">3.4.3</a></span>Arrows</h3>
+<p data-source="spec/Spec%20Additions.md#L152">Smart arrows &rarr; and &larr; and &harr; can be written as <code>-&gt;</code>, <code>&lt;-</code> and <code>&lt;-&gt;</code>.</p>
+<p data-source="spec/Spec%20Additions.md#L154">Fat smart arrows &rArr; and &lArr; and &hArr; can be written as <code>=&gt;</code>, <code>&lt;==</code> and <code>&lt;=&gt;</code>.</p>
+<p data-source="spec/Spec%20Additions.md#L156">Escaped <code>\-&gt; \&lt;- \&lt;-&gt; \=&gt; \&lt;== \&lt;=&gt;</code> becomes: -&gt; &lt;- &lt;-&gt; =&gt; &lt;== &lt;=&gt;.</p>
 </section>
 </section>
 <section id="sec-Tables" secid="3.5">
-<h2 data-source="spec/Spec%20Additions.md#L163"><span class="spec-secid" title="link to this section"><a href="#sec-Tables">3.5</a></span>Tables</h2>
-<p data-source="spec/Spec%20Additions.md#L165">Similar to Github flavored Markdown</p>
-<pre data-source="spec/Spec%20Additions.md#L167-L171"><code>| This | is a | table |
+<h2 data-source="spec/Spec%20Additions.md#L159"><span class="spec-secid" title="link to this section"><a href="#sec-Tables">3.5</a></span>Tables</h2>
+<p data-source="spec/Spec%20Additions.md#L161">Similar to Github flavored Markdown</p>
+<pre data-source="spec/Spec%20Additions.md#L163-L167"><code>| This | is a | table |
 | ---- | ---: | :---: |
 | key  | val  | etc   |
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L173">Produces the following:</p>
+<p data-source="spec/Spec%20Additions.md#L169">Produces the following:</p>
 <table>
 <thead>
-<tr data-source="spec/Spec%20Additions.md#L175">
+<tr data-source="spec/Spec%20Additions.md#L171">
 <th>This</th>
 <th align="right">is a</th>
 <th align="center">table</th>
 </tr>
 </thead>
 <tbody>
-<tr data-source="spec/Spec%20Additions.md#L177">
+<tr data-source="spec/Spec%20Additions.md#L173">
 <td>key</td>
 <td align="right">val</td>
 <td align="center">etc</td>
 </tr>
 </tbody>
 </table>
-<p data-source="spec/Spec%20Additions.md#L179">Table cells can contain any content that a paragraph can contain.</p>
+<p data-source="spec/Spec%20Additions.md#L175">Table cells can contain any content that a paragraph can contain.</p>
 </section>
 <section id="sec-Note" secid="3.6">
-<h2 data-source="spec/Spec%20Additions.md#L182"><span class="spec-secid" title="link to this section"><a href="#sec-Note">3.6</a></span>Note</h2>
-<p data-source="spec/Spec%20Additions.md#L184-L186">Notes can be written inline with a spec document, and are often helpful to supply non-normative explanatory text or caveats in a differently formatted style. Case insensitive, the <code>:</code> is optional.</p>
-<p data-source="spec/Spec%20Additions.md#L188-L191">Notes automatically have short links generated for them. If the contents of the note changes, so will the link URL. However if a note moves around, or content around the note changes the existing links will still point to the right place, very useful for consistently evolving specifications!</p>
-<pre data-source="spec/Spec%20Additions.md#L193-L195"><code>Note: Notes are awesome.
+<h2 data-source="spec/Spec%20Additions.md#L178"><span class="spec-secid" title="link to this section"><a href="#sec-Note">3.6</a></span>Note</h2>
+<p data-source="spec/Spec%20Additions.md#L180-L182">Notes can be written inline with a spec document, and are often helpful to supply non-normative explanatory text or caveats in a differently formatted style. Case insensitive, the <code>:</code> is optional.</p>
+<p data-source="spec/Spec%20Additions.md#L184-L187">Notes automatically have short links generated for them. If the contents of the note changes, so will the link URL. However if a note moves around, or content around the note changes the existing links will still point to the right place, very useful for consistently evolving specifications!</p>
+<pre data-source="spec/Spec%20Additions.md#L189-L191"><code>Note: Notes are awesome.
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L197">Produces the following:</p>
-<div id="note-cf2ae" class="spec-note" data-source="spec/Spec%20Additions.md#L199">
+<p data-source="spec/Spec%20Additions.md#L193">Produces the following:</p>
+<div id="note-cf2ae" class="spec-note" data-source="spec/Spec%20Additions.md#L195">
 <a href="#note-cf2ae">Note</a>
 Notes are awesome.</div>
 </section>
 <section id="sec-Todo" secid="3.7">
-<h2 data-source="spec/Spec%20Additions.md#L202"><span class="spec-secid" title="link to this section"><a href="#sec-Todo">3.7</a></span>Todo</h2>
-<p data-source="spec/Spec%20Additions.md#L204-L205">It&rsquo;s often helpful to write a draft of a document and leave &ldquo;to-do&rdquo; comments in not-yet-completed sections. Case insensitive, the <code>:</code> is optional.</p>
-<pre data-source="spec/Spec%20Additions.md#L207-L209"><code>TODO: finish this section
+<h2 data-source="spec/Spec%20Additions.md#L198"><span class="spec-secid" title="link to this section"><a href="#sec-Todo">3.7</a></span>Todo</h2>
+<p data-source="spec/Spec%20Additions.md#L200-L201">It&rsquo;s often helpful to write a draft of a document and leave &ldquo;to-do&rdquo; comments in not-yet-completed sections. Case insensitive, the <code>:</code> is optional.</p>
+<pre data-source="spec/Spec%20Additions.md#L203-L205"><code>TODO: finish this section
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L211">Produces the following:</p>
-<div class="spec-todo" data-source="spec/Spec%20Additions.md#L213">
+<p data-source="spec/Spec%20Additions.md#L207">Produces the following:</p>
+<div class="spec-todo" data-source="spec/Spec%20Additions.md#L209">
 finish this section</div>
-<div id="note-2ac5f" class="spec-note" data-source="spec/Spec%20Additions.md#L215">
+<div id="note-2ac5f" class="spec-note" data-source="spec/Spec%20Additions.md#L211">
 <a href="#note-2ac5f">Note</a>
 You can also write <code>TK</code> in place of <code>TODO</code>, nerds.</div>
 </section>
 <section id="sec-Syntax-Highlighting" secid="3.8">
-<h2 data-source="spec/Spec%20Additions.md#L218"><span class="spec-secid" title="link to this section"><a href="#sec-Syntax-Highlighting">3.8</a></span>Syntax Highlighting</h2>
-<p data-source="spec/Spec%20Additions.md#L220-L221">Spec Markdown will apply syntax highlighting to blocks of code if a github-flavored-markdown style language is supplied.</p>
-<p data-source="spec/Spec%20Additions.md#L223">You may provide a <code>highlight</code> function as an option to customize this behavior.</p>
-<p data-source="spec/Spec%20Additions.md#L225">To render this highlighted javascript:</p>
-<pre data-source="spec/Spec%20Additions.md#L227-L229"><code>```js
+<h2 data-source="spec/Spec%20Additions.md#L214"><span class="spec-secid" title="link to this section"><a href="#sec-Syntax-Highlighting">3.8</a></span>Syntax Highlighting</h2>
+<p data-source="spec/Spec%20Additions.md#L216-L217">Spec Markdown will apply syntax highlighting to blocks of code if a github-flavored-markdown style language is supplied.</p>
+<p data-source="spec/Spec%20Additions.md#L219">You may provide a <code>highlight</code> function as an option to customize this behavior.</p>
+<p data-source="spec/Spec%20Additions.md#L221">To render this highlighted javascript:</p>
+<pre data-source="spec/Spec%20Additions.md#L223-L225"><code>```js
 const baz = foo("bar");
 ```</code></pre>
-<p data-source="spec/Spec%20Additions.md#L231">Produces the following:</p>
-<pre data-language="js" data-source="spec/Spec%20Additions.md#L233-L235"><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p data-source="spec/Spec%20Additions.md#L227">Produces the following:</p>
+<pre data-language="js" data-source="spec/Spec%20Additions.md#L229-L231"><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L237-L238">You may also prefix your highlight function with &ldquo;raw&rdquo; if you want to avoid other tools, such as Prettier, from interpreting a code block.</p>
-<pre data-source="spec/Spec%20Additions.md#L240-L242"><code>```raw js
+<p data-source="spec/Spec%20Additions.md#L233-L234">You may also prefix your highlight function with &ldquo;raw&rdquo; if you want to avoid other tools, such as Prettier, from interpreting a code block.</p>
+<pre data-source="spec/Spec%20Additions.md#L236-L238"><code>```raw js
 const baz = foo("bar");
 ```</code></pre>
-<p data-source="spec/Spec%20Additions.md#L244">Produces the following:</p>
-<pre data-language="js" data-source="spec/Spec%20Additions.md#L246-L248"><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p data-source="spec/Spec%20Additions.md#L240">Produces the following:</p>
+<pre data-language="js" data-source="spec/Spec%20Additions.md#L242-L244"><code><span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <section id="sec-Examples" secid="3.8.1">
-<h3 data-source="spec/Spec%20Additions.md#L250"><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.8.1</a></span>Examples</h3>
-<p data-source="spec/Spec%20Additions.md#L252-L254">Spec Markdown helps you write examples, visually indicaticating the difference from normative code blocks, and generating permalinks to those examples. Just write <code>example</code> after the <code>```</code>.</p>
-<pre data-source="spec/Spec%20Additions.md#L256-L258"><code>```example
+<h3 data-source="spec/Spec%20Additions.md#L246"><span class="spec-secid" title="link to this section"><a href="#sec-Examples">3.8.1</a></span>Examples</h3>
+<p data-source="spec/Spec%20Additions.md#L248-L250">Spec Markdown helps you write examples, visually indicaticating the difference from normative code blocks, and generating permalinks to those examples. Just write <code>example</code> after the <code>```</code>.</p>
+<pre data-source="spec/Spec%20Additions.md#L252-L254"><code>```example
 const great = useOf.example("code");
 ```</code></pre>
-<p data-source="spec/Spec%20Additions.md#L260">Produces the following:</p>
-<pre id="example-33270" class="spec-example" data-source="spec/Spec%20Additions.md#L262-L264"><a href="#example-33270">Example № 6</a><code>const great = useOf.example("code");
+<p data-source="spec/Spec%20Additions.md#L256">Produces the following:</p>
+<pre id="example-33270" class="spec-example" data-source="spec/Spec%20Additions.md#L258-L260"><a href="#example-33270">Example № 6</a><code>const great = useOf.example("code");
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L266-L267">Examples can also be syntax highlighted, by placing the language directly before writing <code>example</code>:</p>
-<pre data-source="spec/Spec%20Additions.md#L269-L271"><code>```js example
+<p data-source="spec/Spec%20Additions.md#L262-L263">Examples can also be syntax highlighted, by placing the language directly before writing <code>example</code>:</p>
+<pre data-source="spec/Spec%20Additions.md#L265-L267"><code>```js example
 const great = useOf.example("code");
 ```</code></pre>
-<p data-source="spec/Spec%20Additions.md#L273">Produces the following:</p>
-<pre id="example-d7c75" class="spec-example" data-language="js" data-source="spec/Spec%20Additions.md#L275-L277"><a href="#example-d7c75">Example № 7</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p data-source="spec/Spec%20Additions.md#L269">Produces the following:</p>
+<pre id="example-d7c75" class="spec-example" data-language="js" data-source="spec/Spec%20Additions.md#L271-L273"><a href="#example-d7c75">Example № 7</a><code><span class="token keyword">const</span> great <span class="token operator">=</span> useOf<span class="token punctuation">.</span><span class="token method function property-access">example</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 <section id="sec-Counter-Examples" secid="3.8.2">
-<h3 data-source="spec/Spec%20Additions.md#L279"><span class="spec-secid" title="link to this section"><a href="#sec-Counter-Examples">3.8.2</a></span>Counter Examples</h3>
-<p data-source="spec/Spec%20Additions.md#L281-L284">In addition to examples, Spec Markdown helps you write <em>counter-examples</em>, which are examples of things you should not do. These are visually indicated as different from normative code blocks and other examples. Just write <code>counter-example</code> after the <code>```</code> (and optional language).</p>
-<pre data-source="spec/Spec%20Additions.md#L286-L288"><code>```js counter-example
+<h3 data-source="spec/Spec%20Additions.md#L275"><span class="spec-secid" title="link to this section"><a href="#sec-Counter-Examples">3.8.2</a></span>Counter Examples</h3>
+<p data-source="spec/Spec%20Additions.md#L277-L280">In addition to examples, Spec Markdown helps you write <em>counter-examples</em>, which are examples of things you should not do. These are visually indicated as different from normative code blocks and other examples. Just write <code>counter-example</code> after the <code>```</code> (and optional language).</p>
+<pre data-source="spec/Spec%20Additions.md#L282-L284"><code>```js counter-example
 const shit = dontSwear();
 ```</code></pre>
-<p data-source="spec/Spec%20Additions.md#L290">Produces the following:</p>
-<pre id="example-4c929" class="spec-counter-example" data-language="js" data-source="spec/Spec%20Additions.md#L292-L294"><a href="#example-4c929">Counter Example № 8</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p data-source="spec/Spec%20Additions.md#L286">Produces the following:</p>
+<pre id="example-4c929" class="spec-counter-example" data-language="js" data-source="spec/Spec%20Additions.md#L288-L290"><a href="#example-4c929">Counter Example № 8</a><code><span class="token keyword">const</span> shit <span class="token operator">=</span> <span class="token function">dontSwear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </section>
 </section>
 <section id="sec-Imports" secid="3.9">
-<h2 data-source="spec/Spec%20Additions.md#L297"><span class="spec-secid" title="link to this section"><a href="#sec-Imports">3.9</a></span>Imports</h2>
-<p data-source="spec/Spec%20Additions.md#L299-L300">When compiled, an import reference will be inlined into the same document. An import reference looks like a link to a &ldquo;.md&rdquo; file as a single paragraph.</p>
-<pre data-source="spec/Spec%20Additions.md#L302-L304"><code>[AnythingGoesHere](SomeName.md)
+<h2 data-source="spec/Spec%20Additions.md#L293"><span class="spec-secid" title="link to this section"><a href="#sec-Imports">3.9</a></span>Imports</h2>
+<p data-source="spec/Spec%20Additions.md#L295-L296">When compiled, an import reference will be inlined into the same document. An import reference looks like a link to a &ldquo;.md&rdquo; file as a single paragraph.</p>
+<pre data-source="spec/Spec%20Additions.md#L298-L300"><code>[AnythingGoesHere](SomeName.md)
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L306-L308">You can optionally prefix the import reference with <code>#</code> characters to describe at what section level the import should apply. By default an import reference will be imported as a child of the current section.</p>
+<p data-source="spec/Spec%20Additions.md#L302-L304">You can optionally prefix the import reference with <code>#</code> characters to describe at what section level the import should apply. By default an import reference will be imported as a child of the current section.</p>
 </section>
 <section id="sec-Inline-editing" secid="3.10">
-<h2 data-source="spec/Spec%20Additions.md#L311"><span class="spec-secid" title="link to this section"><a href="#sec-Inline-editing">3.10</a></span>Inline editing</h2>
-<p data-source="spec/Spec%20Additions.md#L313">A portion of the <a href="http://criticmarkup.com/">CriticMarkup</a> spec is supported.</p>
-<p data-source="spec/Spec%20Additions.md#L315-L316">For example, we can <ins>add</ins> or <del>remove</del> text with the <code>{++add++}</code> or <code>{--remove--}</code> syntax.</p>
+<h2 data-source="spec/Spec%20Additions.md#L307"><span class="spec-secid" title="link to this section"><a href="#sec-Inline-editing">3.10</a></span>Inline editing</h2>
+<p data-source="spec/Spec%20Additions.md#L309">A portion of the <a href="http://criticmarkup.com/">CriticMarkup</a> spec is supported.</p>
+<p data-source="spec/Spec%20Additions.md#L311-L312">For example, we can <ins>add</ins> or <del>remove</del> text with the <code>{++add++}</code> or <code>{--remove--}</code> syntax.</p>
 </section>
 <section id="sec-Block-editing" secid="3.11">
-<h2 data-source="spec/Spec%20Additions.md#L319"><span class="spec-secid" title="link to this section"><a href="#sec-Block-editing">3.11</a></span>Block editing</h2>
-<p data-source="spec/Spec%20Additions.md#L321-L322">We can also add and remove entire blocks of content, by using <code>{++</code> or <code>{--</code> on their own line with empty lines on either side:</p>
-<div class="spec-added" data-source="spec/Spec%20Additions.md#L324-L330"><p data-source="spec/Spec%20Additions.md#L326">These paragraphs</p>
-<p data-source="spec/Spec%20Additions.md#L328">have been <em>added</em>.</p>
+<h2 data-source="spec/Spec%20Additions.md#L315"><span class="spec-secid" title="link to this section"><a href="#sec-Block-editing">3.11</a></span>Block editing</h2>
+<p data-source="spec/Spec%20Additions.md#L317-L318">We can also add and remove entire blocks of content, by using <code>{++</code> or <code>{--</code> on their own line with empty lines on either side:</p>
+<div class="spec-added" data-source="spec/Spec%20Additions.md#L320-L326"><p data-source="spec/Spec%20Additions.md#L322">These paragraphs</p>
+<p data-source="spec/Spec%20Additions.md#L324">have been <em>added</em>.</p>
 </div>
-<p data-source="spec/Spec%20Additions.md#L332">And</p>
-<div class="spec-removed" data-source="spec/Spec%20Additions.md#L334-L340"><p data-source="spec/Spec%20Additions.md#L336">These paragraphs</p>
-<p data-source="spec/Spec%20Additions.md#L338">have been <em>removed</em>.</p>
+<p data-source="spec/Spec%20Additions.md#L328">And</p>
+<div class="spec-removed" data-source="spec/Spec%20Additions.md#L330-L336"><p data-source="spec/Spec%20Additions.md#L332">These paragraphs</p>
+<p data-source="spec/Spec%20Additions.md#L334">have been <em>removed</em>.</p>
 </div>
-<p data-source="spec/Spec%20Additions.md#L342">By typing:</p>
-<pre data-source="spec/Spec%20Additions.md#L344-L362"><code>{++
+<p data-source="spec/Spec%20Additions.md#L338">By typing:</p>
+<pre data-source="spec/Spec%20Additions.md#L340-L358"><code>{++
 
 These paragraphs
 
@@ -1660,15 +1659,15 @@ have been *removed*.
 
 --}
 </code></pre>
-<div id="note-e394e" class="spec-note" data-source="spec/Spec%20Additions.md#L364-L365">
+<div id="note-e394e" class="spec-note" data-source="spec/Spec%20Additions.md#L360-L361">
 <a href="#note-e394e">Note</a>
 imports and section headers cannot be included in a added or removed section to preserve the ability to render a table of contents.</div>
 </section>
 <section id="sec-Algorithms" secid="3.12">
-<h2 data-source="spec/Spec%20Additions.md#L369"><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">3.12</a></span>Algorithms</h2>
-<p data-source="spec/Spec%20Additions.md#L371-L374">Specifications for procedures or algorithms can be defined in terms of nested markdown lists. These lists can be of any kind, but will always have ordered formatting. The bullet labeling for algorithms is specific will cycle between decimal, lower-alpha, and lower-roman.</p>
-<p data-source="spec/Spec%20Additions.md#L376">An algorithm definition also describes its arguments in terms of variables.</p>
-<pre data-source="spec/Spec%20Additions.md#L378-L387"><code>Algorithm(arg) :
+<h2 data-source="spec/Spec%20Additions.md#L365"><span class="spec-secid" title="link to this section"><a href="#sec-Algorithms">3.12</a></span>Algorithms</h2>
+<p data-source="spec/Spec%20Additions.md#L367-L370">Specifications for procedures or algorithms can be defined in terms of nested markdown lists. These lists can be of any kind, but will always have ordered formatting. The bullet labeling for algorithms is specific will cycle between decimal, lower-alpha, and lower-roman.</p>
+<p data-source="spec/Spec%20Additions.md#L372">An algorithm definition also describes its arguments in terms of variables.</p>
+<pre data-source="spec/Spec%20Additions.md#L374-L383"><code>Algorithm(arg) :
   1. first
   1. then
     * substep
@@ -1677,93 +1676,93 @@ imports and section headers cannot be included in a added or removed section to 
     * another step
   1. okay
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L389">Produces the following:</p>
-<div class="spec-algo" id="Algorithm()" data-source="spec/Spec%20Additions.md#L391-L398">
+<p data-source="spec/Spec%20Additions.md#L385">Produces the following:</p>
+<div class="spec-algo" id="Algorithm()" data-source="spec/Spec%20Additions.md#L387-L394">
 <span class="spec-call"><a href="#Algorithm()" data-name="Algorithm">Algorithm</a>(<var data-name="arg">arg</var>)</span><ol>
-<li data-source="spec/Spec%20Additions.md#L392">first</li>
-<li data-source="spec/Spec%20Additions.md#L393-L397">then<ol>
-<li data-source="spec/Spec%20Additions.md#L394-L396">substep<ol>
-<li data-source="spec/Spec%20Additions.md#L395">deeper substep</li>
-<li data-source="spec/Spec%20Additions.md#L396">another deep substep</li>
+<li data-source="spec/Spec%20Additions.md#L388">first</li>
+<li data-source="spec/Spec%20Additions.md#L389-L393">then<ol>
+<li data-source="spec/Spec%20Additions.md#L390-L392">substep<ol>
+<li data-source="spec/Spec%20Additions.md#L391">deeper substep</li>
+<li data-source="spec/Spec%20Additions.md#L392">another deep substep</li>
 </ol>
 </li>
-<li data-source="spec/Spec%20Additions.md#L397">another step</li>
+<li data-source="spec/Spec%20Additions.md#L393">another step</li>
 </ol>
 </li>
-<li data-source="spec/Spec%20Additions.md#L398">okay</li>
+<li data-source="spec/Spec%20Additions.md#L394">okay</li>
 </ol>
 </div>
 </section>
 <section id="sec-Grammar" secid="3.13">
-<h2 data-source="spec/Spec%20Additions.md#L402"><span class="spec-secid" title="link to this section"><a href="#sec-Grammar">3.13</a></span>Grammar</h2>
-<p data-source="spec/Spec%20Additions.md#L404">Spec Markdown makes it easier to describe context-free grammatical productions.</p>
-<p data-source="spec/Spec%20Additions.md#L406-L408">Grammars are defined by a sequence of <em>terminal</em> characters or sequence of characters, which are then referenced by <em>non-terminal</em> rules. The definition of a non-terminal is referred to as a <em>production</em>.</p>
+<h2 data-source="spec/Spec%20Additions.md#L398"><span class="spec-secid" title="link to this section"><a href="#sec-Grammar">3.13</a></span>Grammar</h2>
+<p data-source="spec/Spec%20Additions.md#L400">Spec Markdown makes it easier to describe context-free grammatical productions.</p>
+<p data-source="spec/Spec%20Additions.md#L402-L404">Grammars are defined by a sequence of <em>terminal</em> characters or sequence of characters, which are then referenced by <em>non-terminal</em> rules. The definition of a non-terminal is referred to as a <em>production</em>.</p>
 <section id="sec-Grammar-Production" secid="3.13.1">
-<h3 data-source="spec/Spec%20Additions.md#L411"><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Production">3.13.1</a></span>Grammar Production</h3>
-<p data-source="spec/Spec%20Additions.md#L413-L414">The <code>:</code> token indicates an &ldquo;is defined as&rdquo; production for a non-terminal, where a single definition can be written directly after the <code>:</code>.</p>
-<pre data-source="spec/Spec%20Additions.md#L416-L418"><code>PBJ : Bread PeanutButter Jelly Bread
+<h3 data-source="spec/Spec%20Additions.md#L407"><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Production">3.13.1</a></span>Grammar Production</h3>
+<p data-source="spec/Spec%20Additions.md#L409-L410">The <code>:</code> token indicates an &ldquo;is defined as&rdquo; production for a non-terminal, where a single definition can be written directly after the <code>:</code>.</p>
+<pre data-source="spec/Spec%20Additions.md#L412-L414"><code>PBJ : Bread PeanutButter Jelly Bread
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L420">Produces the following:</p>
-<div class="spec-production" id="PBJ" data-source="spec/Spec%20Additions.md#L422">
+<p data-source="spec/Spec%20Additions.md#L416">Produces the following:</p>
+<div class="spec-production" id="PBJ" data-source="spec/Spec%20Additions.md#L418">
 <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L424-L425">Or if <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span> has definition options, they are written immediately after as a Markdown list.</p>
-<pre data-source="spec/Spec%20Additions.md#L427-L431"><code>PBJ :
+<p data-source="spec/Spec%20Additions.md#L420-L421">Or if <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span> has definition options, they are written immediately after as a Markdown list.</p>
+<pre data-source="spec/Spec%20Additions.md#L423-L427"><code>PBJ :
   - Bread PeanutButter Jelly Bread
   - Bread Jelly PeanutButter Bread
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L433">Produces the following:</p>
-<div class="spec-production" id="PBJ" data-source="spec/Spec%20Additions.md#L435-L437">
+<p data-source="spec/Spec%20Additions.md#L429">Produces the following:</p>
+<div class="spec-production" id="PBJ" data-source="spec/Spec%20Additions.md#L431-L433">
 <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L439-L440">Each definition is a space seperated list of <em>terminal</em> or <em>non-terminal</em> tokens, and may also include conditionals and constraints.</p>
-<p data-source="spec/Spec%20Additions.md#L442">Definition lists aren&rsquo;t required to be indented:</p>
-<pre data-source="spec/Spec%20Additions.md#L444-L449"><code>PBJ :
+<p data-source="spec/Spec%20Additions.md#L435-L436">Each definition is a space seperated list of <em>terminal</em> or <em>non-terminal</em> tokens, and may also include conditionals and constraints.</p>
+<p data-source="spec/Spec%20Additions.md#L438">Definition lists aren&rsquo;t required to be indented:</p>
+<pre data-source="spec/Spec%20Additions.md#L440-L445"><code>PBJ :
 
 - Bread PeanutButter Jelly Bread
 - Bread Jelly PeanutButter Bread
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L451">Produces the following:</p>
-<div class="spec-production" id="PBJ" data-source="spec/Spec%20Additions.md#L453-L456">
+<p data-source="spec/Spec%20Additions.md#L447">Produces the following:</p>
+<div class="spec-production" id="PBJ" data-source="spec/Spec%20Additions.md#L449-L452">
 <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
 </section>
 <section id="sec-Production-types" secid="3.13.2">
-<h3 data-source="spec/Spec%20Additions.md#L459"><span class="spec-secid" title="link to this section"><a href="#sec-Production-types">3.13.2</a></span>Production types</h3>
-<p data-source="spec/Spec%20Additions.md#L461-L464">Often languages wish to specify different types of grammar productions, such as lexical or syntactical, or if certain characters line whitespace or newlines are permitted between symbols in the right-hand-side. Spec-md allows this this distinction based on the number of colons:</p>
-<pre data-source="spec/Spec%20Additions.md#L466-L472"><code>TypeOne : `type` `one`
+<h3 data-source="spec/Spec%20Additions.md#L455"><span class="spec-secid" title="link to this section"><a href="#sec-Production-types">3.13.2</a></span>Production types</h3>
+<p data-source="spec/Spec%20Additions.md#L457-L460">Often languages wish to specify different types of grammar productions, such as lexical or syntactical, or if certain characters line whitespace or newlines are permitted between symbols in the right-hand-side. Spec-md allows this this distinction based on the number of colons:</p>
+<pre data-source="spec/Spec%20Additions.md#L462-L468"><code>TypeOne : `type` `one`
 
 TypeTwo :: `type` `two`
 
 TypeThree ::: `type` `three`
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L474">Produces the following:</p>
-<div class="spec-production" id="TypeOne" data-source="spec/Spec%20Additions.md#L476">
+<p data-source="spec/Spec%20Additions.md#L470">Produces the following:</p>
+<div class="spec-production" id="TypeOne" data-source="spec/Spec%20Additions.md#L472">
 <span class="spec-nt"><a href="#TypeOne" data-name="TypeOne">TypeOne</a></span><div class="spec-rhs"><span class="spec-t">type</span><span class="spec-t">one</span></div>
 </div>
-<div class="spec-production d2" id="TypeTwo" data-source="spec/Spec%20Additions.md#L478">
+<div class="spec-production d2" id="TypeTwo" data-source="spec/Spec%20Additions.md#L474">
 <span class="spec-nt"><a href="#TypeTwo" data-name="TypeTwo">TypeTwo</a></span><div class="spec-rhs"><span class="spec-t">type</span><span class="spec-t">two</span></div>
 </div>
-<div class="spec-production d3" id="TypeThree" data-source="spec/Spec%20Additions.md#L480">
+<div class="spec-production d3" id="TypeThree" data-source="spec/Spec%20Additions.md#L476">
 <span class="spec-nt"><a href="#TypeThree" data-name="TypeThree">TypeThree</a></span><div class="spec-rhs"><span class="spec-t">type</span><span class="spec-t">three</span></div>
 </div>
 </section>
 <section id="sec-One-of" secid="3.13.3">
-<h3 data-source="spec/Spec%20Additions.md#L483"><span class="spec-secid" title="link to this section"><a href="#sec-One-of">3.13.3</a></span>One of</h3>
-<p data-source="spec/Spec%20Additions.md#L485-L486">If each definition option is a single token, it can be expressed as a &ldquo;one of&rdquo; expression instead of a markdown list.</p>
-<pre data-source="spec/Spec%20Additions.md#L488-L490"><code>AssignmentOperator : one of *= `/=` %= += -= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &amp;= ^= |=
+<h3 data-source="spec/Spec%20Additions.md#L479"><span class="spec-secid" title="link to this section"><a href="#sec-One-of">3.13.3</a></span>One of</h3>
+<p data-source="spec/Spec%20Additions.md#L481-L482">If each definition option is a single token, it can be expressed as a &ldquo;one of&rdquo; expression instead of a markdown list.</p>
+<pre data-source="spec/Spec%20Additions.md#L484-L486"><code>AssignmentOperator : one of *= `/=` %= += -= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &amp;= ^= |=
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L492">Produces the following:</p>
-<div class="spec-production" id="AssignmentOperator" data-source="spec/Spec%20Additions.md#L494">
+<p data-source="spec/Spec%20Additions.md#L488">Produces the following:</p>
+<div class="spec-production" id="AssignmentOperator" data-source="spec/Spec%20Additions.md#L490">
 <span class="spec-nt"><a href="#AssignmentOperator" data-name="AssignmentOperator">AssignmentOperator</a></span><div class="spec-oneof"><div class="spec-oneof-grid"><table>
 <tr>
 <td class="spec-rhs"><span class="spec-t">*=</span></td><td class="spec-rhs"><span class="spec-t">/=</span></td><td class="spec-rhs"><span class="spec-t">%=</span></td><td class="spec-rhs"><span class="spec-t">+=</span></td><td class="spec-rhs"><span class="spec-t">-=</span></td><td class="spec-rhs"><span class="spec-t">&lt;&lt;=</span></td><td class="spec-rhs"><span class="spec-t">&gt;&gt;=</span></td><td class="spec-rhs"><span class="spec-t">&gt;&gt;&gt;=</span></td><td class="spec-rhs"><span class="spec-t">&amp;=</span></td><td class="spec-rhs"><span class="spec-t">^=</span></td><td class="spec-rhs"><span class="spec-t">|=</span></td></tr>
 </table></div></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L497-L499">&ldquo;one of&rdquo; can also be followed by a line break and multiple lines of tokens. To improve legibility in other tools, each line may optionally begin with a bullet.</p>
-<pre data-source="spec/Spec%20Additions.md#L501-L512"><code>Keyword : one of
+<p data-source="spec/Spec%20Additions.md#L493-L495">&ldquo;one of&rdquo; can also be followed by a line break and multiple lines of tokens. To improve legibility in other tools, each line may optionally begin with a bullet.</p>
+<pre data-source="spec/Spec%20Additions.md#L497-L508"><code>Keyword : one of
   - break     do        in          typeof
   - case      else      instanceof  var
   - catch     export    new         void
@@ -1774,8 +1773,8 @@ TypeThree ::: `type` `three`
   - default   if        throw
   - delete    import    try
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L514">Produces the following:</p>
-<div class="spec-production" id="Keyword" data-source="spec/Spec%20Additions.md#L516-L525">
+<p data-source="spec/Spec%20Additions.md#L510">Produces the following:</p>
+<div class="spec-production" id="Keyword" data-source="spec/Spec%20Additions.md#L512-L521">
 <span class="spec-nt"><a href="#Keyword" data-name="Keyword">Keyword</a></span><div class="spec-oneof"><div class="spec-oneof-grid"><table>
 <tr>
 <td class="spec-rhs"><span class="spec-t">break</span></td><td class="spec-rhs"><span class="spec-t">do</span></td><td class="spec-rhs"><span class="spec-t">in</span></td><td class="spec-rhs"><span class="spec-t">typeof</span></td></tr>
@@ -1799,159 +1798,159 @@ TypeThree ::: `type` `three`
 </div>
 </section>
 <section id="sec-Non-Terminal-Token" secid="3.13.4">
-<h3 data-source="spec/Spec%20Additions.md#L528"><span class="spec-secid" title="link to this section"><a href="#sec-Non-Terminal-Token">3.13.4</a></span>Non Terminal Token</h3>
-<p data-source="spec/Spec%20Additions.md#L530-L533">Non-terminal tokens with a defined as a grammar production can be referred to in other grammar productions. Non-terminals must match the regular expression <span class="spec-rx">/[A-Z][_a-zA-Z]*/</span>. That is, they must start with an uppercase letter, followed by any number of letters or underscores.</p>
+<h3 data-source="spec/Spec%20Additions.md#L524"><span class="spec-secid" title="link to this section"><a href="#sec-Non-Terminal-Token">3.13.4</a></span>Non Terminal Token</h3>
+<p data-source="spec/Spec%20Additions.md#L526-L529">Non-terminal tokens with a defined as a grammar production can be referred to in other grammar productions. Non-terminals must match the regular expression <span class="spec-rx">/[A-Z][_a-zA-Z]*/</span>. That is, they must start with an uppercase letter, followed by any number of letters or underscores.</p>
 </section>
 <section id="sec-Prose" secid="3.13.5">
-<h3 data-source="spec/Spec%20Additions.md#L537"><span class="spec-secid" title="link to this section"><a href="#sec-Prose">3.13.5</a></span>Prose</h3>
-<p data-source="spec/Spec%20Additions.md#L539-L540">Grammars can describe arbitrary rules by using prose within a grammar definition by using <code>"quotes"</code>.</p>
-<pre data-source="spec/Spec%20Additions.md#L542-L544"><code>Sandwich : Bread "Any kind of topping" Bread
+<h3 data-source="spec/Spec%20Additions.md#L533"><span class="spec-secid" title="link to this section"><a href="#sec-Prose">3.13.5</a></span>Prose</h3>
+<p data-source="spec/Spec%20Additions.md#L535-L536">Grammars can describe arbitrary rules by using prose within a grammar definition by using <code>"quotes"</code>.</p>
+<pre data-source="spec/Spec%20Additions.md#L538-L540"><code>Sandwich : Bread "Any kind of topping" Bread
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L546">Produces the following:</p>
-<div class="spec-production" id="Sandwich" data-source="spec/Spec%20Additions.md#L548">
+<p data-source="spec/Spec%20Additions.md#L542">Produces the following:</p>
+<div class="spec-production" id="Sandwich" data-source="spec/Spec%20Additions.md#L544">
 <span class="spec-nt"><a href="#Sandwich" data-name="Sandwich">Sandwich</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-prose">Any kind of topping</span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
 </section>
 <section id="sec-Terminal-Token" secid="3.13.6">
-<h3 data-source="spec/Spec%20Additions.md#L552"><span class="spec-secid" title="link to this section"><a href="#sec-Terminal-Token">3.13.6</a></span>Terminal Token</h3>
-<p data-source="spec/Spec%20Additions.md#L554-L555">Terminal tokens refer to a character or sequence of characters. They can be written unadorned in the grammar definition.</p>
-<pre data-source="spec/Spec%20Additions.md#L557-L559"><code>BalancedParens : ( BalancedParens )
+<h3 data-source="spec/Spec%20Additions.md#L548"><span class="spec-secid" title="link to this section"><a href="#sec-Terminal-Token">3.13.6</a></span>Terminal Token</h3>
+<p data-source="spec/Spec%20Additions.md#L550-L551">Terminal tokens refer to a character or sequence of characters. They can be written unadorned in the grammar definition.</p>
+<pre data-source="spec/Spec%20Additions.md#L553-L555"><code>BalancedParens : ( BalancedParens )
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L561">Produces the following:</p>
-<div class="spec-production" id="BalancedParens" data-source="spec/Spec%20Additions.md#L563">
+<p data-source="spec/Spec%20Additions.md#L557">Produces the following:</p>
+<div class="spec-production" id="BalancedParens" data-source="spec/Spec%20Additions.md#L559">
 <span class="spec-nt"><a href="#BalancedParens" data-name="BalancedParens">BalancedParens</a></span><div class="spec-rhs"><span class="spec-t">(</span><span class="spec-nt"><a href="#BalancedParens" data-name="BalancedParens">BalancedParens</a></span><span class="spec-t">)</span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L565">Any sequence of characters can be written to indicate a terminal token:</p>
-<pre data-source="spec/Spec%20Additions.md#L567-L569"><code>WhileStatement : while ( Expression ) { Statements }
+<p data-source="spec/Spec%20Additions.md#L561">Any sequence of characters can be written to indicate a terminal token:</p>
+<pre data-source="spec/Spec%20Additions.md#L563-L565"><code>WhileStatement : while ( Expression ) { Statements }
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L571">Produces</p>
-<div class="spec-production" id="WhileStatement" data-source="spec/Spec%20Additions.md#L573">
+<p data-source="spec/Spec%20Additions.md#L567">Produces</p>
+<div class="spec-production" id="WhileStatement" data-source="spec/Spec%20Additions.md#L569">
 <span class="spec-nt"><a href="#WhileStatement" data-name="WhileStatement">WhileStatement</a></span><div class="spec-rhs"><span class="spec-t">while</span><span class="spec-t">(</span><span class="spec-nt"><span data-name="Expression">Expression</span></span><span class="spec-t">)</span><span class="spec-t">{</span><span class="spec-nt"><span data-name="Statements">Statements</span></span><span class="spec-t">}</span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L575-L578">Terminals can also be quoted with back-ticks <code>`</code> to remove any ambiguity from other meanings, for example to allow a terminal token to start with an uppercase letter, or a slash <code>/</code> or backslash <code>\</code>, or later contain a <code>]</code> or <code>}</code>.</p>
-<pre data-source="spec/Spec%20Additions.md#L580-L582"><code>DivisionExpression : Expression `/` Expression
+<p data-source="spec/Spec%20Additions.md#L571-L574">Terminals can also be quoted with back-ticks <code>`</code> to remove any ambiguity from other meanings, for example to allow a terminal token to start with an uppercase letter, or a slash <code>/</code> or backslash <code>\</code>, or later contain a <code>]</code> or <code>}</code>.</p>
+<pre data-source="spec/Spec%20Additions.md#L576-L578"><code>DivisionExpression : Expression `/` Expression
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L584">Produces</p>
-<div class="spec-production" id="DivisionExpression" data-source="spec/Spec%20Additions.md#L586">
+<p data-source="spec/Spec%20Additions.md#L580">Produces</p>
+<div class="spec-production" id="DivisionExpression" data-source="spec/Spec%20Additions.md#L582">
 <span class="spec-nt"><a href="#DivisionExpression" data-name="DivisionExpression">DivisionExpression</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Expression">Expression</span></span><span class="spec-t">/</span><span class="spec-nt"><span data-name="Expression">Expression</span></span></div>
 </div>
 </section>
 <section id="sec-Regular-Expression" secid="3.13.7">
-<h3 data-source="spec/Spec%20Additions.md#L590"><span class="spec-secid" title="link to this section"><a href="#sec-Regular-Expression">3.13.7</a></span>Regular Expression</h3>
-<p data-source="spec/Spec%20Additions.md#L592-L593">When a grammar is intended to be interpretted as a single token and can be clearly written as a regular expression, you can do so directly.</p>
-<pre data-source="spec/Spec%20Additions.md#L595-L597"><code>UppercaseWord : /[A-Z][a-z]*/
+<h3 data-source="spec/Spec%20Additions.md#L586"><span class="spec-secid" title="link to this section"><a href="#sec-Regular-Expression">3.13.7</a></span>Regular Expression</h3>
+<p data-source="spec/Spec%20Additions.md#L588-L589">When a grammar is intended to be interpretted as a single token and can be clearly written as a regular expression, you can do so directly.</p>
+<pre data-source="spec/Spec%20Additions.md#L591-L593"><code>UppercaseWord : /[A-Z][a-z]*/
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L599">Produces the following:</p>
-<div class="spec-production" id="UppercaseWord" data-source="spec/Spec%20Additions.md#L601">
+<p data-source="spec/Spec%20Additions.md#L595">Produces the following:</p>
+<div class="spec-production" id="UppercaseWord" data-source="spec/Spec%20Additions.md#L597">
 <span class="spec-nt"><a href="#UppercaseWord" data-name="UppercaseWord">UppercaseWord</a></span><div class="spec-rhs"><span class="spec-rx">/[A-Z][a-z]*/</span></div>
 </div>
 </section>
 <section id="sec-Quantifiers" secid="3.13.8">
-<h3 data-source="spec/Spec%20Additions.md#L605"><span class="spec-secid" title="link to this section"><a href="#sec-Quantifiers">3.13.8</a></span>Quantifiers</h3>
-<p data-source="spec/Spec%20Additions.md#L607-L608">Tokens can be followed by quantifiers to alter their meaning and as a short-hand for common patterns of optionality and repetition.</p>
+<h3 data-source="spec/Spec%20Additions.md#L601"><span class="spec-secid" title="link to this section"><a href="#sec-Quantifiers">3.13.8</a></span>Quantifiers</h3>
+<p data-source="spec/Spec%20Additions.md#L603-L604">Tokens can be followed by quantifiers to alter their meaning and as a short-hand for common patterns of optionality and repetition.</p>
 <section id="sec-Quantifiers.Optional-Tokens" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L611"><a href="#sec-Quantifiers.Optional-Tokens" title="link to this subsection">Optional Tokens</a></h6>
-<p data-source="spec/Spec%20Additions.md#L613-L614">A subscript suffix <code>Token?</code> renders as <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span> and is a shorthand for two possible definitions, one including that token and one excluding it.</p>
-<pre data-source="spec/Spec%20Additions.md#L616-L618"><code>Sentence : Noun Verb Adverb?
+<h6 data-source="spec/Spec%20Additions.md#L607"><a href="#sec-Quantifiers.Optional-Tokens" title="link to this subsection">Optional Tokens</a></h6>
+<p data-source="spec/Spec%20Additions.md#L609-L610">A subscript suffix <code>Token?</code> renders as <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span> and is a shorthand for two possible definitions, one including that token and one excluding it.</p>
+<pre data-source="spec/Spec%20Additions.md#L612-L614"><code>Sentence : Noun Verb Adverb?
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L620">Produces the following:</p>
-<div class="spec-production" id="Sentence" data-source="spec/Spec%20Additions.md#L622">
+<p data-source="spec/Spec%20Additions.md#L616">Produces the following:</p>
+<div class="spec-production" id="Sentence" data-source="spec/Spec%20Additions.md#L618">
 <span class="spec-nt"><a href="#Sentence" data-name="Sentence">Sentence</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Noun">Noun</span></span><span class="spec-nt"><span data-name="Verb">Verb</span></span><span class="spec-quantified"><span class="spec-nt"><span data-name="Adverb">Adverb</span></span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L624">Which is shorthand for:</p>
-<div class="spec-production" id="Sentence" data-source="spec/Spec%20Additions.md#L626-L628">
+<p data-source="spec/Spec%20Additions.md#L620">Which is shorthand for:</p>
+<div class="spec-production" id="Sentence" data-source="spec/Spec%20Additions.md#L622-L624">
 <span class="spec-nt"><a href="#Sentence" data-name="Sentence">Sentence</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Noun">Noun</span></span><span class="spec-nt"><span data-name="Verb">Verb</span></span><span class="spec-nt"><span data-name="Adverb">Adverb</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Noun">Noun</span></span><span class="spec-nt"><span data-name="Verb">Verb</span></span></div>
 </div>
 </section>
 <section id="sec-Quantifiers.Token-Lists" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L631"><a href="#sec-Quantifiers.Token-Lists" title="link to this subsection">Token Lists</a></h6>
-<p data-source="spec/Spec%20Additions.md#L633-L634">A subscript suffix <code>Token+</code> renders as <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span></span></span> and is shorthand for a list of one or more of that token.</p>
-<pre data-source="spec/Spec%20Additions.md#L636-L638"><code>Book : Cover Page+ Cover
+<h6 data-source="spec/Spec%20Additions.md#L627"><a href="#sec-Quantifiers.Token-Lists" title="link to this subsection">Token Lists</a></h6>
+<p data-source="spec/Spec%20Additions.md#L629-L630">A subscript suffix <code>Token+</code> renders as <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span></span></span> and is shorthand for a list of one or more of that token.</p>
+<pre data-source="spec/Spec%20Additions.md#L632-L634"><code>Book : Cover Page+ Cover
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L640">Produces the following:</p>
-<div class="spec-production" id="Book" data-source="spec/Spec%20Additions.md#L642">
+<p data-source="spec/Spec%20Additions.md#L636">Produces the following:</p>
+<div class="spec-production" id="Book" data-source="spec/Spec%20Additions.md#L638">
 <span class="spec-nt"><a href="#Book" data-name="Book">Book</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Cover">Cover</span></span><span class="spec-quantified"><span class="spec-nt"><span data-name="Page">Page</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span></span></span><span class="spec-nt"><span data-name="Cover">Cover</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L644">Which, unless your specification document declares otherwise, is shorthand for:</p>
-<div class="spec-production" id="Book" data-source="spec/Spec%20Additions.md#L646">
+<p data-source="spec/Spec%20Additions.md#L640">Which, unless your specification document declares otherwise, is shorthand for:</p>
+<div class="spec-production" id="Book" data-source="spec/Spec%20Additions.md#L642">
 <span class="spec-nt"><a href="#Book" data-name="Book">Book</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Cover">Cover</span></span><span class="spec-nt"><a href="#Page_list" data-name="Page_list">Page_list</a></span><span class="spec-nt"><span data-name="Cover">Cover</span></span></div>
 </div>
-<div class="spec-production" id="Page_list" data-source="spec/Spec%20Additions.md#L648-L650">
+<div class="spec-production" id="Page_list" data-source="spec/Spec%20Additions.md#L644-L646">
 <span class="spec-nt"><a href="#Page_list" data-name="Page_list">Page_list</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#Page_list" data-name="Page_list">Page_list</a></span><span class="spec-nt"><span data-name="Page">Page</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Page">Page</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L652-L653">Some specifications may wish to declare <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span></span></span> as a shorthand for a comma-separated list, in which case the previous example would be shorthand for:</p>
-<div class="spec-production" id="Book" data-source="spec/Spec%20Additions.md#L655">
+<p data-source="spec/Spec%20Additions.md#L648-L649">Some specifications may wish to declare <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span></span></span> as a shorthand for a comma-separated list, in which case the previous example would be shorthand for:</p>
+<div class="spec-production" id="Book" data-source="spec/Spec%20Additions.md#L651">
 <span class="spec-nt"><a href="#Book" data-name="Book">Book</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Cover">Cover</span></span><span class="spec-nt"><a href="#Page_list" data-name="Page_list">Page_list</a></span><span class="spec-nt"><span data-name="Cover">Cover</span></span></div>
 </div>
-<div class="spec-production" id="Page_list" data-source="spec/Spec%20Additions.md#L657-L659">
+<div class="spec-production" id="Page_list" data-source="spec/Spec%20Additions.md#L653-L655">
 <span class="spec-nt"><a href="#Page_list" data-name="Page_list">Page_list</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#Page_list" data-name="Page_list">Page_list</a></span><span class="spec-t">,</span><span class="spec-nt"><span data-name="Page">Page</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Page">Page</span></span></div>
 </div>
 </section>
 <section id="sec-Quantifiers.Optional-Lists" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L662"><a href="#sec-Quantifiers.Optional-Lists" title="link to this subsection">Optional Lists</a></h6>
-<p data-source="spec/Spec%20Additions.md#L664-L665">A subscript suffix <code>Token*</code> renders as <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span> and is shorthand for an optional list, which describes zero or more of that token.</p>
-<pre data-source="spec/Spec%20Additions.md#L667-L669"><code>Sandwich : Bread Topping* Bread
+<h6 data-source="spec/Spec%20Additions.md#L658"><a href="#sec-Quantifiers.Optional-Lists" title="link to this subsection">Optional Lists</a></h6>
+<p data-source="spec/Spec%20Additions.md#L660-L661">A subscript suffix <code>Token*</code> renders as <span class="spec-quantified"><span class="spec-nt"><span data-name="Token">Token</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span> and is shorthand for an optional list, which describes zero or more of that token.</p>
+<pre data-source="spec/Spec%20Additions.md#L663-L665"><code>Sandwich : Bread Topping* Bread
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L671">Produces the following:</p>
-<div class="spec-production" id="Sandwich" data-source="spec/Spec%20Additions.md#L673">
+<p data-source="spec/Spec%20Additions.md#L667">Produces the following:</p>
+<div class="spec-production" id="Sandwich" data-source="spec/Spec%20Additions.md#L669">
 <span class="spec-nt"><a href="#Sandwich" data-name="Sandwich">Sandwich</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-quantified"><span class="spec-nt"><span data-name="Topping">Topping</span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L675">Which is shorthand for:</p>
-<div class="spec-production" id="Sandwich" data-source="spec/Spec%20Additions.md#L677-L679">
+<p data-source="spec/Spec%20Additions.md#L671">Which is shorthand for:</p>
+<div class="spec-production" id="Sandwich" data-source="spec/Spec%20Additions.md#L673-L675">
 <span class="spec-nt"><a href="#Sandwich" data-name="Sandwich">Sandwich</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><a href="#Topping_list" data-name="Topping_list">Topping_list</a></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 </div>
-<div class="spec-production" id="Topping_list" data-source="spec/Spec%20Additions.md#L681-L683">
+<div class="spec-production" id="Topping_list" data-source="spec/Spec%20Additions.md#L677-L679">
 <span class="spec-nt"><a href="#Topping_list" data-name="Topping_list">Topping_list</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#Topping_list" data-name="Topping_list">Topping_list</a></span><span class="spec-nt"><span data-name="Topping">Topping</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="Topping">Topping</span></span></div>
 </div>
 </section>
 <section id="sec-Quantifiers.Use-with-Non-Terminals" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L686"><a href="#sec-Quantifiers.Use-with-Non-Terminals" title="link to this subsection">Use with Non-Terminals</a></h6>
-<p data-source="spec/Spec%20Additions.md#L688">Quantifiers also apply to non-terminal tokens with the same rules. For example:</p>
-<pre data-language="markdown" data-source="spec/Spec%20Additions.md#L690-L694"><code>UnionMembers :
+<h6 data-source="spec/Spec%20Additions.md#L682"><a href="#sec-Quantifiers.Use-with-Non-Terminals" title="link to this subsection">Use with Non-Terminals</a></h6>
+<p data-source="spec/Spec%20Additions.md#L684">Quantifiers also apply to non-terminal tokens with the same rules. For example:</p>
+<pre data-language="markdown" data-source="spec/Spec%20Additions.md#L686-L690"><code>UnionMembers :
   <span class="token list punctuation">-</span> UnionMembers | NamedType
   - <span class="token code keyword">`|`</span>? NamedType
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L696">Produces the following:</p>
-<div class="spec-production" id="UnionMembers" data-source="spec/Spec%20Additions.md#L698-L700">
+<p data-source="spec/Spec%20Additions.md#L692">Produces the following:</p>
+<div class="spec-production" id="UnionMembers" data-source="spec/Spec%20Additions.md#L694-L696">
 <span class="spec-nt"><a href="#UnionMembers" data-name="UnionMembers">UnionMembers</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#UnionMembers" data-name="UnionMembers">UnionMembers</a></span><span class="spec-t">|</span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 <div class="spec-rhs"><span class="spec-quantified"><span class="spec-t">|</span><span class="spec-quantifiers"><span class="spec-quantifier optional">opt</span></span></span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L702-L703">However, unquoted non-terminals may use the <code>*</code>, <code>?</code> and <code>+</code> characters, so always quote the terminal if the intent is to apply a quantifer.</p>
-<pre id="example-10052" class="spec-counter-example" data-language="markdown" data-source="spec/Spec%20Additions.md#L705-L709"><a href="#example-10052">Counter Example № 9</a><code>UnionMembers :
+<p data-source="spec/Spec%20Additions.md#L698-L699">However, unquoted non-terminals may use the <code>*</code>, <code>?</code> and <code>+</code> characters, so always quote the terminal if the intent is to apply a quantifer.</p>
+<pre id="example-10052" class="spec-counter-example" data-language="markdown" data-source="spec/Spec%20Additions.md#L701-L705"><a href="#example-10052">Counter Example № 9</a><code>UnionMembers :
   <span class="token list punctuation">-</span> UnionMembers | NamedType
   <span class="token list punctuation">-</span> |? NamedType
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L711">Produces the terminal <code>|?</code>, not an optional <code>|</code>:</p>
-<div class="spec-production" id="UnionMembers" data-source="spec/Spec%20Additions.md#L713-L715">
+<p data-source="spec/Spec%20Additions.md#L707">Produces the terminal <code>|?</code>, not an optional <code>|</code>:</p>
+<div class="spec-production" id="UnionMembers" data-source="spec/Spec%20Additions.md#L709-L711">
 <span class="spec-nt"><a href="#UnionMembers" data-name="UnionMembers">UnionMembers</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#UnionMembers" data-name="UnionMembers">UnionMembers</a></span><span class="spec-t">|</span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 <div class="spec-rhs"><span class="spec-t">|?</span><span class="spec-nt"><span data-name="NamedType">NamedType</span></span></div>
 </div>
 </section>
 </section>
 <section id="sec-Conditional-Parameters" secid="3.13.9">
-<h3 data-source="spec/Spec%20Additions.md#L717"><span class="spec-secid" title="link to this section"><a href="#sec-Conditional-Parameters">3.13.9</a></span>Conditional Parameters</h3>
-<p data-source="spec/Spec%20Additions.md#L719-L720">It can be a useful short-hand to provide conditional parameters when defining a non-terminal token rather than defining two very similar non-terminals.</p>
-<p data-source="spec/Spec%20Additions.md#L722-L724">A conditional parameter is written in braces <code>Token[Param]</code> and renders as <span class="spec-nt"><span data-name="Token">Token</span><span class="spec-params"><span class="spec-param">Param</span></span></span>. When used in definitions is shorthand for two symbol definitions: one appended with that parameter name, the other without.</p>
-<pre data-source="spec/Spec%20Additions.md#L726-L728"><code>Example[WithCondition] : "Definition TBD"
+<h3 data-source="spec/Spec%20Additions.md#L713"><span class="spec-secid" title="link to this section"><a href="#sec-Conditional-Parameters">3.13.9</a></span>Conditional Parameters</h3>
+<p data-source="spec/Spec%20Additions.md#L715-L716">It can be a useful short-hand to provide conditional parameters when defining a non-terminal token rather than defining two very similar non-terminals.</p>
+<p data-source="spec/Spec%20Additions.md#L718-L720">A conditional parameter is written in braces <code>Token[Param]</code> and renders as <span class="spec-nt"><span data-name="Token">Token</span><span class="spec-params"><span class="spec-param">Param</span></span></span>. When used in definitions is shorthand for two symbol definitions: one appended with that parameter name, the other without.</p>
+<pre data-source="spec/Spec%20Additions.md#L722-L724"><code>Example[WithCondition] : "Definition TBD"
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L730">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L732">
+<p data-source="spec/Spec%20Additions.md#L726">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L728">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">WithCondition</span></span></span><div class="spec-rhs"><span class="spec-prose">Definition TBD</span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L734">Which is shorthand for:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L736">
+<p data-source="spec/Spec%20Additions.md#L730">Which is shorthand for:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L732">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-prose">Definition TBD</span></div>
 </div>
-<div class="spec-production" id="Example_WithCondition" data-source="spec/Spec%20Additions.md#L738">
+<div class="spec-production" id="Example_WithCondition" data-source="spec/Spec%20Additions.md#L734">
 <span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span><div class="spec-rhs"><span class="spec-prose">Definition TBD</span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L741-L744">The conditions are applied at the beginning of a definition for the non-terminal by prefixing with <code>[if Param]</code> (alternatively <code>[+Param]</code>) or <code>[if not Param]</code> (alternatively <code>[~Param]</code>) to only include the definition when the variant with the conditional parameter is or is not used, respectively.</p>
-<pre data-source="spec/Spec%20Additions.md#L746-L754"><code>Example[WithCondition] :
+<p data-source="spec/Spec%20Additions.md#L737-L740">The conditions are applied at the beginning of a definition for the non-terminal by prefixing with <code>[if Param]</code> (alternatively <code>[+Param]</code>) or <code>[if not Param]</code> (alternatively <code>[~Param]</code>) to only include the definition when the variant with the conditional parameter is or is not used, respectively.</p>
+<pre data-source="spec/Spec%20Additions.md#L742-L750"><code>Example[WithCondition] :
   - A
   - [if WithCondition] B
   - [if not WithCondition] C
@@ -1959,116 +1958,116 @@ TypeThree ::: `type` `three`
   - [~WithCondition] E
 
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L756">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L758-L763">
+<p data-source="spec/Spec%20Additions.md#L752">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L754-L759">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">WithCondition</span></span></span><div class="spec-rhs"><span class="spec-nt"><span data-name="A">A</span></span></div>
 <div class="spec-rhs"><span class="spec-condition">WithCondition</span><span class="spec-nt"><span data-name="B">B</span></span></div>
 <div class="spec-rhs"><span class="spec-condition not">WithCondition</span><span class="spec-nt"><span data-name="C">C</span></span></div>
 <div class="spec-rhs"><span class="spec-condition">WithCondition</span><span class="spec-nt"><span data-name="D">D</span></span></div>
 <div class="spec-rhs"><span class="spec-condition not">WithCondition</span><span class="spec-nt"><span data-name="E">E</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L765">Which is shorthand for:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L767-L770">
+<p data-source="spec/Spec%20Additions.md#L761">Which is shorthand for:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L763-L766">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="A">A</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="C">C</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="E">E</span></span></div>
 </div>
-<div class="spec-production" id="Example_WithCondition" data-source="spec/Spec%20Additions.md#L772-L775">
+<div class="spec-production" id="Example_WithCondition" data-source="spec/Spec%20Additions.md#L768-L771">
 <span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="A">A</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="B">B</span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><span data-name="D">D</span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L778-L782">The same bracket suffix on a non-terminal within a rule is shorthand for using that variant of the rule. If the parameter starts with <code>?</code>, that form of the symbol is conditionally used only in the derived production with the same parameter. If the parameter starts with <code>!</code>, that form of the symbol is only used when in the derived production <em>without</em> that parameter.</p>
-<pre data-source="spec/Spec%20Additions.md#L784-L790"><code>Example[WithCondition] :
+<p data-source="spec/Spec%20Additions.md#L774-L778">The same bracket suffix on a non-terminal within a rule is shorthand for using that variant of the rule. If the parameter starts with <code>?</code>, that form of the symbol is conditionally used only in the derived production with the same parameter. If the parameter starts with <code>!</code>, that form of the symbol is only used when in the derived production <em>without</em> that parameter.</p>
+<pre data-source="spec/Spec%20Additions.md#L780-L786"><code>Example[WithCondition] :
   - Example
   - Example[WithCondition]
   - Example[?WithCondition]
   - Example[!WithCondition]
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L792">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L794-L798">
+<p data-source="spec/Spec%20Additions.md#L788">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L790-L794">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">WithCondition</span></span></span><div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">WithCondition</span></span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param conditional">WithCondition</span></span></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param negated">WithCondition</span></span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L800">Which is shorthand for:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L802-L806">
+<p data-source="spec/Spec%20Additions.md#L796">Which is shorthand for:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L798-L802">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span></div>
 </div>
-<div class="spec-production" id="Example_WithCondition" data-source="spec/Spec%20Additions.md#L808-L812">
+<div class="spec-production" id="Example_WithCondition" data-source="spec/Spec%20Additions.md#L804-L808">
 <span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example_WithCondition" data-name="Example_WithCondition">Example_WithCondition</a></span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L815-L817">Multiple conditional parameters can be used on both the production definition and on non-terminals within a rule, in which case it is short form for the permutation of all conditions:</p>
-<pre data-source="spec/Spec%20Additions.md#L819-L824"><code>Example[P, Q] :
+<p data-source="spec/Spec%20Additions.md#L811-L813">Multiple conditional parameters can be used on both the production definition and on non-terminals within a rule, in which case it is short form for the permutation of all conditions:</p>
+<pre data-source="spec/Spec%20Additions.md#L815-L820"><code>Example[P, Q] :
   - [if P] `p`
   - [if Q] `q`
   - Example[!P, ?Q]
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L826">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L828-L831">
+<p data-source="spec/Spec%20Additions.md#L822">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L824-L827">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">P</span><span class="spec-param">Q</span></span></span><div class="spec-rhs"><span class="spec-condition">P</span><span class="spec-t">p</span></div>
 <div class="spec-rhs"><span class="spec-condition">Q</span><span class="spec-t">q</span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param negated">P</span><span class="spec-param conditional">Q</span></span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L833">Which is shorthand for:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L835-L836">
+<p data-source="spec/Spec%20Additions.md#L829">Which is shorthand for:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L831-L832">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-nt"><a href="#Example_P" data-name="Example_P">Example_P</a></span></div>
 </div>
-<div class="spec-production" id="Example_P" data-source="spec/Spec%20Additions.md#L838-L840">
+<div class="spec-production" id="Example_P" data-source="spec/Spec%20Additions.md#L834-L836">
 <span class="spec-nt"><a href="#Example_P" data-name="Example_P">Example_P</a></span><div class="spec-rhs"><span class="spec-t">p</span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span></div>
 </div>
-<div class="spec-production" id="Example_Q" data-source="spec/Spec%20Additions.md#L842-L844">
+<div class="spec-production" id="Example_Q" data-source="spec/Spec%20Additions.md#L838-L840">
 <span class="spec-nt"><a href="#Example_Q" data-name="Example_Q">Example_Q</a></span><div class="spec-rhs"><span class="spec-t">q</span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example_P_Q" data-name="Example_P_Q">Example_P_Q</a></span></div>
 </div>
-<div class="spec-production" id="Example_P_Q" data-source="spec/Spec%20Additions.md#L846-L849">
+<div class="spec-production" id="Example_P_Q" data-source="spec/Spec%20Additions.md#L842-L845">
 <span class="spec-nt"><a href="#Example_P_Q" data-name="Example_P_Q">Example_P_Q</a></span><div class="spec-rhs"><span class="spec-t">p</span></div>
 <div class="spec-rhs"><span class="spec-t">q</span></div>
 <div class="spec-rhs"><span class="spec-nt"><a href="#Example_Q" data-name="Example_Q">Example_Q</a></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L852">Conditional parameters on a usage can be followed by a quantifier.</p>
-<pre data-source="spec/Spec%20Additions.md#L854-L856"><code>Example[P, ?Q]*
+<p data-source="spec/Spec%20Additions.md#L848">Conditional parameters on a usage can be followed by a quantifier.</p>
+<pre data-source="spec/Spec%20Additions.md#L850-L852"><code>Example[P, ?Q]*
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L858">Produces the following:</p>
-<p data-source="spec/Spec%20Additions.md#L860"><span class="spec-quantified"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">P</span><span class="spec-param conditional">Q</span></span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span></p>
+<p data-source="spec/Spec%20Additions.md#L854">Produces the following:</p>
+<p data-source="spec/Spec%20Additions.md#L856"><span class="spec-quantified"><span class="spec-nt"><a href="#Example" data-name="Example">Example</a><span class="spec-params"><span class="spec-param">P</span><span class="spec-param conditional">Q</span></span></span><span class="spec-quantifiers"><span class="spec-quantifier list">list</span><span class="spec-quantifier optional">opt</span></span></span></p>
 </section>
 <section id="sec-Constraints" secid="3.13.10">
-<h3 data-source="spec/Spec%20Additions.md#L864"><span class="spec-secid" title="link to this section"><a href="#sec-Constraints">3.13.10</a></span>Constraints</h3>
-<p data-source="spec/Spec%20Additions.md#L866-L867">Any token can be followed by &ldquo;but not&rdquo; or &ldquo;but not one of&rdquo; to place a further constraint on the previous token:</p>
-<pre data-source="spec/Spec%20Additions.md#L869-L871"><code>Example : A B but not foo or bar
+<h3 data-source="spec/Spec%20Additions.md#L860"><span class="spec-secid" title="link to this section"><a href="#sec-Constraints">3.13.10</a></span>Constraints</h3>
+<p data-source="spec/Spec%20Additions.md#L862-L863">Any token can be followed by &ldquo;but not&rdquo; or &ldquo;but not one of&rdquo; to place a further constraint on the previous token:</p>
+<pre data-source="spec/Spec%20Additions.md#L865-L867"><code>Example : A B but not foo or bar
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L873">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L875">
+<p data-source="spec/Spec%20Additions.md#L869">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L871">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="A">A</span></span><span class="spec-constrained"><span class="spec-nt"><span data-name="B">B</span></span><span class="spec-butnot"><span class="spec-t">foo</span><span class="spec-t">bar</span></span></span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L878-L879">Optionally can mention &ldquo;one of&rdquo;, this will be omitted when rendered. Commas can be used instead of &ldquo;or&rdquo;.</p>
-<pre data-source="spec/Spec%20Additions.md#L881-L883"><code>Example : A B but not one of foo, bar
+<p data-source="spec/Spec%20Additions.md#L874-L875">Optionally can mention &ldquo;one of&rdquo;, this will be omitted when rendered. Commas can be used instead of &ldquo;or&rdquo;.</p>
+<pre data-source="spec/Spec%20Additions.md#L877-L879"><code>Example : A B but not one of foo, bar
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L885">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L887">
+<p data-source="spec/Spec%20Additions.md#L881">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L883">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="A">A</span></span><span class="spec-constrained"><span class="spec-nt"><span data-name="B">B</span></span><span class="spec-butnot"><span class="spec-t">foo</span><span class="spec-t">bar</span></span></span></div>
 </div>
 </section>
 <section id="sec-Meta-Tokens" secid="3.13.11">
-<h3 data-source="spec/Spec%20Additions.md#L890"><span class="spec-secid" title="link to this section"><a href="#sec-Meta-Tokens">3.13.11</a></span>Meta Tokens</h3>
-<p data-source="spec/Spec%20Additions.md#L892">Spec Markdown can specify some tokens which do not consume any characters.</p>
-<p data-source="spec/Spec%20Additions.md#L894-L895">The empty set, written <code>[empty]</code> appears as <span class="spec-empty">[empty]</span> can be used to define a non-terminal as matching no terminal or non-terminal tokens.</p>
-<pre data-source="spec/Spec%20Additions.md#L897-L899"><code>Example : [empty]
+<h3 data-source="spec/Spec%20Additions.md#L886"><span class="spec-secid" title="link to this section"><a href="#sec-Meta-Tokens">3.13.11</a></span>Meta Tokens</h3>
+<p data-source="spec/Spec%20Additions.md#L888">Spec Markdown can specify some tokens which do not consume any characters.</p>
+<p data-source="spec/Spec%20Additions.md#L890-L891">The empty set, written <code>[empty]</code> appears as <span class="spec-empty">[empty]</span> can be used to define a non-terminal as matching no terminal or non-terminal tokens.</p>
+<pre data-source="spec/Spec%20Additions.md#L893-L895"><code>Example : [empty]
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L901">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L903">
+<p data-source="spec/Spec%20Additions.md#L897">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L899">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-empty">[empty]</span></div>
 </div>
-<p data-source="spec/Spec%20Additions.md#L906-L907">Lookaheads can appear anywhere in a sequence of tokens, and describe additional constraints on the following token.</p>
-<pre data-source="spec/Spec%20Additions.md#L909-L920"><code>Example :
+<p data-source="spec/Spec%20Additions.md#L902-L903">Lookaheads can appear anywhere in a sequence of tokens, and describe additional constraints on the following token.</p>
+<pre data-source="spec/Spec%20Additions.md#L905-L916"><code>Example :
   - [lookahead token] Token
   - [lookahead ! token] Token
   - [lookahead != token] Token
@@ -2079,8 +2078,8 @@ TypeThree ::: `type` `three`
   - [lookahead ! {token, set}] Token
   - [lookahead != {token, set}] Token
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L922">Produces the following:</p>
-<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L924-L933">
+<p data-source="spec/Spec%20Additions.md#L918">Produces the following:</p>
+<div class="spec-production" id="Example" data-source="spec/Spec%20Additions.md#L920-L929">
 <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span><div class="spec-rhs"><span class="spec-lookahead"><span class="spec-t">token</span></span><span class="spec-nt"><span data-name="Token">Token</span></span></div>
 <div class="spec-rhs"><span class="spec-lookahead not"><span class="spec-t">token</span></span><span class="spec-nt"><span data-name="Token">Token</span></span></div>
 <div class="spec-rhs"><span class="spec-lookahead not"><span class="spec-t">token</span></span><span class="spec-nt"><span data-name="Token">Token</span></span></div>
@@ -2094,9 +2093,9 @@ TypeThree ::: `type` `three`
 </section>
 </section>
 <section id="sec-Grammar-Semantics" secid="3.14">
-<h2 data-source="spec/Spec%20Additions.md#L937"><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Semantics">3.14</a></span>Grammar Semantics</h2>
-<p data-source="spec/Spec%20Additions.md#L939-L941">Once grammar is defined, it can be useful to define the semantics of the grammar in terms of algorithm steps. A single grammar definition followed by a list is interpretted as a grammar semantic:</p>
-<pre data-source="spec/Spec%20Additions.md#L943-L954"><code>PBJ : Bread PeanutButter Jelly Bread
+<h2 data-source="spec/Spec%20Additions.md#L933"><span class="spec-secid" title="link to this section"><a href="#sec-Grammar-Semantics">3.14</a></span>Grammar Semantics</h2>
+<p data-source="spec/Spec%20Additions.md#L935-L937">Once grammar is defined, it can be useful to define the semantics of the grammar in terms of algorithm steps. A single grammar definition followed by a list is interpretted as a grammar semantic:</p>
+<pre data-source="spec/Spec%20Additions.md#L939-L950"><code>PBJ : Bread PeanutButter Jelly Bread
 
 * Let {bottomBread} be the result of placing the first {Bread} on the plate.
 * Let {pbSpread} be the result of getting {PeanutButter} from the jar.
@@ -2107,60 +2106,60 @@ TypeThree ::: `type` `three`
 * Let {sandwich} be the result of rotating {topBread} 180&amp;deg; and placing on {bottomBread}.
 * Return {sandwich}.
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L956">Produces the following:</p>
-<div class="spec-semantic" data-source="spec/Spec%20Additions.md#L958-L967">
+<p data-source="spec/Spec%20Additions.md#L952">Produces the following:</p>
+<div class="spec-semantic" data-source="spec/Spec%20Additions.md#L954-L963">
 <span class="spec-nt"><a href="#PBJ" data-name="PBJ">PBJ</a></span><div class="spec-rhs"><span class="spec-nt"><span data-name="Bread">Bread</span></span><span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span><span class="spec-nt"><span data-name="Jelly">Jelly</span></span><span class="spec-nt"><span data-name="Bread">Bread</span></span></div>
 <ol>
-<li data-source="spec/Spec%20Additions.md#L960">Let <var data-name="bottomBread">bottomBread</var> be the result of placing the first <span class="spec-nt"><span data-name="Bread">Bread</span></span> on the plate.</li>
-<li data-source="spec/Spec%20Additions.md#L961">Let <var data-name="pbSpread">pbSpread</var> be the result of <span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span>.</li>
-<li data-source="spec/Spec%20Additions.md#L962">Spread <var data-name="pbSpread">pbSpread</var> onto <var data-name="bottomBread">bottomBread</var>.</li>
-<li data-source="spec/Spec%20Additions.md#L963">Let <var data-name="topBread">topBread</var> be the result of placing the last <span class="spec-nt"><span data-name="Bread">Bread</span></span> on the plate.</li>
-<li data-source="spec/Spec%20Additions.md#L964">Let <var data-name="jamSpread">jamSpread</var> be the result of <span class="spec-nt"><span data-name="Jelly">Jelly</span></span>.</li>
-<li data-source="spec/Spec%20Additions.md#L965">Spread <var data-name="jamSpread">jamSpread</var> onto <var data-name="topBread">topBread</var>.</li>
-<li data-source="spec/Spec%20Additions.md#L966">Let <var data-name="sandwich">sandwich</var> be the result of rotating <var data-name="topBread">topBread</var> 180&deg; and placing on <var data-name="bottomBread">bottomBread</var>.</li>
-<li data-source="spec/Spec%20Additions.md#L967">Return <var data-name="sandwich">sandwich</var>.</li>
+<li data-source="spec/Spec%20Additions.md#L956">Let <var data-name="bottomBread">bottomBread</var> be the result of placing the first <span class="spec-nt"><span data-name="Bread">Bread</span></span> on the plate.</li>
+<li data-source="spec/Spec%20Additions.md#L957">Let <var data-name="pbSpread">pbSpread</var> be the result of <span class="spec-nt"><span data-name="PeanutButter">PeanutButter</span></span>.</li>
+<li data-source="spec/Spec%20Additions.md#L958">Spread <var data-name="pbSpread">pbSpread</var> onto <var data-name="bottomBread">bottomBread</var>.</li>
+<li data-source="spec/Spec%20Additions.md#L959">Let <var data-name="topBread">topBread</var> be the result of placing the last <span class="spec-nt"><span data-name="Bread">Bread</span></span> on the plate.</li>
+<li data-source="spec/Spec%20Additions.md#L960">Let <var data-name="jamSpread">jamSpread</var> be the result of <span class="spec-nt"><span data-name="Jelly">Jelly</span></span>.</li>
+<li data-source="spec/Spec%20Additions.md#L961">Spread <var data-name="jamSpread">jamSpread</var> onto <var data-name="topBread">topBread</var>.</li>
+<li data-source="spec/Spec%20Additions.md#L962">Let <var data-name="sandwich">sandwich</var> be the result of rotating <var data-name="topBread">topBread</var> 180&deg; and placing on <var data-name="bottomBread">bottomBread</var>.</li>
+<li data-source="spec/Spec%20Additions.md#L963">Return <var data-name="sandwich">sandwich</var>.</li>
 </ol>
 </div>
 </section>
 <section id="sec-Value-Literals" secid="3.15">
-<h2 data-source="spec/Spec%20Additions.md#L971"><span class="spec-secid" title="link to this section"><a href="#sec-Value-Literals">3.15</a></span>Value Literals</h2>
-<p data-source="spec/Spec%20Additions.md#L973-L974">Value literals allow any text to refer to a value which has semantic meaning in the specification by wrapping it in <code>{ }</code> curly brace characters.</p>
-<pre data-source="spec/Spec%20Additions.md#L976-L978"><code>I can reference {foo}, {"foo"}, {null}, {true}.
+<h2 data-source="spec/Spec%20Additions.md#L967"><span class="spec-secid" title="link to this section"><a href="#sec-Value-Literals">3.15</a></span>Value Literals</h2>
+<p data-source="spec/Spec%20Additions.md#L969-L970">Value literals allow any text to refer to a value which has semantic meaning in the specification by wrapping it in <code>{ }</code> curly brace characters.</p>
+<pre data-source="spec/Spec%20Additions.md#L972-L974"><code>I can reference {foo}, {"foo"}, {null}, {true}.
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L980">Produces the following:</p>
-<p data-source="spec/Spec%20Additions.md#L982">I can reference <var data-name="foo">foo</var>, <span class="spec-string">"foo"</span>, <span class="spec-keyword">null</span>, <span class="spec-keyword">true</span>.</p>
+<p data-source="spec/Spec%20Additions.md#L976">Produces the following:</p>
+<p data-source="spec/Spec%20Additions.md#L978">I can reference <var data-name="foo">foo</var>, <span class="spec-string">"foo"</span>, <span class="spec-keyword">null</span>, <span class="spec-keyword">true</span>.</p>
 <section id="sec-Value-Literals.Variables" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L985"><a href="#sec-Value-Literals.Variables" title="link to this subsection">Variables</a></h6>
-<p data-source="spec/Spec%20Additions.md#L987">Write <code>{foo}</code> to produce a variable (represented by a &lt;var&gt; tag) like <var data-name="foo">foo</var>.</p>
+<h6 data-source="spec/Spec%20Additions.md#L981"><a href="#sec-Value-Literals.Variables" title="link to this subsection">Variables</a></h6>
+<p data-source="spec/Spec%20Additions.md#L983">Write <code>{foo}</code> to produce a variable (represented by a &lt;var&gt; tag) like <var data-name="foo">foo</var>.</p>
 </section>
 <section id="sec-Value-Literals.Keywords" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L989"><a href="#sec-Value-Literals.Keywords" title="link to this subsection">Keywords</a></h6>
-<p data-source="spec/Spec%20Additions.md#L991-L992">Some known keywords like <span class="spec-keyword">null</span>, <span class="spec-keyword">undefined</span>, <span class="spec-keyword">true</span> and <span class="spec-keyword">false</span> are rendered as constants instead of variables.</p>
+<h6 data-source="spec/Spec%20Additions.md#L985"><a href="#sec-Value-Literals.Keywords" title="link to this subsection">Keywords</a></h6>
+<p data-source="spec/Spec%20Additions.md#L987-L988">Some known keywords like <span class="spec-keyword">null</span>, <span class="spec-keyword">undefined</span>, <span class="spec-keyword">true</span> and <span class="spec-keyword">false</span> are rendered as constants instead of variables.</p>
 </section>
 <section id="sec-Value-Literals.String-literal" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L994"><a href="#sec-Value-Literals.String-literal" title="link to this subsection">String literal</a></h6>
-<p data-source="spec/Spec%20Additions.md#L996">Write <code>{"foo"}</code> to produce a string literal like <span class="spec-string">"foo"</span>.</p>
+<h6 data-source="spec/Spec%20Additions.md#L990"><a href="#sec-Value-Literals.String-literal" title="link to this subsection">String literal</a></h6>
+<p data-source="spec/Spec%20Additions.md#L992">Write <code>{"foo"}</code> to produce a string literal like <span class="spec-string">"foo"</span>.</p>
 </section>
 <section id="sec-Value-Literals.Grammar-tokens" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L998"><a href="#sec-Value-Literals.Grammar-tokens" title="link to this subsection">Grammar tokens</a></h6>
-<p data-source="spec/Spec%20Additions.md#L1000-L1003">Any grammar token can be written inline, like <code>{Example}</code> to represent the non-terminal token <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span>, <code>{`terminal`}</code> to represent the terminal token <span class="spec-t">terminal</span>. Even meta tokens like <code>{[empty]}</code> for <span class="spec-empty">[empty]</span> and <code>{[lookahead !{ x, y }]}</code> for <span class="spec-lookahead set not"><span class="spec-t">x</span><span class="spec-t">y</span></span>.</p>
+<h6 data-source="spec/Spec%20Additions.md#L994"><a href="#sec-Value-Literals.Grammar-tokens" title="link to this subsection">Grammar tokens</a></h6>
+<p data-source="spec/Spec%20Additions.md#L996-L999">Any grammar token can be written inline, like <code>{Example}</code> to represent the non-terminal token <span class="spec-nt"><a href="#Example" data-name="Example">Example</a></span>, <code>{`terminal`}</code> to represent the terminal token <span class="spec-t">terminal</span>. Even meta tokens like <code>{[empty]}</code> for <span class="spec-empty">[empty]</span> and <code>{[lookahead !{ x, y }]}</code> for <span class="spec-lookahead set not"><span class="spec-t">x</span><span class="spec-t">y</span></span>.</p>
 </section>
 <section id="sec-Value-Literals.Algorithm-calls" class="subsec">
-<h6 data-source="spec/Spec%20Additions.md#L1005"><a href="#sec-Value-Literals.Algorithm-calls" title="link to this subsection">Algorithm calls</a></h6>
-<p data-source="spec/Spec%20Additions.md#L1007">A call to an algorithm can be expressed as a value literal:</p>
-<pre data-source="spec/Spec%20Additions.md#L1009-L1011"><code>{Algorithm(foo, "string", null)}
+<h6 data-source="spec/Spec%20Additions.md#L1001"><a href="#sec-Value-Literals.Algorithm-calls" title="link to this subsection">Algorithm calls</a></h6>
+<p data-source="spec/Spec%20Additions.md#L1003">A call to an algorithm can be expressed as a value literal:</p>
+<pre data-source="spec/Spec%20Additions.md#L1005-L1007"><code>{Algorithm(foo, "string", null)}
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L1013">Produces the following:</p>
-<p data-source="spec/Spec%20Additions.md#L1015"><span class="spec-call"><a href="#Algorithm()" data-name="Algorithm">Algorithm</a>(<var data-name="foo">foo</var>, <span class="spec-string">"string"</span>, <span class="spec-keyword">null</span>)</span></p>
+<p data-source="spec/Spec%20Additions.md#L1009">Produces the following:</p>
+<p data-source="spec/Spec%20Additions.md#L1011"><span class="spec-call"><a href="#Algorithm()" data-name="Algorithm">Algorithm</a>(<var data-name="foo">foo</var>, <span class="spec-string">"string"</span>, <span class="spec-keyword">null</span>)</span></p>
 </section>
 </section>
 <section id="sec-Biblio" secid="3.16">
-<h2 data-source="spec/Spec%20Additions.md#L1019"><span class="spec-secid" title="link to this section"><a href="#sec-Biblio">3.16</a></span>Biblio</h2>
-<p data-source="spec/Spec%20Additions.md#L1021-L1023">By supplying a <code>"biblio"</code> key in a metadata file, you can have Algorithm calls and Non-terminal tokens which are not defined in this spec to link to where they are defined.</p>
-<pre data-source="spec/Spec%20Additions.md#L1025-L1027"><code>spec-md -m metadata.json myspec.md
+<h2 data-source="spec/Spec%20Additions.md#L1015"><span class="spec-secid" title="link to this section"><a href="#sec-Biblio">3.16</a></span>Biblio</h2>
+<p data-source="spec/Spec%20Additions.md#L1017-L1019">By supplying a <code>"biblio"</code> key in a metadata file, you can have Algorithm calls and Non-terminal tokens which are not defined in this spec to link to where they are defined.</p>
+<pre data-source="spec/Spec%20Additions.md#L1021-L1023"><code>spec-md -m metadata.json myspec.md
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L1029">Where metadata.json includes:</p>
-<pre data-source="spec/Spec%20Additions.md#L1031-L1042"><code>{
+<p data-source="spec/Spec%20Additions.md#L1025">Where metadata.json includes:</p>
+<pre data-source="spec/Spec%20Additions.md#L1027-L1038"><code>{
   "biblio": {
     "http://people.mozilla.org/~jorendorff/es6-draft.html": {
       "Identifier": "#sec-names-and-keywords",
@@ -2171,8 +2170,8 @@ TypeThree ::: `type` `three`
   }
 }
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L1044">Then referring to these tokens will link out to that page.</p>
-<pre data-source="spec/Spec%20Additions.md#L1046-L1054"><code>MemberExpression : PrimaryExpression . Identifier
+<p data-source="spec/Spec%20Additions.md#L1040">Then referring to these tokens will link out to that page.</p>
+<pre data-source="spec/Spec%20Additions.md#L1042-L1050"><code>MemberExpression : PrimaryExpression . Identifier
 
   * Let {reference} be the result of evaluating {PrimaryExpression}.
   * Let {propName} be the string value of {Identifier}.
@@ -2180,15 +2179,15 @@ TypeThree ::: `type` `three`
   * {ReturnIfAbrupt(value)}.
   * Return {value}.
 </code></pre>
-<p data-source="spec/Spec%20Additions.md#L1056">Produces the following:</p>
-<div class="spec-semantic" data-source="spec/Spec%20Additions.md#L1058-L1065">
+<p data-source="spec/Spec%20Additions.md#L1052">Produces the following:</p>
+<div class="spec-semantic" data-source="spec/Spec%20Additions.md#L1054-L1061">
 <span class="spec-nt"><span data-name="MemberExpression">MemberExpression</span></span><div class="spec-rhs"><span class="spec-nt"><span data-name="PrimaryExpression">PrimaryExpression</span></span><span class="spec-t">.</span><span class="spec-nt"><span data-name="Identifier">Identifier</span></span></div>
 <ol>
-<li data-source="spec/Spec%20Additions.md#L1060">Let <var data-name="reference">reference</var> be the result of evaluating <span class="spec-nt"><span data-name="PrimaryExpression">PrimaryExpression</span></span>.</li>
-<li data-source="spec/Spec%20Additions.md#L1061">Let <var data-name="propName">propName</var> be the string value of <span class="spec-nt"><span data-name="Identifier">Identifier</span></span>.</li>
-<li data-source="spec/Spec%20Additions.md#L1062">Let <var data-name="value">value</var> be <span class="spec-call"><span data-name="Get">Get</span>(<var data-name="reference">reference</var>, <var data-name="propName">propName</var>)</span>.</li>
-<li data-source="spec/Spec%20Additions.md#L1063"><span class="spec-call"><span data-name="ReturnIfAbrupt">ReturnIfAbrupt</span>(<var data-name="value">value</var>)</span>.</li>
-<li data-source="spec/Spec%20Additions.md#L1064-L1065">Return <var data-name="value">value</var>. </li>
+<li data-source="spec/Spec%20Additions.md#L1056">Let <var data-name="reference">reference</var> be the result of evaluating <span class="spec-nt"><span data-name="PrimaryExpression">PrimaryExpression</span></span>.</li>
+<li data-source="spec/Spec%20Additions.md#L1057">Let <var data-name="propName">propName</var> be the string value of <span class="spec-nt"><span data-name="Identifier">Identifier</span></span>.</li>
+<li data-source="spec/Spec%20Additions.md#L1058">Let <var data-name="value">value</var> be <span class="spec-call"><span data-name="Get">Get</span>(<var data-name="reference">reference</var>, <var data-name="propName">propName</var>)</span>.</li>
+<li data-source="spec/Spec%20Additions.md#L1059"><span class="spec-call"><span data-name="ReturnIfAbrupt">ReturnIfAbrupt</span>(<var data-name="value">value</var>)</span>.</li>
+<li data-source="spec/Spec%20Additions.md#L1060-L1061">Return <var data-name="value">value</var>. </li>
 </ol>
 </div>
 </section>
