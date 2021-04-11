@@ -47,6 +47,19 @@
     );
   }
 
+  function formattedText(value) {
+    let prevChar;
+    let prevOffset = location().start.offset
+    do {
+      prevChar = input[--prevOffset]
+    } while (/[*~_+\-{}[\]]/.test(prevChar));
+    const followsEntity = !/\s/.test(prevChar);
+    return located({
+      type: 'Text',
+      value: format(value, followsEntity)
+    });
+  }
+
   let htmlBlockName;
 
   const BLOCK_TAGS_RX = /^(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)$/i;
@@ -367,16 +380,7 @@ textChar = [^\n\r+\-{`*_[!<\\]+
          / LINE_WRAP
 
 text = value:$textChar+ {
-  let prevChar;
-  let prevOffset = location().start.offset
-  do {
-    prevChar = input[--prevOffset]
-  } while (/[*~_+\-{}[\]]/.test(prevChar));
-  const followsEntity = !/\s/.test(prevChar);
-  return located({
-    type: 'Text',
-    value: format(value, followsEntity)
-  });
+  return formattedText(value);
 }
 
 note = SAMEDENT 'NOTE'i (':' / WB) _ contents:content* &EOB {
@@ -530,10 +534,7 @@ linkTextChar = [^\x5D\n\r+\-{`*!<\\]+ // \x5D := "]"
              / '<' !htmlTagContents
 
 linkText = value:$linkTextChar+ {
-  return located({
-    type: 'Text',
-    value: format(value)
-  });
+  return formattedText(value);
 }
 
 image = '![' alt:$[^\x5D]+ '](' _ url:$[^)]+ _ ')' {
@@ -664,10 +665,7 @@ tableCellTextChar = [^ |\n\r+\-{`*[!<]+
                   / '<' !htmlTagContents
 
 tableCellText = value:$tableCellTextChar+ {
-  return located({
-    type: 'Text',
-    value: format(value)
-  });
+  return formattedText(value);
 }
 
 
