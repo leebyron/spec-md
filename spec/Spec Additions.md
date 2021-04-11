@@ -160,20 +160,20 @@ Fat smart arrows => and <== and <=> can be written as `=>`, `<==` and `<=>`.
 Escaped `\-> \<- \<-> \=> \<== \<=>` becomes: \-> \<- \<-> \=> \<== \<=>.
 
 
-### Tables
+## Tables
 
 Similar to Github flavored Markdown
 
 ```
 | This | is a | table |
-| ---- | ---- | ----- |
+| ---- | ---: | :---: |
 | key  | val  | etc   |
 ```
 
 Produces the following:
 
 | This | is a | table |
-| ---- | ---- | ----- |
+| ---- | ---: | :---: |
 | key  | val  | etc   |
 
 Table cells can contain any content that a paragraph can contain.

@@ -2342,111 +2342,111 @@
                   ]
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Tables"
+          },
+          "contents": [
             {
-              "type": "Section",
-              "header": {
-                "type": "Header",
-                "level": 3,
-                "secID": null,
-                "title": "Tables"
-              },
+              "type": "Paragraph",
               "contents": [
                 {
-                  "type": "Paragraph",
-                  "contents": [
+                  "type": "Text",
+                  "value": "Similar to Github flavored Markdown"
+                }
+              ]
+            },
+            {
+              "type": "Code",
+              "raw": false,
+              "lang": null,
+              "example": false,
+              "counter": false,
+              "code": "| This | is a | table |\n| ---- | ---: | :---: |\n| key  | val  | etc   |\n"
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Produces the following:"
+                }
+              ]
+            },
+            {
+              "type": "Table",
+              "header": {
+                "type": "TableHeader",
+                "cells": [
+                  [
                     {
                       "type": "Text",
-                      "value": "Similar to Github flavored Markdown"
+                      "value": "This"
                     }
-                  ]
-                },
-                {
-                  "type": "Code",
-                  "raw": false,
-                  "lang": null,
-                  "example": false,
-                  "counter": false,
-                  "code": "| This | is a | table |\n| ---- | ---- | ----- |\n| key  | val  | etc   |\n"
-                },
-                {
-                  "type": "Paragraph",
-                  "contents": [
+                  ],
+                  [
                     {
                       "type": "Text",
-                      "value": "Produces the following:"
+                      "value": "is a"
+                    }
+                  ],
+                  [
+                    {
+                      "type": "Text",
+                      "value": "table"
                     }
                   ]
-                },
+                ],
+                "alignments": [
+                  null,
+                  "right",
+                  "center"
+                ]
+              },
+              "rows": [
                 {
-                  "type": "Table",
-                  "header": {
-                    "type": "TableHeader",
-                    "cells": [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "This"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "is a"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "table"
-                        }
-                      ]
+                  "type": "TableRow",
+                  "cells": [
+                    [
+                      {
+                        "type": "Text",
+                        "value": "key"
+                      }
                     ],
-                    "alignments": [
-                      null,
-                      null,
-                      null
+                    [
+                      {
+                        "type": "Text",
+                        "value": "val"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "Text",
+                        "value": "etc"
+                      }
                     ]
-                  },
-                  "rows": [
-                    {
-                      "type": "TableRow",
-                      "cells": [
-                        [
-                          {
-                            "type": "Text",
-                            "value": "key"
-                          }
-                        ],
-                        [
-                          {
-                            "type": "Text",
-                            "value": "val"
-                          }
-                        ],
-                        [
-                          {
-                            "type": "Text",
-                            "value": "etc"
-                          }
-                        ]
-                      ],
-                      "alignments": [
-                        null,
-                        null,
-                        null
-                      ]
-                    }
+                  ],
+                  "alignments": [
+                    null,
+                    "right",
+                    "center"
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
                 {
-                  "type": "Paragraph",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "Table cells can contain any content that a paragraph can contain."
-                    }
-                  ]
+                  "type": "Text",
+                  "value": "Table cells can contain any content that a paragraph can contain."
                 }
               ]
             }
