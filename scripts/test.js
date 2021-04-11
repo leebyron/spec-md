@@ -1,4 +1,5 @@
 const assert = require('assert');
+const { execSync } = require('child_process');
 const fs = require('fs');
 
 const specMarkdown = require('../');
@@ -15,7 +16,7 @@ runTests([
   testSource('graphql-spec', 'test/graphql-spec/GraphQL.md'),
   testSource('productions'),
   testSource('readme', 'README.md'),
-  testSource('readme-gh', 'README.md', { githubSource: 'https://github.com/leebyron/spec-md/blame/main' }),
+  testSource('readme-gh', 'README.md', '--githubSource https://github.com/leebyron/spec-md/blame/main'),
   testSource('sections'),
   testSource('simple-header'),
   testSource('headers'),
@@ -79,8 +80,8 @@ function runTest(input, ast, html, options) {
     }
   }
 
-  // Print HTML after testing AST since it memoizes values in the AST.
-  const actualHTML = specMarkdown.print(actualAST, options);
+  // Test printing via command line, since that's how most use spec-md.
+  const actualHTML = execSync(`node ./bin/spec-md ${input} ${options || ''}`, { encoding: 'utf8' });
   let expectedHTML
   try {
     // Normalize line endings
