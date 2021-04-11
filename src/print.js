@@ -6,6 +6,7 @@ const visit = require('./visit');
 
 function print(ast, _options) {
   const options = {
+    githubSource: _options && _options.githubSource || null,
     highlight: _options && _options.highlight || highlight,
     biblio: _options && _options.biblio && buildBiblio(_options.biblio) || {},
     head: _options && _options.head || '',
@@ -92,13 +93,14 @@ function printHead(ast, options) {
     '<style>\n' + readPrismCSS() + '</style>\n' +
     execStaticJS('generated/highlightName.js') +
     execStaticJS('generated/linkSelections.js') +
+    (options.githubSource ? execStaticJS('generated/viewSource.js') : '') +
     options.head
   );
 }
 
 function printBody(ast, options) {
   return (
-    '<article>\n' +
+    '<article' + dataSourceBaseAttr(ast, options) + '>\n' +
       '<header>\n' +
         printTitle(ast) +
         printIntro(ast, options) +
@@ -417,7 +419,7 @@ function printAll(list, options) {
         case 'Header':
           const level = node.secID.length;
           return (
-            '<h' + level + '>' +
+            '<h' + level + dataSourceAttr(node, options) + '>' +
               '<span class="spec-secid" title="link to this section">' +
                 '<a href="' + encodeURI(options.biblio[parent.id]) + '">' + escape(parent.secid) + '</a>' +
               '</span>' +
@@ -435,7 +437,7 @@ function printAll(list, options) {
 
         case 'Subheader':
           return (
-            '<h6>' +
+            '<h6' + dataSourceAttr(node, options) + '>' +
               '<a href="' + encodeURI(options.biblio[parent.id]) + '" title="link to this subsection">' +
                 escape(node.title) +
               '</a>' +
@@ -443,13 +445,17 @@ function printAll(list, options) {
           );
 
         case 'BlockIns':
-          return '<div class="spec-added">' + join(node.contents) + '</div>\n';
+          return '<div class="spec-added"' + dataSourceAttr(node, options) + '>' + join(node.contents) + '</div>\n';
 
         case 'BlockDel':
-          return '<div class="spec-removed">' + join(node.contents) + '</div>\n';
+          return '<div class="spec-removed"' + dataSourceAttr(node, options) + '>' + join(node.contents) + '</div>\n';
 
         case 'Paragraph':
-          return '<p>' + join(node.contents) + '</p>\n';
+          return (
+            '<p' + dataSourceAttr(node, options) + '>' +
+              join(node.contents) +
+            '</p>\n'
+          );
 
         case 'Text':
           return escape(node.value);
@@ -462,14 +468,18 @@ function printAll(list, options) {
 
         case 'Note':
           return (
-            '<div id="' + escapeAttr(node.id) + '" class="spec-note">\n' +
+            '<div id="' + escapeAttr(node.id) + '" class="spec-note"' + dataSourceAttr(node, options) + '>\n' +
               '<a href="' + encodeURI('#' + node.id) + '">Note</a>\n' +
               join(node.contents) +
             '</div>\n'
           );
 
         case 'Todo':
-          return '<div class="spec-todo">\n' + join(node.contents) + '</div>\n';
+          return (
+            '<div class="spec-todo"' + dataSourceAttr(node, options) + '>\n' +
+              join(node.contents) +
+            '</div>\n'
+          );
 
         case 'HTMLBlock':
           return node.html;
@@ -489,11 +499,13 @@ function printAll(list, options) {
               (node.id ? ' id="' + escapeAttr(node.id) + '"' : '') +
               (node.counter ? ' class="spec-counter-example"' : node.example ? ' class="spec-example"' : '') +
               (node.lang ? ' data-language="' + escapeAttr(node.lang) + '"' : '') +
+              dataSourceAttr(node, options) +
             '>' +
-            (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
-            '<code>' +
-              options.highlight(node.code, node.lang) +
-            '</code></pre>\n'
+              (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
+              '<code>' +
+                options.highlight(node.code, node.lang) +
+              '</code>'+
+            '</pre>\n'
           );
 
         case 'InlineCode':
@@ -517,11 +529,15 @@ function printAll(list, options) {
         }
 
         case 'ListItem':
-          return '<li>' + join(node.contents) + '</li>\n';
+          return (
+            '<li' + dataSourceAttr(node, options) + '>' +
+              join(node.contents) +
+            '</li>\n'
+          );
 
         case 'TaskListItem':
           return (
-            '<li class="task">\n' +
+            '<li class="task"' + dataSourceAttr(node, options) + '>\n' +
               '<input type="checkbox" disabled' + (node.done ? ' checked' : '') +  '>\n' +
               join(node.contents) +
             '</li>\n'
@@ -543,21 +559,21 @@ function printAll(list, options) {
 
         case 'TableHeader':
           return (
-            '<tr>\n' +
+            '<tr' + dataSourceAttr(node, options) + '>\n' +
               join(node.cells.map((cell, i) => '<th' + colAlign(node, i) + '>' + join(cell) + '</th>\n')) +
             '</tr>\n'
           );
 
         case 'TableRow':
           return (
-            '<tr>\n' +
+            '<tr' + dataSourceAttr(node, options) + '>\n' +
               join(node.cells.map((cell, i) => '<td' + colAlign(node, i) + '>' + join(cell) + '</td>\n')) +
             '</tr>\n'
           );
 
         case 'Algorithm':
           return (
-            '<div class="spec-algo" id="' + escapeAttr(node.id) + '">\n' +
+            '<div class="spec-algo" id="' + escapeAttr(node.id) + '"' + dataSourceAttr(node, options) + '>\n' +
               node.call +
               node.steps +
             '</div>\n'
@@ -583,7 +599,7 @@ function printAll(list, options) {
         case 'Semantic': {
           const defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
-            '<div class="spec-semantic' + defType + '">\n' +
+            '<div class="spec-semantic' + defType + '"' + dataSourceAttr(node, options) + '>\n' +
               node.name +
               node.rhs +
               node.steps +
@@ -594,7 +610,7 @@ function printAll(list, options) {
         case 'Production': {
           const defType = node.defType === 1 ? '' : ' d' + node.defType;
           return (
-            '<div class="spec-production' + defType + '" id="' + node.id + '">\n' +
+            '<div class="spec-production' + defType + '" id="' + node.id + '"' + dataSourceAttr(node, options) + '>\n' +
               node.token +
               node.rhs +
             '</div>\n'
@@ -705,6 +721,29 @@ function printAll(list, options) {
 
     }
   }));
+}
+
+function dataSourceBaseAttr(node, options) {
+  if (!options.githubSource || !node.loc.source) {
+    return '';
+  }
+  let sourceBase = options.githubSource;
+  if (!sourceBase.endsWith('/')) {
+    sourceBase += '/';
+  }
+  return ' data-source-base="' + encodeURI(sourceBase) + '"';
+}
+
+function dataSourceAttr(node, options) {
+  if (!options.githubSource || !node.loc.source) {
+    return '';
+  }
+  const posixPath = node.loc.source.split(path.sep).join(path.posix.sep);
+  let lineRange = '#L' + node.loc.start.line;
+  if (node.loc.end.line !== node.loc.start.line) {
+    lineRange += '-L' + node.loc.end.line;
+  }
+  return ' data-source="' + encodeURI(posixPath) + lineRange + '"';
 }
 
 function colAlign(row, index) {

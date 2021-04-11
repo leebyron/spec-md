@@ -1,4 +1,5 @@
 {
+  "githubSource": "https://github.com/leebyron/spec-md/blame/main/",
   "head": "<meta property=\"og:title\" content=\"Spec Markdown\" />",
   "biblio": {
     "http://people.mozilla.org/~jorendorff/es6-draft.html": {
