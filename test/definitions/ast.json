@@ -1,0 +1,561 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Definition"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Definition lists"
+      },
+      "contents": [
+        {
+          "type": "DefinitionList",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Term"
+          },
+          "defs": [
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Definition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "DefinitionList",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Term"
+          },
+          "defs": [
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Definition that is really long and spans multiple lines"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "DefinitionList",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Term"
+          },
+          "defs": [
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Definition that is really long and spans multiple indented lines"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Paragraph followed by a"
+            }
+          ]
+        },
+        {
+          "type": "DefinitionList",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Term"
+          },
+          "defs": [
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Definition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "DefinitionList",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Terms can have"
+          },
+          "defs": [
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "One definition"
+                }
+              ]
+            },
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Two definitions"
+                }
+              ]
+            },
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "And more definitions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "DefinitionList",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Term"
+          },
+          "defs": [
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Definition can be separated by an empty line"
+                }
+              ]
+            },
+            {
+              "type": "DefinitionDescription",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Multiple times"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Not definition lists"
+          },
+          "contents": [
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Term :Definition lacking leading space, not a definition"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Term :: Has too many colons"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Multi line Term : Isn’t a definition"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Term"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": ": With a definition after two empty lines, not a definition"
+                }
+              ]
+            },
+            {
+              "type": "Production",
+              "token": {
+                "type": "NonTerminal",
+                "name": "Term",
+                "params": null
+              },
+              "defType": 1,
+              "rhs": {
+                "type": "RHS",
+                "condition": null,
+                "tokens": [
+                  {
+                    "type": "NonTerminal",
+                    "name": "Definition",
+                    "params": null
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "on"
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "the"
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "same"
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "line"
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": ","
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "not"
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "a"
+                  },
+                  {
+                    "type": "Terminal",
+                    "value": "definition"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Term : Indented too far"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Definition paragraph"
+      },
+      "contents": [
+        {
+          "type": "DefinitionParagraph",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "definition paragraph"
+          },
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A "
+            },
+            {
+              "type": "DefinitionTerm",
+              "name": "definition paragraph"
+            },
+            {
+              "type": "Text",
+              "value": " defines a term within a paragraph which might be easier to read than a typical definition list. Since it’s a normal paragraph : line continuations can also start with colons. :: Or double colons."
+            }
+          ]
+        },
+        {
+          "type": "DefinitionParagraph",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "definition paragraph"
+          },
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A "
+            },
+            {
+              "type": "DefinitionTerm",
+              "name": "definition paragraph"
+            },
+            {
+              "type": "Text",
+              "value": " may contain additional "
+            },
+            {
+              "type": "Italic",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "italicized"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": " phrases."
+            }
+          ]
+        },
+        {
+          "type": "DefinitionParagraph",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "definition paragraph"
+          },
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A "
+            },
+            {
+              "type": "DefinitionTerm",
+              "name": "definition paragraph"
+            },
+            {
+              "type": "Text",
+              "value": " may define its term in either * or _ italics."
+            }
+          ]
+        },
+        {
+          "type": "DefinitionParagraph",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "Term"
+          },
+          "contents": [
+            {
+              "type": "DefinitionTerm",
+              "name": "Term"
+            },
+            {
+              "type": "Text",
+              "value": " at the start."
+            }
+          ]
+        },
+        {
+          "type": "DefinitionParagraph",
+          "term": {
+            "type": "DefinitionTerm",
+            "name": "term"
+          },
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Or at the end, the "
+            },
+            {
+              "type": "DefinitionTerm",
+              "name": "term"
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Not definition paragraphs"
+          },
+          "contents": [
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": ":: A definition paragraph must contain an italicized term."
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "::: "
+                },
+                {
+                  "type": "Italic",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "This"
+                    }
+                  ]
+                },
+                {
+                  "type": "Text",
+                  "value": " has too many colons."
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "::"
+                },
+                {
+                  "type": "Italic",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "This"
+                    }
+                  ]
+                },
+                {
+                  "type": "Text",
+                  "value": " is missing a leading space."
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Paragraph :: "
+                },
+                {
+                  "type": "Italic",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "This"
+                    }
+                  ]
+                },
+                {
+                  "type": "Text",
+                  "value": " immediately follows a paragraph"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": ":: "
+                },
+                {
+                  "type": "Italic",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "just a term"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Definition references"
+      },
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A "
+            },
+            {
+              "type": "Italic",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Term"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": " can later be referenced with italics."
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "A "
+            },
+            {
+              "type": "Italic",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Term"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": " can use either * or _ italics. "
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

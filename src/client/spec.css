@@ -6,7 +6,7 @@
   --mono-font-size: 13px;
   --indent: 1rem;
   --list-indent: 1.5rem;
-  --grammar-indent: 0rem;
+  --dfn-indent: 0rem;
 }
 
 @media (min-width: 720px) {
@@ -15,7 +15,7 @@
     --mono-font-size: 15px;
     --indent: 2rem;
     --list-indent: 2rem;
-    --grammar-indent: 2rem;
+    --dfn-indent: 2rem;
   }
 }
 
@@ -153,6 +153,28 @@ a:hover {
 
 img {
   max-width: 100%;
+}
+
+/* Definitions */
+
+dl, .spec-dfnp {
+  margin: 1rem 0 1rem var(--dfn-indent);
+}
+
+dd {
+  margin: 0.25em 0 0.5em var(--indent);
+}
+
+dd + dd {
+  margin-top: 1rem;
+}
+
+dfn, .spec-ref {
+  font-style: italic;
+}
+
+dfn > a, .spec-ref > a {
+  color: inherit;
 }
 
 /* Section headers */
@@ -459,6 +481,7 @@ footer {
 
 .spec-index ol li {
   width: min-content;
+  white-space: nowrap;
 }
 
 /* Code */
@@ -627,7 +650,7 @@ var {
 
 .spec-semantic,
 .spec-algo {
-  margin: 1rem 0 1rem var(--grammar-indent);
+  margin: 1rem 0 1rem var(--dfn-indent);
 }
 
 .spec-semantic > .spec-nt::after,
@@ -661,7 +684,7 @@ var {
 /* Grammar productions */
 
 .spec-production {
-  margin: 1rem 0 1rem var(--grammar-indent);
+  margin: 1rem 0 1rem var(--dfn-indent);
 }
 
 .spec-production > .spec-nt::after {

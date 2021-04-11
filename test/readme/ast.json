@@ -2365,6 +2365,245 @@
             "type": "Header",
             "level": 2,
             "secID": null,
+            "title": "Definitions"
+          },
+          "contents": [
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Spec Markdown provides two forms for defining terms, definition lists and definition paragraphs."
+                }
+              ]
+            },
+            {
+              "type": "Section",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Definition List"
+              },
+              "contents": [
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "A definition list is written as a defined term on a single line followed by one or more definition lines, each starting with a "
+                    },
+                    {
+                      "type": "InlineCode",
+                      "code": ": "
+                    },
+                    {
+                      "type": "Text",
+                      "value": "."
+                    }
+                  ]
+                },
+                {
+                  "type": "Code",
+                  "raw": false,
+                  "lang": null,
+                  "example": false,
+                  "counter": false,
+                  "code": "Cookie\n:   A small piece of data that a server sends to the user's web browser. The\n    browser may store it and send it back with later requests to the same server.\n:   A delicious snack, often containing chocolate chips.\n"
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Produces the following:"
+                    }
+                  ]
+                },
+                {
+                  "type": "DefinitionList",
+                  "term": {
+                    "type": "DefinitionTerm",
+                    "name": "Cookie"
+                  },
+                  "defs": [
+                    {
+                      "type": "DefinitionDescription",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "A small piece of data that a server sends to the user’s web browser. The browser may store it and send it back with later requests to the same server."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "DefinitionDescription",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "A delicious snack, often containing chocolate chips."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Note",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Term definitions can optionally be separated by a single blank line."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Section",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Definition Paragraph"
+              },
+              "contents": [
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "A definition paragraph starts with a "
+                    },
+                    {
+                      "type": "InlineCode",
+                      "code": ":: "
+                    },
+                    {
+                      "type": "Text",
+                      "value": " and contains an italicized term. This is useful when it is easier to define a term in a sentence containing that term."
+                    }
+                  ]
+                },
+                {
+                  "type": "Code",
+                  "raw": false,
+                  "lang": null,
+                  "example": false,
+                  "counter": false,
+                  "code": ":: The study of *Philosophy* investigates general and fundamental questions.\n"
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Produces the following:"
+                    }
+                  ]
+                },
+                {
+                  "type": "DefinitionParagraph",
+                  "term": {
+                    "type": "DefinitionTerm",
+                    "name": "Philosophy"
+                  },
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "The study of "
+                    },
+                    {
+                      "type": "DefinitionTerm",
+                      "name": "Philosophy"
+                    },
+                    {
+                      "type": "Text",
+                      "value": " investigates general and fundamental questions."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Section",
+              "header": {
+                "type": "Header",
+                "level": 3,
+                "secID": null,
+                "title": "Definition References"
+              },
+              "contents": [
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "A defined term can be later referenced by italicizing that term. Referenced terms are case insensitive."
+                    }
+                  ]
+                },
+                {
+                  "type": "Code",
+                  "raw": false,
+                  "lang": null,
+                  "example": false,
+                  "counter": false,
+                  "code": "After studying *philosophy*, you may eat a *cookie*.\n"
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "Produces the following:"
+                    }
+                  ]
+                },
+                {
+                  "type": "Paragraph",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "After studying "
+                    },
+                    {
+                      "type": "Italic",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "philosophy"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": ", you may eat a "
+                    },
+                    {
+                      "type": "Italic",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "cookie"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": "."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
             "title": "Note"
           },
           "contents": [

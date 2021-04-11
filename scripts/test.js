@@ -24,6 +24,7 @@ runTests([
   testSource('smart-quotes'),
   testSource('tables'),
   testSource('task-lists'),
+  testSource('definitions'),
 ]);
 
 function runTests(tests) {

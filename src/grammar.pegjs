@@ -285,6 +285,8 @@ sectionBlock = note
              / list
              / blockEdit
              / htmlBlock
+             / definitionList
+             / definitionParagraph
              / paragraph
 
 
@@ -357,6 +359,64 @@ htmlContent = [^<]+
 tagOpen = '<' name:$[a-z]+ $[^>]* '>' { return name; }
 tagClose = '</' name:$[a-z]+ '>' { return name; }
 
+// Definitions
+
+definitionList = definitionListLookahead SAMEDENT term:definitionListTerm defs:((NL (_ NL)?) definitionListDescription)+ &EOB {
+  return located({
+    type: 'DefinitionList',
+    term: term,
+    defs: defs.map(pair => pair[1])
+  });
+}
+
+definitionListLookahead = &([^\n\r:]+ NL _ (NL _)? ':' &WS)
+
+definitionListTerm = name:$definitionListTextChar+ {
+  return located({
+    type: 'DefinitionTerm',
+    name: format(name)
+  });
+}
+
+definitionListDescription = SAMEDENT ':' WS+ contents:definitionListContent+ {
+  return located({
+    type: 'DefinitionDescription',
+    contents: contents
+  });
+}
+
+definitionListContent = definitionListText / inlineEntity
+
+definitionListTextChar = [^\n\r+\-{`*_[!<\\]+
+                       / '\\' .?
+                       / '+' !'+}'
+                       / '-' !'-}'
+                       / &'!' !image '!'
+                       / &'[' !link '['
+                       / &'<' !htmlTag '<'
+                       / LINE_WRAP !':'
+
+definitionListText = value:$definitionListTextChar+ {
+  return formattedText(value);
+}
+
+definitionParagraph = SAMEDENT '::' WS+ leading:(!italic content)* term:definitionParagraphTerm trailing:content* &EOB &{
+  // Must contain more than just the term.
+  return leading.length + trailing.length > 0;
+} {
+  return located({
+    type: 'DefinitionParagraph',
+    term: term,
+    contents: leading.map(pair => pair[1]).concat([term], trailing)
+  });
+}
+
+definitionParagraphTerm = open:[*_] name:$textChar+ close:[*_] &{ return open === close; } {
+  return located({
+    type: 'DefinitionTerm',
+    name: format(name)
+  });
+}
 
 // Paragraph
 
