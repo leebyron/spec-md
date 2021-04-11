@@ -88,21 +88,23 @@ untitledDocument = contents:documentBlocks {
   });
 }
 
-title = setextTitle / markdownTitle
+title = markdownTitle / setextTitle
 
-setextTitle = SAMEDENT !'#' value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &EOL {
+setextTitle = SAMEDENT value:$NOT_NL+ NL ('---' '-'* / '===' '='*) &EOL {
   return located({
     type: 'DocumentTitle',
     value: format(value)
   });
 }
 
-markdownTitle = SAMEDENT H1 value:headerText H_END &EOL {
+markdownTitle = SAMEDENT '#'+ _ value:headerText H_END &EOL {
   return located({
     type: 'DocumentTitle',
     value: value
   });
 }
+
+headerLookahead = &(SAMEDENT '#')
 
 H1 = '#' !'#' _
 H2 = '##' !'#' _
@@ -233,7 +235,7 @@ subsectionHeader = SAMEDENT '**' title:$[^\n\r*]+ '**' &EOB {
   });
 }
 
-subsection = header:subsectionHeader ___ contents:sectionBlocks {
+subsection = header:subsectionHeader ___ contents:subsectionBlocks {
   return located({
     type: 'Subsection',
     header: header,
@@ -241,35 +243,36 @@ subsection = header:subsectionHeader ___ contents:sectionBlocks {
   });
 }
 
-documentBlocks = blocks:(documentContent ___)* { return blocks.map(block => block[0]); }
-section1Blocks = blocks:(section1Content ___)* { return blocks.map(block => block[0]); }
-section2Blocks = blocks:(section2Content ___)* { return blocks.map(block => block[0]); }
-section3Blocks = blocks:(section3Content ___)* { return blocks.map(block => block[0]); }
-section4Blocks = blocks:(section4Content ___)* { return blocks.map(block => block[0]); }
-section5Blocks = blocks:(section5Content ___)* { return blocks.map(block => block[0]); }
-section6Blocks = blocks:(section6Content ___)* { return blocks.map(block => block[0]); }
-sectionBlocks = blocks:(sectionContent ___)* { return blocks.map(block => block[0]); }
+documentBlocks = blocks:(documentBlock ___)* { return blocks.map(block => block[0]); }
+section1Blocks = blocks:(section1Block ___)* { return blocks.map(block => block[0]); }
+section2Blocks = blocks:(section2Block ___)* { return blocks.map(block => block[0]); }
+section3Blocks = blocks:(section3Block ___)* { return blocks.map(block => block[0]); }
+section4Blocks = blocks:(section4Block ___)* { return blocks.map(block => block[0]); }
+section5Blocks = blocks:(section5Block ___)* { return blocks.map(block => block[0]); }
+section6Blocks = blocks:(section6Block ___)* { return blocks.map(block => block[0]); }
+subsectionBlocks = blocks:(subsectionBlock ___)* { return blocks.map(block => block[0]); }
 
-documentContent = import1 / section1 / subsection / importRel / sectionContent
-section1Content = import2 / section2 / subsection / importRel / sectionContent
-section2Content = import3 / section3 / subsection / importRel / sectionContent
-section3Content = import4 / section4 / subsection / importRel / sectionContent
-section4Content = import5 / section5 / subsection / importRel / sectionContent
-section5Content = import6 / section6 / subsection / importRel / sectionContent
-section6Content = subsection / importRel / sectionContent
+documentBlock = import1 / section1 / section1Block
+section1Block = import2 / section2 / section2Block
+section2Block = import3 / section3 / section3Block
+section3Block = import4 / section4 / section4Block
+section4Block = import5 / section5 / section5Block
+section5Block = import6 / section6 / section6Block
+section6Block = importRel / subsection / !headerLookahead block:sectionBlock { return block; }
+subsectionBlock = !(headerLookahead / subsectionHeader) block:sectionBlock { return block; }
 
-sectionContent = note
-               / todo
-               / indentCode
-               / blockCode
-               / algorithm
-               / semantic
-               / production
-               / table
-               / list
-               / blockEdit
-               / htmlBlock
-               / paragraph
+sectionBlock = note
+             / todo
+             / indentCode
+             / blockCode
+             / algorithm
+             / semantic
+             / production
+             / table
+             / list
+             / blockEdit
+             / htmlBlock
+             / paragraph
 
 
 // Import
@@ -296,14 +299,14 @@ import6 = SAMEDENT H6 importLink:importLink H_END &EOL { return importLink; }
 
 blockEdit = blockIns / blockDel
 
-blockIns = SAMEDENT '{++' EOB contents:sectionBlocks '++}' &EOB {
+blockIns = SAMEDENT '{++' EOB contents:subsectionBlocks '++}' &EOB {
   return located({
     type: 'BlockIns',
     contents: contents
   });
 }
 
-blockDel = SAMEDENT '{--' EOB contents:sectionBlocks '--}' &EOB {
+blockDel = SAMEDENT '{--' EOB contents:subsectionBlocks '--}' &EOB {
   return located({
     type: 'BlockDel',
     contents: contents
@@ -344,7 +347,7 @@ tagClose = '</' name:$[a-z]+ '>' { return name; }
 
 // Paragraph
 
-paragraph = SAMEDENT !'#' !subsectionHeader contents:content+ &EOB {
+paragraph = SAMEDENT contents:content+ &EOB {
   return located({
     type: 'Paragraph',
     contents: contents
@@ -361,7 +364,7 @@ textChar = [^\n\r+\-{`*_[!<\\]+
          / '-' !'-}'
          / '!' !'['
          / '<' !htmlTagContents
-         / SINGLE_NL
+         / LINE_WRAP
 
 text = value:$textChar+ {
   let prevChar;
@@ -634,7 +637,7 @@ tableRow = cells:tableCells {
 
 pipe = _ '|' _
 
-tableDelimiter = SAMEDENT !'#' pipe? first:tableAlign rest:(pipe tableAlign)* pipe? &EOL {
+tableDelimiter = SAMEDENT pipe? first:tableAlign rest:(pipe tableAlign)* pipe? &EOL {
   return [first].concat(rest.map(pair => pair[1]));
 }
 
@@ -642,7 +645,7 @@ tableAlign = left:':'? '-'+ right:':'? {
   return left && right ? 'center' : left ? 'left' : right ? 'right' : null;
 }
 
-tableCells = SAMEDENT !'#' pipe? first:tableCell rest:(pipe tableCell)* pipe? &EOL {
+tableCells = SAMEDENT pipe? first:tableCell rest:(pipe tableCell)* pipe? &EOL {
   return [first].concat(rest.map(pair => pair[1]));
 }
 
@@ -944,13 +947,14 @@ DEDENT = !{ indentStack.length === 0 } {
 
 indentDepth = sp:$_ { return sp.replace(/\t/g, '    ').length; }
 
-NL = '\r\n' / '\n' / '\r'
+NL = '\n' / '\r\n' / '\r'
 NOT_NL = !NL .
-SINGLE_NL = NL !(_ NL / _ listBullet)
-_ = ' '*
 // Skips over whitespace including a single newline. Do not use more than once
 // in a row, otherwise multiple NL will be skipped.
-__ = _ (SINGLE_NL _)?
+LINE_WRAP = NL _ !(NL / listBullet / headerLookahead)
+_ = ' '*
+// Whitespace followed by an optional Line Wrap
+__ = _ LINE_WRAP?
 // Skips over all new lines and empty lines, but not the white space at the
 // beginning of the next non-empty line.
 ___ = (_ NL)*

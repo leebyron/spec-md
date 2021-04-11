@@ -1197,15 +1197,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": "Spec Markdown requires that documents start with "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "#"
-                    },
-                    {
-                      "type": "Text",
-                      "value": " and that each section contained within is only one level deeper. An <h1> section may only contain <h2> sections."
+                      "value": "Spec Markdown requires that documents start with a header."
                     }
                   ]
                 }
@@ -1847,47 +1839,6 @@
                   "example": true,
                   "counter": true,
                   "code": "Header\n------\n"
-                },
-                {
-                  "type": "Paragraph",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "Spec Markdown also requires that only single "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "#"
-                    },
-                    {
-                      "type": "Text",
-                      "value": " headers appear at the top of a document, and that only a "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "##"
-                    },
-                    {
-                      "type": "Text",
-                      "value": " header (and not a "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "###"
-                    },
-                    {
-                      "type": "Text",
-                      "value": " header) can be contained with the section started by a "
-                    },
-                    {
-                      "type": "InlineCode",
-                      "code": "#"
-                    },
-                    {
-                      "type": "Text",
-                      "value": " header."
-                    }
-                  ]
                 }
               ]
             },

@@ -1,0 +1,40 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "A document must start with a title header"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 2,
+        "secID": null,
+        "title": "Then can start at any level"
+      },
+      "contents": [
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 4,
+            "secID": null,
+            "title": "And nest as long as the header level is lower"
+          },
+          "contents": []
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "And higher level headers will break out new sections"
+      },
+      "contents": []
+    }
+  ]
+}
