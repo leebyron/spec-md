@@ -598,24 +598,52 @@ taskBox = '[' done:(' ' / 'x' / 'X') ']' !(_ '(') {
 
 // Table
 
-table = headers:tableRow NL [ -|]+ rows:(NL tableRow)+ &EOB {
+table = tableLookahead header:tableHeader NL alignments:tableDelimiter &{ return header.cells.length === alignments.length } rows:(NL tableRow)* &EOB {
+  header.alignments = alignments;
+  rows = rows.map(pair => pair[1]);
+  rows.forEach(row => {
+    row.alignments = alignments;
+    if (row.cells.length > header.cells.length) {
+      row.cells.length = header.cells.length;
+    } else while (row.cells.length < header.cells.length) {
+      row.cells.push({ type: 'Text', value: '' });
+    }
+  });
   return located({
     type: 'Table',
-    headers: headers,
-    rows: rows.map(pair => pair[1])
+    header: header,
+    rows: rows
   });
 }
 
-tableRow = tableCells / tableOneColCells
+tableLookahead = &([^\n\r]+ NL [ -]* [|:] [ |:-]* NL)
 
-tableCells = SAMEDENT !'#' ('|' _)? first:tableCell rest:(_ '|' _ tableCell)+ _ '|'? &EOL {
-  return [first].concat(rest.map(function (nodes) {
-    return nodes[3];
-  }));
+tableHeader = cells:tableCells {
+  return located({
+    type: 'TableHeader',
+    cells: cells
+  });
 }
 
-tableOneColCells = SAMEDENT '|' _ first:tableCell _ '|'? &EOL {
-  return [first];
+tableRow = cells:tableCells {
+  return located({
+    type: 'TableRow',
+    cells: cells
+  });
+}
+
+pipe = _ '|' _
+
+tableDelimiter = SAMEDENT !'#' pipe? first:tableAlign rest:(pipe tableAlign)* pipe? &EOL {
+  return [first].concat(rest.map(pair => pair[1]));
+}
+
+tableAlign = left:':'? '-'+ right:':'? {
+  return left && right ? 'center' : left ? 'left' : right ? 'right' : null;
+}
+
+tableCells = SAMEDENT !'#' pipe? first:tableCell rest:(pipe tableCell)* pipe? &EOL {
+  return [first].concat(rest.map(pair => pair[1]));
 }
 
 tableCell = contents:tableCellContent+ {

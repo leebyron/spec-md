@@ -5801,187 +5801,259 @@
                     },
                     {
                       "type": "Table",
-                      "headers": [
-                        [
-                          {
-                            "type": "Text",
-                            "value": "Escaped Character"
-                          }
+                      "header": {
+                        "type": "TableHeader",
+                        "cells": [
+                          [
+                            {
+                              "type": "Text",
+                              "value": "Escaped Character"
+                            }
+                          ],
+                          [
+                            {
+                              "type": "Text",
+                              "value": "Code Unit Value"
+                            }
+                          ],
+                          [
+                            {
+                              "type": "Text",
+                              "value": "Character Name"
+                            }
+                          ]
                         ],
-                        [
-                          {
-                            "type": "Text",
-                            "value": "Code Unit Value"
-                          }
-                        ],
-                        [
-                          {
-                            "type": "Text",
-                            "value": "Character Name"
-                          }
+                        "alignments": [
+                          null,
+                          null,
+                          null
                         ]
-                      ],
+                      },
                       "rows": [
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "\""
-                            }
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "\""
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+0022"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "double quote"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+0022"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "double quote"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "\\"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "\\"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+005C"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "reverse solidus (back slash)"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+005C"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "reverse solidus (back slash)"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "/"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "/"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+002F"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "solidus (forward slash)"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+002F"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "solidus (forward slash)"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "b"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "b"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+0008"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "backspace"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+0008"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "backspace"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "f"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "f"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+000C"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "form feed"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+000C"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "form feed"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "n"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "n"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+000A"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "line feed (new line)"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+000A"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "line feed (new line)"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "r"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "r"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+000D"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "carriage return"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+000D"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "carriage return"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ],
-                        [
-                          [
-                            {
-                              "type": "InlineCode",
-                              "code": "t"
-                            }
+                        },
+                        {
+                          "type": "TableRow",
+                          "cells": [
+                            [
+                              {
+                                "type": "InlineCode",
+                                "code": "t"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "U+0009"
+                              }
+                            ],
+                            [
+                              {
+                                "type": "Text",
+                                "value": "horizontal tab"
+                              }
+                            ]
                           ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "U+0009"
-                            }
-                          ],
-                          [
-                            {
-                              "type": "Text",
-                              "value": "horizontal tab"
-                            }
+                          "alignments": [
+                            null,
+                            null,
+                            null
                           ]
-                        ]
+                        }
                       ]
                     },
                     {
@@ -16144,387 +16216,523 @@
                 },
                 {
                   "type": "Table",
-                  "headers": [
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Literal Value"
-                      }
+                  "header": {
+                    "type": "TableHeader",
+                    "cells": [
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Literal Value"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Variables"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Coerced Value"
+                        }
+                      ]
                     ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Variables"
-                      }
-                    ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Coerced Value"
-                      }
+                    "alignments": [
+                      null,
+                      null,
+                      null
                     ]
-                  ],
+                  },
                   "rows": [
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: \"abc\", b: 123 }"
-                        }
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: \"abc\", b: 123 }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: \"abc\", b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: \"abc\", b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: null, b: 123 }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: null, b: 123 }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: null, b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: null, b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: 123 }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: 123 }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: $var, b: 123 }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: $var, b: 123 }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ var: null }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: null, b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ var: null }"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: null, b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: $var, b: 123 }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: $var, b: 123 }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: $var }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: $var }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ var: 123 }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ var: 123 }"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "$var"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "$var"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ var: { b: 123 } }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: 123 }"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ var: { b: 123 } }"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: 123 }"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "\"abc123\""
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "\"abc123\""
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Incorrect value"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Incorrect value"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "$var"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "$var"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ var: \"abc123\" }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Incorrect value"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ var: \"abc123\" }"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Incorrect value"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: \"abc\", b: \"123\" }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: \"abc\", b: \"123\" }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Incorrect value for field "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "b"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Incorrect value for field "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "b"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: \"abc\" }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: \"abc\" }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Missing required field "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "b"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Missing required field "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "b"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: $var }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: $var }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Missing required field "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "b"
+                          },
+                          {
+                            "type": "Text",
+                            "value": "."
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Missing required field "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "b"
-                        },
-                        {
-                          "type": "Text",
-                          "value": "."
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "$var"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "$var"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ var: { a: \"abc\" } }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Missing required field "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "b"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ var: { a: \"abc\" } }"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Missing required field "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "b"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ a: \"abc\", b: null }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ a: \"abc\", b: null }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "b"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " must be non-null."
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "b"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " must be non-null."
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: $var }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: $var }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ var: null }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "b"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " must be non-null."
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ var: null }"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "b"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " must be non-null."
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{ b: 123, c: \"xyz\" }"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{ b: 123, c: \"xyz\" }"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "{}"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Unexpected field "
+                          },
+                          {
+                            "type": "Variable",
+                            "name": "c"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "{}"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Unexpected field "
-                        },
-                        {
-                          "type": "Variable",
-                          "name": "c"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ]
+                    }
                   ]
                 }
               ]
@@ -16959,187 +17167,259 @@
                 },
                 {
                   "type": "Table",
-                  "headers": [
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Expected Type"
-                      }
+                  "header": {
+                    "type": "TableHeader",
+                    "cells": [
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Expected Type"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Provided Value"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Coerced Value"
+                        }
+                      ]
                     ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Provided Value"
-                      }
-                    ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Coerced Value"
-                      }
+                    "alignments": [
+                      null,
+                      null,
+                      null
                     ]
-                  ],
+                  },
                   "rows": [
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, \"b\", true]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Incorrect item value"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, \"b\", true]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Incorrect item value"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "1"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "1"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[Int]]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[Int]]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[1], [2, 3]]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[1], [2, 3]]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[1], [2, 3]]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[1], [2, 3]]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[Int]]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[Int]]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Incorrect item value"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Incorrect item value"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[Int]]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[Int]]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "1"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[1]]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "1"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[1]]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[[Int]]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[[Int]]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ]
+                    }
                   ]
                 }
               ]
@@ -17508,363 +17788,499 @@
                 },
                 {
                   "type": "Table",
-                  "headers": [
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Expected Type"
-                      }
+                  "header": {
+                    "type": "TableHeader",
+                    "cells": [
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Expected Type"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Internal Value"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "Coerced Result"
+                        }
+                      ]
                     ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Internal Value"
-                      }
-                    ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "Coerced Result"
-                      }
+                    "alignments": [
+                      null,
+                      null,
+                      null
                     ]
-                  ],
+                  },
                   "rows": [
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, Error]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " (With logged error)"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, Error]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " (With logged error)"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Value cannot be null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Value cannot be null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, Error]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " (With logged error)"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, Error]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " (With logged error)"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " (With logged coercion error)"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " (With logged coercion error)"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, Error]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " (With logged error)"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, Error]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " (With logged error)"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, 3]"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, 3]"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Value cannot be null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "null"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Value cannot be null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, null]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Item cannot be null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, null]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Item cannot be null"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[Int!]!"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[Int!]!"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "InlineCode",
+                            "code": "[1, 2, Error]"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Error: Error occurred in item"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "InlineCode",
-                          "code": "[1, 2, Error]"
-                        }
-                      ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Error: Error occurred in item"
-                        }
+                      "alignments": [
+                        null,
+                        null,
+                        null
                       ]
-                    ]
+                    }
                   ]
                 }
               ]
@@ -38197,141 +38613,204 @@
                 },
                 {
                   "type": "Table",
-                  "headers": [
-                    [
-                      {
-                        "type": "Text",
-                        "value": "GraphQL Value"
-                      }
+                  "header": {
+                    "type": "TableHeader",
+                    "cells": [
+                      [
+                        {
+                          "type": "Text",
+                          "value": "GraphQL Value"
+                        }
+                      ],
+                      [
+                        {
+                          "type": "Text",
+                          "value": "JSON Value"
+                        }
+                      ]
                     ],
-                    [
-                      {
-                        "type": "Text",
-                        "value": "JSON Value"
-                      }
+                    "alignments": [
+                      null,
+                      null
                     ]
-                  ],
+                  },
                   "rows": [
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Map"
-                        }
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Map"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Object"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Object"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "List"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "List"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Array"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Array"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Null"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Null"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Keyword",
+                            "value": "null"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Keyword",
-                          "value": "null"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "String"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "String"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "String"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "String"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Boolean"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Boolean"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Keyword",
+                            "value": "true"
+                          },
+                          {
+                            "type": "Text",
+                            "value": " or "
+                          },
+                          {
+                            "type": "Keyword",
+                            "value": "false"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Keyword",
-                          "value": "true"
-                        },
-                        {
-                          "type": "Text",
-                          "value": " or "
-                        },
-                        {
-                          "type": "Keyword",
-                          "value": "false"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Int"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Int"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Number"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Number"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Float"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Float"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Number"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Number"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ],
-                    [
-                      [
-                        {
-                          "type": "Text",
-                          "value": "Enum Value"
-                        }
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        [
+                          {
+                            "type": "Text",
+                            "value": "Enum Value"
+                          }
+                        ],
+                        [
+                          {
+                            "type": "Text",
+                            "value": "String"
+                          }
+                        ]
                       ],
-                      [
-                        {
-                          "type": "Text",
-                          "value": "String"
-                        }
+                      "alignments": [
+                        null,
+                        null
                       ]
-                    ]
+                    }
                   ]
                 },
                 {

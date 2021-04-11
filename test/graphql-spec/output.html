@@ -2050,28 +2050,54 @@ If non-printable ASCII characters are needed in a string value, a standard quote
 </ol>
 </div>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Escaped Character</th>
 <th>Code Unit Value</th>
 <th>Character Name</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td><code>"</code></td><td>U+0022</td><td>double quote</td></tr>
+<td><code>"</code></td>
+<td>U+0022</td>
+<td>double quote</td>
+</tr>
 <tr>
-<td><code>\</code></td><td>U+005C</td><td>reverse solidus (back slash)</td></tr>
+<td><code>\</code></td>
+<td>U+005C</td>
+<td>reverse solidus (back slash)</td>
+</tr>
 <tr>
-<td><code>/</code></td><td>U+002F</td><td>solidus (forward slash)</td></tr>
+<td><code>/</code></td>
+<td>U+002F</td>
+<td>solidus (forward slash)</td>
+</tr>
 <tr>
-<td><code>b</code></td><td>U+0008</td><td>backspace</td></tr>
+<td><code>b</code></td>
+<td>U+0008</td>
+<td>backspace</td>
+</tr>
 <tr>
-<td><code>f</code></td><td>U+000C</td><td>form feed</td></tr>
+<td><code>f</code></td>
+<td>U+000C</td>
+<td>form feed</td>
+</tr>
 <tr>
-<td><code>n</code></td><td>U+000A</td><td>line feed (new line)</td></tr>
+<td><code>n</code></td>
+<td>U+000A</td>
+<td>line feed (new line)</td>
+</tr>
 <tr>
-<td><code>r</code></td><td>U+000D</td><td>carriage return</td></tr>
+<td><code>r</code></td>
+<td>U+000D</td>
+<td>carriage return</td>
+</tr>
 <tr>
-<td><code>t</code></td><td>U+0009</td><td>horizontal tab</td></tr>
+<td><code>t</code></td>
+<td>U+0009</td>
+<td>horizontal tab</td>
+</tr>
 </tbody>
 </table>
 <div class="spec-semantic d2">
@@ -3349,44 +3375,94 @@ The GraphQL Object type (<span class="spec-nt"><a href="#ObjectTypeDefinition" d
 <span class="token punctuation">}</span>
 </code></pre>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Literal Value</th>
 <th>Variables</th>
 <th>Coerced Value</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td><code>{ a: "abc", b: 123 }</code></td><td><code>{}</code></td><td><code>{ a: "abc", b: 123 }</code></td></tr>
+<td><code>{ a: "abc", b: 123 }</code></td>
+<td><code>{}</code></td>
+<td><code>{ a: "abc", b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>{ a: null, b: 123 }</code></td><td><code>{}</code></td><td><code>{ a: null, b: 123 }</code></td></tr>
+<td><code>{ a: null, b: 123 }</code></td>
+<td><code>{}</code></td>
+<td><code>{ a: null, b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>{ b: 123 }</code></td><td><code>{}</code></td><td><code>{ b: 123 }</code></td></tr>
+<td><code>{ b: 123 }</code></td>
+<td><code>{}</code></td>
+<td><code>{ b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>{ a: $var, b: 123 }</code></td><td><code>{ var: null }</code></td><td><code>{ a: null, b: 123 }</code></td></tr>
+<td><code>{ a: $var, b: 123 }</code></td>
+<td><code>{ var: null }</code></td>
+<td><code>{ a: null, b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>{ a: $var, b: 123 }</code></td><td><code>{}</code></td><td><code>{ b: 123 }</code></td></tr>
+<td><code>{ a: $var, b: 123 }</code></td>
+<td><code>{}</code></td>
+<td><code>{ b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>{ b: $var }</code></td><td><code>{ var: 123 }</code></td><td><code>{ b: 123 }</code></td></tr>
+<td><code>{ b: $var }</code></td>
+<td><code>{ var: 123 }</code></td>
+<td><code>{ b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>$var</code></td><td><code>{ var: { b: 123 } }</code></td><td><code>{ b: 123 }</code></td></tr>
+<td><code>$var</code></td>
+<td><code>{ var: { b: 123 } }</code></td>
+<td><code>{ b: 123 }</code></td>
+</tr>
 <tr>
-<td><code>"abc123"</code></td><td><code>{}</code></td><td>Error: Incorrect value</td></tr>
+<td><code>"abc123"</code></td>
+<td><code>{}</code></td>
+<td>Error: Incorrect value</td>
+</tr>
 <tr>
-<td><code>$var</code></td><td><code>{ var: "abc123" }</code></td><td>Error: Incorrect value</td></tr>
+<td><code>$var</code></td>
+<td><code>{ var: "abc123" }</code></td>
+<td>Error: Incorrect value</td>
+</tr>
 <tr>
-<td><code>{ a: "abc", b: "123" }</code></td><td><code>{}</code></td><td>Error: Incorrect value for field <var data-name="b">b</var></td></tr>
+<td><code>{ a: "abc", b: "123" }</code></td>
+<td><code>{}</code></td>
+<td>Error: Incorrect value for field <var data-name="b">b</var></td>
+</tr>
 <tr>
-<td><code>{ a: "abc" }</code></td><td><code>{}</code></td><td>Error: Missing required field <var data-name="b">b</var></td></tr>
+<td><code>{ a: "abc" }</code></td>
+<td><code>{}</code></td>
+<td>Error: Missing required field <var data-name="b">b</var></td>
+</tr>
 <tr>
-<td><code>{ b: $var }</code></td><td><code>{}</code></td><td>Error: Missing required field <var data-name="b">b</var>.</td></tr>
+<td><code>{ b: $var }</code></td>
+<td><code>{}</code></td>
+<td>Error: Missing required field <var data-name="b">b</var>.</td>
+</tr>
 <tr>
-<td><code>$var</code></td><td><code>{ var: { a: "abc" } }</code></td><td>Error: Missing required field <var data-name="b">b</var></td></tr>
+<td><code>$var</code></td>
+<td><code>{ var: { a: "abc" } }</code></td>
+<td>Error: Missing required field <var data-name="b">b</var></td>
+</tr>
 <tr>
-<td><code>{ a: "abc", b: null }</code></td><td><code>{}</code></td><td>Error: <var data-name="b">b</var> must be non-null.</td></tr>
+<td><code>{ a: "abc", b: null }</code></td>
+<td><code>{}</code></td>
+<td>Error: <var data-name="b">b</var> must be non-null.</td>
+</tr>
 <tr>
-<td><code>{ b: $var }</code></td><td><code>{ var: null }</code></td><td>Error: <var data-name="b">b</var> must be non-null.</td></tr>
+<td><code>{ b: $var }</code></td>
+<td><code>{ var: null }</code></td>
+<td>Error: <var data-name="b">b</var> must be non-null.</td>
+</tr>
 <tr>
-<td><code>{ b: 123, c: "xyz" }</code></td><td><code>{}</code></td><td>Error: Unexpected field <var data-name="c">c</var></td></tr>
+<td><code>{ b: 123, c: "xyz" }</code></td>
+<td><code>{}</code></td>
+<td>Error: Unexpected field <var data-name="c">c</var></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -3440,28 +3516,54 @@ For more information on the error handling process, see &ldquo;Errors and Non-Nu
 <p>This allows inputs which accept one or many arguments (sometimes referred to as &ldquo;var args&rdquo;) to declare their input type as a list while for the common case of a single value, a client can just pass that value directly rather than constructing the list.</p>
 <p>Following are examples of input coercion with various list types and values:</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Expected Type</th>
 <th>Provided Value</th>
 <th>Coerced Value</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td><code>[Int]</code></td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3]</code></td></tr>
+<td><code>[Int]</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td><code>[1, 2, 3]</code></td>
+</tr>
 <tr>
-<td><code>[Int]</code></td><td><code>[1, "b", true]</code></td><td>Error: Incorrect item value</td></tr>
+<td><code>[Int]</code></td>
+<td><code>[1, "b", true]</code></td>
+<td>Error: Incorrect item value</td>
+</tr>
 <tr>
-<td><code>[Int]</code></td><td><code>1</code></td><td><code>[1]</code></td></tr>
+<td><code>[Int]</code></td>
+<td><code>1</code></td>
+<td><code>[1]</code></td>
+</tr>
 <tr>
-<td><code>[Int]</code></td><td><code>null</code></td><td><code>null</code></td></tr>
+<td><code>[Int]</code></td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
 <tr>
-<td><code>[[Int]]</code></td><td><code>[[1], [2, 3]]</code></td><td><code>[[1], [2, 3]]</code></td></tr>
+<td><code>[[Int]]</code></td>
+<td><code>[[1], [2, 3]]</code></td>
+<td><code>[[1], [2, 3]]</code></td>
+</tr>
 <tr>
-<td><code>[[Int]]</code></td><td><code>[1, 2, 3]</code></td><td>Error: Incorrect item value</td></tr>
+<td><code>[[Int]]</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td>Error: Incorrect item value</td>
+</tr>
 <tr>
-<td><code>[[Int]]</code></td><td><code>1</code></td><td><code>[[1]]</code></td></tr>
+<td><code>[[Int]]</code></td>
+<td><code>1</code></td>
+<td><code>[[1]]</code></td>
+</tr>
 <tr>
-<td><code>[[Int]]</code></td><td><code>null</code></td><td><code>null</code></td></tr>
+<td><code>[[Int]]</code></td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -3516,44 +3618,94 @@ The Validation section defines providing a nullable variable type to a non-null 
 <p>For example if the inner item type of a List is Non-Null (e.g. <code>[T!]</code>), then that List may not contain any <span class="spec-keyword">null</span> items. However if the inner type of a Non-Null is a List (e.g. <code>[T]!</code>), then <span class="spec-keyword">null</span> is not accepted however an empty list is accepted.</p>
 <p>Following are examples of result coercion with various types and values:</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Expected Type</th>
 <th>Internal Value</th>
 <th>Coerced Result</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td><code>[Int]</code></td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3]</code></td></tr>
+<td><code>[Int]</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td><code>[1, 2, 3]</code></td>
+</tr>
 <tr>
-<td><code>[Int]</code></td><td><code>null</code></td><td><code>null</code></td></tr>
+<td><code>[Int]</code></td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
 <tr>
-<td><code>[Int]</code></td><td><code>[1, 2, null]</code></td><td><code>[1, 2, null]</code></td></tr>
+<td><code>[Int]</code></td>
+<td><code>[1, 2, null]</code></td>
+<td><code>[1, 2, null]</code></td>
+</tr>
 <tr>
-<td><code>[Int]</code></td><td><code>[1, 2, Error]</code></td><td><code>[1, 2, null]</code> (With logged error)</td></tr>
+<td><code>[Int]</code></td>
+<td><code>[1, 2, Error]</code></td>
+<td><code>[1, 2, null]</code> (With logged error)</td>
+</tr>
 <tr>
-<td><code>[Int]!</code></td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3]</code></td></tr>
+<td><code>[Int]!</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td><code>[1, 2, 3]</code></td>
+</tr>
 <tr>
-<td><code>[Int]!</code></td><td><code>null</code></td><td>Error: Value cannot be null</td></tr>
+<td><code>[Int]!</code></td>
+<td><code>null</code></td>
+<td>Error: Value cannot be null</td>
+</tr>
 <tr>
-<td><code>[Int]!</code></td><td><code>[1, 2, null]</code></td><td><code>[1, 2, null]</code></td></tr>
+<td><code>[Int]!</code></td>
+<td><code>[1, 2, null]</code></td>
+<td><code>[1, 2, null]</code></td>
+</tr>
 <tr>
-<td><code>[Int]!</code></td><td><code>[1, 2, Error]</code></td><td><code>[1, 2, null]</code> (With logged error)</td></tr>
+<td><code>[Int]!</code></td>
+<td><code>[1, 2, Error]</code></td>
+<td><code>[1, 2, null]</code> (With logged error)</td>
+</tr>
 <tr>
-<td><code>[Int!]</code></td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3]</code></td></tr>
+<td><code>[Int!]</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td><code>[1, 2, 3]</code></td>
+</tr>
 <tr>
-<td><code>[Int!]</code></td><td><code>null</code></td><td><code>null</code></td></tr>
+<td><code>[Int!]</code></td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
 <tr>
-<td><code>[Int!]</code></td><td><code>[1, 2, null]</code></td><td><code>null</code> (With logged coercion error)</td></tr>
+<td><code>[Int!]</code></td>
+<td><code>[1, 2, null]</code></td>
+<td><code>null</code> (With logged coercion error)</td>
+</tr>
 <tr>
-<td><code>[Int!]</code></td><td><code>[1, 2, Error]</code></td><td><code>null</code> (With logged error)</td></tr>
+<td><code>[Int!]</code></td>
+<td><code>[1, 2, Error]</code></td>
+<td><code>null</code> (With logged error)</td>
+</tr>
 <tr>
-<td><code>[Int!]!</code></td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3]</code></td></tr>
+<td><code>[Int!]!</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td><code>[1, 2, 3]</code></td>
+</tr>
 <tr>
-<td><code>[Int!]!</code></td><td><code>null</code></td><td>Error: Value cannot be null</td></tr>
+<td><code>[Int!]!</code></td>
+<td><code>null</code></td>
+<td>Error: Value cannot be null</td>
+</tr>
 <tr>
-<td><code>[Int!]!</code></td><td><code>[1, 2, null]</code></td><td>Error: Item cannot be null</td></tr>
+<td><code>[Int!]!</code></td>
+<td><code>[1, 2, null]</code></td>
+<td>Error: Item cannot be null</td>
+</tr>
 <tr>
-<td><code>[Int!]!</code></td><td><code>[1, 2, Error]</code></td><td>Error: Error occurred in item</td></tr>
+<td><code>[Int!]!</code></td>
+<td><code>[1, 2, Error]</code></td>
+<td>Error: Error occurred in item</td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -6495,27 +6647,45 @@ Previous versions of this spec did not describe the <code>extensions</code> entr
 <p>JSON is the most common serialization format for GraphQL. Though as mentioned above, GraphQL does not require a specific serialization format.</p>
 <p>When using JSON as a serialization of GraphQL responses, the following JSON values should be used to encode the related GraphQL values:</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>GraphQL Value</th>
 <th>JSON Value</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>Map</td><td>Object</td></tr>
+<td>Map</td>
+<td>Object</td>
+</tr>
 <tr>
-<td>List</td><td>Array</td></tr>
+<td>List</td>
+<td>Array</td>
+</tr>
 <tr>
-<td>Null</td><td><span class="spec-keyword">null</span></td></tr>
+<td>Null</td>
+<td><span class="spec-keyword">null</span></td>
+</tr>
 <tr>
-<td>String</td><td>String</td></tr>
+<td>String</td>
+<td>String</td>
+</tr>
 <tr>
-<td>Boolean</td><td><span class="spec-keyword">true</span> or <span class="spec-keyword">false</span></td></tr>
+<td>Boolean</td>
+<td><span class="spec-keyword">true</span> or <span class="spec-keyword">false</span></td>
+</tr>
 <tr>
-<td>Int</td><td>Number</td></tr>
+<td>Int</td>
+<td>Number</td>
+</tr>
 <tr>
-<td>Float</td><td>Number</td></tr>
+<td>Float</td>
+<td>Number</td>
+</tr>
 <tr>
-<td>Enum Value</td><td>String</td></tr>
+<td>Enum Value</td>
+<td>String</td>
+</tr>
 </tbody>
 </table>
 <div id="note-786e2" class="spec-note">

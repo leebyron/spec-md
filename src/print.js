@@ -527,20 +527,32 @@ function printAll(list, options) {
             '</li>\n'
           );
 
-        case 'Table':
+          case 'Table':
+            return (
+              '<table>\n' +
+              '<thead>\n' +
+                node.header +
+              '</thead>\n' +
+              (node.rows.length === 0 ? '' :
+                '<tbody>\n' +
+                  join(node.rows) +
+                '</tbody>\n'
+              ) +
+              '</table>\n'
+            );
+
+        case 'TableHeader':
           return (
-            '<table>\n' +
-              '<thead><tr>\n' +
-                join(node.headers.map(cell => '<th>' + join(cell) + '</th>\n')) +
-              '</tr></thead>\n' +
-              '<tbody>\n' +
-                join(node.rows.map(row =>
-                  '<tr>\n' +
-                    join(row.map(cell => '<td>' + join(cell) + '</td>')) +
-                  '</tr>\n'
-                )) +
-              '</tbody>\n' +
-            '</table>\n'
+            '<tr>\n' +
+              join(node.cells.map((cell, i) => '<th' + colAlign(node, i) + '>' + join(cell) + '</th>\n')) +
+            '</tr>\n'
+          );
+
+        case 'TableRow':
+          return (
+            '<tr>\n' +
+              join(node.cells.map((cell, i) => '<td' + colAlign(node, i) + '>' + join(cell) + '</td>\n')) +
+            '</tr>\n'
           );
 
         case 'Algorithm':
@@ -693,6 +705,14 @@ function printAll(list, options) {
 
     }
   }));
+}
+
+function colAlign(row, index) {
+  const align = row.alignments[index];
+  if (!align) {
+    return '';
+  }
+  return ' align="' + escapeAttr(align) + '"';
 }
 
 function getTerms(ast) {

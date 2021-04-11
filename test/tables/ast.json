@@ -25,35 +25,49 @@
         },
         {
           "type": "Table",
-          "headers": [
-            [
-              {
-                "type": "Text",
-                "value": "Alpha"
-              }
-            ],
-            [
-              {
-                "type": "Text",
-                "value": "Beta"
-              }
-            ]
-          ],
-          "rows": [
-            [
+          "header": {
+            "type": "TableHeader",
+            "cells": [
               [
                 {
                   "type": "Text",
-                  "value": "a"
+                  "value": "Alpha"
                 }
               ],
               [
                 {
                   "type": "Text",
-                  "value": "b"
+                  "value": "Beta"
                 }
               ]
+            ],
+            "alignments": [
+              null,
+              null
             ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "b"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                null
+              ]
+            }
           ]
         },
         {
@@ -67,35 +81,49 @@
         },
         {
           "type": "Table",
-          "headers": [
-            [
-              {
-                "type": "Text",
-                "value": "Alpha"
-              }
-            ],
-            [
-              {
-                "type": "Text",
-                "value": "Beta"
-              }
-            ]
-          ],
-          "rows": [
-            [
+          "header": {
+            "type": "TableHeader",
+            "cells": [
               [
                 {
                   "type": "Text",
-                  "value": "a"
+                  "value": "Alpha"
                 }
               ],
               [
                 {
                   "type": "Text",
-                  "value": "b"
+                  "value": "Beta"
                 }
               ]
+            ],
+            "alignments": [
+              null,
+              null
             ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "b"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                null
+              ]
+            }
           ]
         },
         {
@@ -109,35 +137,49 @@
         },
         {
           "type": "Table",
-          "headers": [
-            [
-              {
-                "type": "Text",
-                "value": "Alpha"
-              }
-            ],
-            [
-              {
-                "type": "Text",
-                "value": "Beta"
-              }
-            ]
-          ],
-          "rows": [
-            [
+          "header": {
+            "type": "TableHeader",
+            "cells": [
               [
                 {
                   "type": "Text",
-                  "value": "a"
+                  "value": "Alpha"
                 }
               ],
               [
                 {
                   "type": "Text",
-                  "value": "b"
+                  "value": "Beta"
                 }
               ]
+            ],
+            "alignments": [
+              null,
+              null
             ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "b"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                null
+              ]
+            }
           ]
         },
         {
@@ -151,35 +193,49 @@
         },
         {
           "type": "Table",
-          "headers": [
-            [
-              {
-                "type": "Text",
-                "value": "Alpha"
-              }
-            ],
-            [
-              {
-                "type": "Text",
-                "value": "Beta"
-              }
-            ]
-          ],
-          "rows": [
-            [
+          "header": {
+            "type": "TableHeader",
+            "cells": [
               [
                 {
                   "type": "Text",
-                  "value": "a"
+                  "value": "Alpha"
                 }
               ],
               [
                 {
                   "type": "Text",
-                  "value": "b"
+                  "value": "Beta"
                 }
               ]
+            ],
+            "alignments": [
+              null,
+              null
             ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "b"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                null
+              ]
+            }
           ]
         },
         {
@@ -193,23 +249,35 @@
         },
         {
           "type": "Table",
-          "headers": [
-            [
-              {
-                "type": "Text",
-                "value": "Alpha"
-              }
-            ]
-          ],
-          "rows": [
-            [
+          "header": {
+            "type": "TableHeader",
+            "cells": [
               [
                 {
                   "type": "Text",
-                  "value": "a"
+                  "value": "Alpha"
                 }
               ]
+            ],
+            "alignments": [
+              null
             ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ]
+              ],
+              "alignments": [
+                null
+              ]
+            }
           ]
         },
         {
@@ -223,24 +291,147 @@
         },
         {
           "type": "Table",
-          "headers": [
-            [
-              {
-                "type": "Text",
-                "value": "Alpha"
-              }
-            ]
-          ],
-          "rows": [
-            [
+          "header": {
+            "type": "TableHeader",
+            "cells": [
               [
                 {
                   "type": "Text",
-                  "value": "a"
+                  "value": "Alpha"
                 }
               ]
+            ],
+            "alignments": [
+              null
             ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ]
+              ],
+              "alignments": [
+                null
+              ]
+            }
           ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Right wrapped solo"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "header": {
+            "type": "TableHeader",
+            "cells": [
+              [
+                {
+                  "type": "Text",
+                  "value": "Alpha"
+                }
+              ]
+            ],
+            "alignments": [
+              null
+            ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ]
+              ],
+              "alignments": [
+                null
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Left aligned solo"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "header": {
+            "type": "TableHeader",
+            "cells": [
+              [
+                {
+                  "type": "Text",
+                  "value": "Alpha"
+                }
+              ]
+            ],
+            "alignments": [
+              "left"
+            ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "a"
+                  }
+                ]
+              ],
+              "alignments": [
+                "left"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Empty table"
+            }
+          ]
+        },
+        {
+          "type": "Table",
+          "header": {
+            "type": "TableHeader",
+            "cells": [
+              [
+                {
+                  "type": "Text",
+                  "value": "Header"
+                }
+              ]
+            ],
+            "alignments": [
+              null
+            ]
+          },
+          "rows": []
         }
       ]
     },
@@ -258,7 +449,209 @@
           "contents": [
             {
               "type": "Text",
-              "value": "Alpha ----- a "
+              "value": "Alpha ----- a"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Too | Many | Columns --- | -------------- o | o"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Text",
+              "value": "Too | Few --- | ---- | ------- o | o | o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Column alignments"
+      },
+      "contents": [
+        {
+          "type": "Table",
+          "header": {
+            "type": "TableHeader",
+            "cells": [
+              [
+                {
+                  "type": "Text",
+                  "value": "None"
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "Left"
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "Right"
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "Center"
+                }
+              ]
+            ],
+            "alignments": [
+              null,
+              "left",
+              "right",
+              "center"
+            ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "o"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "o"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "o"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "o"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                "left",
+                "right",
+                "center"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Irregular rows"
+      },
+      "contents": [
+        {
+          "type": "Table",
+          "header": {
+            "type": "TableHeader",
+            "cells": [
+              [
+                {
+                  "type": "Text",
+                  "value": "Alpha"
+                }
+              ],
+              [
+                {
+                  "type": "Text",
+                  "value": "Beta"
+                }
+              ]
+            ],
+            "alignments": [
+              null,
+              null
+            ]
+          },
+          "rows": [
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "2"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                null
+              ]
+            },
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "1"
+                  }
+                ],
+                {
+                  "type": "Text",
+                  "value": ""
+                }
+              ],
+              "alignments": [
+                null,
+                null
+              ]
+            },
+            {
+              "type": "TableRow",
+              "cells": [
+                [
+                  {
+                    "type": "Text",
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "type": "Text",
+                    "value": "2"
+                  }
+                ]
+              ],
+              "alignments": [
+                null,
+                null
+              ]
             }
           ]
         }

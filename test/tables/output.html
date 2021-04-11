@@ -1031,6 +1031,8 @@ pre[class*="language-"] {
 <ol>
 <li><a href="#sec-Tables"><span class="spec-secid">1</span>Tables</a></li>
 <li><a href="#sec-Not-tables"><span class="spec-secid">2</span>Not tables</a></li>
+<li><a href="#sec-Column-alignments"><span class="spec-secid">3</span>Column alignments</a></li>
+<li><a href="#sec-Irregular-rows"><span class="spec-secid">4</span>Irregular rows</a></li>
 </ol>
 </nav>
 </header>
@@ -1038,72 +1040,176 @@ pre[class*="language-"] {
 <h1><span class="spec-secid" title="link to this section"><a href="#sec-Tables">1</a></span>Tables</h1>
 <p>Naked table</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Alpha</th>
 <th>Beta</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>a</td><td>b</td></tr>
+<td>a</td>
+<td>b</td>
+</tr>
 </tbody>
 </table>
 <p>Wrapped table</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Alpha</th>
 <th>Beta</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>a</td><td>b</td></tr>
+<td>a</td>
+<td>b</td>
+</tr>
 </tbody>
 </table>
 <p>Right wrapped</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Alpha</th>
 <th>Beta</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>a</td><td>b</td></tr>
+<td>a</td>
+<td>b</td>
+</tr>
 </tbody>
 </table>
 <p>Left wrapped</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Alpha</th>
 <th>Beta</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>a</td><td>b</td></tr>
+<td>a</td>
+<td>b</td>
+</tr>
 </tbody>
 </table>
 <p>Wrapped solo</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Alpha</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>a</td></tr>
+<td>a</td>
+</tr>
 </tbody>
 </table>
 <p>Left wrapped solo</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Alpha</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>a</td></tr>
+<td>a</td>
+</tr>
 </tbody>
+</table>
+<p>Right wrapped solo</p>
+<table>
+<thead>
+<tr>
+<th>Alpha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+</tr>
+</tbody>
+</table>
+<p>Left aligned solo</p>
+<table>
+<thead>
+<tr>
+<th align="left">Alpha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">a</td>
+</tr>
+</tbody>
+</table>
+<p>Empty table</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+</tr>
+</thead>
 </table>
 </section>
 <section id="sec-Not-tables" secid="2">
 <h1><span class="spec-secid" title="link to this section"><a href="#sec-Not-tables">2</a></span>Not tables</h1>
-<p>Alpha ----- a </p>
+<p>Alpha ----- a</p>
+<p>Too | Many | Columns --- | -------------- o | o</p>
+<p>Too | Few --- | ---- | ------- o | o | o</p>
+</section>
+<section id="sec-Column-alignments" secid="3">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Column-alignments">3</a></span>Column alignments</h1>
+<table>
+<thead>
+<tr>
+<th>None</th>
+<th align="left">Left</th>
+<th align="right">Right</th>
+<th align="center">Center</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>o</td>
+<td align="left">o</td>
+<td align="right">o</td>
+<td align="center">o</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-Irregular-rows" secid="4">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Irregular-rows">4</a></span>Irregular rows</h1>
+<table>
+<thead>
+<tr>
+<th>Alpha</th>
+<th>Beta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 </section>
 </article>
 <footer>
@@ -1114,6 +1220,8 @@ Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</foo
 <div class="title"><a href="#">Tables</a></div>
 <ol><li id="_sidebar_1"><a href="#sec-Tables"><span class="spec-secid">1</span>Tables</a></li>
 <li id="_sidebar_2"><a href="#sec-Not-tables"><span class="spec-secid">2</span>Not tables</a></li>
+<li id="_sidebar_3"><a href="#sec-Column-alignments"><span class="spec-secid">3</span>Column alignments</a></li>
+<li id="_sidebar_4"><a href="#sec-Irregular-rows"><span class="spec-secid">4</span>Irregular rows</a></li>
 </ol>
 </div>
 <script>(function(){var e,t=[],n=document.querySelector('label[for="spec-sidebar-toggle"]');function o(e){e.preventDefault()}n.addEventListener("scroll",o),n.addEventListener("touchmove",o);for(var i=document.getElementsByTagName("section"),r=0;r<i.length;r++)i[r].getAttribute("secid")&&t.push(i[r]);var c=window.scrollY,l=!1;function d(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&a(e,!1),c&&a(c,!0),e=c)}function a(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_sidebar_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",(function(e){c=window.scrollY,l||(l=!0,window.requestAnimationFrame((function(){d(c),l=!1})))})),d(window.scrollY);})()</script>
