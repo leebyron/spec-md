@@ -90,7 +90,7 @@ Punc: one of
 
 # Algorithms
 
-An algoritm can have no args
+An algorithm can have no args
 
 Algo():
   - Step

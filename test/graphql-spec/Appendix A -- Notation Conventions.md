@@ -202,7 +202,7 @@ values, check various conditions, call other algorithms, and eventually return
 a value representing the outcome of the algorithm for the provided arguments.
 
 For example, the following example describes an algorithm named {Fibonacci} which
-accepts a single argument {number}. The algoritm's steps produce the next number
+accepts a single argument {number}. The algorithm's steps produce the next number
 in the Fibonacci sequence:
 
 Fibonacci(number):
