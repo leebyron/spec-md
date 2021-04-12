@@ -51,7 +51,7 @@ function fold(secid, check) {
   document.getElementById('_sidebar_' + secid).className = check ? 'viewing' : '';
   var sections = secid.split('.');
   while (sections.length) {
-    var toggle = document.getElementById('_sidebar_toggle_' + sections.join('.'));
+    var toggle = document.getElementById('_toggle_' + sections.join('.'));
     if (toggle) {
       toggle.checked = check;
     }
