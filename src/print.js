@@ -189,6 +189,10 @@ function assignExampleNumbers(ast, options) {
   });
 }
 
+function getCallID(name) {
+  return anchorize(name) + '()';
+}
+
 function assignBiblioIDs(ast, options) {
   const secnames = {};
   const conflicts = {};
@@ -232,7 +236,7 @@ function assignBiblioIDs(ast, options) {
         node.id = id;
       }
       if (node.type === 'Algorithm') {
-        let id = anchorize(node.call.name) + '()';
+        let id = getCallID(node.call.name);
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
@@ -300,7 +304,6 @@ function nextSecID(id) {
     return String.fromCharCode(parseInt(digit, 26) + 65);
   }).join('');
 }
-
 
 // Table of Contents
 
@@ -501,7 +504,7 @@ function printAll(list, options) {
               (node.lang ? ' data-language="' + escapeAttr(node.lang) + '"' : '') +
               dataSourceAttr(node, options) +
             '>' +
-              (node.example ? link({name: (node.counter ? 'Counter Example № ' : 'Example № ') + node.number}, node.id, options) : '') +
+              (node.example ? link((node.counter ? 'Counter Example № ' : 'Example № ') + node.number, node.id, options) : '') +
               '<code>' +
                 options.highlight(node.code, node.lang) +
               '</code>'+
@@ -582,7 +585,7 @@ function printAll(list, options) {
         case 'Call':
           return (
             '<span class="spec-call">' +
-              link(node, anchorize(node.name) + '()', options, true) +
+              link(node.name, getCallID(node.name), options, node.name) +
               '(' + join(node.args, ', ') + ')' +
             '</span>'
           );
@@ -659,7 +662,7 @@ function printAll(list, options) {
               (node.isList ? ' list' : '') +
               (node.isOptional ? ' optional' : '') +
             '">' +
-              link(node, anchorize(node.name), options, true) +
+              link(node.name, anchorize(node.name), options, anchorize(node.name)) +
               (node.params ? '<span class="spec-params">' + join(node.params) + '</span>' : '') +
             '</span>'
           );
@@ -763,14 +766,13 @@ function getTerms(ast) {
         return false;
       }
       if (node.type === 'Algorithm') {
-        const algorithmName = node.call.name;
-        if (!terms[algorithmName]) {
-          terms[algorithmName] = node;
+        if (!terms[node.id]) {
+          terms[node.id] = node.call.name;
         }
-      } else if (node.type === 'Production' || node.type === 'OneOfProduction') {
-        const productionName = node.token.name;
-        if (!terms[productionName]) {
-          terms[productionName] = node;
+      }
+      if (node.type === 'Production' || node.type === 'OneOfProduction') {
+        if (!terms[node.id]) {
+          terms[node.id] = node.token.name;
         }
       }
     }
@@ -784,27 +786,32 @@ function hasIndex(ast, options) {
 
 function printIndex(ast, options) {
   const terms = getTerms(ast);
-  const termNames = Object.keys(terms).sort();
-  if (termNames.length === 0) {
+  const termIDs = Object.keys(terms).sort(caseInsensitiveSort);
+  if (termIDs.length === 0) {
     return '';
   }
 
-  const items = termNames.map(termName => {
-    const node = terms[termName];
-    return '<li>' + link({name: termName}, node.id, options) + '</li>';
-  });
-
   return (
-    '<section id="index" secid="index" class="spec-index">' +
-      '<h1>' +
+    '<section id="index" secid="index" class="spec-index">\n' +
+      '<h1>\n' +
         '<span class="spec-secid" title="link to the index">' +
           '<a href="#index">§</a>' +
         '</span>' +
         'Index' +
-      '</h1>' +
-      '<ol>' + join(items) + '</ol>' +
-    '</section>'
+      '</h1>\n' +
+      '<ol>\n' +
+        join(termIDs.map(termID =>
+          '<li>' + link(terms[termID], termID, options) + '</li>\n'
+        )) +
+      '</ol>\n' +
+    '</section>\n'
   );
+}
+
+function caseInsensitiveSort(a, b) {
+  a = a.toLowerCase();
+  b = b.toLowerCase();
+  return a > b ? 1 : a < b ? -1 : 0;
 }
 
 function join(list, joiner) {
@@ -815,14 +822,13 @@ function maybe(value) {
   return value ? value : '';
 }
 
-function link(node, id, options, doHighlight) {
+function link(content, id, options, highlightName) {
   const href = options.biblio[id];
-  const content = escape(node.name);
   if (!href) {
-    if (doHighlight) {
+    if (highlightName) {
       return (
-        '<span data-name="' + anchorize(node.name) + '">' +
-          content +
+        '<span data-name="' + escapeAttr(highlightName) + '">' +
+          escape(content) +
         '</span>'
       );
     }
@@ -830,9 +836,9 @@ function link(node, id, options, doHighlight) {
   }
   return (
     '<a href="' + encodeURI(href) + '"' +
-      (doHighlight ? ' data-name="' + anchorize(node.name) + '"' : '') +
+      (highlightName ? ' data-name="' + escapeAttr(highlightName) + '"' : '') +
       (href[0] !== '#' ? ' target="_blank"' : '') + '>' +
-      content +
+      escape(content) +
     '</a>'
   );
 }
