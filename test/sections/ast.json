@@ -141,7 +141,8 @@
                                           "value": "Level 2"
                                         }
                                       ],
-                                      "url": "#Level-2"
+                                      "url": "#Level-2",
+                                      "title": null
                                     },
                                     {
                                       "type": "Text",
@@ -164,7 +165,8 @@
                                           "value": "Imported level 2"
                                         }
                                       ],
-                                      "url": "./imported.md#Imported-level-2"
+                                      "url": "./imported.md#Imported-level-2",
+                                      "title": null
                                     },
                                     {
                                       "type": "Text",

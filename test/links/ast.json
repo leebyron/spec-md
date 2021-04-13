@@ -1,0 +1,502 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "Links"
+  },
+  "contents": [
+    {
+      "type": "Section",
+      "header": {
+        "type": "Header",
+        "level": 1,
+        "secID": null,
+        "title": "Links"
+      },
+      "contents": [
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Simple link"
+                }
+              ],
+              "url": "url",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With encoded char"
+                }
+              ],
+              "url": "url path",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With encodeable char"
+                }
+              ],
+              "url": "url<path",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With not-always-encoded char"
+                }
+              ],
+              "url": "url(path",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With balanced parens"
+                }
+              ],
+              "url": "url(p(a())th)",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With escaped parens"
+                }
+              ],
+              "url": "url(path",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With pointy url"
+                }
+              ],
+              "url": "url ) path",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With pointy escaped url"
+                }
+              ],
+              "url": "url>path",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With spaces"
+                }
+              ],
+              "url": "url",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With breaks"
+                }
+              ],
+              "url": "url",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With spaces "
+                }
+              ],
+              "url": "url",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "With breaks"
+                }
+              ],
+              "url": "url",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [],
+              "url": "invisible-url",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "no url"
+                }
+              ],
+              "url": "",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "no pointy url"
+                }
+              ],
+              "url": "",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with title"
+                }
+              ],
+              "url": "url",
+              "title": "ti’tle"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with escaped title"
+                }
+              ],
+              "url": "url",
+              "title": "ti\"tle"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with line break"
+                }
+              ],
+              "url": "url",
+              "title": "title break"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with single title"
+                }
+              ],
+              "url": "url",
+              "title": "ti“tle"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with escaped single title"
+                }
+              ],
+              "url": "url",
+              "title": "ti'tle"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with single line break"
+                }
+              ],
+              "url": "url",
+              "title": "title break"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with paren title"
+                }
+              ],
+              "url": "url",
+              "title": "title"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with escaped paren title"
+                }
+              ],
+              "url": "url",
+              "title": "ti(t)le"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "with paren line break"
+                }
+              ],
+              "url": "url",
+              "title": "title break"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "contents": [
+            {
+              "type": "Link",
+              "contents": [
+                {
+                  "type": "Image",
+                  "alt": "linked image",
+                  "url": "moon.jpg",
+                  "title": null
+                }
+              ],
+              "url": "/uri",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
+            "title": "Not Links"
+          },
+          "contents": [
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "[Space after title] (url)"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "[Url with unencoded space](url path)"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Link",
+                  "contents": [
+                    {
+                      "type": "Text",
+                      "value": "No nested [link"
+                    }
+                  ],
+                  "url": "url",
+                  "title": null
+                },
+                {
+                  "type": "Text",
+                  "value": "](url)"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "[Unclosed quote title](url “title)"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "[Interior quote title](url “tit“le”)"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "[Too many line breaks in title](url “title\\ too many”)"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "[with nested paren title](url (ti(t)le)) "
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

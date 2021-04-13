@@ -70,8 +70,6 @@ This is an [-->*example*<--](https://www.facebook.com) of a link.
 
 Todo: Links do not yet support a reference style short-form.
 
-Todo: Links do not yet support a title attribute.
-
 
 ### Emphasis
 
@@ -125,42 +123,6 @@ Inline code can also use double- or triple-backticks. Wrapping spaces are remove
 Produces the following:
 
 ![Specs](http://i.imgur.com/aV8o3rE.png)
-
-Also, consider using images for support of more complex features like
-graph diagrams. For example, with Graviso:
-
-```
-![How spec-md works](http://g.gravizo.com/svg?
-  digraph specmd {
-    markdown [shape=box];
-    ast [shape=box];
-    html [shape=box];
-    markdown -> parse [weight=8];
-    parse -> ast;
-    ast -> print;
-    edge [color=red];
-    print -> html;
-  }
-)
-```
-
-Produces the following:
-
-![How spec-md works](http://g.gravizo.com/svg?
-  digraph specmd {
-    markdown [shape=box];
-    ast [shape=box];
-    html [shape=box];
-    markdown -> parse [weight=8];
-    parse -> ast;
-    ast -> print;
-    edge [color=red];
-    print -> html;
-  }
-)
-
-TODO: the title attribute is not yet supported
-
 
 
 ## Blocks

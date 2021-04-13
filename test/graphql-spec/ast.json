@@ -50,7 +50,8 @@
                   "value": "release tag"
                 }
               ],
-              "url": "https://github.com/graphql/graphql-spec/releases"
+              "url": "https://github.com/graphql/graphql-spec/releases",
+              "title": null
             },
             {
               "type": "Text",
@@ -64,7 +65,8 @@
                   "value": "https://spec.graphql.org/draft"
                 }
               ],
-              "url": "https://spec.graphql.org/draft"
+              "url": "https://spec.graphql.org/draft",
+              "title": null
             },
             {
               "type": "Text",
@@ -114,7 +116,8 @@
                   "value": "openwebfoundation.org"
                 }
               ],
-              "url": "http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0"
+              "url": "http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0",
+              "title": null
             },
             {
               "type": "Text",
@@ -152,7 +155,8 @@
                   "value": "github.com/graphql/graphql-spec"
                 }
               ],
-              "url": "https://github.com/graphql/graphql-spec/tree/master/signed-agreements"
+              "url": "https://github.com/graphql/graphql-spec/tree/master/signed-agreements",
+              "title": null
             },
             {
               "type": "Text",
@@ -202,7 +206,8 @@
                   "value": "IETF RFC 2119"
                 }
               ],
-              "url": "https://tools.ietf.org/html/rfc2119"
+              "url": "https://tools.ietf.org/html/rfc2119",
+              "title": null
             },
             {
               "type": "Text",
@@ -261,7 +266,8 @@
                   "value": "Appendix A"
                 }
               ],
-              "url": "#sec-Appendix-Notation-Conventions"
+              "url": "#sec-Appendix-Notation-Conventions",
+              "title": null
             },
             {
               "type": "Text",
@@ -630,7 +636,8 @@
                   "value": "Appendix A"
                 }
               ],
-              "url": "#sec-Appendix-Notation-Conventions"
+              "url": "#sec-Appendix-Notation-Conventions",
+              "title": null
             },
             {
               "type": "Text",
@@ -828,7 +835,8 @@
                       "value": "maximal munch"
                     }
                   ],
-                  "url": "https://en.wikipedia.org/wiki/Maximal_munch"
+                  "url": "https://en.wikipedia.org/wiki/Maximal_munch",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -916,7 +924,8 @@
                       "value": "Unicode"
                     }
                   ],
-                  "url": "https://unicode.org/standard/standard.html"
+                  "url": "https://unicode.org/standard/standard.html",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -8748,7 +8757,8 @@
                       "value": "custom directives"
                     }
                   ],
-                  "url": "#sec-Type-System.Directives.Custom-Directives"
+                  "url": "#sec-Type-System.Directives.Custom-Directives",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -8883,7 +8893,8 @@
                   "value": "IDL"
                 }
               ],
-              "url": "https://en.wikipedia.org/wiki/Interface_description_language"
+              "url": "https://en.wikipedia.org/wiki/Interface_description_language",
+              "title": null
             },
             {
               "type": "Text",
@@ -9045,7 +9056,8 @@
                       "value": "CommonMark"
                     }
                   ],
-                  "url": "https://commonmark.org/"
+                  "url": "https://commonmark.org/",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -10735,7 +10747,8 @@
                           "value": "Serialization Format"
                         }
                       ],
-                      "url": "#sec-Serialization-Format"
+                      "url": "#sec-Serialization-Format",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -11033,7 +11046,8 @@
                           "value": "IEEE 754"
                         }
                       ],
-                      "url": "https://en.wikipedia.org/wiki/IEEE_floating_point"
+                      "url": "https://en.wikipedia.org/wiki/IEEE_floating_point",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -11442,7 +11456,8 @@
                               "value": "GUID"
                             }
                           ],
-                          "url": "https://en.wikipedia.org/wiki/Globally_unique_identifier"
+                          "url": "https://en.wikipedia.org/wiki/Globally_unique_identifier",
+                          "title": null
                         },
                         {
                           "type": "Text",
@@ -15657,7 +15672,8 @@
                           "value": "EDN"
                         }
                       ],
-                      "url": "https://github.com/edn-format/edn"
+                      "url": "https://github.com/edn-format/edn",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -18700,7 +18716,8 @@
                           "value": "RFC process"
                         }
                       ],
-                      "url": "https://github.com/graphql/graphql-spec/blob/master/CONTRIBUTING.md"
+                      "url": "https://github.com/graphql/graphql-spec/blob/master/CONTRIBUTING.md",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -19282,7 +19299,8 @@
                           "value": "CommonMark"
                         }
                       ],
-                      "url": "https://commonmark.org/"
+                      "url": "https://commonmark.org/",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -19483,7 +19501,8 @@
                       "value": "CommonMark"
                     }
                   ],
-                  "url": "https://commonmark.org/"
+                  "url": "https://commonmark.org/",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -33463,7 +33482,8 @@
                           "value": "Errors and Non-Nullability"
                         }
                       ],
-                      "url": "#sec-Errors-and-Non-Nullability"
+                      "url": "#sec-Errors-and-Non-Nullability",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -38908,7 +38928,8 @@
                           "value": "unordered collection of key-value pairs"
                         }
                       ],
-                      "url": "https://tools.ietf.org/html/rfc7159#section-4"
+                      "url": "https://tools.ietf.org/html/rfc7159#section-4",
+                      "title": null
                     },
                     {
                       "type": "Text",

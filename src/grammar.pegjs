@@ -375,8 +375,9 @@ textChar = [^\n\r+\-{`*_[!<\\]+
          / '\\' .?
          / '+' !'+}'
          / '-' !'-}'
-         / '!' !'['
-         / '<' !htmlTagContents
+         / &'!' !image '!'
+         / &'[' !link '['
+         / &'<' !htmlTag '<'
          / LINE_WRAP
 
 text = value:$textChar+ {
@@ -436,14 +437,12 @@ del = '{--' contents:content* '--}' {
   });
 }
 
-htmlTag = tag:$('<' htmlTagContents) {
+htmlTag = tag:$('<' '/'? [a-z]+ [^>]* '>') {
   return located({
     type: 'HTMLTag',
     tag: tag
   });
 }
-
-htmlTagContents = $('/'? [a-z]+ [^>]* '>')
 
 reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
   if (ref === null || close === null) {
@@ -516,32 +515,64 @@ indentCodeLine = depth:indentDepth &{ return depth >= indent; } code:$NOT_NL+ {
 
 // Link & Image
 
-link = '[' contents:linkContent* ']' _ '(' _ url:$[^)]+ _ ')' {
+link = '[' __ contents:linkContent* __ ']' '(' __ url:url __ title:linkTitle? __ ')' {
   return located({
     type: 'Link',
     contents: contents,
-    url: url
+    url: url,
+    title: title
   });
 }
 
 linkContent = linkText / inlineEntity
 
-linkTextChar = [^\x5D\n\r+\-{`*!<\\]+ // \x5D := "]"
+linkTextChar = [^\n\r+\-{`*!<\]\\]+
              / '\\' .?
              / '+' !'+}'
              / '-' !'-}'
-             / '!' !'['
-             / '<' !htmlTagContents
+             / &'!' !image '!'
+             / &'<' !htmlTag '<'
 
 linkText = value:$linkTextChar+ {
   return formattedText(value);
 }
 
-image = '![' alt:$[^\x5D]+ '](' _ url:$[^)]+ _ ')' {
+url = rawUrl:(pointyUrl / parensUrl) {
+  return decodeURI(unescape(rawUrl));
+}
+
+pointyUrl = '<' rawUrl:$([^<>\\\n\r]+ / '\\' [^\n\r])* '>' {
+  return rawUrl;
+}
+
+parensUrl = !'<' rawUrl:$(parensUrlChar*) {
+  return rawUrl;
+}
+
+parensUrlChar = [^()\\ \t\n\r]+ / '\\' [^ \t\n\r] / '(' parensUrlChar* ')'
+
+linkTitle = rawString:(doubleTitle / singleTitle / parensTitle) {
+  return format(rawString);
+}
+
+doubleTitle = '"' value:$([^"\\\n\r]+ / '\\' [^\n\r] / '\\' &[\n\r] / LINE_WRAP)* '"' {
+  return value;
+}
+
+singleTitle = "'" value:$([^'\\\n\r]+ / '\\' [^\n\r] / '\\' &[\n\r] / LINE_WRAP)* "'" {
+  return value;
+}
+
+parensTitle = '(' value:$([^()\\\n\r]+ / '\\' [^\n\r] / '\\' &[\n\r] / LINE_WRAP)* ')' {
+  return value;
+}
+
+image = '![' alt:$[^\x5D]+ '](' __ url:url __ title:linkTitle? __ ')' {
   return located({
     type: 'Image',
     alt: format(alt),
-    url: unescape(url)
+    url: url,
+    title: title,
   });
 }
 
@@ -591,10 +622,10 @@ listItem = SAMEDENT bullet:listBullet _ taskBox:taskBox? contents:content* &EOL 
 }
 
 listBullet = unorderedBullet / orderedBullet
-unorderedBullet = $(('-' / '+' / '*') ' ')
-orderedBullet = $(([1-9]+ '.') ' ')
+unorderedBullet = $(('-' / '+' / '*') WS)
+orderedBullet = $(([1-9]+ '.') WS)
 
-taskBox = '[' done:(' ' / 'x' / 'X') ']' !(_ '(') {
+taskBox = '[' done:(' ' / 'x' / 'X') ']' WS {
   return located({
     done: done !== ' '
   });
@@ -657,12 +688,13 @@ tableCell = contents:tableCellContent+ {
 tableCellContent = tableCellText / inlineEntity
 
 tableCellTextChar = [^ |\n\r+\-{`*[!<]+
-                  / ' '+ ![ |\n\r] // Do not capture trailing space in a cell
+                  / WS+ ![ |\n\r] // Do not capture trailing space in a cell
                   / '\\' .?
                   / '+' !'+}'
                   / '-' !'-}'
-                  / '!' !'['
-                  / '<' !htmlTagContents
+                  / &'!' !image '!'
+                  / &'[' !link '['
+                  / &'<' !htmlTag '<'
 
 tableCellText = value:$tableCellTextChar+ {
   return formattedText(value);
@@ -945,12 +977,13 @@ DEDENT = !{ indentStack.length === 0 } {
 
 indentDepth = sp:$_ { return sp.replace(/\t/g, '    ').length; }
 
+WS = [ \t]
 NL = '\n' / '\r\n' / '\r'
 NOT_NL = !NL .
 // Skips over whitespace including a single newline. Do not use more than once
 // in a row, otherwise multiple NL will be skipped.
 LINE_WRAP = NL _ !(NL / listBullet / headerLookahead)
-_ = ' '*
+_ = WS*
 // Whitespace followed by an optional Line Wrap
 __ = _ LINE_WRAP?
 // Skips over all new lines and empty lines, but not the white space at the

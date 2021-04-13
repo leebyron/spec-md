@@ -1216,69 +1216,49 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 <p data-source="spec/Markdown.md#L68">This is an <a href="https://www.facebook.com">&rarr;<em>example</em>&larr;</a> of a link.</p>
 <div class="spec-todo" data-source="spec/Markdown.md#L71">
 Links do not yet support a reference style short-form.</div>
-<div class="spec-todo" data-source="spec/Markdown.md#L73">
-Links do not yet support a title attribute.</div>
 </section>
 <section id="sec-Emphasis" secid="2.2.3">
-<h3 data-source="spec/Markdown.md#L76"><span class="spec-secid" title="link to this section"><a href="#sec-Emphasis">2.2.3</a></span>Emphasis</h3>
-<p data-source="spec/Markdown.md#L78">Wrapping asterisks <em>(*)</em> indicate emphasis.</p>
-<pre data-source="spec/Markdown.md#L80-L82"><code>Example of **bold** and *italic* and ***bold italic***.
+<h3 data-source="spec/Markdown.md#L74"><span class="spec-secid" title="link to this section"><a href="#sec-Emphasis">2.2.3</a></span>Emphasis</h3>
+<p data-source="spec/Markdown.md#L76">Wrapping asterisks <em>(*)</em> indicate emphasis.</p>
+<pre data-source="spec/Markdown.md#L78-L80"><code>Example of **bold** and *italic* and ***bold italic***.
 </code></pre>
-<p data-source="spec/Markdown.md#L84">Produces the following:</p>
-<p data-source="spec/Markdown.md#L86">Example of <strong>bold</strong> and <em>italic</em> and <strong><em>bold italic</em></strong>.</p>
-<p data-source="spec/Markdown.md#L88">Alternatively, use underscore <em>(_)</em> for italic emphasis.</p>
-<pre data-source="spec/Markdown.md#L90-L92"><code>Example of _italic_ and **_bold italic_** or _**bold italic**_.
+<p data-source="spec/Markdown.md#L82">Produces the following:</p>
+<p data-source="spec/Markdown.md#L84">Example of <strong>bold</strong> and <em>italic</em> and <strong><em>bold italic</em></strong>.</p>
+<p data-source="spec/Markdown.md#L86">Alternatively, use underscore <em>(_)</em> for italic emphasis.</p>
+<pre data-source="spec/Markdown.md#L88-L90"><code>Example of _italic_ and **_bold italic_** or _**bold italic**_.
 </code></pre>
-<p data-source="spec/Markdown.md#L94">Produces the following:</p>
-<p data-source="spec/Markdown.md#L96">Example of <em>italic</em> and <strong><em>bold italic</em></strong> or <em><strong>bold italic</strong></em>.</p>
+<p data-source="spec/Markdown.md#L92">Produces the following:</p>
+<p data-source="spec/Markdown.md#L94">Example of <em>italic</em> and <strong><em>bold italic</em></strong> or <em><strong>bold italic</strong></em>.</p>
 </section>
 <section id="sec-Inline-Code" secid="2.2.4">
-<h3 data-source="spec/Markdown.md#L99"><span class="spec-secid" title="link to this section"><a href="#sec-Inline-Code">2.2.4</a></span>Inline Code</h3>
-<p data-source="spec/Markdown.md#L101-L103">Wrapping back-ticks <em>(`)</em> indicate inline code, text inside back-ticks is not formatted, allowing for special characters to be used in inline code without escapes.</p>
-<pre data-source="spec/Markdown.md#L105-L107"><code>This is an `example` of some inline code.
+<h3 data-source="spec/Markdown.md#L97"><span class="spec-secid" title="link to this section"><a href="#sec-Inline-Code">2.2.4</a></span>Inline Code</h3>
+<p data-source="spec/Markdown.md#L99-L101">Wrapping back-ticks <em>(`)</em> indicate inline code, text inside back-ticks is not formatted, allowing for special characters to be used in inline code without escapes.</p>
+<pre data-source="spec/Markdown.md#L103-L105"><code>This is an `example` of some inline code.
 </code></pre>
-<p data-source="spec/Markdown.md#L109">Produces</p>
-<p data-source="spec/Markdown.md#L111">This is an <code>example</code> of some inline code.</p>
-<p data-source="spec/Markdown.md#L114">Inline code can also use double- or triple-backticks. Wrapping spaces are removed.</p>
-<p data-source="spec/Markdown.md#L116"><code>`` ` ``</code> Produces <code>`</code></p>
+<p data-source="spec/Markdown.md#L107">Produces</p>
+<p data-source="spec/Markdown.md#L109">This is an <code>example</code> of some inline code.</p>
+<p data-source="spec/Markdown.md#L112">Inline code can also use double- or triple-backticks. Wrapping spaces are removed.</p>
+<p data-source="spec/Markdown.md#L114"><code>`` ` ``</code> Produces <code>`</code></p>
 </section>
 <section id="sec-Images" secid="2.2.5">
-<h3 data-source="spec/Markdown.md#L119"><span class="spec-secid" title="link to this section"><a href="#sec-Images">2.2.5</a></span>Images</h3>
-<pre data-source="spec/Markdown.md#L121-L123"><code>![Specs](http://i.imgur.com/aV8o3rE.png)
+<h3 data-source="spec/Markdown.md#L117"><span class="spec-secid" title="link to this section"><a href="#sec-Images">2.2.5</a></span>Images</h3>
+<pre data-source="spec/Markdown.md#L119-L121"><code>![Specs](http://i.imgur.com/aV8o3rE.png)
 </code></pre>
-<p data-source="spec/Markdown.md#L125">Produces the following:</p>
-<p data-source="spec/Markdown.md#L127"><img src="http://i.imgur.com/aV8o3rE.png" alt="Specs"/></p>
-<p data-source="spec/Markdown.md#L129-L130">Also, consider using images for support of more complex features like graph diagrams. For example, with Graviso:</p>
-<pre data-source="spec/Markdown.md#L132-L145"><code>![How spec-md works](http://g.gravizo.com/svg?
-  digraph specmd {
-    markdown [shape=box];
-    ast [shape=box];
-    html [shape=box];
-    markdown -&gt; parse [weight=8];
-    parse -&gt; ast;
-    ast -&gt; print;
-    edge [color=red];
-    print -&gt; html;
-  }
-)
-</code></pre>
-<p data-source="spec/Markdown.md#L147">Produces the following:</p>
-<p data-source="spec/Markdown.md#L149-L160"><img src="http://g.gravizo.com/svg?%0A%20%20digraph%20specmd%20%7B%0A%20%20%20%20markdown%20%5Bshape=box%5D;%0A%20%20%20%20ast%20%5Bshape=box%5D;%0A%20%20%20%20html%20%5Bshape=box%5D;%0A%20%20%20%20markdown%20-%3E%20parse%20%5Bweight=8%5D;%0A%20%20%20%20parse%20-%3E%20ast;%0A%20%20%20%20ast%20-%3E%20print;%0A%20%20%20%20edge%20%5Bcolor=red%5D;%0A%20%20%20%20print%20-%3E%20html;%0A%20%20%7D%0A" alt="How spec-md works"/></p>
-<div class="spec-todo" data-source="spec/Markdown.md#L162">
-the title attribute is not yet supported</div>
+<p data-source="spec/Markdown.md#L123">Produces the following:</p>
+<p data-source="spec/Markdown.md#L125"><img src="http://i.imgur.com/aV8o3rE.png" alt="Specs"/></p>
 </section>
 </section>
 <section id="sec-Blocks" secid="2.3">
-<h2 data-source="spec/Markdown.md#L166"><span class="spec-secid" title="link to this section"><a href="#sec-Blocks">2.3</a></span>Blocks</h2>
-<p data-source="spec/Markdown.md#L168-L170">Markdown allows for block-level structual formatting. Every block is seperated by at least two new lines. Spec Markdown makes use of Markdown&rsquo;s blocks to produce more specific structural formatting.</p>
+<h2 data-source="spec/Markdown.md#L128"><span class="spec-secid" title="link to this section"><a href="#sec-Blocks">2.3</a></span>Blocks</h2>
+<p data-source="spec/Markdown.md#L130-L132">Markdown allows for block-level structual formatting. Every block is seperated by at least two new lines. Spec Markdown makes use of Markdown&rsquo;s blocks to produce more specific structural formatting.</p>
 <section id="sec-Block-HTML" secid="2.3.1">
-<h3 data-source="spec/Markdown.md#L173"><span class="spec-secid" title="link to this section"><a href="#sec-Block-HTML">2.3.1</a></span>Block HTML</h3>
-<p data-source="spec/Markdown.md#L175-L177">Markdown is not a replacement for HTML and instead leverages HTML by allowing its use as complete blocks when separated from surrounding content by blank lines.</p>
-<div id="note-5b9d8" class="spec-note" data-source="spec/Markdown.md#L179">
+<h3 data-source="spec/Markdown.md#L135"><span class="spec-secid" title="link to this section"><a href="#sec-Block-HTML">2.3.1</a></span>Block HTML</h3>
+<p data-source="spec/Markdown.md#L137-L139">Markdown is not a replacement for HTML and instead leverages HTML by allowing its use as complete blocks when separated from surrounding content by blank lines.</p>
+<div id="note-5b9d8" class="spec-note" data-source="spec/Markdown.md#L141">
 <a href="#note-5b9d8">Note</a>
 Markdown formatting syntax is not processed within block-level HTML tags.</div>
-<p data-source="spec/Markdown.md#L181">For example, to add an HTML table to a Markdown article:</p>
-<pre data-source="spec/Markdown.md#L183-L200"><code>Unrelated previous paragraph followed by a blank line
+<p data-source="spec/Markdown.md#L143">For example, to add an HTML table to a Markdown article:</p>
+<pre data-source="spec/Markdown.md#L145-L162"><code>Unrelated previous paragraph followed by a blank line
 
 &lt;table&gt;
 &lt;tr&gt;
@@ -1295,8 +1275,8 @@ Markdown formatting syntax is not processed within block-level HTML tags.</div>
 &lt;/tr&gt;
 &lt;/table&gt;
 </code></pre>
-<p data-source="spec/Markdown.md#L202">Produces the following:</p>
-<p data-source="spec/Markdown.md#L204">Unrelated previous paragraph followed by a blank line</p>
+<p data-source="spec/Markdown.md#L164">Produces the following:</p>
+<p data-source="spec/Markdown.md#L166">Unrelated previous paragraph followed by a blank line</p>
 <table>
 <tr>
 <td>Table cell</td>
@@ -1310,8 +1290,8 @@ Markdown formatting syntax is not processed within block-level HTML tags.</div>
 
 </td>
 </tr>
-</table><p data-source="spec/Markdown.md#L221">And using <code>&lt;pre&gt;</code> produces a simple code block:</p>
-<pre data-source="spec/Markdown.md#L223-L237"><code>&lt;pre&gt;
+</table><p data-source="spec/Markdown.md#L183">And using <code>&lt;pre&gt;</code> produces a simple code block:</p>
+<pre data-source="spec/Markdown.md#L185-L199"><code>&lt;pre&gt;
 Buffalo Bill ’s
 defunct
        who used to
@@ -1325,7 +1305,7 @@ how do you like your blueeyed boy
 Mister Death
 &lt;/pre&gt;
 </code></pre>
-<p data-source="spec/Markdown.md#L239">Produces the following:</p>
+<p data-source="spec/Markdown.md#L201">Produces the following:</p>
 <pre>
 Buffalo Bill ’s
 defunct
@@ -1340,91 +1320,88 @@ how do you like your blueeyed boy
 Mister Death
 </pre></section>
 <section id="sec-Blocks.Section-Headers" secid="2.3.2">
-<h3 data-source="spec/Markdown.md#L256"><span class="spec-secid" title="link to this section"><a href="#sec-Blocks.Section-Headers">2.3.2</a></span>Section Headers</h3>
-<p data-source="spec/Markdown.md#L258-L259">Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown generally only supports atx style headers.</p>
-<pre id="example-d82de" class="spec-example" data-source="spec/Markdown.md#L261-L263"><a href="#example-d82de">Example № 1</a><code># Header
+<h3 data-source="spec/Markdown.md#L218"><span class="spec-secid" title="link to this section"><a href="#sec-Blocks.Section-Headers">2.3.2</a></span>Section Headers</h3>
+<p data-source="spec/Markdown.md#L220-L221">Regular Markdown supports two styles of headers, Setext and atx, however Spec Markdown generally only supports atx style headers.</p>
+<pre id="example-d82de" class="spec-example" data-source="spec/Markdown.md#L223-L225"><a href="#example-d82de">Example № 1</a><code># Header
 </code></pre>
-<p data-source="spec/Markdown.md#L265">Setext headers are not supported by Spec Markdown.</p>
-<pre id="example-7c917" class="spec-counter-example" data-source="spec/Markdown.md#L267-L270"><a href="#example-7c917">Counter Example № 2</a><code>Header
+<p data-source="spec/Markdown.md#L227">Setext headers are not supported by Spec Markdown.</p>
+<pre id="example-7c917" class="spec-counter-example" data-source="spec/Markdown.md#L229-L232"><a href="#example-7c917">Counter Example № 2</a><code>Header
 ------
 </code></pre>
-<p data-source="spec/Markdown.md#L272-L274">The number of <code>#</code> characters refers to the depth of the section. To produce an, <code>&lt;h3&gt;</code>, type <code>###</code>. Optionally, a header may be &ldquo;closed&rdquo; by any number of <code>#</code> characters.</p>
-<div id="note-e6510" class="spec-note" data-source="spec/Markdown.md#L276">
+<p data-source="spec/Markdown.md#L234-L236">The number of <code>#</code> characters refers to the depth of the section. To produce an, <code>&lt;h3&gt;</code>, type <code>###</code>. Optionally, a header may be &ldquo;closed&rdquo; by any number of <code>#</code> characters.</p>
+<div id="note-e6510" class="spec-note" data-source="spec/Markdown.md#L238">
 <a href="#note-e6510">Note</a>
 Spec Markdown requires that documents start with a header.</div>
 </section>
 <section id="sec-Paragraphs" secid="2.3.3">
-<h3 data-source="spec/Markdown.md#L279"><span class="spec-secid" title="link to this section"><a href="#sec-Paragraphs">2.3.3</a></span>Paragraphs</h3>
-<p data-source="spec/Markdown.md#L281-L282">Paragraphs are the most simple Markdown blocks. Lines are appended together to form a single &lt;p&gt; tag. Any inline syntax is allowed within a paragraph.</p>
+<h3 data-source="spec/Markdown.md#L241"><span class="spec-secid" title="link to this section"><a href="#sec-Paragraphs">2.3.3</a></span>Paragraphs</h3>
+<p data-source="spec/Markdown.md#L243-L244">Paragraphs are the most simple Markdown blocks. Lines are appended together to form a single &lt;p&gt; tag. Any inline syntax is allowed within a paragraph.</p>
 </section>
 <section id="sec-Lists" secid="2.3.4">
-<h3 data-source="spec/Markdown.md#L285"><span class="spec-secid" title="link to this section"><a href="#sec-Lists">2.3.4</a></span>Lists</h3>
-<p data-source="spec/Markdown.md#L287-L288">Markdown lists are lines which each start with either a ordered bullet <code>1.</code> or unordered bullet, <code>*</code>, <code>-</code>, or <code>+</code>. Lists are optionally indented by two spaces.</p>
-<p data-source="spec/Markdown.md#L290">Lists can be nested within other lists by indenting by at least two spaces.</p>
-<pre id="example-4d8ec" class="spec-example" data-source="spec/Markdown.md#L292-L298"><a href="#example-4d8ec">Example № 3</a><code>  1. this
+<h3 data-source="spec/Markdown.md#L247"><span class="spec-secid" title="link to this section"><a href="#sec-Lists">2.3.4</a></span>Lists</h3>
+<p data-source="spec/Markdown.md#L249-L250">Markdown lists are lines which each start with either a ordered bullet <code>1.</code> or unordered bullet, <code>*</code>, <code>-</code>, or <code>+</code>. Lists are optionally indented by two spaces.</p>
+<p data-source="spec/Markdown.md#L252">Lists can be nested within other lists by indenting by at least two spaces.</p>
+<pre id="example-4d8ec" class="spec-example" data-source="spec/Markdown.md#L254-L260"><a href="#example-4d8ec">Example № 3</a><code>  1. this
   2. is
   3. a
     - nested
   4. list
 </code></pre>
-<p data-source="spec/Markdown.md#L300">Produces the following:</p>
+<p data-source="spec/Markdown.md#L262">Produces the following:</p>
 <ol>
-<li data-source="spec/Markdown.md#L302">this</li>
-<li data-source="spec/Markdown.md#L303">is</li>
-<li data-source="spec/Markdown.md#L304-L305">a<ul>
-<li data-source="spec/Markdown.md#L305">nested</li>
+<li data-source="spec/Markdown.md#L264">this</li>
+<li data-source="spec/Markdown.md#L265">is</li>
+<li data-source="spec/Markdown.md#L266-L267">a<ul>
+<li data-source="spec/Markdown.md#L267">nested</li>
 </ul>
 </li>
-<li data-source="spec/Markdown.md#L306">list</li>
+<li data-source="spec/Markdown.md#L268">list</li>
 </ol>
 <section id="sec-Task-Lists" secid="2.3.4.1">
-<h4 data-source="spec/Markdown.md#L308"><span class="spec-secid" title="link to this section"><a href="#sec-Task-Lists">2.3.4.1</a></span>Task Lists</h4>
-<p data-source="spec/Markdown.md#L310-L312">Spec Markdown also supports task lists. Start a list item with <code>[ ]</code> or <code>[x]</code> to render a checkbox. This can be useful for keeping your tasks inline with in-progress draft specifications.</p>
-<pre id="example-f34a9" class="spec-example" data-source="spec/Markdown.md#L314-L320"><a href="#example-f34a9">Example № 4</a><code>  1. this
+<h4 data-source="spec/Markdown.md#L270"><span class="spec-secid" title="link to this section"><a href="#sec-Task-Lists">2.3.4.1</a></span>Task Lists</h4>
+<p data-source="spec/Markdown.md#L272-L274">Spec Markdown also supports task lists. Start a list item with <code>[ ]</code> or <code>[x]</code> to render a checkbox. This can be useful for keeping your tasks inline with in-progress draft specifications.</p>
+<pre id="example-f34a9" class="spec-example" data-source="spec/Markdown.md#L276-L282"><a href="#example-f34a9">Example № 4</a><code>  1. this
   2. [ ] is
   3. [x] a
     - [X] nested
   4. todo list
 </code></pre>
-<p data-source="spec/Markdown.md#L322">Produces the following:</p>
+<p data-source="spec/Markdown.md#L284">Produces the following:</p>
 <ol>
-<li data-source="spec/Markdown.md#L324">this</li>
-<li class="task" data-source="spec/Markdown.md#L325">
-<input type="checkbox" disabled>
- is</li>
-<li class="task" data-source="spec/Markdown.md#L326-L327">
-<input type="checkbox" disabled checked>
- a<ul>
-<li class="task" data-source="spec/Markdown.md#L327">
-<input type="checkbox" disabled checked>
- nested</li>
+<li data-source="spec/Markdown.md#L286">this</li>
+<li class="task" data-source="spec/Markdown.md#L287">
+<input type="checkbox" disabled>is</li>
+<li class="task" data-source="spec/Markdown.md#L288-L289">
+<input type="checkbox" disabled checked>a<ul>
+<li class="task" data-source="spec/Markdown.md#L289">
+<input type="checkbox" disabled checked>nested</li>
 </ul>
 </li>
-<li data-source="spec/Markdown.md#L328">todo list</li>
+<li data-source="spec/Markdown.md#L290">todo list</li>
 </ol>
 </section>
 </section>
 <section id="sec-Code-Block" secid="2.3.5">
-<h3 data-source="spec/Markdown.md#L331"><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h3>
-<p data-source="spec/Markdown.md#L333-L334">A block of code is formed by either indenting by 4 spaces, or wrapping with <code>```</code> on their own lines.</p>
-<pre data-source="spec/Markdown.md#L336-L338"><code>```
+<h3 data-source="spec/Markdown.md#L293"><span class="spec-secid" title="link to this section"><a href="#sec-Code-Block">2.3.5</a></span>Code Block</h3>
+<p data-source="spec/Markdown.md#L295-L296">A block of code is formed by either indenting by 4 spaces, or wrapping with <code>```</code> on their own lines.</p>
+<pre data-source="spec/Markdown.md#L298-L300"><code>```
 const code = sample();
 ```</code></pre>
-<p data-source="spec/Markdown.md#L340">Produces the following:</p>
-<pre data-source="spec/Markdown.md#L342-L344"><code>const code = sample();
+<p data-source="spec/Markdown.md#L302">Produces the following:</p>
+<pre data-source="spec/Markdown.md#L304-L306"><code>const code = sample();
 </code></pre>
 </section>
 <section id="sec-Block-Quotes" secid="2.3.6">
-<h3 data-source="spec/Markdown.md#L347"><span class="spec-secid" title="link to this section"><a href="#sec-Block-Quotes">2.3.6</a></span>Block Quotes</h3>
-<p data-source="spec/Markdown.md#L349">Spec markdown does not yet support Markdown&rsquo;s <code>&gt;</code> style block quotes.</p>
+<h3 data-source="spec/Markdown.md#L309"><span class="spec-secid" title="link to this section"><a href="#sec-Block-Quotes">2.3.6</a></span>Block Quotes</h3>
+<p data-source="spec/Markdown.md#L311">Spec markdown does not yet support Markdown&rsquo;s <code>&gt;</code> style block quotes.</p>
 </section>
 <section id="sec-Horizontal-Rules" secid="2.3.7">
-<h3 data-source="spec/Markdown.md#L352"><span class="spec-secid" title="link to this section"><a href="#sec-Horizontal-Rules">2.3.7</a></span>Horizontal Rules</h3>
-<p data-source="spec/Markdown.md#L354">Spec Markdown does not yet support Markdown&rsquo;s <code>---</code> style &lt;hr&gt;.</p>
+<h3 data-source="spec/Markdown.md#L314"><span class="spec-secid" title="link to this section"><a href="#sec-Horizontal-Rules">2.3.7</a></span>Horizontal Rules</h3>
+<p data-source="spec/Markdown.md#L316">Spec Markdown does not yet support Markdown&rsquo;s <code>---</code> style &lt;hr&gt;.</p>
 </section>
 <section id="sec-Automatic-Links" secid="2.3.8">
-<h3 data-source="spec/Markdown.md#L357"><span class="spec-secid" title="link to this section"><a href="#sec-Automatic-Links">2.3.8</a></span>Automatic Links</h3>
-<p data-source="spec/Markdown.md#L359-L360">Spec Markdown does not yet automatically link urls. </p>
+<h3 data-source="spec/Markdown.md#L319"><span class="spec-secid" title="link to this section"><a href="#sec-Automatic-Links">2.3.8</a></span>Automatic Links</h3>
+<p data-source="spec/Markdown.md#L321-L322">Spec Markdown does not yet automatically link urls. </p>
 </section>
 </section>
 </section>

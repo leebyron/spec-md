@@ -2,7 +2,7 @@
 <!-- Built with spec-md https://spec-md.com -->
 <html>
 <head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Task lists</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Links</title>
 <style>
 :root {
   color: #333333;
@@ -1044,60 +1044,69 @@ pre[class*="language-"] {
 </head>
 <body><article>
 <header>
-<h1>Task lists</h1>
-<section id="intro">
-<p>Unordered</p>
-<ul>
-<li class="task">
-<input type="checkbox" disabled>This</li>
-<li class="task">
-<input type="checkbox" disabled checked>task</li>
-<li class="task">
-<input type="checkbox" disabled checked>list</li>
-<li>can have regular bullets</li>
-</ul>
-<p>Ordered</p>
-<ol>
-<li>numbers</li>
-<li class="task">
-<input type="checkbox" disabled checked>can have</li>
-<li>bullets</li>
-</ol>
-<p>Nested</p>
-<ul>
-<li class="task">
-<input type="checkbox" disabled>tasks<ul>
-<li class="task">
-<input type="checkbox" disabled>can be nested<ul>
-<li class="task">
-<input type="checkbox" disabled checked>deeply</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Requires a space</p>
-<ul>
-<li class="task">
-<input type="checkbox" disabled checked>(task)</li>
-<li><a href="link">x</a></li>
-<li>[x]neither </li>
-</ul>
-</section>
+<h1>Links</h1>
 <nav class="spec-toc">
 <div class="title">Contents</div>
 <ol>
+<li><a href="#sec-Links"><span class="spec-secid">1</span>Links</a><ol>
+<li><a href="#sec-Not-Links"><span class="spec-secid">1.1</span>Not Links</a></li>
+</ol>
+</li>
 </ol>
 </nav>
 </header>
+<section id="sec-Links" secid="1">
+<h1><span class="spec-secid" title="link to this section"><a href="#sec-Links">1</a></span>Links</h1>
+<p><a href="url">Simple link</a></p>
+<p><a href="url%20path">With encoded char</a></p>
+<p><a href="url%3Cpath">With encodeable char</a></p>
+<p><a href="url(path">With not-always-encoded char</a></p>
+<p><a href="url(p(a())th)">With balanced parens</a></p>
+<p><a href="url(path">With escaped parens</a></p>
+<p><a href="url%20)%20path">With pointy url</a></p>
+<p><a href="url%3Epath">With pointy escaped url</a></p>
+<p><a href="url">With spaces</a></p>
+<p><a href="url">With breaks</a></p>
+<p><a href="url">With spaces </a></p>
+<p><a href="url">With breaks</a></p>
+<p><a href="invisible-url"></a></p>
+<p><a href="">no url</a></p>
+<p><a href="">no pointy url</a></p>
+<p><a href="url" title="ti&rsquo;tle">with title</a></p>
+<p><a href="url" title="ti&quot;tle">with escaped title</a></p>
+<p><a href="url" title="title break">with line break</a></p>
+<p><a href="url" title="ti&ldquo;tle">with single title</a></p>
+<p><a href="url" title="ti'tle">with escaped single title</a></p>
+<p><a href="url" title="title break">with single line break</a></p>
+<p><a href="url" title="title">with paren title</a></p>
+<p><a href="url" title="ti(t)le">with escaped paren title</a></p>
+<p><a href="url" title="title break">with paren line break</a></p>
+<p><a href="/uri"><img src="moon.jpg" alt="linked image"/></a></p>
+<section id="sec-Not-Links" secid="1.1">
+<h2><span class="spec-secid" title="link to this section"><a href="#sec-Not-Links">1.1</a></span>Not Links</h2>
+<p>[Space after title] (url)</p>
+<p>[Url with unencoded space](url path)</p>
+<p><a href="url">No nested [link</a>](url)</p>
+<p>[Unclosed quote title](url &ldquo;title)</p>
+<p>[Interior quote title](url &ldquo;tit&ldquo;le&rdquo;)</p>
+<p>[Too many line breaks in title](url &ldquo;title\ too many&rdquo;)</p>
+<p>[with nested paren title](url (ti(t)le)) </p>
+</section>
+</section>
 </article>
 <footer>
 Written in <a href="https://spec-md.com" target="_blank">Spec Markdown</a>.</footer>
 <input hidden class="spec-sidebar-toggle" type="checkbox" id="spec-sidebar-toggle" aria-hidden /><label for="spec-sidebar-toggle" aria-hidden><div class="spec-sidebar-button">&#x2630;</div></label>
 <div class="spec-sidebar" aria-hidden>
 <div class="spec-toc">
-<div class="title"><a href="#">Task lists</a></div>
-<ol></ol>
+<div class="title"><a href="#">Links</a></div>
+<ol><li id="_sidebar_1"><a href="#sec-Links"><span class="spec-secid">1</span>Links</a>
+<input hidden class="toggle" type="checkbox" id="_toggle_1" /><label for="_toggle_1"></label>
+<ol>
+<li id="_sidebar_1.1"><a href="#sec-Not-Links"><span class="spec-secid">1.1</span>Not Links</a></li>
+</ol>
+</li>
+</ol>
 </div>
 <script>(function(){var e,t=[],n=document.querySelector('label[for="spec-sidebar-toggle"]');function o(e){e.preventDefault()}n.addEventListener("scroll",o),n.addEventListener("touchmove",o);for(var i=document.getElementsByTagName("section"),r=0;r<i.length;r++)i[r].getAttribute("secid")&&t.push(i[r]);var c=window.scrollY,l=!1;function d(n){for(var o,i=n+document.documentElement.clientHeight/4,r=t.length-1;r>=0;r--)if(t[r].offsetTop<i){o=t[r];break}var c=o&&o.getAttribute("secid");c!==e&&(e&&a(e,!1),c&&a(c,!0),e=c)}function a(e,t){document.getElementById("_sidebar_"+e).className=t?"viewing":"";for(var n=e.split(".");n.length;){var o=document.getElementById("_toggle_"+n.join("."));o&&(o.checked=t),n.pop()}}window.addEventListener("scroll",(function(e){c=window.scrollY,l||(l=!0,window.requestAnimationFrame((function(){d(c),l=!1})))})),d(window.scrollY);})()</script>
 </div>
