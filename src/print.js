@@ -96,7 +96,7 @@ function printHead(ast, options) {
     '<script>' + readStatic('highlightName.js') + '</script>\n' +
     '<script>' + readStatic('linkSelections.js') + '</script>\n' +
     (options.githubSource
-      ? '<script>' + readStatic('linkSelections.js') + '</script>\n'
+      ? '<script>' + readStatic('viewSource.js') + '</script>\n'
       : '') +
     options.head
   );
