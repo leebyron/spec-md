@@ -56,7 +56,8 @@
                   "value": "link"
                 }
               ],
-              "url": "https://spec-md.com"
+              "url": "https://spec-md.com",
+              "title": null
             },
             {
               "type": "Text",

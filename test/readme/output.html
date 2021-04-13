@@ -1215,8 +1215,6 @@ specMarkdown<span class="token punctuation">.</span><span class="token method fu
 <p>This is an <a href="https://www.facebook.com">&rarr;<em>example</em>&larr;</a> of a link.</p>
 <div class="spec-todo">
 Links do not yet support a reference style short-form.</div>
-<div class="spec-todo">
-Links do not yet support a title attribute.</div>
 </section>
 <section id="sec-Emphasis" secid="2.2.3">
 <h3><span class="spec-secid" title="link to this section"><a href="#sec-Emphasis">2.2.3</a></span>Emphasis</h3>
@@ -1247,24 +1245,6 @@ Links do not yet support a title attribute.</div>
 </code></pre>
 <p>Produces the following:</p>
 <p><img src="http://i.imgur.com/aV8o3rE.png" alt="Specs"/></p>
-<p>Also, consider using images for support of more complex features like graph diagrams. For example, with Graviso:</p>
-<pre><code>![How spec-md works](http://g.gravizo.com/svg?
-  digraph specmd {
-    markdown [shape=box];
-    ast [shape=box];
-    html [shape=box];
-    markdown -&gt; parse [weight=8];
-    parse -&gt; ast;
-    ast -&gt; print;
-    edge [color=red];
-    print -&gt; html;
-  }
-)
-</code></pre>
-<p>Produces the following:</p>
-<p><img src="http://g.gravizo.com/svg?%0A%20%20digraph%20specmd%20%7B%0A%20%20%20%20markdown%20%5Bshape=box%5D;%0A%20%20%20%20ast%20%5Bshape=box%5D;%0A%20%20%20%20html%20%5Bshape=box%5D;%0A%20%20%20%20markdown%20-%3E%20parse%20%5Bweight=8%5D;%0A%20%20%20%20parse%20-%3E%20ast;%0A%20%20%20%20ast%20-%3E%20print;%0A%20%20%20%20edge%20%5Bcolor=red%5D;%0A%20%20%20%20print%20-%3E%20html;%0A%20%20%7D%0A" alt="How spec-md works"/></p>
-<div class="spec-todo">
-the title attribute is not yet supported</div>
 </section>
 </section>
 <section id="sec-Blocks" secid="2.3">
@@ -1389,14 +1369,11 @@ Spec Markdown requires that documents start with a header.</div>
 <ol>
 <li>this</li>
 <li class="task">
-<input type="checkbox" disabled>
- is</li>
+<input type="checkbox" disabled>is</li>
 <li class="task">
-<input type="checkbox" disabled checked>
- a<ul>
+<input type="checkbox" disabled checked>a<ul>
 <li class="task">
-<input type="checkbox" disabled checked>
- nested</li>
+<input type="checkbox" disabled checked>nested</li>
 </ul>
 </li>
 <li>todo list</li>

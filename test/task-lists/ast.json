@@ -24,7 +24,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": " This"
+              "value": "This"
             }
           ]
         },
@@ -34,7 +34,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": " task"
+              "value": "task"
             }
           ]
         },
@@ -44,7 +44,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": " list"
+              "value": "list"
             }
           ]
         },
@@ -87,7 +87,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": " can have"
+              "value": "can have"
             }
           ]
         },
@@ -121,7 +121,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": " tasks"
+              "value": "tasks"
             },
             {
               "type": "List",
@@ -133,7 +133,7 @@
                   "contents": [
                     {
                       "type": "Text",
-                      "value": " can be nested"
+                      "value": "can be nested"
                     },
                     {
                       "type": "List",
@@ -145,7 +145,7 @@
                           "contents": [
                             {
                               "type": "Text",
-                              "value": " deeply"
+                              "value": "deeply"
                             }
                           ]
                         }
@@ -164,7 +164,7 @@
       "contents": [
         {
           "type": "Text",
-          "value": "Conflict with links"
+          "value": "Requires a space"
         }
       ]
     },
@@ -178,7 +178,7 @@
           "contents": [
             {
               "type": "Text",
-              "value": " (this is a task)"
+              "value": "(task)"
             }
           ]
         },
@@ -193,11 +193,17 @@
                   "value": "x"
                 }
               ],
-              "url": "this is a link"
-            },
+              "url": "link",
+              "title": null
+            }
+          ]
+        },
+        {
+          "type": "ListItem",
+          "contents": [
             {
               "type": "Text",
-              "value": " "
+              "value": "[x]neither "
             }
           ]
         }

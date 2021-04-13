@@ -515,14 +515,19 @@ function printAll(list, options) {
           return '<code>' + escapeCode(node.code) + '</code>';
 
         case 'Link': {
-          const url = resolveLinkUrl(node.url, options);
-          return '<a href="' + encodeURI(url) + '">' + join(node.contents) + '</a>';
+          return (
+            '<a href="' + encodeURI(resolveLinkUrl(node.url, options)) + '"' +
+              (node.title ? ' title="' + escapeAttr(node.title) + '"' : '') + '>' +
+              join(node.contents) +
+            '</a>'
+          );
         }
 
         case 'Image':
           return (
             '<img src="' + encodeURI(node.url) + '"' +
               (node.alt ? ' alt="' + escapeAttr(node.alt) + '"' : '') +
+              (node.title ? ' title="' + escapeAttr(node.title) + '"' : '') +
             '/>'
           );
 
@@ -541,7 +546,7 @@ function printAll(list, options) {
         case 'TaskListItem':
           return (
             '<li class="task"' + dataSourceAttr(node, options) + '>\n' +
-              '<input type="checkbox" disabled' + (node.done ? ' checked' : '') +  '>\n' +
+              '<input type="checkbox" disabled' + (node.done ? ' checked' : '') +  '>' +
               join(node.contents) +
             '</li>\n'
           );

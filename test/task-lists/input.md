@@ -20,7 +20,8 @@ Nested
   * [ ] can be nested
     * [x] deeply
 
-Conflict with links
+Requires a space
 
-* [x] \(this is a task)
-* [x] (this is a link)
+* [x] (task)
+* [x](link)
+* [x]neither

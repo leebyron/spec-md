@@ -83,7 +83,8 @@
                   "value": "Spec additions"
                 }
               ],
-              "url": "./spec/Spec%20Additions.md#Spec-Additions"
+              "url": "./spec/Spec Additions.md#Spec-Additions",
+              "title": null
             },
             {
               "type": "Text",
@@ -164,7 +165,8 @@
                   "value": "Using Spec Markdown"
                 }
               ],
-              "url": "./spec/Usage.md#Using-Spec-Markdown"
+              "url": "./spec/Usage.md#Using-Spec-Markdown",
+              "title": null
             },
             {
               "type": "Text",
@@ -198,7 +200,8 @@
                   "value": "Markdown"
                 }
               ],
-              "url": "http://daringfireball.net/projects/markdown/syntax"
+              "url": "http://daringfireball.net/projects/markdown/syntax",
+              "title": null
             },
             {
               "type": "Text",
@@ -212,7 +215,8 @@
                   "value": "Github-flavored Markdown"
                 }
               ],
-              "url": "https://help.github.com/articles/github-flavored-markdown/"
+              "url": "https://help.github.com/articles/github-flavored-markdown/",
+              "title": null
             },
             {
               "type": "Text",
@@ -576,7 +580,8 @@
                           "value": "←"
                         }
                       ],
-                      "url": "https://www.facebook.com"
+                      "url": "https://www.facebook.com",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -590,15 +595,6 @@
                     {
                       "type": "Text",
                       "value": "Links do not yet support a reference style short-form."
-                    }
-                  ]
-                },
-                {
-                  "type": "Todo",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "Links do not yet support a title attribute."
                     }
                   ]
                 }
@@ -929,52 +925,8 @@
                     {
                       "type": "Image",
                       "alt": "Specs",
-                      "url": "http://i.imgur.com/aV8o3rE.png"
-                    }
-                  ]
-                },
-                {
-                  "type": "Paragraph",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "Also, consider using images for support of more complex features like graph diagrams. For example, with Graviso:"
-                    }
-                  ]
-                },
-                {
-                  "type": "Code",
-                  "raw": false,
-                  "lang": null,
-                  "example": false,
-                  "counter": false,
-                  "code": "![How spec-md works](http://g.gravizo.com/svg?\n  digraph specmd {\n    markdown [shape=box];\n    ast [shape=box];\n    html [shape=box];\n    markdown -> parse [weight=8];\n    parse -> ast;\n    ast -> print;\n    edge [color=red];\n    print -> html;\n  }\n)\n"
-                },
-                {
-                  "type": "Paragraph",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "Produces the following:"
-                    }
-                  ]
-                },
-                {
-                  "type": "Paragraph",
-                  "contents": [
-                    {
-                      "type": "Image",
-                      "alt": "How spec-md works",
-                      "url": "http://g.gravizo.com/svg?\n  digraph specmd {\n    markdown [shape=box];\n    ast [shape=box];\n    html [shape=box];\n    markdown -> parse [weight=8];\n    parse -> ast;\n    ast -> print;\n    edge [color=red];\n    print -> html;\n  }\n"
-                    }
-                  ]
-                },
-                {
-                  "type": "Todo",
-                  "contents": [
-                    {
-                      "type": "Text",
-                      "value": "the title attribute is not yet supported"
+                      "url": "http://i.imgur.com/aV8o3rE.png",
+                      "title": null
                     }
                   ]
                 }
@@ -1426,7 +1378,7 @@
                           "contents": [
                             {
                               "type": "Text",
-                              "value": " is"
+                              "value": "is"
                             }
                           ]
                         },
@@ -1436,7 +1388,7 @@
                           "contents": [
                             {
                               "type": "Text",
-                              "value": " a"
+                              "value": "a"
                             },
                             {
                               "type": "List",
@@ -1448,7 +1400,7 @@
                                   "contents": [
                                     {
                                       "type": "Text",
-                                      "value": " nested"
+                                      "value": "nested"
                                     }
                                   ]
                                 }
@@ -1659,7 +1611,8 @@
                       "value": "Algorithms"
                     }
                   ],
-                  "url": "#sec-Algorithms"
+                  "url": "#sec-Algorithms",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -1673,7 +1626,8 @@
                       "value": "Grammar"
                     }
                   ],
-                  "url": "#sec-Grammar"
+                  "url": "#sec-Grammar",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -1687,7 +1641,8 @@
                       "value": "Notes"
                     }
                   ],
-                  "url": "#sec-Note"
+                  "url": "#sec-Note",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -1701,7 +1656,8 @@
                       "value": "Examples"
                     }
                   ],
-                  "url": "#sec-Examples"
+                  "url": "#sec-Examples",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -2892,7 +2848,8 @@
                       "value": "CriticMarkup"
                     }
                   ],
-                  "url": "http://criticmarkup.com/"
+                  "url": "http://criticmarkup.com/",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -7661,7 +7618,8 @@
                   "value": "node script"
                 }
               ],
-              "url": "https://docs.npmjs.com/cli/run-script"
+              "url": "https://docs.npmjs.com/cli/run-script",
+              "title": null
             },
             {
               "type": "Text",
@@ -8047,7 +8005,8 @@
                       "value": "Unix Philosophy"
                     }
                   ],
-                  "url": "http://www.faqs.org/docs/artu/ch01s06.html"
+                  "url": "http://www.faqs.org/docs/artu/ch01s06.html",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -8099,7 +8058,8 @@
                   "value": "Issue"
                 }
               ],
-              "url": "https://github.com/leebyron/spec-md/issues"
+              "url": "https://github.com/leebyron/spec-md/issues",
+              "title": null
             },
             {
               "type": "Text",
@@ -8131,7 +8091,8 @@
                       "value": "pull requests"
                     }
                   ],
-                  "url": "https://help.github.com/articles/creating-a-pull-request"
+                  "url": "https://help.github.com/articles/creating-a-pull-request",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -8154,7 +8115,8 @@
                           "value": "Fork the repo"
                         }
                       ],
-                      "url": "https://github.com/leebyron/spec-md/"
+                      "url": "https://github.com/leebyron/spec-md/",
+                      "title": null
                     },
                     {
                       "type": "Text",
@@ -8258,7 +8220,8 @@
                       "value": "version"
                     }
                   ],
-                  "url": "http://semver.org/"
+                  "url": "http://semver.org/",
+                  "title": null
                 },
                 {
                   "type": "Text",
@@ -8272,7 +8235,8 @@
                       "value": "npm"
                     }
                   ],
-                  "url": "https://www.npmjs.org/package/spec-md"
+                  "url": "https://www.npmjs.org/package/spec-md",
+                  "title": null
                 },
                 {
                   "type": "Text",
