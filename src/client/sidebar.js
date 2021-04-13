@@ -1,32 +1,40 @@
 var currentSection;
 var numberedSections = [];
 
-var sidebarButton = document.querySelector('label[for="spec-sidebar-toggle"]');
-sidebarButton.addEventListener('scroll', prevent);
-sidebarButton.addEventListener('touchmove', prevent);
-function prevent(event) {
-  event.preventDefault();
-}
-
-var sections = document.getElementsByTagName('section');
-for (var i = 0; i < sections.length; i++) {
-  if (sections[i].getAttribute('secid')) {
-    numberedSections.push(sections[i]);
-  }
-}
-
-var scrollPos = window.scrollY;
-var pending = false;
-window.addEventListener('scroll', function (e) {
-  scrollPos = window.scrollY;
-  if (!pending) {
-    pending = true;
-    window.requestAnimationFrame(function () {
-      updateSectionFocus(scrollPos);
-      pending = false;
-    });
+document.addEventListener('readystatechange', () => {
+  if (document.readyState === 'interactive') {
+    initializeFocus();
   }
 });
+
+function initializeFocus() {
+  var sidebarButton = document.querySelector('label[for="spec-sidebar-toggle"]');
+  sidebarButton.addEventListener('scroll', prevent);
+  sidebarButton.addEventListener('touchmove', prevent);
+  function prevent(event) {
+    event.preventDefault();
+  }
+
+  var sections = document.getElementsByTagName('section');
+  for (var i = 0; i < sections.length; i++) {
+    if (sections[i].getAttribute('secid')) {
+      numberedSections.push(sections[i]);
+    }
+  }
+
+  var scrollPos = window.scrollY;
+  var pending = false;
+  window.addEventListener('scroll', function (e) {
+    scrollPos = window.scrollY;
+    if (!pending) {
+      pending = true;
+      window.requestAnimationFrame(function () {
+        updateSectionFocus(scrollPos);
+        pending = false;
+      });
+    }
+  });
+}
 
 function updateSectionFocus(pos) {
   var readLine = pos + document.documentElement.clientHeight / 4;
