@@ -174,6 +174,57 @@ Produces the following:
 
 Table cells can contain any content that a paragraph can contain.
 
+## Definitions
+
+Spec Markdown provides two forms for defining terms, definition lists and
+definition paragraphs.
+
+### Definition List
+
+A definition list is written as a defined term on a single line followed by one
+or more definition lines, each starting with a `: `.
+
+```
+Cookie
+:   A small piece of data that a server sends to the user's web browser. The
+    browser may store it and send it back with later requests to the same server.
+:   A delicious snack, often containing chocolate chips.
+```
+
+Produces the following:
+
+Cookie
+:   A small piece of data that a server sends to the user's web browser. The
+    browser may store it and send it back with later requests to the same server.
+:   A delicious snack, often containing chocolate chips.
+
+Note: Term definitions can optionally be separated by a single blank line.
+
+### Definition Paragraph
+
+A definition paragraph starts with a `:: ` and contains an italicized term. This
+is useful when it is easier to define a term in a sentence containing that term.
+
+```
+:: The study of *Philosophy* investigates general and fundamental questions.
+```
+
+Produces the following:
+
+:: The study of *Philosophy* investigates general and fundamental questions.
+
+### Definition References
+
+A defined term can be later referenced by italicizing that term. Referenced
+terms are case insensitive.
+
+```
+After studying *philosophy*, you may eat a *cookie*.
+```
+
+Produces the following:
+
+After studying *philosophy*, you may eat a *cookie*.
 
 ## Note
 

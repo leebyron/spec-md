@@ -14,6 +14,7 @@ function print(ast, _options) {
   validateSecIDs(ast, options);
   assignExampleNumbers(ast, options);
   assignBiblioIDs(ast, options);
+  ast = createDefinitionRefs(ast, options);
   return (
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md https://spec-md.com -->\n' +
@@ -192,6 +193,11 @@ function assignExampleNumbers(ast, options) {
   });
 }
 
+function getDefinitionID(name) {
+  // Defined terms are not case sensitive.
+  return anchorize(name.toLowerCase());
+}
+
 function getCallID(name) {
   return anchorize(name) + '()';
 }
@@ -233,6 +239,13 @@ function assignBiblioIDs(ast, options) {
           ? secnameStack[secnameStack.length - 1] + '.' + subsecname
           : subsecname;
         let id = 'sec-' + secname;
+        if (!options.biblio[id]) {
+          options.biblio[id] = '#' + id;
+        }
+        node.id = id;
+      }
+      if (node.type === 'DefinitionTerm') {
+        let id = getDefinitionID(node.name);
         if (!options.biblio[id]) {
           options.biblio[id] = '#' + id;
         }
@@ -306,6 +319,25 @@ function nextSecID(id) {
     if (index === 0) return digit === '1' ? '' : 'A';
     return String.fromCharCode(parseInt(digit, 26) + 65);
   }).join('');
+}
+
+function createDefinitionRefs(ast, options) {
+  return visit(ast, {
+    enter: function (node) {
+      // Italicized text that directly references a definition term are replaced
+      // with `DefinitionRef` nodes.
+      if (
+        node.type === 'Italic' &&
+        node.contents.length === 1 &&
+        node.contents[0].type === 'Text'
+      ) {
+        const text = node.contents[0].value;
+        if (options.biblio[getDefinitionID(text)]) {
+          return { type: 'DefinitionRef', name: text };
+        }
+      }
+    }
+  });
 }
 
 // Table of Contents
@@ -581,6 +613,42 @@ function printAll(list, options) {
             '</tr>\n'
           );
 
+        case 'DefinitionList':
+          return (
+            '<dl>\n' +
+              '<dt' + dataSourceAttr(node, options) + '>' + node.term + '</dt>\n' +
+              join(node.defs) +
+            '</dl>\n'
+          );
+
+        case 'DefinitionDescription':
+          return (
+            '<dd' + dataSourceAttr(node, options) + '>' +
+              join(node.contents) +
+            '</dd>\n'
+          );
+
+        case 'DefinitionParagraph':
+          return (
+            '<p class="spec-dfnp"' + dataSourceAttr(node, options) + '>' +
+              join(node.contents) +
+            '</p>\n'
+          );
+
+        case 'DefinitionTerm':
+          return (
+            '<dfn id="' + escapeAttr(node.id) + '">' +
+              link(node.name, node.id, options, node.id) +
+            '</dfn>'
+          );
+
+        case 'DefinitionRef':
+          return (
+            '<span class="spec-ref">' +
+              link(node.name, getDefinitionID(node.name), options, getDefinitionID(node.name)) +
+            '</span>'
+          );
+
         case 'Algorithm':
           return (
             '<div class="spec-algo" id="' + escapeAttr(node.id) + '"' + dataSourceAttr(node, options) + '>\n' +
@@ -771,6 +839,11 @@ function getTerms(ast) {
       // Do not include terms defined in an appendix.
       if (node.type === 'Section' && IS_LETTER_RX.test(node.header.secID[0])) {
         return false;
+      }
+      if (node.type === 'DefinitionTerm') {
+        if (!terms[node.id]) {
+          terms[node.id] = node.name;
+        }
       }
       if (node.type === 'Algorithm') {
         if (!terms[node.id]) {
