@@ -11,7 +11,7 @@ function removeHighlight() {
 function highlightKeyword(name) {
   removeHighlight();
   ruleIndex = styleSheet.insertRule(
-    '*[data-name="' + name + '"] { background: #FBF8D0; }',
+    '*[data-name="' + name + '"] { background: rgba(230,215,0,0.12); }',
     styleSheet.cssRules.length
   );
 }

@@ -470,7 +470,7 @@ pre, code {
 }
 
 code {
-  background: #FAFAFA;
+  background: rgba(0,0,0,0.03);
   margin: -2px -1px;
   padding: 3px 3px;
   white-space: pre-wrap;
