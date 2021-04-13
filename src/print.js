@@ -89,11 +89,14 @@ function printHead(ast, options) {
     '<meta charset="utf-8">\n' +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
-    '<style>\n' + readStatic('client/spec.css') + '</style>\n' +
-    '<style>\n' + readPrismCSS() + '</style>\n' +
-    execStaticJS('generated/highlightName.js') +
-    execStaticJS('generated/linkSelections.js') +
-    (options.githubSource ? execStaticJS('generated/viewSource.js') : '') +
+    '<style>' + readPrismCSS() + '</style>\n' +
+    '<style>' + readStatic('spec.css') + '</style>\n' +
+    '<script>' + readStatic('sidebar.js') + '</script>\n' +
+    '<script>' + readStatic('highlightName.js') + '</script>\n' +
+    '<script>' + readStatic('linkSelections.js') + '</script>\n' +
+    (options.githubSource
+      ? '<script>' + readStatic('linkSelections.js') + '</script>\n'
+      : '') +
     options.head
   );
 }
@@ -385,7 +388,6 @@ function printSidebar(ast, options) {
         '<div class="title"><a href="#">' + escape(ast.title.value) + '</a></div>\n' +
         '<ol>' + join(items) + '</ol>\n' +
       '</div>\n' +
-      execStaticJS('generated/sidebar.js') +
     '</div>\n'
   );
 }
@@ -910,13 +912,8 @@ function escape(text) {
   return text.replace(ESCAPE_REGEX, escaper);
 }
 
-function execStaticJS(filename) {
-  const contents = readStatic(filename);
-  return '<script>(function(){' + contents.trim() + '})()</script>\n';
-}
-
 function readStatic(filename) {
-  return readFile(path.join(__dirname, filename));
+  return readFile(path.join(__dirname, 'generated', filename)).trim();
 }
 
 function readPrismCSS() {
@@ -925,7 +922,7 @@ function readPrismCSS() {
       path.dirname(require.resolve('prismjs')),
       'themes/prism.css'
     )
-  );
+  ).replace(/\n/g, ' ').replace(/ {2,}/g, ' ').trim();
 }
 
 function readFile(filename) {
