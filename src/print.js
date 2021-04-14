@@ -630,7 +630,7 @@ function printAll(list, options) {
 
         case 'DefinitionParagraph':
           return (
-            '<p class="spec-dfnp"' + dataSourceAttr(node, options) + '>' +
+            '<p' + dataSourceAttr(node, options) + '>' +
               join(node.contents) +
             '</p>\n'
           );
