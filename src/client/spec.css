@@ -913,3 +913,55 @@ var {
 .spec-lookahead.set::after {
   content: '}]';
 }
+
+/* Prism color scheme */
+
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.property,
+.token.selector,
+.token.attr-name,
+.token.builtin,
+.token.entity,
+.token.url,
+.token.inserted {
+  color: hsla(241, 71%, 34%, 0.69);
+  background: none;
+}
+
+.token.tag,
+.token.boolean,
+.token.number,
+.token.string,
+.token.char,
+.token.constant,
+.token.symbol,
+.token.regex,
+.token.important,
+.token.variable,
+.token.function,
+.token.class-name,
+.token.deleted {
+  color: hsla(324, 92%, 33%, 0.74);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.description {
+  color: inherit;
+  opacity: 0.3;
+}
+
+.token.punctuation {
+  color: inherit;
+  opacity: 0.5;
+}
+
+.token.operator,
+.token.namespace {
+  color: inherit;
+  opacity: 0.7;
+}
