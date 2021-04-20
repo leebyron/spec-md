@@ -1054,12 +1054,12 @@ terminal token {`terminal`}. Even meta tokens like `{[empty]}` for {[empty]} and
 A call to an algorithm can be expressed as a value literal:
 
 ```
-{Algorithm(foo, "string", null)}
+{Algorithm(foo, "string", null, Cookie)}
 ```
 
 Produces the following:
 
-{Algorithm(foo, "string", null)}
+{Algorithm(foo, "string", null, Cookie)}
 
 
 

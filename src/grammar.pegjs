@@ -504,7 +504,7 @@ htmlTag = tag:$('<' '/'? [a-z]+ [^>]* '>') {
   });
 }
 
-reference = '{' !('++'/'--') _ ref:(call / value / token)? _ close:'}'? {
+reference = '{' !('++'/'--') _ ref:(call / token / value)? _ close:'}'? {
   if (ref === null || close === null) {
     error('Malformed {reference}.');
   }
@@ -799,7 +799,7 @@ callArgs = __ first:value rest:(_ ','? __ token:value)* __ {
   return [first].concat(rest.map(nodes => nodes[3]));
 }
 
-value = stringLiteral / keyword / variable
+value = stringLiteral / keyword / variable / defintionRef
 
 stringLiteral = '"' value:$('\\"'/[^"\n\r])* closer:'"'? {
   if (closer === null) {
@@ -826,6 +826,12 @@ variable = name:localName {
   });
 }
 
+defintionRef = name:globalName {
+  return located({
+    type: 'DefinitionRef',
+    name: name
+  });
+}
 
 // Grammar productions
 
