@@ -23,7 +23,7 @@
     "watch": "nodemon -w bin/spec-md -w . -e css,js,json,pegjs,md --ignore src/generated --exec 'npm test'"
   },
   "dependencies": {
-    "prismjs": "^1.23.0"
+    "prismjs": "^1.25.0"
   },
   "devDependencies": {
     "esbuild": "0.11.9",
