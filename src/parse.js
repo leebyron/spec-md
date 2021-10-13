@@ -72,7 +72,8 @@ function flattenDocuments(ast, asts) {
   let needToFlatten;
   return visit(ast, {
     leave: function (node, key, parent, keyPath) {
-      if (needToFlatten !== undefined && keyPath.join('.') === needToFlatten) {
+      let keyPathStr = keyPath.join(".") + (key !== undefined ? "." + key : "");
+      if (needToFlatten !== undefined && keyPathStr === needToFlatten) {
         node.contents = node.contents.reduce(flattener, []);
         needToFlatten = needToFlattenStack.pop();
       }
