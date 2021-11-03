@@ -517,7 +517,7 @@ pre {
   width: -webkit-fit-content;
   width: fit-content;
   max-width: calc(100vw - 2rem);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 @media (min-width: 720px) {
