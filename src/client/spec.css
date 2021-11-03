@@ -732,7 +732,7 @@ var {
 
 .spec-oneof-grid {
   max-width: calc(100vw - 2rem);
-  overflow: scroll;
+  overflow: auto;
   margin: -1ex -1rem;
   padding: 1ex 1rem;
 }
