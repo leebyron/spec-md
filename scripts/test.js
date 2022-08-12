@@ -25,6 +25,7 @@ runTests([
   testSource('tables'),
   testSource('task-lists'),
   testSource('definitions'),
+  testSource('html'),
 ]);
 
 function runTests(tests) {

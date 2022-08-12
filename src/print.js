@@ -524,6 +524,9 @@ function printAll(list, options) {
         case 'HTMLTag':
           return node.tag;
 
+        case 'HTMLComment':
+          return '<!--' + node.text + '-->';
+
         case 'Ins':
           return '<ins>' + join(node.contents) + '</ins>';
 

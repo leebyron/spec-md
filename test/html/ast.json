@@ -1,0 +1,51 @@
+{
+  "type": "Document",
+  "title": {
+    "type": "DocumentTitle",
+    "value": "HTML blocks"
+  },
+  "contents": [
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "Text",
+          "value": "Inline HTML "
+        },
+        {
+          "type": "HTMLComment",
+          "text": " ignore "
+        },
+        {
+          "type": "Text",
+          "value": " comment."
+        }
+      ]
+    },
+    {
+      "type": "HTMLComment",
+      "text": " prettier-ignore "
+    },
+    {
+      "type": "Code",
+      "raw": false,
+      "lang": "json",
+      "example": false,
+      "counter": false,
+      "code": "{\n  \"a\": 123\n}\n"
+    },
+    {
+      "type": "Paragraph",
+      "contents": [
+        {
+          "type": "HTMLComment",
+          "text": " Comment "
+        },
+        {
+          "type": "Text",
+          "value": " at the beginning of paragraph."
+        }
+      ]
+    }
+  ]
+}
