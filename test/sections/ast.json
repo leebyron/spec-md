@@ -42,39 +42,37 @@
                 "title": "Level #3"
               },
               "contents": [
-                [
-                  {
-                    "type": "Section",
-                    "header": {
-                      "type": "Header",
-                      "level": 1,
-                      "secID": null,
-                      "title": "Imported level 1"
-                    },
-                    "contents": [
-                      {
-                        "type": "Section",
-                        "header": {
-                          "type": "Header",
-                          "level": 2,
-                          "secID": null,
-                          "title": "Imported level 2"
-                        },
-                        "contents": [
-                          {
-                            "type": "Paragraph",
-                            "contents": [
-                              {
-                                "type": "Text",
-                                "value": "This has been imported "
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
+                {
+                  "type": "Section",
+                  "header": {
+                    "type": "Header",
+                    "level": 1,
+                    "secID": null,
+                    "title": "Imported level 1"
+                  },
+                  "contents": [
+                    {
+                      "type": "Section",
+                      "header": {
+                        "type": "Header",
+                        "level": 2,
+                        "secID": null,
+                        "title": "Imported level 2"
+                      },
+                      "contents": [
+                        {
+                          "type": "Paragraph",
+                          "contents": [
+                            {
+                              "type": "Text",
+                              "value": "This has been imported "
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
                 {
                   "type": "Section",
                   "header": {
