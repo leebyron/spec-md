@@ -28,11 +28,11 @@
   "devDependencies": {
     "esbuild": "0.11.9",
     "jest-diff": "26.6.2",
-    "nodemon": "2.0.7",
+    "nodemon": "2.0.20",
     "pegjs": "0.10.0"
   },
   "engines": {
-    "node": ">=10.14.2"
+    "node": ">=16"
   },
   "files": [
     "bin",

@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
 
 jobs:
   test:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [10.x, 14.x, 16.x, 18.x]
     steps:
     - uses: actions/checkout@v2
     - name: Test Node.js ${{ matrix.node-version }}
