@@ -1037,13 +1037,15 @@ DEDENT = !{ indentStack.length === 0 } {
 
 indentDepth = sp:$_ { return sp.replace(/\t/g, '    ').length; }
 
+COMMENT = '<!--' (!'-->' .)* '-->'
+
 WS = [ \t]
 NL = '\n' / '\r\n' / '\r'
 NOT_NL = !NL .
 // Skips over whitespace including a single newline. Do not use more than once
 // in a row, otherwise multiple NL will be skipped.
 LINE_WRAP = NL _ !(NL / listBullet / headerLookahead)
-_ = WS*
+_ = (WS / COMMENT)*
 // Whitespace followed by an optional Line Wrap
 __ = _ LINE_WRAP?
 // Skips over all new lines and empty lines, but not the white space at the
