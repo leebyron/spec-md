@@ -7,11 +7,14 @@ var specmd = require('../');
 var filepath;
 var metadata;
 var githubSource;
+var includeComments;
 for (var i = 2; i < process.argv.length; i++) {
   if (process.argv[i] === '-m' || process.argv[i] === '--metadata') {
     metadata = process.argv[++i];
   } else if (process.argv[i] === '--githubSource') {
     githubSource = process.argv[++i];
+  } else if (process.argv[i] === '--includeComments') {
+    includeComments = true;
   } else if (process.argv[i][0] === '-') {
     errorExit('Unknown argument: ' + process.argv[i]);
   } else if (!filepath) {
@@ -25,14 +28,18 @@ if (!filepath) {
   errorExit(
     'Usage: spec-md initial-file.md\n\n' +
     'Options:\n' +
-    '  -m, --metadata  filepath to json metadata\n' +
-    '  --githubSource  URL basepath for Github source'
+    '  -m, --metadata     filepath to json metadata\n' +
+    '  --githubSource     URL basepath for Github source\n' +
+    '  --includeComments  include HTML comments in output'
   );
 }
 
 var options = metadata ? require(path.resolve(process.cwd(), metadata)) : {};
 if (githubSource) {
   options.githubSource = githubSource;
+}
+if (includeComments) {
+  options.includeComments = includeComments
 }
 var absPath = path.resolve(process.cwd(), filepath);
 

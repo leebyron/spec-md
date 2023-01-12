@@ -45,6 +45,9 @@ over the returned HTML, more options may be added in the future.
     Github source links to the original Markdown files throughout the returned
     HTML. (example: "https://github.com/leebyron/spec-md/blame/main/")
 
+  * **includeComments** - If true, any HTML style comments that occur within
+    the original markdown files will be included in the returned HTML.
+
   * **highlight** - a function which is called when blocks of code are
     encountered, with the first argument as the string of code, the second
     argument being the language specified. This function should return well

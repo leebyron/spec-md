@@ -86,9 +86,10 @@ importedDocument = ___ document:untitledDocument EOF {
   return document;
 }
 
-titledDocument = title:title ___ contents:documentBlocks {
+titledDocument = comments:(htmlComment ___)* title:title ___ contents:documentBlocks {
   return located({
     type: 'Document',
+    comments: comments.map(pair => pair[0]),
     title: title,
     contents: contents
   });
@@ -285,6 +286,7 @@ sectionBlock = note
              / list
              / blockEdit
              / htmlBlock
+             / htmlCommentBlock
              / definitionList
              / definitionParagraph
              / paragraph
@@ -359,6 +361,23 @@ htmlContent = [^<]+
 tagOpen = '<' name:$[a-z]+ $[^>]* '>' { return name; }
 tagClose = '</' name:$[a-z]+ '>' { return name; }
 
+// HTML comment
+
+htmlCommentBlock = SAMEDENT comment:htmlComment &EOL {
+  return comment;
+}
+
+htmlComment = htmlCommentStart text:$htmlCommentText* htmlCommentEnd {
+  return located({
+    type: 'HTMLComment',
+    text: text
+  });
+}
+
+htmlCommentStart = '<!--'
+htmlCommentEnd = '-->'
+htmlCommentText = [^-]+ / &'-' !htmlCommentEnd '-'
+
 // Definitions
 
 definitionList = definitionListLookahead SAMEDENT term:definitionListTerm defs:((NL (_ NL)?) definitionListDescription)+ &EOB {
@@ -393,7 +412,7 @@ definitionListTextChar = [^\n\r+\-{`*_[!<\\]+
                        / '-' !'-}'
                        / &'!' !image '!'
                        / &'[' !link '['
-                       / &'<' !htmlTag '<'
+                       / &'<' !(htmlTag / htmlCommentStart) '<'
                        / LINE_WRAP !':'
 
 definitionListText = value:$definitionListTextChar+ {
@@ -427,7 +446,7 @@ paragraph = SAMEDENT contents:content+ &EOB {
   });
 }
 
-inlineEntity = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag
+inlineEntity = inlineEdit / inlineCode / reference / bold / italic / link / image / htmlTag / htmlComment
 
 content = text / inlineEntity
 
@@ -437,7 +456,7 @@ textChar = [^\n\r+\-{`*_[!<\\]+
          / '-' !'-}'
          / &'!' !image '!'
          / &'[' !link '['
-         / &'<' !htmlTag '<'
+         / &'<' !(htmlTag / htmlCommentStart)  '<'
          / LINE_WRAP
 
 text = value:$textChar+ {
@@ -591,7 +610,7 @@ linkTextChar = [^\n\r+\-{`*!<\]\\]+
              / '+' !'+}'
              / '-' !'-}'
              / &'!' !image '!'
-             / &'<' !htmlTag '<'
+             / &'<' !(htmlTag / htmlCommentStart) '<'
 
 linkText = value:$linkTextChar+ {
   return formattedText(value);
@@ -754,7 +773,7 @@ tableCellTextChar = [^ |\n\r+\-{`*[!<]+
                   / '-' !'-}'
                   / &'!' !image '!'
                   / &'[' !link '['
-                  / &'<' !htmlTag '<'
+                  / &'<' !(htmlTag / htmlCommentStart) '<'
 
 tableCellText = value:$tableCellTextChar+ {
   return formattedText(value);

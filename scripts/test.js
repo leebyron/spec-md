@@ -25,6 +25,8 @@ runTests([
   testSource('tables'),
   testSource('task-lists'),
   testSource('definitions'),
+  testSource('comments'),
+  ['test/comments/input.md', 'test/comments/ast.json', 'test/comments/output-comments.html', '--includeComments'],
 ]);
 
 function runTests(tests) {
