@@ -2366,6 +2366,85 @@
             "type": "Header",
             "level": 2,
             "secID": null,
+            "title": "Comments"
+          },
+          "contents": [
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Spec Markdown will ignore HTML style comments before or within blocks of text. By default these comments are omitted from the resulting HTML, but can be included by passing the option "
+                },
+                {
+                  "type": "InlineCode",
+                  "code": "--includeComments"
+                },
+                {
+                  "type": "Text",
+                  "value": " when calling "
+                },
+                {
+                  "type": "InlineCode",
+                  "code": "spec-md"
+                },
+                {
+                  "type": "Text",
+                  "value": "."
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "For example this paragraph:"
+                }
+              ]
+            },
+            {
+              "type": "Code",
+              "raw": false,
+              "lang": null,
+              "example": false,
+              "counter": false,
+              "code": "This is a <!-- comment inside of a --> paragraph.\n"
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "Produces the following:"
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "contents": [
+                {
+                  "type": "Text",
+                  "value": "This is a "
+                },
+                {
+                  "type": "HTMLComment",
+                  "text": " comment inside of a "
+                },
+                {
+                  "type": "Text",
+                  "value": " paragraph."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "header": {
+            "type": "Header",
+            "level": 2,
+            "secID": null,
             "title": "Definitions"
           },
           "contents": [
@@ -8140,6 +8219,24 @@
                     {
                       "type": "Text",
                       "value": " - a base URL, that if provided will be used to construct Github source links to the original Markdown files throughout the returned HTML. (example: “https://github.com/leebyron/spec-md/blame/main/”)"
+                    }
+                  ]
+                },
+                {
+                  "type": "ListItem",
+                  "contents": [
+                    {
+                      "type": "Bold",
+                      "contents": [
+                        {
+                          "type": "Text",
+                          "value": "includeComments"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "value": " - If true, any HTML style comments that occur within the original markdown files will be included in the returned HTML."
                     }
                   ]
                 },

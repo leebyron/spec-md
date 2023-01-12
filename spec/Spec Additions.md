@@ -174,6 +174,22 @@ Produces the following:
 
 Table cells can contain any content that a paragraph can contain.
 
+## Comments
+
+Spec Markdown will ignore HTML style comments before or within blocks of text.
+By default these comments are omitted from the resulting HTML, but can be
+included by passing the option `--includeComments` when calling `spec-md`.
+
+For example this paragraph:
+
+```
+This is a <!-- comment inside of a --> paragraph.
+```
+
+Produces the following:
+
+This is a <!-- comment inside of a --> paragraph.
+
 ## Definitions
 
 Spec Markdown provides two forms for defining terms, definition lists and
