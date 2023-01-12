@@ -92,7 +92,6 @@ function printHead(ast, options) {
     '<meta charset="utf-8">\n' +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<title>' + (ast.title ? ast.title.value : 'Spec') + '</title>\n' +
-    '<style>' + readPrismCSS() + '</style>\n' +
     '<style>' + readStatic('spec.css') + '</style>\n' +
     '<script>' + readStatic('sidebar.js') + '</script>\n' +
     '<script>' + readStatic('highlightName.js') + '</script>\n' +
@@ -994,14 +993,6 @@ function readStatic(filename) {
   return readFile(path.join(__dirname, 'generated', filename)).trim();
 }
 
-function readPrismCSS() {
-  return readFile(
-    path.join(
-      path.dirname(require.resolve('prismjs')),
-      'themes/prism.css'
-    )
-  ).replace(/\n/g, ' ').replace(/ {2,}/g, ' ').trim();
-}
 
 function readFile(filename) {
   // Normalize line endings
