@@ -1,5 +1,6 @@
 {
   "type": "Document",
+  "comments": [],
   "title": {
     "type": "DocumentTitle",
     "value": "Productions"

@@ -86,9 +86,10 @@ importedDocument = ___ document:untitledDocument EOF {
   return document;
 }
 
-titledDocument = title:title ___ contents:documentBlocks {
+titledDocument = comments:(htmlComment ___)* title:title ___ contents:documentBlocks {
   return located({
     type: 'Document',
+    comments: comments.map(pair => pair[0]),
     title: title,
     contents: contents
   });

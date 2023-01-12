@@ -10,6 +10,7 @@ function print(ast, _options) {
     highlight: _options && _options.highlight || highlight,
     biblio: _options && _options.biblio && buildBiblio(_options.biblio) || {},
     head: _options && _options.head || '',
+    includeComments: _options && _options.includeComments || false,
   };
   validateSecIDs(ast, options);
   assignExampleNumbers(ast, options);
@@ -18,6 +19,7 @@ function print(ast, _options) {
   return (
     '<!DOCTYPE html>\n' +
     '<!-- Built with spec-md https://spec-md.com -->\n' +
+    printAll(ast.comments, options) +
     '<html>\n' +
       '<head>' + printHead(ast, options) + '</head>\n' +
       '<body>' + printBody(ast, options) + '</body>\n' +
@@ -525,7 +527,7 @@ function printAll(list, options) {
           return node.tag;
 
         case 'HTMLComment':
-          return '<!--' + node.text + '-->';
+          return options.includeComments ? '<!--' + node.text + '-->' : '';
 
         case 'Ins':
           return '<ins>' + join(node.contents) + '</ins>';

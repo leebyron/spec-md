@@ -1,8 +1,14 @@
 {
   "type": "Document",
+  "comments": [
+    {
+      "type": "HTMLComment",
+      "text": " comment before file "
+    }
+  ],
   "title": {
     "type": "DocumentTitle",
-    "value": "HTML blocks"
+    "value": "Comments"
   },
   "contents": [
     {
@@ -10,7 +16,7 @@
       "contents": [
         {
           "type": "Text",
-          "value": "Inline HTML "
+          "value": "Inline "
         },
         {
           "type": "HTMLComment",
@@ -46,6 +52,10 @@
           "value": " at the beginning of paragraph."
         }
       ]
+    },
+    {
+      "type": "HTMLComment",
+      "text": " comment after file "
     }
   ]
 }
